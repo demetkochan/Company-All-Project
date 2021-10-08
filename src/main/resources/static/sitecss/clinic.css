@@ -1,0 +1,87 @@
+.list-unstyled .svg-inline--fa {
+    font-size: 25px;
+}
+
+.menu_space {
+    margin-left: 40px;
+}
+
+.custom_btn {
+    border:none;
+    padding: 1rem;
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+}
+
+.button1{
+    background-color: #22AE78;
+}
+.button2{
+    background-color: #F7B924;
+}
+.button3{
+    background-color: #444054;
+}
+.button4{
+    background-color: #244785;
+}
+#card{
+    border-width:0;
+    box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%),
+    0 0.9375rem 1.40625rem rgb(4 9 20 / 3%),
+    0 0.25rem 0.53125rem rgb(4 9 20 / 5%),
+    0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
+}
+
+.mainCart {
+    box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
+    border-width: 0;
+}
+
+.cardHeader {
+    text-transform: uppercase;
+    color: rgba(50, 33, 210, 0.7);
+    font-weight: 700;
+    font-size: 0.88rem;
+}
+
+.cardBackground1 {
+    background-color:#E53935;
+}
+.cardBackground2 {
+    background-color: #8E24AA ;
+}
+.cardBackground3 {
+    background-color: #566573 ;
+}
+
+.cardBackground4 {
+    background-color: #00897B;
+}
+.cardBackground6 {
+    background-color: #FDD835;
+}
+.cardBackground5 {
+    background-color: #D81B60;
+}
+
+.cardBackground1 , .cardBackground2, .cardBackground3, .cardBackground4,.cardBackground5,.cardBackground6 > h4, strong,hr {
+    color: white;
+}
+
+.cardBackground1:hover , .cardBackground2:hover, .cardBackground3:hover, .cardBackground4:hover,.cardBackground5:hover,.cardBackground6:hover {
+    background-color: #0F9DEF;
+}
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: auto;
+}
+
+.list-unstyled li.active {
+    background-color: black;
+}
+
+.list-unstyled li:hover {
+    background-color: black;
+}
