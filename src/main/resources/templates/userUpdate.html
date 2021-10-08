@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Kullanıcı Güncelleme</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+  <div class="card">
+    <h5 class="card-header">Kullanıcı Güncelleme</h5>
+    <div class="card-body">
+      <div class="mb-3">
+        <label for="userName" class="form-label">Adı</label>
+        <input class="form-control" type="text" id="userName">
+      </div>
+      <div class="mb-3">
+        <label for="userSurname" class="form-label">Soyadı</label>
+        <input class="form-control" type="text" id="userSurname">
+      </div>
+      <div class="mb-3">
+        <label for="userMail" class="form-label">Mail</label>
+        <input class="form-control" type="text" id="userMail">
+      </div>
+
+      <a href="#" class="btn btn-primary">Kaydet</a>
+      <a href="#" class="btn btn-primary">İptal</a>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordChangeModal">
+        Şifre Değiştir
+      </button>
+      <a href="#" class="btn btn-primary">Logo Değiştir</a>
+    </div>
+  </div>
+
+  <!---Şifre Değiştir Modal Başlangıç-->
+  <div class="modal fade" id="passwordChangeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Şifre Değiştirme</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="passwordChange" name="passwordChange" >
+            <div class="mb-3">
+              <label for="password" class="form-label">Şifre</label>
+              <input class="form-control" type="password" id="password">
+            </div>
+            <div class="mb-3">
+              <label for="password_confirm" class="form-label">Şifre Tekrar</label>
+              <input class="form-control" type="password" id="password_confirm">
+            </div>
+
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---Şifre Değiştir Modal Bitir-->
+
+
+
+</th:block>
+</body>
+</html>

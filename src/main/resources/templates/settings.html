@@ -18,7 +18,7 @@
         <div class="card-body ">
           <p class="card-text" >Kullanıcı bilgilerinizi güncelleyin.</p>
         </div>
-        <div class="card-footer bg-transparent "> <a href="#" class="btn btn-primary">Düzenle</a></div>
+        <div class="card-footer bg-transparent "> <a th:href="@{/userUpdate}" class="btn btn-primary">Düzenle</a></div>
       </div>
     </div>
     <div class="col-md-3">
@@ -27,7 +27,11 @@
         <div class="card-body ">
           <p class="card-text">Şirket bilgilerinizi güncelleyin.</p>
         </div>
-        <div class="card-footer bg-transparent "> <a href="#" class="btn btn-primary">Düzenle</a></div>
+        <div class="card-footer bg-transparent ">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCompany">
+          Düzenle
+        </button>
+        </div>
       </div>
     </div>
     <div class="col-md-6">
@@ -37,13 +41,107 @@
         </div>
         <div class="card-body">
           <a href="#" class="btn btn-warning">Yeni Yetkili Ata</a>
-          <a href="#" class="btn btn-primary">Çalışan ekle</a>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#workerAddModal">
+            Çalışan Ekle
+          </button>
           <hr/>
           <h5 class="card-title">Referans Kodunuz: 85sdfghf8ds54gfth8hsr48hbdh4g8 </h5>
           <a href="#" class="btn btn-danger">Referans Kodu Yenile</a>
         </div>
       </div></div>
   </div>
+
+  <!---Firma Düzenleme Başlangıç--->
+  <div class="modal fade" id="addCompany" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Şirket Bilgilerini Düzenleme</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="companyAdd" name="companyAdd"   method="post" enctype="multipart/form-data">
+
+            <div class="mb-3">
+              <label for="companyName" class="form-label">Şirketinizin Adı</label>
+              <input class="form-control" type="text" id="companyName" placeholder="Şirketinizin Adı">
+            </div>
+            <div class="mb-3">
+              <label for="companyAddress" class="form-label">Şirketinizin Adresi</label>
+              <input class="form-control" type="text" id="companyAddress" placeholder="Şirketinizin Adresi">
+            </div>
+
+            <div class="mb-3">
+              <label for="latitude" class="form-label">Enlem</label>
+              <input class="form-control" type="text" id="latitude" placeholder="Enlem">
+            </div>
+
+            <div class="mb-3">
+              <label for="longitude" class="form-label">Boylam</label>
+              <input class="form-control" type="text" id="longitude" placeholder="Boylam">
+            </div>
+
+            <!--HARİTA-->
+
+            <div class="mb-3">
+              <label for="companyTel" class="form-label">Telefon</label>
+              <input class="form-control" type="text" id="companyTel" placeholder="Telefon">
+            </div>
+            <div class="mb-3">
+              <label for="company_type" class="form-label" style="font-family: Bahnschrift;font-size: large;color: #5c636a">Sektör</label>
+              <select class="form-select" name="product_type" id="company_type">
+                <option value="">Seçiniz</option>
+                <option value="1">Teknoloji</option>
+                <option value="2">İlaç</option>
+                <option value="3">Tekstil</option>
+              </select>
+            </div>
+
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---Firma Düzenleme Bitiş--->
+  <!---Çalışan Ekle Modal Başla-->
+  <div class="modal fade" id="workerAddModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" >Çalışan Ekleme Sayfası</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="workerAdd" name="workerAdd" >
+            <div class="mb-3">
+              <label for="w_name" class="form-label">Ad</label>
+              <input class="form-control" type="text" id="w_name">
+            </div>
+            <div class="mb-3">
+              <label for="w_surname" class="form-label">Soyad</label>
+              <input class="form-control" type="text" id="w_surname">
+            </div>
+            <div class="mb-3">
+              <label for="w_mail" class="form-label">Mail</label>
+              <input class="form-control" type="email" id="w_mail">
+            </div>
+            <div class="mb-3">
+              <label for="w_mail_confirm" class="form-label">Mail Tekrar</label>
+              <input class="form-control" type="email" id="w_mail_confirm">
+            </div>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---Çalışan Ekle Modal Bitir-->
+
 </th:block>
 
 
