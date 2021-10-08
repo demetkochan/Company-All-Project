@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Reklam Yönetimi</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <h3 style="font-family: 'Bradley Hand ITC'; color: #171a1d; font-size: xxx-large; font-weight: bold">Reklamlar</h3>
+    <hr/>
+    <div class="row">
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#addAdvertising">
+                + Reklam Ekle
+            </button>
+        </div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3"></div>
+    </div>
+    <div class="row mb-3 mt-3">
+        <div class="col-sm-4 mb-3 mt-3">
+            <h6>Sayfa başına <select class="form-select-sm">
+                <option value="1">5</option>
+                <option value="2">10</option>
+                <option value="3">15</option>
+            </select> kayıt göster. </h6>
+        </div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form id="search_form">
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
+                    <input id="csearch" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
+                    <a onclick="customerSearch()" class="btn btn-outline-danger">Ara</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!---Tablo Başlangıç-->
+    <table class="table table-hover">
+        <thead style="background: #FF865E; color: white">
+        <tr>
+            <th scope="col" >Adı</th>
+            <th scope="col">Gösterim</th>
+            <th scope="col">Tıklanma</th>
+            <th scope="col">Başlangıç</th>
+            <th scope="col">Bitiş</th>
+            <th scope="col">Resim</th>
+            <th scope="col">Genişlik</th>
+            <th scope="col">Yükseklik</th>
+            <th scope="col">Link</th>
+            <th scope="col">Durum</th>
+            <th scope="col">İşlemler</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+        </tr>
+        </tbody>
+    </table>
+    <!---Tablo Bitiş-->
+
+    <!---Reklam Ekle Başlangıç-->
+    <div class="modal fade bd-example-modal-lg" id="addAdvertising" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background: tomato; color: white">
+                    <h5 class="modal-title" id="staticBackdropLabel">Reklam Ekle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        Reklam bilgilerinizi giriniz.
+                    </div>
+                    <hr/>
+
+                    <form id="labAdd" name="labAdd"   method="post" enctype="multipart/form-data">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="adv_name" class="form-label">Reklam Adı</label>
+                                <input class="form-control" type="text" id="adv_name" placeholder="Reklam Adı">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="view" class="form-label">Gösterim Sayısı</label>
+                                <input class="form-control" type="text" id="view">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="start_date" class="form-label">Başlangıç Tarihi</label>
+                                <input class="form-control" type="text" id="start_date" placeholder="Başlangıç Tarihi">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="finish_date" class="form-label">Bitiş Tarihi</label>
+                                <input class="form-control" type="text" id="finish_date" placeholder="Bitiş Tarihi">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="adv_width" class="form-label">Genişlik</label>
+                                <input class="form-control" type="text" id="adv_width" placeholder="Genişlik">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="adv_heigth" class="form-label">Yükseklik</label>
+                                <input class="form-control" type="text" id="adv_heigth" placeholder="Yükseklik">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="imageName" class="form-label">Dosya Seçiniz</label>
+                                <input class="form-control" type="file" id="imageName" name="imageName">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="adv_link" class="form-label">Reklam Linki</label>
+                                <input class="form-control" type="text" id="adv_link" placeholder="Reklam Linki">
+                            </div>
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3">
+                                <button type="submit" class="btn btn-primary">Ekle</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---Reklam Ekle Bitiş-->
+</th:block>
+</body>
+</html>
