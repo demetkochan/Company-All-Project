@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="inc/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Kullanıcı Ayarları</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+  <h4 style="font-family: 'Bradley Hand ITC'; color: #171a1d; font-size: xxx-large; font-weight: bold">Kullanıcı Ayarları</h4>
+  <h6>Sayın Kullanıcı, kişisel bilgilerinizi ve şirket bilgilerinizi aşağıda güncelleyebilirsiniz.</h6>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card  mb-3 p-1" style="max-width: 18rem;">
+        <div class="card-header">Kullanıcı Bilgileri</div>
+        <div class="card-body ">
+          <p class="card-text" >Kullanıcı bilgilerinizi güncelleyin.</p>
+        </div>
+        <div class="card-footer bg-transparent "> <a href="#" class="btn btn-primary">Düzenle</a></div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card mb-3 p-1" style="max-width: 18rem;">
+        <div class="card-header">Şirket Bilgileri</div>
+        <div class="card-body ">
+          <p class="card-text">Şirket bilgilerinizi güncelleyin.</p>
+        </div>
+        <div class="card-footer bg-transparent "> <a href="#" class="btn btn-primary">Düzenle</a></div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Diğer İşlemler
+        </div>
+        <div class="card-body">
+          <a href="#" class="btn btn-warning">Yeni Yetkili Ata</a>
+          <a href="#" class="btn btn-primary">Çalışan ekle</a>
+          <hr/>
+          <h5 class="card-title">Referans Kodunuz: 85sdfghf8ds54gfth8hsr48hbdh4g8 </h5>
+          <a href="#" class="btn btn-danger">Referans Kodu Yenile</a>
+        </div>
+      </div></div>
+  </div>
+</th:block>
+
+
+</body>
+</html>
