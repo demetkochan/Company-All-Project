@@ -182,9 +182,14 @@ a.article, a.article:hover {
     margin: 5px auto;
 }
 
+.modal-backdrop {
+    position: relative;
+}
+
+
 
 /* ---------------------------------------------------
-    MEDIAQUERIES
+MEDIAQUERIES
 ----------------------------------------------------- */
 @media (max-width: 768px) {
     #sidebar {
