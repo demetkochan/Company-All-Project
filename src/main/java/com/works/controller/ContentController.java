@@ -9,7 +9,7 @@ public class ContentController {
 
 
     @GetMapping("/content")
-    public String vendor(Model model){
+    public String content(Model model){
         return "content";
     }
 
