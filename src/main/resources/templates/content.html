@@ -1,10 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="inc/layout">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>İçerik Yönetimi</title>
 </head>
 <body>
+<th:block layout:fragment="content">
+  <h3 style="font-family: 'Bradley Hand ITC'; color: #171a1d; font-size: xxx-large; font-weight: bold">İçerik</h3>
+  <hr/>
+  <div class="row">
+    <div class="col-sm-4">
+      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#contentAddModal">
+        + İçerik Ekle
+      </button>
+    </div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div class="input-group">
+        <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+          <option value="0">-- Hepsi</option>
+          <option value="1">Aktif İçerikler</option>
+          <option value="2">Pasif İçerikler</option>
+        </select>
+        <button class="btn btn-outline-primary" type="button">SEÇ</button>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3 mt-3">
+    <div class="col-sm-4 mb-3 mt-3">
+      <h6>Sayfa başına <select class="form-select-sm">
+        <option value="1">5</option>
+        <option value="2">10</option>
+        <option value="3">15</option>
+      </select> kayıt göster. </h6>
+    </div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <form id="search_form">
+        <div class="input-group flex-nowrap">
+          <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
+          <input id="csearch" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
+          <a class="btn btn-outline-danger">Ara</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!---Tablo Başlangıç-->
+  <table class="table table-hover">
+    <thead style="background: #FF865E; color: white">
+    <tr>
+      <th scope="col">Durum</th>
+      <th scope="col">Başlık</th>
+      <th scope="col">Kısa Açıklama</th>
+      <th scope="col">Detay</th>
+      <th scope="col">Eklenme Tarihi</th>
+      <th scope="col">İşlem</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Başlık</td>
+      <td>Kısa Açıklama</td>
+      <td>Detay</td>
+      <td>Tarih</td>
+      <td>Düzenle/Silme</td>
+    </tr>
+    </tbody>
+  </table>
 
+  <!---Tablo Bitiş-->
+
+  <!---İçerik Ekle Başlangıç-->
+  <div class="modal" id="contentAddModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color:#E53935;">
+          <h5 class="modal-title" style="color: white" >İçerik Ekle</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="contentAdd" name="contentAdd" >
+            <h6 class="text-center">İçerik Bilgilerinizi Aşağıda Girebilirsiniz</h6>
+            <hr/>
+
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label for="content_title" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">İçerik Başlık</label>
+              </div>
+
+              <div class="col-md-8 ">
+                <input type="text" name="content_title" id="content_title" class="form-control"  required  />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label for="content_desc" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kısa Açıklama</label>
+              </div>
+
+              <div class="col-md-8 ">
+                <input type="text" name="content_title" id="content_desc" class="form-control"  required  />
+              </div>
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-4 mb-3">
+                <label for="content_detail_desc" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Detaylı Açıklama</label>
+              </div>
+              <div class="col-md-8 ">
+                <textarea  id="content_detail_desc" name="content_detail_desc"> </textarea>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 mt-3">
+                <label for="content_status" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Durum</label>
+              </div>
+
+              <div class="col-md-8 mt-3">
+                <select class="form-select" id="content_status" aria-label="Example select with button addon">
+                  <option value="1">Aktif </option>
+                  <option value="2">Pasif </option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-9"></div>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+                <button type="submit" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class="fas fa-save"></i> Ekle</button>
+                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Kapat</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</th:block>
 </body>
 </html>
+
+<script th:src="@{js/ckeditor.js}"></script>
