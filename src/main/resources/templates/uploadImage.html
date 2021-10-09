@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="inc/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Resim Ekle</title>
+
+</head>
+<body>
+
+<th:block layout:fragment="content">
+
+    <h3 style="color: #398067"><i class="far fa-image"></i> Resim Ekle <hr/></h3>
+
+    <div class="card">
+        <h5 class="card-header" style="background:#E5B86C; color: white" ><i class="fas fa-arrow-circle-up"></i> Ürüne Resim Ekle</h5>
+        <div class="card-body">
+
+            <form class="row">
+                <div class="col">
+                    <label for="product_name" class="form-label">Ürün Adı</label>
+                    <input type="text" class="form-control" id="product_name">
+                </div>
+
+                <div class="col">
+                    <label for="formFileMultiple" class="form-label"> Eklemek istediğiniz ürün fotoğrafını seçiniz.</label>
+                    <input class="form-control" type="file" id="formFileMultiple" multiple>
+                </div>
+
+                <div class="row">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+                        <button type="submit" class="btn btn-outline-danger" ><i class="fas fa-save"></i> Ekle</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+
+    <div class="row mb-3 mt-3">
+        <div class="col-sm-4 mb-3 mt-3">
+            <h6>Sayfa başına <select class="form-select-sm">
+                <option value="1">5</option>
+                <option value="2">10</option>
+                <option value="3">15</option>
+            </select> kayıt göster. </h6>
+        </div>
+    </div>
+
+    <!---Tablo Başlangıç-->
+    <table class="table table-hover">
+        <thead style="background:#E5B86C; color: white">
+        <tr>
+            <th scope="col">Ürün Adı</th>
+            <th scope="col">Başlığı</th>
+            <th scope="col">Açıklama</th>
+            <th scope="col">Kategori</th>
+            <th scope="col">İşlem</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Başlık</td>
+            <td>Kısa Açıklama</td>
+            <td>Detay</td>
+            <td>Tarih</td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    <!---Tablo Bitiş-->
+
+
+</th:block>
+
+
+</body>
+</html>
