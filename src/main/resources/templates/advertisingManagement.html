@@ -9,12 +9,11 @@
 </head>
 <body>
 <th:block layout:fragment="content">
-    <h3 style="font-family: 'Bradley Hand ITC'; color: #171a1d; font-size: xxx-large; font-weight: bold">Reklamlar</h3>
-    <hr/>
+    <h3 style="color: #398067"><i class="fas fa-ad"></i> Reklam Yönetimi <hr/></h3>
     <div class="row">
         <div class="col-sm-3">
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#addAdvertising">
-                + Reklam Ekle
+             <i class="fas fa-plus-square"></i> Reklam Ekle
             </button>
         </div>
         <div class="col-sm-3"></div>
@@ -42,7 +41,7 @@
     </div>
     <!---Tablo Başlangıç-->
     <table class="table table-hover">
-        <thead style="background: #FF865E; color: white">
+        <thead  style="background:#E5B86C; color: white">
         <tr>
             <th scope="col" >Adı</th>
             <th scope="col">Gösterim</th>
@@ -79,7 +78,7 @@
     <div class="modal fade bd-example-modal-lg" id="addAdvertising" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header" style="background: tomato; color: white">
+                <div class="modal-header"  style="background:#E5B86C; color: white">
                     <h5 class="modal-title" id="staticBackdropLabel">Reklam Ekle</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -127,8 +126,8 @@
                             <div class="col-sm-3"></div>
                             <div class="col-sm-3"></div>
                             <div class="col-sm-3">
-                                <button type="submit" class="btn btn-primary">Ekle</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                                <button type="submit" class="btn btn-outline-primary">Ekle</button>
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">İptal</button>
 
                             </div>
                         </div>

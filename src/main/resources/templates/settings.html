@@ -9,26 +9,28 @@
 </head>
 <body>
 <th:block layout:fragment="content">
-  <h4 style="font-family: 'Bradley Hand ITC'; color: #171a1d; font-size: xxx-large; font-weight: bold">Kullanıcı Ayarları</h4>
+  <h3 style="color: #398067"><i class="fas fa-cogs"></i> Ayarlar <hr/></h3>
   <h6>Sayın Kullanıcı, kişisel bilgilerinizi ve şirket bilgilerinizi aşağıda güncelleyebilirsiniz.</h6>
+  <br/>
   <div class="row">
+
     <div class="col-md-3">
       <div class="card  mb-3 p-1" style="max-width: 18rem;">
-        <div class="card-header">Kullanıcı Bilgileri</div>
+        <div class="card-header" style="background:#E5B86C; color: white" >Kullanıcı Bilgileri</div>
         <div class="card-body ">
           <p class="card-text" >Kullanıcı bilgilerinizi güncelleyin.</p>
         </div>
-        <div class="card-footer bg-transparent "> <a th:href="@{/userUpdate}" class="btn btn-primary">Düzenle</a></div>
+        <div class="card-footer bg-transparent "> <a th:href="@{/userUpdate}" class="btn btn-outline-primary">Düzenle</a></div>
       </div>
     </div>
     <div class="col-md-3">
       <div class="card mb-3 p-1" style="max-width: 18rem;">
-        <div class="card-header">Şirket Bilgileri</div>
+        <div class="card-header" style="background:#E5B86C; color: white">Şirket Bilgileri</div>
         <div class="card-body ">
           <p class="card-text">Şirket bilgilerinizi güncelleyin.</p>
         </div>
         <div class="card-footer bg-transparent ">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCompany">
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addCompany">
           Düzenle
         </button>
         </div>
@@ -36,26 +38,28 @@
     </div>
     <div class="col-md-6">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header" style="background:#E5B86C; color: white">
           Diğer İşlemler
         </div>
         <div class="card-body">
-          <a href="#" class="btn btn-warning">Yeni Yetkili Ata</a>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#workerAddModal">
+          <a href="#" class="btn btn-outline-secondary">Yeni Yetkili Ata</a>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#workerAddModal">
             Çalışan Ekle
           </button>
           <hr/>
           <h5 class="card-title">Referans Kodunuz: 85sdfghf8ds54gfth8hsr48hbdh4g8 </h5>
-          <a href="#" class="btn btn-danger">Referans Kodu Yenile</a>
+          <a href="#" class="btn btn-outline-danger">Referans Kodu Yenile</a>
         </div>
-      </div></div>
+      </div>
+    </div>
+
   </div>
 
   <!---Firma Düzenleme Başlangıç--->
   <div class="modal fade" id="addCompany" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header" style="background:#E5B86C; color: white">
           <h5 class="modal-title" id="staticBackdropLabel">Şirket Bilgilerini Düzenleme</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -97,8 +101,8 @@
               </select>
             </div>
 
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
-            <button type="submit" class="btn btn-primary">Kaydet</button>
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">İptal</button>
+            <button type="submit" class="btn btn-outline-primary">Kaydet</button>
 
           </form>
         </div>
@@ -110,7 +114,7 @@
   <div class="modal fade" id="workerAddModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header" style="background:#E5B86C; color: white">
           <h5 class="modal-title" >Çalışan Ekleme Sayfası</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -132,8 +136,8 @@
               <label for="w_mail_confirm" class="form-label">Mail Tekrar</label>
               <input class="form-control" type="email" id="w_mail_confirm">
             </div>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
-            <button type="submit" class="btn btn-primary">Kaydet</button>
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">İptal</button>
+            <button type="submit" class="btn btn-outline-primary">Kaydet</button>
 
           </form>
         </div>

@@ -9,12 +9,13 @@
 </head>
 <body>
 <th:block layout:fragment="content">
-  <h3 style="font-family: 'Bradley Hand ITC'; color: #171a1d; font-size: xxx-large; font-weight: bold">İçerik</h3>
-  <hr/>
+
+  <h3 style="color: #398067"><i class="fas fa-tasks"></i> İçerik Yönetimi <hr/></h3>
+
+
   <div class="row">
     <div class="col-sm-4">
-      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#contentAddModal">
-        + İçerik Ekle
+      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#contentAddModal"><i class="fas fa-save"></i> İçerik Ekle
       </button>
     </div>
     <div class="col-sm-4"></div>
@@ -25,7 +26,7 @@
           <option value="1">Aktif İçerikler</option>
           <option value="2">Pasif İçerikler</option>
         </select>
-        <button class="btn btn-outline-primary" type="button">SEÇ</button>
+        <button class="btn btn-outline-primary" type="button">Seç</button>
       </div>
     </div>
   </div>
@@ -50,7 +51,7 @@
   </div>
   <!---Tablo Başlangıç-->
   <table class="table table-hover">
-    <thead style="background: #FF865E; color: white">
+    <thead style="background:#E5B86C; color: white">
     <tr>
       <th scope="col">Durum</th>
       <th scope="col">Başlık</th>
@@ -78,7 +79,7 @@
   <div class="modal" id="contentAddModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div class="modal-header" style="background-color:#E53935;">
+        <div class="modal-header" style="background-color:#E5B86C;">
           <h5 class="modal-title" style="color: white" >İçerik Ekle</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>

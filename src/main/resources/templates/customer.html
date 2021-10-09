@@ -9,12 +9,12 @@
 </head>
 <body>
 <th:block layout:fragment="content">
-  <h3 style="font-family: 'Bradley Hand ITC'; color: #171a1d; font-size: xxx-large; font-weight: bold">Müşteri Yönetimi</h3>
-  <hr/>
+  <h3 style="color: #398067"><i class="far fa-address-card"></i> Müşteri Yönetimi<hr/></h3>
+
   <div class="row">
     <div class="col-sm-3">
       <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#customerAdd">
-        + Müşteri Ekle
+        <i class="fas fa-save"></i> Müşteri Ekle
       </button>
     </div>
     <div class="col-sm-3"></div>
@@ -42,15 +42,15 @@
   </div>
   <!---Tablo Başlangıç-->
   <table class="table table-hover">
-    <thead style="background: #FF865E; color: white">
+    <thead style="background: #E5B86C; color: white">
     <tr>
-      <th scope="col" >ID</th>
-      <th scope="col">ADI</th>
-      <th scope="col">SOYADI</th>
-      <th scope="col">EMAİL</th>
-      <th scope="col">TELEFON</th>
-      <th scope="col">ŞİFRE DEĞİŞTİR</th>
-      <th scope="col">SİL</th>
+      <th scope="col" >Id</th>
+      <th scope="col">Adı</th>
+      <th scope="col">Soyadı</th>
+      <th scope="col">Email</th>
+      <th scope="col">Telefon</th>
+      <th scope="col">Şifre Değiştir</th>
+      <th scope="col">Sil</th>
     </tr>
     </thead>
     <tbody>
@@ -72,7 +72,7 @@
   <div class="modal fade bd-example-modal-lg" id="customerAdd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div class="modal-header" style="background: tomato; color: white">
+        <div class="modal-header" style="background-color: #E5B86C; color: white">
           <h5 class="modal-title" id="staticBackdropLabel">Müşteri Ekle</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
