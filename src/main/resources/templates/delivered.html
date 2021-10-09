@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="inc/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Teslim Edilen Siparişler</title>
+</head>
+<body>
+
+<th:block layout:fragment="content">
+
+  <h3 style="color: #398067"><i class="fas fa-tag"></i> Teslim Edilen Siparişler <hr/></h3>
+
+  <div class="row">
+    <div class="col-md-6">
+      <a th:href="@{/order}"  class="btn btn-outline-danger"><i class="fas fa-backspace"></i> Geri</a>
+    </div>
+    <div class="col-md-6">
+      <form id="search_form">
+        <div class="input-group flex-nowrap">
+          <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
+          <input id="csearch" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
+          <a class="btn btn-outline-danger">Ara</a>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+
+  <div class="col-sm-4 mb-3 mt-3">
+    <h6>Sayfa başına <select class="form-select-sm">
+      <option value="1">5</option>
+      <option value="2">10</option>
+      <option value="3">15</option>
+    </select> kayıt göster. </h6>
+  </div>
+
+  <!--- Siparişler Tablosu Başlangıç-->
+  <table class="table table-hover">
+    <thead style="background:#E5B86C; color: white">
+    <tr>
+      <th scope="col">Müşteri ID</th>
+      <th scope="col">Ürün ID</th>
+      <th scope="col">Sipariş Ayrıntısı</th>
+      <th scope="col">Gönderim Tarihi</th>
+      <th scope="col">Telefon</th>
+      <th scope="col">Kullanıcı Adresi</th>
+      <th scope="col">İşlemler</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Ürün</td>
+      <td>Detay</td>
+      <td>Tarih</td>
+      <td>Telefon</td>
+      <td>Adres</td>
+      <td>Ayrıntı/Silme</td>
+    </tr>
+    </tbody>
+  </table>
+
+
+
+</th:block>
+
+</body>
+</html>
