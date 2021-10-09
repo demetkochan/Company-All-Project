@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+<div class="row">
+    <div class="col-sm-6"> Galeri Resimler Listesi Gelecek</div>
+    <div class="col-sm-6">
+    <!--Resim Ekle Başlangıç-->
+    <div class="card mb-3">
+        <h5 class="card-header" style="background:#E5B86C; color: white">Resim Ekleme</h5>
+        <div class="card-body">
+                    <form id="galleryAdd" name="galleryAdd"   method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <select id="gallery_no" class="form-select" data-width="100%" data-show-subtext="true" data-live-search="true">
+                                <option data-subtext="">Galeri</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3 p-3">
+                            <label for="imageName" class="form-label">Dosya Seçiniz</label>
+                            <input class="form-control" type="file" id="imageName" name="imageName">
+                        </div>
+
+                        <div class="mb-3 p-3">
+                            <label for="image_detail" >Resim Yazısı </label>
+                            <div class="input-group">
+                                <textarea placeholder="Resim yazısı(ALT)" id="image_detail" class="form-control" aria-label="note" name="diagnosis"></textarea>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Kapat</button>
+                        <button type="submit" class="btn btn-outline-danger">Ekle</button>
+
+                    </form>
+                </div>
+            </div>
+
+    <!--Resim Ekle Bitiş-->
+
+    <!--Galeri Düzenleme Başla-->
+    <div class="card mb-3">
+        <h5 class="card-header" style="background:#E5B86C; color: white">Galeri Düzenleme</h5>
+        <div class="card-body">
+            <div class="mb-3">
+                <select id="gallery_category" class="form-select" data-width="100%" data-show-subtext="true" data-live-search="true">
+                    <option data-subtext="">Galeri Kategori</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="gallery_name" class="form-label">Galeri Adi</label>
+                <input class="form-control" type="text" id="gallery_name">
+            </div>
+            <div class="mb-3">
+                <label for="gallery_detail" class="form-label">Galeri Açıklama</label>
+                <input class="form-control" type="text" id="gallery_detail">
+            </div>
+            <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="drone" id="active" value="1" >
+                    <label class="form-check-label" for="active">
+                        Aktif
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="drone" id="inactive" value="2">
+                    <label class="form-check-label" for="inactive">
+                        Pasif
+                    </label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <a href="" class="btn btn-outline-danger">Galeri Düzenle</a>
+
+            </div>
+        </div>
+    </div>
+    <!--Galeri Düzenleme Bitiş-->
+    </div>
+</div>
+</th:block>
+</body>
+</html>
