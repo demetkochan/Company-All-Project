@@ -20,6 +20,9 @@
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#product">
                 <i class="fas fa-plus-square"></i> Ürün Ekle
             </button>
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#productEdit">
+                <i class="fas fa-plus-square"></i> Ürün Düzenle
+            </button>
         </div>
         <div class="col-sm-3"></div>
         <div class="col-sm-3"></div>
@@ -69,7 +72,7 @@
 
     <!---Tablo Bitiş-->
 
-    <!---İçerik Ekle Başlangıç-->
+    <!---Ürün Ekle Başlangıç-->
     <div class="modal" id="product"  tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -227,6 +230,167 @@
             </div>
         </div>
     </div>
+
+    <!---Ürün Düzenle Başlangıç-->
+    <div class="modal" id="productEdit"  tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#E5B86C;">
+                    <h5 class="modal-title" style="color: white" >Ürün Ekle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="contentAdd" name="contentAdd" >
+                        <h6 class="text-center">Ürün Bilgilerinizi Aşağıda Girebilirsiniz</h6>
+                        <hr/>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="categories" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategoriler</label>
+                            </div>
+
+                            <div class="col-md-8 ">
+                                <input class="form-control" list="datalistOptions" id="categories" placeholder="Type to search...">
+                                <datalist id="datalistOptions">
+                                    <option value="San Francisco">
+                                    <option value="New York">
+                                    <option value="Seattle">
+                                    <option value="Los Angeles">
+                                    <option value="Chicago">
+                                </datalist>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="product_name" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Ürün Adı</label>
+                            </div>
+
+                            <div class="col-md-8 ">
+                                <input type="text" name="content_title" id="product_name" class="form-control"  required  />
+
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="product_desc" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kısa Açıklama</label>
+                            </div>
+
+                            <div class="col-md-8 ">
+                                <input type="text" name="content_title" id="product_desc" class="form-control"  required  />
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4 mb-3">
+                                <label for="product_detail_desc" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Detaylı Açıklama</label>
+                            </div>
+                            <div class="col-md-8 mb-3 ">
+                                <textarea class="form-control" id="product_detail_desc" name="product_detail_desc"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="product_price" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Ürün Fiyatı</label>
+                            </div>
+
+                            <div class="col-md-8 ">
+                                <input type="number" name="product_price" id="product_price" class="form-control"  required  />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="product_type" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Ürün Tipini Seçiniz </label>
+                            </div>
+
+                            <div class="col-md-8 mb-3">
+                                <select class="form-select" id="product_type" aria-label="Example select with button addon">
+                                    <option value="0">Seçim yapınız </option>
+                                    <option value="1">Satılık </option>
+                                    <option value="2">Kiralık </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="campaign" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kampanya var mı?</label>
+                            </div>
+
+                            <div class="col-md-8 mb-3">
+                                <select class="form-select" id="campaign" aria-label="Example select with button addon">
+                                    <option value="0">Seçim yapınız </option>
+                                    <option value="1">Evet </option>
+                                    <option value="2">Hayır </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="campaign_name" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kampanya Adı</label>
+                            </div>
+
+                            <div class="col-md-8 ">
+                                <input type="text" name="product_price" id="campaign_name" class="form-control"  required  />
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-4 mb-3">
+                                <label for="campaign_detail" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kampanya Detayı</label>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <textarea class="form-control" id="campaign_detail" name="campaign_detail"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="address" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Adres </label>
+                            </div>
+
+                            <div class="col-md-8 ">
+                                <input type="text" name="address" id="address" class="form-control"  required  />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="latitude" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Enlem </label>
+                            </div>
+
+                            <div class="col-md-8 ">
+                                <input type="number" name="latitude" id="latitude" class="form-control"  required  />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="longitude" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Boylam</label>
+                            </div>
+
+                            <div class="col-md-8 ">
+                                <input type="number" name="longitude" id="longitude" class="form-control"  required  />
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-md-9"></div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+                                <a  th:href="@{/uploadImage}" class="btn btn-outline-primary">Resim Ekle</a>
+                                <button type="submit" class="btn btn-outline-danger" ><i class="fas fa-save"></i> Ekle</button>
+                                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Kapat</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </th:block>
 
