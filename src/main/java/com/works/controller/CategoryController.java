@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/content")
-public class ContentController {
+@RequestMapping("/category")
+public class CategoryController {
 
 
     @GetMapping("")
-    public String content(Model model){
-        return "content";
+    public String category(Model model){
+        return "category";
     }
 
 

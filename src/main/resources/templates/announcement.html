@@ -18,7 +18,7 @@
       <div class="d-grid gap-2 d-md-block">
         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#announcementAddModal"><i class="fas fa-save"></i> Duyuru Ekle</button>
         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#newsAddModal"><i class="fas fa-save"></i> Haber Ekle</button>
-        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryAddModal"><i class="fas fa-save"></i> Kategori Ekle</button>
+
       </div>
     </div>
     <div class="col-md-3">
@@ -129,51 +129,6 @@
     </tbody>
   </table>
 
-  <!---Kategori Ekle Başlangıç-->
-  <div class="modal fade bd-example-modal-lg" id="categoryAddModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header" style="background:#E5B86C; color: white">
-          <h5 class="modal-title" id="staticBackdropLabel">Kategori Ekle</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="text-center">
-            Kategori Bilgilerinizi Giriniz.
-          </div>
-          <hr/>
-          <form id="addCategory" name="labAdd"   method="post"   >
-            <div class="row">
-              <div class="col-md-4 mb-3">
-                <label for="category_select" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategori Seçiniz</label>
-              </div>
-              <div class="col-md-8 ">
-                <select class="form-select" id="category_select" aria-label="Example select with button addon">
-                  <option value="0">-- Kategoriler</option>
-                  <option value="1">Elektronik</option>
-                  <option value="2">Araba</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-4 mb-3">
-                <label for="category_name" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategori Adı</label>
-              </div>
-              <div class="col-md-8 ">
-                <input class="form-control" type="text" name="category_name" id="category_name" placeholder="Kategori Adı">
-              </div>
-            </div>
-            <div class="col-md-3 mt-2">
-              <button type="submit" class="btn btn-outline-primary">Ekle</button>
-              <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">İptal</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!---Kategori Ekle Bitiş-->
 
   <!---Haber Ekle Başlangıç-->
   <div class="modal" id="newsAddModal" tabindex="-1">
