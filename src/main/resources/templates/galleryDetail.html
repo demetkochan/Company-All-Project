@@ -10,7 +10,9 @@
 <body>
 <th:block layout:fragment="content">
 <div class="row">
-    <div class="col-sm-6"> Galeri Resimler Listesi Gelecek</div>
+    <div class="col-sm-6"> Galeri Resimler Listesi Gelecek
+    <a th:href="@{/galleryimage}" class="btn btn-outline-danger">Resim Detayı</a>
+    </div>
     <div class="col-sm-6">
     <!--Resim Ekle Başlangıç-->
     <div class="card mb-3">
@@ -32,6 +34,15 @@
                             <label for="image_detail" >Resim Yazısı </label>
                             <div class="input-group">
                                 <textarea placeholder="Resim yazısı(ALT)" id="image_detail" class="form-control" aria-label="note" name="diagnosis"></textarea>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="alert alert-warning" role="alert">
+                                <ul>
+                                    <li>Yüklenecek resmin genişliği veya yüksekliği <b>400px</b>'den küçük olamaz..</li>
+                                    <li>Resmin boyutu <b>2MB</b>'tan büyük olamaz</li>
+                                    <li>İzin verilen türler : <b>jpg, jpeg, png</b></li>
+                                </ul>
                             </div>
                         </div>
 
@@ -77,7 +88,6 @@
             </div>
             <div class="mb-3">
                 <a href="" class="btn btn-outline-danger">Galeri Düzenle</a>
-
             </div>
         </div>
     </div>
