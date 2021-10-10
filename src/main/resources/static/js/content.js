@@ -1,11 +1,11 @@
 $('#contentAdd').submit((event) => {
     console.log("Tıklanıldı")
     event.preventDefault();
-    CKEDITOR.instances['content_detail_desc'].updateElement();
+
 
     const content_title = $("#content_title").val()
     const content_desc = $("#content_desc").val()
-    const content_detail_desc = $("#content_detail_desc").val()
+    const content_detail_desc = CKEDITOR.instances['content_detail_desc'].document.getBody().getText();
     const content_date = $("#content_date").val()
     const content_status = $("#content_status").val()
 
