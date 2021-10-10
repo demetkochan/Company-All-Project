@@ -36,6 +36,8 @@ public class CategoryController {
         return "category";
     }
     CategoryAnnouncement announcementUpdate=new CategoryAnnouncement();
+    CategoryGallery galleryUpdate=new CategoryGallery();
+    CategoryProduct productUpdate=new CategoryProduct();
     @ResponseBody
     @PostMapping("/announcementAdd")
     public CategoryAnnouncement add(@RequestBody CategoryAnnouncement announcement){
@@ -94,22 +96,24 @@ public class CategoryController {
         return status;
 
     }
-    @GetMapping("/newsCategoryUpdate/{stId}")
-    public String newsCategoryUpdate(@PathVariable String stId){
-        try {
-            int id = Integer.parseInt(stId);
-           CategoryAnnouncement newsUpdate = caRepo.findById(id).get();
-        }catch (Exception ex) {
-            System.err.println( "Update işlemi sırasında bir hata oluştu!");
-        }
-        return "redirect:/category_mvc";
-    }
 
     @ResponseBody
     @PostMapping("/galleryAdd")
     public CategoryGallery add(@RequestBody CategoryGallery categoryGallery){
-        CategoryGallery cg= cgRepo.save(categoryGallery);
-        return cg;
+
+        try{
+            if(galleryUpdate.getId() != null && galleryUpdate.getId() > 0){
+             categoryGallery.setId(galleryUpdate.getId());
+            }
+            cgRepo.saveAndFlush(categoryGallery);
+            galleryUpdate = new CategoryGallery();
+
+        }catch (Exception ex){
+            System.err.println("İşlem sırasında hata oluştur!");
+        }
+
+        return galleryUpdate;
+
     }
 
     @ResponseBody
@@ -137,8 +141,19 @@ public class CategoryController {
     @ResponseBody
     @PostMapping("/productAdd")
     public CategoryProduct add(@RequestBody CategoryProduct categoryProduct){
-        CategoryProduct cp= cpRepo.save(categoryProduct);
-        return cp;
+        try{
+            if(productUpdate.getId() != null && productUpdate.getId() > 0){
+                categoryProduct.setId(productUpdate.getId());
+            }
+            cpRepo.saveAndFlush(categoryProduct);
+            productUpdate = new CategoryProduct();
+
+        }catch (Exception ex){
+            System.err.println("İşlem sırasında hata oluştur!");
+        }
+
+        return productUpdate;
+
     }
 
     @ResponseBody

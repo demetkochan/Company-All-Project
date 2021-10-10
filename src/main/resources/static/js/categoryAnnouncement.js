@@ -7,6 +7,10 @@ $('#addNewsCategory').submit((event) => {
     const obj = {
         news_categoryName: news_categoryName,
     }
+    if ( select_id != 0 ) {
+        // update
+        obj["id"] = select_id;
+    }
 
     $.ajax({
         url: './category_mvc/announcementAdd',
@@ -18,6 +22,7 @@ $('#addNewsCategory').submit((event) => {
             if (data) {
                 console.log(data)
                 $("#news_categoryName").val(" ")
+                allNewsCategoryResult()
             } else {
                 console.log("Veri dönmedi.")
             }
@@ -129,13 +134,15 @@ function fncNewsCategoryDelete(id){
     }
 }
 //-------------------------------------------- News Update Function --------------------------------------------//
+let select_id=0;
 function fncNewsCategoryUpdate( i ) {
-
     const item = globalArr[i];
     select_id = item.id
     console.log(select_id)
     $("#news_categoryName").val(item.news_categoryName)
 }
+
+//-------------------------------------------------Product------------------------------------------------------//
 
 $('#addProductCategory').submit((event) => {
     console.log("Tıklandı.")
@@ -145,6 +152,10 @@ $('#addProductCategory').submit((event) => {
 
     const obj = {
         product_categoryName: product_categoryName,
+    }
+    if ( select_pid != 0 ) {
+        // update
+        obj["id"] = select_pid;
     }
 
     $.ajax({
@@ -157,6 +168,7 @@ $('#addProductCategory').submit((event) => {
             if (data) {
                 console.log(data)
                 $("#product_categoryName").val(" ")
+                allProductCategoryResult()
             } else {
                 console.log("Veri dönmedi.")
             }
@@ -187,7 +199,7 @@ function allProductCategoryResult(){
 }
 allProductCategoryResult()
 
-//-------------------------------------------- News Table  --------------------------------------------//
+//-------------------------------------------- Product Table  --------------------------------------------//
 let globalAr = []
 function createRo(data){
     let html = ``
@@ -199,7 +211,7 @@ function createRo(data){
           <td>${itm.product_categoryName}</td>
            <td class="text-right" >
                <div class="btn-group" role="group">
-                    <button onclick="fncProductCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryNewsUpdateModal">Güncelle</button>
+                    <button onclick="fncProductCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryProductAddModal">Güncelle</button>
                     <button onclick="fncProductCategoryDelete(${itm.id})" type="button" class="btn btn-outline-danger ">Sil</button>
                </div>
           </td>
@@ -208,7 +220,7 @@ function createRo(data){
     }
     $("#tableProductRow").html(html)
 }
-//-------------------------------------------- News Delete Function --------------------------------------------//
+//-------------------------------------------- Product Delete Function --------------------------------------------//
 function fncProductCategoryDelete(id){
     let answer = confirm("Silmek istediğinize emin misiniz?")
     if(answer){
@@ -233,11 +245,12 @@ function fncProductCategoryDelete(id){
     }
 }
 //-------------------------------------------- Product Update Function --------------------------------------------//
+let select_pid=0;
 function fncProductCategoryUpdate( i ) {
 
-    const item = globalArr[i];
-    select_id = item.id
-    console.log(select_id)
+    const item = globalAr[i];
+    select_pid = item.id
+    console.log(select_pid)
     $("#product_categoryName").val(item.product_categoryName)
 }
 //--------------------------Gallery-------------------------------------------------//
@@ -250,6 +263,10 @@ $('#addGalleryCategory').submit((event) => {
     const obj = {
         gallery_categoryName: gallery_categoryName,
     }
+    if ( select_gid != 0 ) {
+        // update
+        obj["id"] = select_gid;
+    }
 
     $.ajax({
         url: './category_mvc/galleryAdd',
@@ -260,7 +277,8 @@ $('#addGalleryCategory').submit((event) => {
         success: function (data) {
             if (data) {
                 console.log(data)
-                $("#news_categoryName").val(" ")
+                $("#gallery_categoryName").val(" ")
+                allGalleryCategoryResult()
             } else {
                 console.log("Veri dönmedi.")
             }
@@ -271,9 +289,9 @@ $('#addGalleryCategory').submit((event) => {
         }
     })
 })
-//-----------------------------------------News Category Add Finish--------------------------------------------------------//
+//-----------------------------------------Gallery Category Add Finish--------------------------------------------------------//
 
-//-------------------------------------------- News Category list  --------------------------------------------//
+//-------------------------------------------- Gallery Category list  --------------------------------------------//
 function allGalleryCategoryResult(){
     $.ajax({
         url: './category_mvc/galleryList',
@@ -291,7 +309,7 @@ function allGalleryCategoryResult(){
 }
 allGalleryCategoryResult()
 
-//-------------------------------------------- News Table  --------------------------------------------//
+//-------------------------------------------- Gallery Table  --------------------------------------------//
 let globalarr = []
 function cRow(data){
     let html = ``
@@ -303,7 +321,7 @@ function cRow(data){
           <td>${itm.gallery_categoryName}</td>
            <td class="text-right" >
                <div class="btn-group" role="group">
-                    <button onclick="fncGalleryCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryNewsUpdateModal">Güncelle</button>
+                    <button onclick="fncGalleryCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryGalleryAddModal">Güncelle</button>
                     <button onclick="fncGalleryCategoryDelete(${itm.id})" type="button" class="btn btn-outline-danger ">Sil</button>
                </div>
           </td>
@@ -312,7 +330,7 @@ function cRow(data){
     }
     $("#tableGalleryRow").html(html)
 }
-//-------------------------------------------- News Delete Function --------------------------------------------//
+//-------------------------------------------- Gallery Delete Function --------------------------------------------//
 function fncGalleryCategoryDelete(id){
     let answer = confirm("Silmek istediğinize emin misiniz?")
     if(answer){
@@ -336,11 +354,11 @@ function fncGalleryCategoryDelete(id){
         })
     }
 }
-//-------------------------------------------- News Update Function --------------------------------------------//
+//-------------------------------------------- Gallery Update Function --------------------------------------------//
+let select_gid=0;
 function fncGalleryCategoryUpdate( i ) {
-
     const item = globalarr[i];
-    select_id = item.id
-    console.log(select_id)
+    select_gid = item.id
+    console.log(select_gid)
     $("#gallery_categoryName").val(item.gallery_categoryName)
 }
