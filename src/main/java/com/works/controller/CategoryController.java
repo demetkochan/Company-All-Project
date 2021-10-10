@@ -3,14 +3,19 @@ package com.works.controller;
 import com.works.entities.CategoryAnnouncement;
 import com.works.entities.CategoryGallery;
 import com.works.entities.CategoryProduct;
+import com.works.entities.Content;
 import com.works.repositories.CategoryAnnouncementRepository;
 import com.works.repositories.CategoryGalleryRepository;
 import com.works.repositories.CategoryProductRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/category_mvc")
@@ -30,19 +35,48 @@ public class CategoryController {
     public String category(Model model){
         return "category";
     }
-
+    CategoryAnnouncement announcementUpdate=new CategoryAnnouncement();
     @ResponseBody
     @PostMapping("/announcementAdd")
     public CategoryAnnouncement add(@RequestBody CategoryAnnouncement announcement){
-        CategoryAnnouncement ca=caRepo.save(announcement);
-        return ca;
+        try{
+            if(announcementUpdate.getId() != null && announcementUpdate.getId() > 0){
+                announcement.setId(announcementUpdate.getId());
+            }
+            caRepo.saveAndFlush(announcement);
+            announcementUpdate = new CategoryAnnouncement();
+
+        }catch (Exception ex){
+            System.err.println("İşlem sırasında hata oluştur!");
+        }
+
+        return announcementUpdate;
+
+    }
+    @ResponseBody
+    @GetMapping("/newsList/{pageNumber}/{stSize}")
+    public List<CategoryAnnouncement> list(@RequestParam(defaultValue = "0") String pageNumber, @RequestParam(defaultValue = "10") String stSize ) {
+        if(pageNumber==null && stSize==null){
+                Pageable pageable = PageRequest.of(0, 10);
+            List<CategoryAnnouncement> pageList = caRepo.findByOrderByIdAsc(pageable);
+            long totalcount = caRepo.count();
+            return pageList;
+            }else {
+            int ipageNumber = Integer.parseInt(pageNumber);
+            int size = Integer.parseInt(stSize);
+                Pageable pageable = PageRequest.of(ipageNumber, size);
+                List<CategoryAnnouncement> pageList = caRepo.findByOrderByIdAsc(pageable);
+                long totalcount = caRepo.count();
+            return pageList;
+            }
+
     }
 
-    @ResponseBody
+  /*  @ResponseBody
     @GetMapping("/announcementList")
     public List<CategoryAnnouncement> list(){
         return caRepo.findAll();
-    }
+    }*/
 
     @ResponseBody
     @DeleteMapping(value = "/newsDelete/{stId}")

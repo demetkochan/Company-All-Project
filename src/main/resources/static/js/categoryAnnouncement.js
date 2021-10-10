@@ -31,9 +31,44 @@ $('#addNewsCategory').submit((event) => {
 //-----------------------------------------News Category Add Finish--------------------------------------------------------//
 
 //-------------------------------------------- News Category list  --------------------------------------------//
-function allNewsCategoryResult(){
+let selectedSize = 0;
+$("#size").on("change",function (){
+    console.log("Tıklanıldı")
+    selectedSize = (this.value)
+    console.log(selectedSize)
+    if(selectedSize==1){
+        selectedSize=5
+    }else if(selectedSize==2){
+        selectedSize=10
+    }else if(selectedSize==3){
+        selectedSize=15
+    }
+    const size= selectedSize
+
+    let selectedPage=0;
+    $("#page").on("change",function (){
+        console.log("Tıklanıldı")
+        selectedPage = (this.value)
+        if(selectedPage ==1){
+            selectedPage =0
+        }else if(selectedPage ==2){
+            selectedPage =1
+        }else if(selectedPage ==3){
+            selectedPage =2
+        }
+        const page= selectedPage
+
+        allNewsCategoryResult(page,size)
+    })
+
+
+
+
+})
+
+function allNewsCategoryResult(page,size){
     $.ajax({
-        url: './category_mvc/announcementList',
+        url: './category_mvc/newsList/'+page+'/'+size,
         type: 'GET',
         contentType : 'application/json; charset=utf-8',
         success: function (data) {
@@ -60,7 +95,7 @@ function createRow(data){
           <td>${itm.news_categoryName}</td>
            <td class="text-right" >
                <div class="btn-group" role="group">
-                    <button onclick="fncNewsCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryNewsUpdateModal">Güncelle</button>
+                    <button onclick="fncNewsCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryNewsAddModal">Güncelle</button>
                     <button onclick="fncNewsCategoryDelete(${itm.id})" type="button" class="btn btn-outline-danger ">Sil</button>
                </div>
           </td>
