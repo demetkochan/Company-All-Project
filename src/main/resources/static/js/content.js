@@ -17,12 +17,16 @@ $('#contentAdd').submit((event) => {
         content_date: content_date,
         content_status: content_status
     }
+    if ( select_id != 0 ) {
+        // update
+        obj["id"] = select_id;
+    }
 
     $.ajax({
         url: './content/add',
         type: 'POST',
         data: JSON.stringify(obj),
-        dataType: 'json',
+        dataType: 'JSON',
         contentType : 'application/json; charset=utf-8',
         success: function (data) {
             if (data) {

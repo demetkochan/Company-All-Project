@@ -25,6 +25,7 @@ public class ContentController {
     }
 
     Content contentUpdate = new Content();
+
     //içerik Ekleme
     @ResponseBody
     @PostMapping("/add")
@@ -44,6 +45,7 @@ public class ContentController {
         return contentUpdate;
 
     }
+
 
     //İçerik Listeleme
     @ResponseBody
