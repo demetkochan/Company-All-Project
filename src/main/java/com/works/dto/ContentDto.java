@@ -3,9 +3,11 @@ package com.works.dto;
 import com.works.Util.Util;
 import com.works.entities.Content;
 import com.works.repositories.ContentRepository;
+import com.works.util.ERest;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -23,65 +25,65 @@ public class ContentDto {
     }
 
     //içerik ekleme
-    public Map<String, Object> Contentadd(Content content, BindingResult bResult) {
-        Map<String , Object> hm = new LinkedHashMap<>();
+    public Map<ERest, Object> Contentadd(Content content, BindingResult bResult) {
+        Map<ERest , Object> hm = new LinkedHashMap<>();
         if(!bResult.hasErrors()){
             try {
                 Content contentDb = cRepo.save(content);
-                hm.put("status", true);
-                hm.put("message", "Ekleme başarılı");
-                hm.put("result", contentDb);
+                hm.put(ERest.status, true);
+                hm.put(ERest.message, "Ekleme başarılı");
+                hm.put(ERest.result, contentDb);
             } catch (Exception e) {
-                hm.put("status", false);
+                hm.put(ERest.status, false);
             }
 
         }else{
-            hm.put("status",false);
-            hm.put("errors", util.errors(bResult));
+            hm.put(ERest.status,false);
+            hm.put(ERest.errors, util.errors(bResult));
         }
 
         return hm;
     }
 
     //İçerik listeleme
-    public Map<String,Object> contentlist(){
-        Map<String,Object> hm = new LinkedHashMap<>();
-        hm.put("status",true);
+    public Map<ERest,Object> contentlist(){
+        Map<ERest,Object> hm = new LinkedHashMap<>();
+        hm.put(ERest.status,true);
         List<Content> ls = cRepo.findAll();
-        hm.put("result",ls);
+        hm.put(ERest.result,ls);
         return hm;
     }
 
     //içerik Silme
-    public Map<String, Object>Contentdelete (String strIndex){
-        Map<String, Object> hm = new HashMap<>();
+    public Map<ERest, Object>Contentdelete (String strIndex){
+        Map<ERest, Object> hm = new HashMap<>();
         int cuid = Integer.parseInt(strIndex);
         try{
             if(cRepo.existsById(cuid)){
                 cRepo.deleteById(cuid);
-                hm.put("status", true);
-                hm.put("message", "silme başarılı");
-                hm.put("result", cuid);
+                hm.put(ERest.status, true);
+                hm.put(ERest.message, "silme başarılı");
+                hm.put(ERest.result, cuid);
             }else{
-                hm.put("status", false);
-                hm.put("message", "Silme Başarısız. Girilen Id yanlış");
-                hm.put("result", cuid);
+                hm.put(ERest.status, false);
+                hm.put(ERest.message, "Silme Başarısız. Girilen Id yanlış");
+                hm.put(ERest.result, cuid);
             }
         }catch (Exception ex){
-            hm.put("status", false);
-            hm.put("message", "silme gerçekleşmedi");
-            hm.put("result", cuid);
+            hm.put(ERest.status, false);
+            hm.put(ERest.message, "silme gerçekleşmedi");
+            hm.put(ERest.result, cuid);
         }
         return hm;
     }
 
     //Duruma göre içerik Listeleme
-    public Map<String,Object> ContentProcess(String process_id){
-        Map<String,Object> hm = new LinkedHashMap<>();
+    public Map<ERest,Object> ContentProcess(String process_id){
+        Map<ERest,Object> hm = new LinkedHashMap<>();
         int cuid = Integer.parseInt(process_id);
-        hm.put("status",true);
+        hm.put(ERest.status,true);
         List<Content> ls = cRepo.process(cuid);
-        hm.put("result",ls);
+        hm.put(ERest.result,ls);
         return hm;
     }
 
