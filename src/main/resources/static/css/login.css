@@ -13,3 +13,10 @@ form.d-grid.btn.btn-login{
     background-color: #398067;
     border-color: #398067;
 }
+.flex-shrink-0{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60px;   /* Height of the footer */
+
+}
