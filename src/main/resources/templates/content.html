@@ -61,15 +61,8 @@
       <th scope="col">İşlem</th>
     </tr>
     </thead>
-    <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Başlık</td>
-      <td>Kısa Açıklama</td>
-      <td>Detay</td>
-      <td>Tarih</td>
-      <td>Düzenle/Silme</td>
-    </tr>
+    <tbody id="contentRow">
+
     </tbody>
   </table>
 
@@ -104,7 +97,7 @@
               </div>
 
               <div class="col-md-8 ">
-                <input type="text" name="content_title" id="content_desc" class="form-control"  required  />
+                <input type="text" name="content_desc" id="content_desc" class="form-control"  required  />
               </div>
             </div>
 
@@ -114,7 +107,17 @@
                 <label for="content_detail_desc" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Detaylı Açıklama</label>
               </div>
               <div class="col-md-8 ">
-                <textarea  id="content_detail_desc" name="content_detail_desc"> </textarea>
+                <textarea class="ckeditor" id="content_detail_desc" name="content_detail_desc"> </textarea>
+              </div>
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-4 mb-3 mt-2">
+                <label for="content_date" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Tarih</label>
+              </div>
+              <div class="col-md-8 mt-2">
+                <input type="date" id="content_date" name="content_date" class="form-control">
               </div>
             </div>
 
@@ -144,8 +147,14 @@
     </div>
   </div>
 
+
+
+
+
+
 </th:block>
 </body>
 </html>
 
-<script th:src="@{js/ckeditor.js}"></script>
+<script th:src="@{js/content.js}"></script>
+
