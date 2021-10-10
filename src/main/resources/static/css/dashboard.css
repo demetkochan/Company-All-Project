@@ -1,3 +1,6 @@
+body{
+    overflow-x: hidden;
+}
 .carousel-item {
     width: 1192px; height:825px;
     background: no-repeat center center scroll;
@@ -5,12 +8,11 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background: linear-gradient(to right, #803952, #E5B86C);
+    background:  #803952;
 
 }
 .carousel-item.active{
     background-image: url("../images/undraw_happy_announcement_ac67.png");
-    margin: auto;
 
 }
 .carousel-item.two{
@@ -21,7 +23,7 @@
 }
 section.pricing {
     background: #803952;
-    background: linear-gradient(to right, #803952, #E5B86C);
+    background:  #803952;
 }
 
 .pricing .card {
@@ -85,5 +87,8 @@ section.pricing {
     }
 }
 .buttons{
-    background: linear-gradient(to right, #803952, #E5B86C);
+    background:#803952;
+}
+.y{
+    background: #803952;
 }
