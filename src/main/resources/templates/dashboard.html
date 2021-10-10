@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout%22%3E">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/fontawesome-free-5.15.4-web/css/all.min.css}">
+  <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#"><i class="far fa-building"></i> Company All</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Ana Sayfa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Hakkımızda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Galeri</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">İletişim</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Giriş Yap</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Kayıt Ol</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header>
+
+  <div id="carouselExampleCaptions" class="carousel carousel-dark slide" style="width: 1192px; height:825px; margin: 0 auto" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="carousel-caption">
+          <h5>First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item two">
+        <div class="carousel-caption">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item three">
+        <div class="carousel-caption">
+          <h5>Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true" style="color: black"></span>
+      <span class="visually-hidden" style="color: black">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true" style="color: black"></span>
+      <span class="visually-hidden" style="color: black">Next</span>
+    </button>
+  </div>
+</header>
+
+<section class="pricing py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Free Tier -->
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">Hala Kayıt Olmadın mı?</h5>
+
+            <hr>
+              <h4>Hemen Kayıt Ol!</h4>
+            <div class="d-grid">
+              <a href="#" class="btn btn-primary text-uppercase">Button</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Plus Tier -->
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">Plus</h5>
+            <h6 class="card-price text-center">$9<span class="period">/month</span></h6>
+            <hr>
+
+            <div class="d-grid">
+              <a href="#" class="btn btn-primary text-uppercase">Button</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Pro Tier -->
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">Pro</h5>
+            <h6 class="card-price text-center">$49<span class="period">/month</span></h6>
+            <hr>
+
+            <div class="d-grid">
+              <a href="#" class="btn btn-primary text-uppercase">Button</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Page Content -->
+
+<section class="buttons py-5">
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <!-- Team Member 1 -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+          <div class="container">
+            <div class="mb-3 mt-3">
+          <p>
+            Şirketiniz için gerekli tüm bilgileri saklayabileceğiniz güvenilir veri
+            depolama alanımıza bulunduğunuz her noktadan ulaşabilirsiniz.
+            Verilerinizi depolama ve onlara kolaylıkla ulaşabilmeniz için
+            sistemimize ücretsiz kayıt olabilirsiniz.
+          </p>
+            </div>
+            <hr/>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Güvenli Veri Hizmetleri <br></h5>
+            <div class="card-text text-black-50"><i class="fas fa-shield-alt"></i></div>
+          </div>
+        </div>
+      </div>
+      <!-- Team Member 2 -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+          <div class="container">
+            <div class="mb-3 mt-3">
+              <p>
+                Şirketinize ait kullanıcı ve müşteri ilişkilerinizi rahatlıkla kontrol edebileceğiniz ayrıca haber,
+                reklam, ürün yönetimleri gibi birçok ihtiyacınızı karşılayabileceğiniz yönetim panelleri olabildiğince
+                esnek ve anlaşılır şekilde tarafımızca tasarlanıp kullanımınıza sunuldu.
+              </p>
+            </div>
+            <hr/>
+          </div>
+
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Kullanışlı ve Esnek Admin Paneli</h5>
+            <div class="card-text text-black-50"><i class="fas fa-columns"></i></div>
+          </div>
+        </div>
+      </div>
+      <!-- Team Member 3 -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+          <div class="container">
+            <div class="mb-3 mt-3">
+              <p>
+                Görsel anlamda platform farketmeksizin (responsive) tasarlanmış uygulamamız
+                mobil platformda basit kullanımıyla dikkatleri
+                üzerine çekmeyi amaçlamış ve müşteri memnuniyetini en mühim hedef edinmiştir.
+                Bizimle irtibata geçiniz...
+              </p>
+            </div>
+            <hr/>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Birçok Platforma Uyumlu Arayüz</h5>
+            <div class="card-text text-black-50"><i class="fas fa-mobile-alt"></i></div>
+          </div>
+        </div>
+      </div>
+
+    <!-- /.row -->
+    </div>
+  </div>
+</section>
+<footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+  <div class="container text-center">
+    <small>Copyright &copy; Your Website</small>
+  </div>
+</footer>
+
+<script th:src="@{js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+<script th:src="@{js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{js/sidebar.js}"></script>
+<script th:src="@{https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js}"> </script>
+
+</body>
+</html>
