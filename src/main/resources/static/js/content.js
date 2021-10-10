@@ -19,7 +19,7 @@ $('#contentAdd').submit((event) => {
     }
 
     $.ajax({
-        url: './content/add',
+        url: './content_mvc/add',
         type: 'POST',
         data: JSON.stringify(obj),
         dataType: 'json',
@@ -50,7 +50,7 @@ $('#contentAdd').submit((event) => {
 //-------------------------------------------- Content list  --------------------------------------------//
 function allContentResult(){
     $.ajax({
-        url: './content/list',
+        url: './content_mvc/list',
         type: 'GET',
         contentType : 'application/json; charset=utf-8',
         success: function (data) {
@@ -112,7 +112,7 @@ function fncContentDelete( id ) {
     if(answer){
 
         $.ajax({
-            url:"./content/delete/"+id,
+            url:"./content_mvc/delete/"+id,
             type:"delete",
             dataType: 'text',
             success: function (data){
