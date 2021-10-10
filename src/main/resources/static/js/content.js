@@ -138,7 +138,7 @@ function fncContentDelete( id ) {
 
 
 //Content update - start
-
+let select_id=0;
 function fncContentUpdate(i){
     const itm = globalArr[i];
 
