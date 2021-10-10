@@ -35,11 +35,11 @@
         </div>
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <form id="search_form">
+            <form id="search_announcement">
                 <div class="input-group flex-nowrap">
                     <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
-                    <input id="csearch" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
-                    <a onclick="customerSearch()" class="btn btn-outline-danger">Ara</a>
+                    <input id="asearch" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
+                    <a onclick="announcementSearch()" class="btn btn-outline-danger">Ara</a>
                 </div>
             </form>
         </div>
@@ -48,9 +48,9 @@
     <table class="table table-hover">
         <thead  style="background:#E5B86C; color: white">
         <tr>
-            <th scope="col" >Adı</th>
-            <th scope="col">Gösterim</th>
-            <th scope="col">Tıklanma</th>
+            <th scope="col" >Id</th>
+            <th scope="col">Kategori Adı</th>
+            <th scope="col">İşlemler</th>
 
         </tr>
         </thead>
@@ -116,9 +116,9 @@
     <table class="table table-hover">
         <thead  style="background:#E5B86C; color: white">
         <tr>
-            <th scope="col" >Adı</th>
-            <th scope="col">Gösterim</th>
-            <th scope="col">Tıklanma</th>
+            <th scope="col" >Id</th>
+            <th scope="col">Kategori Adı</th>
+            <th scope="col">İşlemler</th>
 
         </tr>
         </thead>
@@ -126,7 +126,7 @@
         <tr>
             <th scope="row">1</th>
             <td>Mark</td>
-            <td>Otto</td>
+            <td>Sil/Düzenle</td>
 
         </tr>
         </tbody>
@@ -184,9 +184,9 @@
     <table class="table table-hover">
         <thead  style="background:#E5B86C; color: white">
         <tr>
-            <th scope="col" >Adı</th>
-            <th scope="col">Gösterim</th>
-            <th scope="col">Tıklanma</th>
+            <th scope="col" >Id</th>
+            <th scope="col">Kategori Adı</th>
+            <th scope="col">İşlemler</th>
 
         </tr>
         </thead>
@@ -228,7 +228,7 @@
     </div>
 
 
-    <!---Kategori Ekle Başlangıç-->
+    <!---Haber Kategori Ekle Başlangıç-->
     <div class="modal fade bd-example-modal-lg" id="categoryNewsAddModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -241,31 +241,13 @@
                         Kategori Bilgilerinizi Giriniz.
                     </div>
                     <hr/>
-                    <form id="addCategory" name="labAdd"   method="post"   >
+                    <form id="addNewsCategory" name="addNewsCategory">
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <label for="category_select" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Üst Kategori Seçiniz</label>
+                                <label for="news_categoryName" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategori Adı</label>
                             </div>
                             <div class="col-md-8 ">
-                                <select class="form-select" id="category_select" aria-label="Example select with button addon">
-                                    <option value="0">Kategoriler</option>
-                                    <option value="1">Elektronik</option>
-                                    <option value="2">Araba</option>
-                                    <option value="3">Ev Gereçleri</option>
-                                    <option value="4">Ev Tekstili</option>
-                                    <option value="5">Oyuncak</option>
-                                    <option value="6">Giyim</option>
-                                    <option value="7">Bahçe</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="category_name" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategori Adı</label>
-                            </div>
-                            <div class="col-md-8 ">
-                                <input class="form-control" type="text" name="category_name" id="category_name" placeholder="Kategori Adı">
+                                <input class="form-control" type="text" name="news_categoryName" id="news_categoryName" placeholder="Kategori Adı">
                             </div>
                         </div>
                         <div class="col-md-3 mt-2">
@@ -277,7 +259,8 @@
             </div>
         </div>
     </div>
-    <!---Kategori Ekle Bitiş-->
+    <!---Haber Kategori Ekle Bitiş-->
+    <!---Ürün Kategori Ekle Başla-->
     <div class="modal fade bd-example-modal-lg" id="categoryProductAddModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -327,7 +310,7 @@
         </div>
     </div>
     <!---Ürün kategori son--->
-
+    <!---Galeri Kategori Ekle Başla-->
     <div class="modal fade bd-example-modal-lg" id="categoryGalleryAddModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -376,7 +359,7 @@
             </div>
         </div>
     </div>
-
+    <!---Galeri Kategori Ekle Bitiş-->
 
 
 
@@ -384,4 +367,4 @@
 
 </body>
 </html>
-
+<script th:src="@{js/categoryAnnouncement.js}"></script>
