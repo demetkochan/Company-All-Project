@@ -162,7 +162,13 @@ $("#select_process").on("change",function (){
     console.log("Tıklanıldı")
     selectedProcess = (this.value)
     console.log(selectedProcess)
-    allContentResult1(selectedProcess)
+    if(selectedProcess ==""){
+        allContentResult()
+    }else{
+        allContentResult1(selectedProcess)
+    }
+
+
 
 })
 
