@@ -3,14 +3,19 @@ package com.works.controller;
 import com.works.entities.CategoryAnnouncement;
 import com.works.entities.CategoryGallery;
 import com.works.entities.CategoryProduct;
+import com.works.entities.Content;
 import com.works.repositories.CategoryAnnouncementRepository;
 import com.works.repositories.CategoryGalleryRepository;
 import com.works.repositories.CategoryProductRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/category_mvc")
@@ -30,19 +35,50 @@ public class CategoryController {
     public String category(Model model){
         return "category";
     }
-
+    CategoryAnnouncement announcementUpdate=new CategoryAnnouncement();
+    CategoryGallery galleryUpdate=new CategoryGallery();
+    CategoryProduct productUpdate=new CategoryProduct();
     @ResponseBody
     @PostMapping("/announcementAdd")
     public CategoryAnnouncement add(@RequestBody CategoryAnnouncement announcement){
-        CategoryAnnouncement ca=caRepo.save(announcement);
-        return ca;
+        try{
+            if(announcementUpdate.getId() != null && announcementUpdate.getId() > 0){
+                announcement.setId(announcementUpdate.getId());
+            }
+            caRepo.saveAndFlush(announcement);
+            announcementUpdate = new CategoryAnnouncement();
+
+        }catch (Exception ex){
+            System.err.println("İşlem sırasında hata oluştur!");
+        }
+
+        return announcementUpdate;
+
+    }
+    @ResponseBody
+    @GetMapping("/newsList/{pageNumber}/{stSize}")
+    public List<CategoryAnnouncement> list(@RequestParam(defaultValue = "0") String pageNumber, @RequestParam(defaultValue = "10") String stSize ) {
+        if(pageNumber==null && stSize==null){
+                Pageable pageable = PageRequest.of(0, 10);
+            List<CategoryAnnouncement> pageList = caRepo.findByOrderByIdAsc(pageable);
+            long totalcount = caRepo.count();
+            return pageList;
+            }else {
+            int ipageNumber = Integer.parseInt(pageNumber);
+            int size = Integer.parseInt(stSize);
+                Pageable pageable = PageRequest.of(ipageNumber, size);
+                List<CategoryAnnouncement> pageList = caRepo.findByOrderByIdAsc(pageable);
+                long totalcount = caRepo.count();
+            return pageList;
+            }
+
     }
 
-    @ResponseBody
+  /*  @ResponseBody
     @GetMapping("/announcementList")
     public List<CategoryAnnouncement> list(){
         return caRepo.findAll();
-    }
+    }*/
 
     @ResponseBody
     @DeleteMapping(value = "/newsDelete/{stId}")
@@ -60,22 +96,24 @@ public class CategoryController {
         return status;
 
     }
-    @GetMapping("/newsCategoryUpdate/{stId}")
-    public String newsCategoryUpdate(@PathVariable String stId){
-        try {
-            int id = Integer.parseInt(stId);
-           CategoryAnnouncement newsUpdate = caRepo.findById(id).get();
-        }catch (Exception ex) {
-            System.err.println( "Update işlemi sırasında bir hata oluştu!");
-        }
-        return "redirect:/category_mvc";
-    }
 
     @ResponseBody
     @PostMapping("/galleryAdd")
     public CategoryGallery add(@RequestBody CategoryGallery categoryGallery){
-        CategoryGallery cg= cgRepo.save(categoryGallery);
-        return cg;
+
+        try{
+            if(galleryUpdate.getId() != null && galleryUpdate.getId() > 0){
+             categoryGallery.setId(galleryUpdate.getId());
+            }
+            cgRepo.saveAndFlush(categoryGallery);
+            galleryUpdate = new CategoryGallery();
+
+        }catch (Exception ex){
+            System.err.println("İşlem sırasında hata oluştur!");
+        }
+
+        return galleryUpdate;
+
     }
 
     @ResponseBody
@@ -103,8 +141,19 @@ public class CategoryController {
     @ResponseBody
     @PostMapping("/productAdd")
     public CategoryProduct add(@RequestBody CategoryProduct categoryProduct){
-        CategoryProduct cp= cpRepo.save(categoryProduct);
-        return cp;
+        try{
+            if(productUpdate.getId() != null && productUpdate.getId() > 0){
+                categoryProduct.setId(productUpdate.getId());
+            }
+            cpRepo.saveAndFlush(categoryProduct);
+            productUpdate = new CategoryProduct();
+
+        }catch (Exception ex){
+            System.err.println("İşlem sırasında hata oluştur!");
+        }
+
+        return productUpdate;
+
     }
 
     @ResponseBody

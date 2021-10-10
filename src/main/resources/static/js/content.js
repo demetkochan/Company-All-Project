@@ -34,6 +34,8 @@ $('#contentAdd').submit((event) => {
                 $("#content_title").val(" ")
                 $("#content_desc").val(" ")
                 $("#content_detail_desc").val(" ")
+                $("#content_date").val(" ")
+                $("#content_status").val(" ")
                 allContentResult()
                 fncReset()
 
@@ -162,7 +164,13 @@ $("#select_process").on("change",function (){
     console.log("Tıklanıldı")
     selectedProcess = (this.value)
     console.log(selectedProcess)
-    allContentResult1(selectedProcess)
+    if(selectedProcess ==""){
+        allContentResult()
+    }else{
+        allContentResult1(selectedProcess)
+    }
+
+
 
 })
 
