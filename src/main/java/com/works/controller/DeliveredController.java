@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/delivered")
+@RequestMapping("/delivered_mvc")
 public class DeliveredController {
 
     @GetMapping("")

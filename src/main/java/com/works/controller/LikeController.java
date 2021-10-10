@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/like")
+@RequestMapping("/like_mvc")
 public class LikeController {
     @GetMapping("")
     public String like(){

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/galleryDetail")
+@RequestMapping("/galleryDetail_mvc")
 public class GalleryDetailController {
     @GetMapping("")
     public String galleryDetail(){

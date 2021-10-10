@@ -44,7 +44,7 @@
             </form>
         </div>
     </div>
-    <!---Tablo Başlangıç-->
+    <!---News Tablo Başlangıç-->
     <table class="table table-hover">
         <thead  style="background:#E5B86C; color: white">
         <tr>
@@ -54,13 +54,7 @@
 
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-
-        </tr>
+        <tbody id="tableRow">
         </tbody>
     </table>
     <!---Tablo Bitiş-->
@@ -91,7 +85,7 @@
         </div>
     </div>
 
-
+    <!---Product Arama Başlangıç-->
     <div class="row mb-3 mt-3">
         <h5 style="color: #398067"><i class="far fa-list-alt"></i> Ürün Kategorileri<hr/></h5>
         <div class="col-sm-4 mb-3 mt-3">
@@ -112,7 +106,7 @@
             </form>
         </div>
     </div>
-    <!---Tablo Başlangıç-->
+    <!---Product Tablo Başlangıç-->
     <table class="table table-hover">
         <thead  style="background:#E5B86C; color: white">
         <tr>
@@ -122,13 +116,7 @@
 
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Sil/Düzenle</td>
-
-        </tr>
+        <tbody id="tableProductRow">
         </tbody>
     </table>
     <!---Tablo Bitiş-->
@@ -171,16 +159,16 @@
         </div>
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <form id="search_form">
+            <form id="search_gallery">
                 <div class="input-group flex-nowrap">
                     <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
-                    <input id="csearch" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
+                    <input id="gsearch" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
                     <a onclick="customerSearch()" class="btn btn-outline-danger">Ara</a>
                 </div>
             </form>
         </div>
     </div>
-    <!---Tablo Başlangıç-->
+    <!--- Galeri Tablo Başlangıç-->
     <table class="table table-hover">
         <thead  style="background:#E5B86C; color: white">
         <tr>
@@ -190,13 +178,7 @@
 
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-
-        </tr>
+        <tbody id="tableGalleryRow">
         </tbody>
     </table>
     <!---Tablo Bitiş-->
@@ -273,31 +255,13 @@
                         Kategori Bilgilerinizi Giriniz.
                     </div>
                     <hr/>
-                    <form id="addProductCategory" name="labAdd"   method="post"   >
+                    <form id="addProductCategory" name="addProductCategory">
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <label for="category_select" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Üst Kategori Seçiniz</label>
+                                <label for="product_categoryName" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategori Adı</label>
                             </div>
                             <div class="col-md-8 ">
-                                <select class="form-select" id="p_category_select" aria-label="Example select with button addon">
-                                    <option value="0">Kategoriler</option>
-                                    <option value="1">Elektronik</option>
-                                    <option value="2">Araba</option>
-                                    <option value="3">Ev Gereçleri</option>
-                                    <option value="4">Ev Tekstili</option>
-                                    <option value="5">Oyuncak</option>
-                                    <option value="6">Giyim</option>
-                                    <option value="7">Bahçe</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="p_category_name" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategori Adı</label>
-                            </div>
-                            <div class="col-md-8 ">
-                                <input class="form-control" type="text" name="category_name" id="p_category_name" placeholder="Kategori Adı">
+                                <input class="form-control" type="text" name="product_categoryName" id="product_categoryName" placeholder="Kategori Adı">
                             </div>
                         </div>
                         <div class="col-md-3 mt-2">
@@ -323,31 +287,14 @@
                         Kategori Bilgilerinizi Giriniz.
                     </div>
                     <hr/>
-                    <form id="addGalleryCategory" name="labAdd"   method="post"   >
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="category_select" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Üst Kategori Seçiniz</label>
-                            </div>
-                            <div class="col-md-8 ">
-                                <select class="form-select" id="g_category_select" aria-label="Example select with button addon">
-                                    <option value="0">Kategoriler</option>
-                                    <option value="1">Elektronik</option>
-                                    <option value="2">Araba</option>
-                                    <option value="3">Ev Gereçleri</option>
-                                    <option value="4">Ev Tekstili</option>
-                                    <option value="5">Oyuncak</option>
-                                    <option value="6">Giyim</option>
-                                    <option value="7">Bahçe</option>
-                                </select>
-                            </div>
-                        </div>
+                    <form id="addGalleryCategory" name="addGalleryCategory" >
 
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <label for="p_category_name" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategori Adı</label>
+                                <label for="gallery_categoryName" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategori Adı</label>
                             </div>
                             <div class="col-md-8 ">
-                                <input class="form-control" type="text" name="category_name" id="g_category_name" placeholder="Kategori Adı">
+                                <input class="form-control" type="text" name="gallery_categoryName" id="gallery_categoryName" placeholder="Kategori Adı">
                             </div>
                         </div>
                         <div class="col-md-3 mt-2">
@@ -361,6 +308,36 @@
     </div>
     <!---Galeri Kategori Ekle Bitiş-->
 
+    <div class="modal fade bd-example-modal-lg" id="categoryNewsUpdateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background:#E5B86C; color: white">
+                    <h5 class="modal-title" id="staticBackdropLabel1">Duyuru/Haber Kategori Güncelle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        Kategori Bilgilerinizi Giriniz.
+                    </div>
+                    <hr/>
+                    <form id="updateNewsCategory" name="updateNewsCategory">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="n_categoryName" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategori Adı</label>
+                            </div>
+                            <div class="col-md-8 ">
+                                <input class="form-control" type="text" name="news_categoryName" id="n_categoryName" placeholder="Kategori Adı">
+                            </div>
+                        </div>
+                        <div class="col-md-3 mt-2">
+                            <button type="submit" class="btn btn-outline-primary">Ekle</button>
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">İptal</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 </th:block>
@@ -368,3 +345,8 @@
 </body>
 </html>
 <script th:src="@{js/categoryAnnouncement.js}"></script>
+<script th:src="@{js/categoryGallery.js}"></script>
+<script th:src="@{js/categoryProduct.js}"></script>
+
+
+

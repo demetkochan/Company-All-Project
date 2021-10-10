@@ -12,5 +12,5 @@ public class CategoryGallery {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    private String categoryName;
+    private String gallery_categoryName;
 }

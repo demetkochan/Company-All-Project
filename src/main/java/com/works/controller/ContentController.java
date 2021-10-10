@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/content")
+@RequestMapping("/content_mvc")
 public class ContentController {
 
     final ContentRepository cRepo;
