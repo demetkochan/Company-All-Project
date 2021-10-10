@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/content_mvc")
 public class ContentController {
@@ -22,12 +24,50 @@ public class ContentController {
         return "content";
     }
 
-
+    Content contentUpdate = new Content();
+    //içerik Ekleme
     @ResponseBody
     @PostMapping("/add")
     public Content contentAdd(@RequestBody Content content){
-        Content c = cRepo.save(content);
-        return c;
+
+        try{
+            if(contentUpdate.getId() != null && contentUpdate.getId() > 0){
+                content.setId(contentUpdate.getId());
+            }
+            cRepo.saveAndFlush(content);
+            contentUpdate = new Content();
+
+        }catch (Exception ex){
+            System.err.println("İşlem sırasında hata oluştur!");
+        }
+
+        return contentUpdate;
+
+    }
+
+    //İçerik Listeleme
+    @ResponseBody
+    @GetMapping("/list")
+    public List<Content> list(){
+        return cRepo.findAll();
+    }
+
+
+
+    @ResponseBody
+    @DeleteMapping(value = "/delete/{stid}")
+    public String delete(@PathVariable String stid) {
+        String status = "0";
+        try{
+            int cid = Integer.parseInt(stid);
+            cRepo.deleteById(cid);
+            status= "1";
+
+        }catch (Exception e){
+            System.err.println("Silme sırasında hata oluştu");
+        }
+
+        return status;
 
     }
 
