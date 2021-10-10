@@ -35,6 +35,7 @@ $('#contentAdd').submit((event) => {
                 $("#content_desc").val(" ")
                 $("#content_detail_desc").val(" ")
                 allContentResult()
+                fncReset()
 
             } else {
                 console.log("Veri dönmedi.")
@@ -51,6 +52,7 @@ $('#contentAdd').submit((event) => {
 //-------------------------------------------- Content Add - Finish --------------------------------------------//
 
 
+
 //-------------------------------------------- Content list  --------------------------------------------//
 function allContentResult(){
     $.ajax({
@@ -60,6 +62,7 @@ function allContentResult(){
         success: function (data) {
             console.log(data)
             createRow(data)
+
         },
         error: function (err) {
             console.log(err)
@@ -69,6 +72,11 @@ function allContentResult(){
 }
 allContentResult()
 //-------------------------------------------- Content table  --------------------------------------------//
+
+function fncReset(){
+    select_id = 0;
+
+}
 
 let globalArr = []
 function createRow(data){
@@ -105,10 +113,7 @@ function createRow(data){
     $("#contentRow").html(html)
 }
 
-function fncReset() {
-    select_id = 0;
 
-}
 
 // content delete - start
 function fncContentDelete( id ) {
@@ -124,6 +129,7 @@ function fncContentDelete( id ) {
                 if( data != "0" ){
                     alert("Silme İşlemi Başarılı!")
                     allContentResult()
+                    fncReset()
                 }else {
                     alert("Silme sırasında bir hata oluştu.")
                 }
@@ -134,6 +140,7 @@ function fncContentDelete( id ) {
         })
     }
 }
+
 // content delete - end
 
 
@@ -148,6 +155,33 @@ function fncContentUpdate(i){
     $("#content_desc").val(itm.content_desc)
     CKEDITOR.instances['content_detail_desc'].setData(itm.content_detail_desc)
     $("#content_date").val(itm.content_date)
+}
+
+let selectedProcess = 0;
+$("#select_process").on("change",function (){
+    console.log("Tıklanıldı")
+    selectedProcess = (this.value)
+    console.log(selectedProcess)
+    allContentResult1(selectedProcess)
+
+})
+
+
+function allContentResult1(pr){
+    console.log("ajax " + pr)
+    $.ajax({
+        url: './content_mvc/selectProcess/'+pr,
+        type: 'GET',
+        contentType : 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(data)
+            createRow(data)
+        },
+        error: function (err) {
+            console.log(err)
+            alert("İşlem işlemi sırısında bir hata oluştu!");
+        }
+    })
 }
 
 
