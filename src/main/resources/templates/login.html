@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout%22%3E">
+<head>
+    <meta charset="UTF-8">
+    <title>Giriş</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome-free-5.15.4-web/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+
+</head>
+<body>
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
+
+!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white-50 fixed-top" >
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}"><i class="far fa-building"></i> CompanyAll</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}">Ana Sayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Hakkımızda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Galeri</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">İletişim</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Giriş Yap</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kayıt Ol</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<p><br/></p>
+<p><br/></p>
+<div class="container-fluid px-5 my-5">
+    <div class="row justify-content-center">
+        <div class="col-xl-10">
+            <div class="card border-0 rounded-3 shadow-lg overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="row g-0">
+                        <div class="col-sm-6 d-none d-sm-block bg-image"></div>
+                        <div class="col-sm-6 p-4">
+                            <div class="text-center">
+                                <div class="h3 fw-light" style="color: #398067">Hoşgeldin!</div>
+                                <p class="mb-4 text-muted" style="color: #398067">Hemen Giriş Yap</p>
+                            </div>
+
+                            <form>
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <label for="floatingInput" style="color: #398067">E-mail </label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                    <label for="floatingPassword" style="color: #398067">Şifre</label>
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
+                                    <label class="form-check-label" for="rememberPasswordCheck" style="color: #398067">
+                                       Beni Hatırla
+                                    </label>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button class="btn btn-md btn-success btn-login text-uppercase fw-bold mb-2" type="submit">Giriş Yap</button>
+                                    <div class="text-center">
+                                        <a class="small" href="#" style="color: #398067">Şifreni mi unuttun?</a>
+
+                                    </div>
+                                    <div class="text-center">
+
+                                        <a class="small" th:href="@{/register}" style="color: #398067">Üye değil misin? Hemen Üye ol</a>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+    <div class="container text-center">
+        <small>Copyright &copy; Company All</small>
+    </div>
+</footer>
+
+<script th:src="@{js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+<script th:src="@{js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js}"> </script>
+
+</body>
+</html>

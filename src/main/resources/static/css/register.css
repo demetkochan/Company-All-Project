@@ -1,0 +1,20 @@
+body {
+    background: #914151;
+    background: #914151;
+}
+
+.card-img-left {
+    width: 45%;
+    /* Link to your background image using in the property below! */
+    background: scroll center url('../images/undraw_Begin_chat_re_v0lw (1).png');
+    background-size: cover;
+}
+
+.btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+    background-color: #E5B86C;
+    border-color: #E5B86C;
+}
+

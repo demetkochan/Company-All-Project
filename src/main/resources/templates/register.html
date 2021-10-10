@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout%22%3E">
+<head>
+    <meta charset="UTF-8">
+    <title>Giriş</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome-free-5.15.4-web/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+
+</head>
+<body>
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
+
+!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white-50 fixed-top" >
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}"><i class="far fa-building"></i> CompanyAll</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}">Ana Sayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Hakkımızda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Galeri</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">İletişim</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Giriş Yap</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kayıt Ol</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-xxl-10 col-xl-9 mx-auto">
+            <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                <div class="card-img-left  d-md-flex">
+                    <!-- Background image for card set in CSS! -->
+                </div>
+                <div class="card-body p-4 p-sm-5">
+                    <h5 class="card-title text-center mb-5 fw-light fs-5">Üye Ol</h5>
+                    <form>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInputUsername" placeholder="myusername" required autofocus>
+                            <label for="floatingInputUsername">Şirket Adı</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInputUsername" placeholder="myusername" required autofocus>
+                            <label for="floatingInputUsername">Şirket Adresi</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="sector" aria-label="Floating label select example" required autofocus>
+                                <option value="0">Seçim yapınız</option>
+                                <option value="1">Adalet ve Güvenlik</option>
+                                <option value="2">Ağaç İşleri, Kağıt ve Kağıt Ürünleri</option>
+                                <option value="3">Bilişim</option>
+                                <option value="3">Cam, Çimento ve Toprak</option>
+                                <option value="3">Çevre</option>
+                                <option value="3">Elektrik Elektronik</option>
+                                <option value="3">Emlak</option>
+                                <option value="3">Enerji</option>
+                                <option value="3">Eğitim</option>
+                                <option value="3">Finans</option>
+                                <option value="3">Gıda</option>
+                                <option value="3">Kimya,Petrol,Lastik ve Plastik</option>
+                                <option value="3">Kültür Sanat</option>
+                                <option value="3">Maden</option>
+                                <option value="3">Medya, İletişim ve Yayıncılık</option>
+                                <option value="3">Metal</option>
+                                <option value="3">Mobilya</option>
+                                <option value="3">Otomotiv</option>
+                                <option value="3">Hizmet</option>
+                                <option value="3">Sağlık</option>
+                                <option value="3">Tarım,Avcılık,Balıkçılık</option>
+                                <option value="3">Teknoloji</option>
+                                <option value="3">Ticaret</option>
+                                <option value="3">Turizm</option>
+                                <option value="3">Ulaştırma,Haberleşme</option>
+                                <option value="3">Tekstil</option>
+                                <option value="3">İnşaat</option>
+                                <option value="3">İş ve Yönetim</option>
+                            </select>
+                            <label  for="sector">Sektör</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="phone" placeholder="myusername" required autofocus>
+                            <label for="phone">Şirket Telefonu</label>
+                        </div>
+                        <hr>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInputUsername" placeholder="myusername" required autofocus>
+                            <label for="floatingInputUsername">Yetkili Adı</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInputUsername" placeholder="myusername" required autofocus>
+                            <label for="floatingInputUsername">Yetkili Soyadı</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com">
+                            <label for="floatingInputEmail">E-mail</label>
+                        </div>
+
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Şifre</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingPasswordConfirm" placeholder="Confirm Password">
+                            <label for="floatingPasswordConfirm">Şifreyi Tekrar Giriniz</label>
+                        </div>
+
+                        <div class="d-grid mb-2">
+                            <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Üye Ol</button>
+                        </div>
+
+                        <a class="d-block text-center mt-2 small" th:href="@{/login}">Zaten bir hesabın var mı? Giriş yap.</a>
+
+                        <hr class="my-4">
+
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+    <div class="container text-center">
+        <small>Copyright &copy; Company All</small>
+    </div>
+</footer>
+
+
+<script th:src="@{js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+<script th:src="@{js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+body {
+    background: #914151;
+    background: #914151;
+}
+
+.bg-image {
+    background-image: url('../images/undraw_Login_re_4vu2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+form.d-grid.btn.btn-login{
+    background-color: #398067;
+    border-color: #398067;
+}
