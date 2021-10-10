@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/content")
+@RequestMapping("/content_mvc")
 public class ContentController {
 
     final ContentRepository cRepo;

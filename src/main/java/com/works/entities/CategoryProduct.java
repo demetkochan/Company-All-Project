@@ -12,5 +12,5 @@ public class CategoryProduct {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    private String categoryName;
+    private String product_categoryName;
 }
