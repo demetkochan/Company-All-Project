@@ -73,5 +73,15 @@ public class ContentController {
 
     }
 
+    @ResponseBody
+    @GetMapping("/selectProcess/{stPr}")
+    public List<Content> selectProcess(Model model, @PathVariable String stPr){
+        int pr = Integer.parseInt(stPr);
+        List<Content> selectprocess = cRepo.process(pr);
+        model.addAttribute("selectProcess",selectprocess);
+        return selectprocess;
+
+    }
+
 
 }
