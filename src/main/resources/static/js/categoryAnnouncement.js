@@ -18,6 +18,7 @@ $('#addNewsCategory').submit((event) => {
             if (data) {
                 console.log(data)
                 $("#news_categoryName").val(" ")
+                allNewsCategoryResult()
             } else {
                 console.log("Veri dönmedi.")
             }

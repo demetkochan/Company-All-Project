@@ -34,6 +34,8 @@ $('#contentAdd').submit((event) => {
                 $("#content_title").val(" ")
                 $("#content_desc").val(" ")
                 $("#content_detail_desc").val(" ")
+                $("#content_date").val(" ")
+                $("#content_status").val(" ")
                 allContentResult()
                 fncReset()
 
