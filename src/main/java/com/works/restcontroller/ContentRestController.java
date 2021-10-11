@@ -2,6 +2,7 @@ package com.works.restcontroller;
 
 import com.works.dto.ContentDto;
 import com.works.entities.Content;
+import com.works.util.ERest;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,23 +20,23 @@ public class ContentRestController {
     }
 
     @PostMapping("/add")
-    public Map<String, Object> add(@RequestBody @Valid Content content, BindingResult bResult){
+    public Map<ERest, Object> add(@RequestBody @Valid Content content, BindingResult bResult){
 
         return contentDto.Contentadd(content,bResult);
     }
 
     @GetMapping("/list")
-    public Map<String ,Object> list(){
+    public Map<ERest ,Object> list(){
         return contentDto.contentlist();
     }
 
     @DeleteMapping("/delete/{strIndex}")
-    public Map<String, Object> delete(@PathVariable String strIndex){
+    public Map<ERest, Object> delete(@PathVariable String strIndex){
         return contentDto.Contentdelete(strIndex);
     }
 
     @GetMapping("/contentProcess/{process_id}")
-    public Map<String ,Object> payOutList(@PathVariable String process_id){
+    public Map<ERest,Object> payOutList(@PathVariable String process_id){
         return contentDto.ContentProcess(process_id);
     }
 
