@@ -51,6 +51,7 @@
     <table class="table table-hover">
         <thead style="background:#E5B86C; color: white">
         <tr>
+            <th scope="col">Ürün Id</th>
             <th scope="col">Ürün Adı</th>
             <th scope="col">Başlığı</th>
             <th scope="col">Açıklama</th>
@@ -58,15 +59,8 @@
             <th scope="col">İşlem</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Başlık</td>
-            <td>Kısa Açıklama</td>
-            <td>Detay</td>
-            <td>Tarih</td>
+        <tbody id="productRow">
 
-        </tr>
         </tbody>
     </table>
 
@@ -81,24 +75,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="contentAdd" name="contentAdd" >
+                    <form id="productAdd" name="paroductAdd" >
                         <h6 class="text-center">Ürün Bilgilerinizi Aşağıda Girebilirsiniz</h6>
                         <hr/>
 
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <label for="categories" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategoriler</label>
+                                <label for="categoryProduct" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategoriler</label>
                             </div>
+                            <div class="col-md-8 mb-3">
+                                <select class="form-select"id="categoryProduct" aria-label="Default select example">
+                                    <option selected>Seçim yapınız</option>
+                                    <option th:each="item,iter : ${categories}" th:value="${item.id}" th:text="${item.product_categoryName}"/>
 
-                            <div class="col-md-8 ">
-                                <input class="form-control" list="datalistOptions" id="categories" placeholder="Type to search...">
-                                <datalist id="datalistOptions">
-                                    <option value="San Francisco">
-                                    <option value="New York">
-                                    <option value="Seattle">
-                                    <option value="Los Angeles">
-                                    <option value="Chicago">
-                                </datalist>
+                                </select>
                             </div>
 
                         </div>
@@ -127,10 +117,10 @@
                         <div class="row">
 
                             <div class="col-md-4 mb-3">
-                                <label for="product_detail_desc" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Detaylı Açıklama</label>
+                                <label for="product_detail" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Detaylı Açıklama</label>
                             </div>
                             <div class="col-md-8 mb-3 ">
-                                <textarea class="form-control" id="product_detail_desc" name="product_detail_desc"></textarea>
+                                <textarea class="form-control" id="product_detail" name="product_detail_desc"></textarea>
                             </div>
                         </div>
 
@@ -176,16 +166,16 @@
                             </div>
 
                             <div class="col-md-8 ">
-                                <input type="text" name="product_price" id="campaign_name" class="form-control"  required  />
+                                <input type="text" name="campaign_name" id="campaign_name" class="form-control"  required  />
                             </div>
                         </div>
                         <div class="row">
 
                             <div class="col-md-4 mb-3">
-                                <label for="campaign_detail" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kampanya Detayı</label>
+                                <label for="campaign_desc" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kampanya Detayı</label>
                             </div>
                             <div class="col-md-8 mb-3">
-                                <textarea class="form-control" id="campaign_detail" name="campaign_detail"></textarea>
+                                <textarea class="form-control" id="campaign_desc" name="campaign_detail"></textarea>
                             </div>
                         </div>
                         <div class="row">
@@ -216,8 +206,6 @@
                             </div>
                         </div>
 
-
-
                         <div class="row">
                             <div class="col-md-9"></div>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
@@ -231,7 +219,7 @@
         </div>
     </div>
 
-    <!---Ürün Düzenle Başlangıç-->
+  <!--  &lt;!&ndash;-Ürün Düzenle Başlangıç&ndash;&gt;
     <div class="modal" id="productEdit"  tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -390,10 +378,11 @@
             </div>
         </div>
     </div>
-
+-->
 
 </th:block>
 
 
 </body>
 </html>
+<script th:src="@{js/product.js}"></script>

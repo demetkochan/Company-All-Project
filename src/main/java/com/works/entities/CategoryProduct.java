@@ -16,4 +16,5 @@ public class CategoryProduct {
     @NotNull(message = "Kategori adı Null Olamaz")
     @NotEmpty(message = "Kategori adı Boş olamaz")
     private String product_categoryName;
+
 }
