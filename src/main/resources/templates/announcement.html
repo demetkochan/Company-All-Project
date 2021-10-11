@@ -22,7 +22,8 @@
       </div>
     </div>
     <div class="col-md-3">
-      <select class="form-select" id="content_status" aria-label="Example select with button addon">
+      <select class="form-select" id="status" aria-label="Example select with button addon">
+        <option value="">Hepsi </option>
         <option value="1">Aktif </option>
         <option value="2">Pasif </option>
       </select>
@@ -41,6 +42,9 @@
   </div>
 
   <div class="row mb-3 mt-3">
+
+    <h5 style="color: #398067"><i class="far fa-newspaper"></i> Duyurular<hr/></h5>
+
     <div class="col-sm-4 mb-3 mt-3">
       <h6>Sayfa başına <select class="form-select-sm">
         <option value="1">5</option>
@@ -71,14 +75,8 @@
       <th scope="col">İşlemler</th>
     </tr>
     </thead>
-    <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Başlık</td>
-      <td>Detay</td>
-      <td>Tarih</td>
-      <td>Düzenle/Silme</td>
-    </tr>
+    <tbody id="announcementRow">
+
     </tbody>
   </table>
   <!---Tablo Bitiş-->
@@ -86,6 +84,9 @@
 
 
   <div class="row mb-3 mt-3">
+
+    <h5 style="color: #398067"><i class="far fa-newspaper"></i> Haberler<hr/></h5>
+
     <div class="col-sm-4 mb-3 mt-3">
       <h6>Sayfa başına <select class="form-select-sm">
         <option value="1">5</option>
@@ -187,6 +188,7 @@
 
               <div class="col-md-8 mt-3">
                 <select class="form-select" id="news_status" aria-label="Example select with button addon">
+                  <option value="">Seçiniz</option>
                   <option value="1">Aktif </option>
                   <option value="2">Pasif </option>
                 </select>
@@ -251,6 +253,32 @@
               </div>
             </div>
 
+
+            <div class="row">
+
+              <div class="col-md-4 mb-3 mt-2">
+                <label for="announcement_date" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Tarih</label>
+              </div>
+              <div class="col-md-8 mt-2">
+                <input type="date" id="announcement_date" name="announcement_date" class="form-control">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 mt-3">
+                <label for="announcement_status" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Durum</label>
+              </div>
+
+              <div class="col-md-8 mt-3">
+                <select class="form-select" id="announcement_status" aria-label="Example select with button addon">
+                  <option value="">Seçiniz </option>
+                  <option value="1">Aktif </option>
+                  <option value="2">Pasif </option>
+                </select>
+              </div>
+            </div>
+
+
             <div class="row">
               <div class="col-md-9"></div>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
@@ -265,11 +293,10 @@
     </div>
   </div>
 
-
-
-
 </th:block>
 
 </body>
 </html>
+
+<script th:src="@{js/announcement.js}"></script>
 
