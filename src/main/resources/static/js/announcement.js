@@ -15,6 +15,11 @@ $('#announcementAdd').submit((event) => {
         announcement_date:announcement_date
     }
 
+    if ( select_id != 0 ) {
+        // update
+        obj["id"] = select_id;
+    }
+
 
     $.ajax({
         url: './announcement_mvc/add',
@@ -92,8 +97,8 @@ function createRow(data){
 
            <td class="text-right" >
                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                    <button  type="button" data-bs-toggle="modal" data-bs-target="#contentAddModal" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button>
-                    <button  type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
+                    <button onclick="fncAnnouncementUpdate(`+i+`)" type="button" data-bs-toggle="modal" data-bs-target="#announcementAddModal" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button>
+                    <button onclick="fncAnnouncementDelete(`+itm.id+`)" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
 
                </div>
           </td>
@@ -102,6 +107,130 @@ function createRow(data){
     }
     $("#announcementRow").html(html)
 }
+
+//-------------------------------------------- Delete Announcement   --------------------------------------------//
+
+function fncAnnouncementDelete( id ) {
+    let answer = confirm("Silmek istediğinize emin misiniz?")
+    if(answer){
+
+        $.ajax({
+            url:"./announcement_mvc/delete/"+id,
+            type:"delete",
+            dataType: 'text',
+            success: function (data){
+                console.log(typeof data)
+                if( data != "0" ){
+                    alert("Silme İşlemi Başarılı!")
+                    allAnnouncementResult()
+                    fncReset()
+                }else {
+                    alert("Silme sırasında bir hata oluştu.")
+                }
+            },
+            error: function (err){
+                console.log(err)
+            }
+        })
+    }
+}
+//-------------------------------------------- Update Announcement   --------------------------------------------//
+let select_id=0;
+function fncAnnouncementUpdate(i){
+    const itm = globalArr[i];
+
+    select_id = itm.id
+    $("#announcement_title").val(itm.announcement_title)
+    CKEDITOR.instances['announcement_detail_desc'].setData(itm.announcement_detail_desc)
+    $("#announcement_date").val(itm.announcement_date)
+    $("#announcement_status").val(itm.announcement_status)
+}
+
+//---------------------------------------News list-------------------------------//
+
+
+function allNewsResult(){
+    $.ajax({
+        url: './announcement_mvc/newslist',
+        type: 'GET',
+        contentType : 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(data)
+            createRo(data)
+        },
+        error: function (err){
+            console.log(err)
+            alert("Hata oluştu");
+        }
+    })
+}
+allNewsResult()
+
+//---------------------------------------News Table-------------------------------//
+
+let newsResultArr=[]
+function createRo(data){
+    let html=``
+
+    for (let i = 0; i < data.length; i++) {
+        newsResultArr=data
+        const itm=data[i]
+
+
+        let news_type=""
+        if(itm.news_status==1){
+            news_type='Aktif'
+        }else if(itm.news_status==2){
+            news_type='Pasif'
+        }
+        const type=news_type
+
+        html += ` <tr>
+               
+             <th scope="row">`+type+`</th>
+            <td>${itm.news_category}</td>
+            <td>${itm.news_image}</td>
+            <td>${dateToFormat(itm.createdDate)}</td>
+            <td class="text-right" >
+              <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <button onclick="fncNewsDelete(${itm.id})" type="button" class="btn btn-outline-success "><i class="far fa-trash-alt"></i></button>
+            
+              </div>
+              
+            </td>
+        </tr>`
+
+    }
+    $("#newsRow").html(html)
+
+}
+
+//------------------------------------------news Delete------------------------------------------//
+
+function fncNewsDelete(id){
+    let answer = confirm("Silmek istediğinize emin misiniz?")
+    if(answer){
+
+        $.ajax({
+            url:"./announcement_mvc/newsdelete/"+id,
+            type:"delete",
+            dataType: 'text',
+            success: function (data){
+                console.log(typeof data)
+                if( data != "0" ){
+                    alert("Silme İşlemi Başarılı!")
+                    allNewsResult()
+                }else {
+                    alert("Silme sırasında bir hata oluştu.")
+                }
+            },
+            error: function (err){
+                console.log(err)
+            }
+        })
+    }
+}
+
 
 
 //-------------------------------------------- Date Format   --------------------------------------------//
