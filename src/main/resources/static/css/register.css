@@ -4,7 +4,7 @@ body {
 }
 
 .card-img-left {
-    width: 45%;
+    width: 50%;
     /* Link to your background image using in the property below! */
     background: scroll center url('../images/undraw_Begin_chat_re_v0lw (1).png');
     background-size: cover;

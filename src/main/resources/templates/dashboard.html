@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<!-- Navigation -->
+!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white-50 fixed-top" >
   <div class="container">
     <a class="navbar-brand" th:href="@{/}"><i class="far fa-building"></i> CompanyAll</a>
@@ -24,19 +24,19 @@
           <a class="nav-link" th:href="@{/}">Ana Sayfa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Hakkımızda</a>
+          <a class="nav-link" th:href="@{/about}">Hakkımızda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Galeri</a>
+          <a class="nav-link" th:href="@{/images}">Galeri</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">İletişim</a>
+          <a class="nav-link" th:href="@{/contact}">İletişim</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Giriş Yap</a>
+          <a class="nav-link" th:href="@{/login}">Giriş Yap</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Kayıt Ol</a>
+          <a class="nav-link" th:href="@{/register}">Kayıt Ol</a>
         </li>
       </ul>
     </div>
@@ -54,8 +54,8 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="carousel-caption">
-          <h5>Company All</h5>
-          <p>
+          <h1>Company All'a</h1>
+          <p style="font-size: xx-large">
 
           Hoşgeldiniz!
           </p>
@@ -63,14 +63,14 @@
       </div>
       <div class="carousel-item two">
         <div class="carousel-caption">
-          <h5>CompanyAll V1.0 Beta</h5>
-          <p>Ortamınızı inşa etmek için bize katılın. Mobil verileriniz CompanyAll ile tek tık uzaklıkta !</p>
+          <h3>CompanyAll V1.0 Beta</h3>
+          <p style="font-size: large">Ortamınızı inşa etmek için bize katılın. Mobil verileriniz CompanyAll ile tek tık uzaklıkta !</p>
         </div>
       </div>
       <div class="carousel-item three">
         <div class="carousel-caption">
-          <h5>Basit ve Kullanışlı</h5>
-          <p> Verilerinizi güvenle saklayabileceğiniz ayrıca kullanışlı admin panelimizle çalışanlarınızla rahat bir iletişim kurabileceğiniz platformumuzu kullanmak için kayıt olmanız yeterli.</p>
+          <h3>Basit ve Kullanışlı</h3>
+          <p style="font-size: large"> Verilerinizi güvenle saklayabileceğiniz ayrıca kullanışlı admin panelimizle çalışanlarınızla rahat bir iletişim kurabileceğiniz platformumuzu kullanmak için kayıt olmanız yeterli.</p>
         </div>
       </div>
     </div>
@@ -100,7 +100,7 @@
             <hr>
 
             <div class="d-grid">
-              <a href="#" class="btn btn-primary text-uppercase"><i class="far fa-user-circle"></i> Üye Ol</a>
+              <a th:href="@{/register}" class="btn btn-primary text-uppercase"><i class="far fa-user-circle"></i> Üye Ol</a>
             </div>
           </div>
         </div>
@@ -114,7 +114,7 @@
             <hr>
 
             <div class="d-grid">
-              <a href="#" class="btn btn-primary text-uppercase"><i class="fas fa-door-open"></i> Giriş yap</a>
+              <a th:href="@{/login}" class="btn btn-primary text-uppercase"><i class="fas fa-door-open"></i> Giriş yap</a>
             </div>
           </div>
         </div>
@@ -128,7 +128,7 @@
             <hr>
 
             <div class="d-grid">
-              <a href="#" class="btn btn-primary text-uppercase"><i class="far fa-address-card"></i>  İletişime geç</a>
+              <a th:href="@{/contact}" class="btn btn-primary text-uppercase"><i class="far fa-address-card"></i>  İletişime geç</a>
             </div>
           </div>
         </div>
@@ -226,7 +226,6 @@
 <script th:src="@{js/jquery-3.6.0.min.js}"></script>
 <script th:src="@{js/bootstrap.min.js}"></script>
 <script th:src="@{js/bootstrap.bundle.min.js}"></script>
-<script th:src="@{https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js}"> </script>
 
 </body>
 </html>

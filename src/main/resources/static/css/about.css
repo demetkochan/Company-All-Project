@@ -1,0 +1,15 @@
+.flex-shrink-0{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60px;   /* Height of the footer */
+
+}
+/*.container.img-fluid{
+   background-image: url("../images/undraw_Team_re_0bfe.png");
+}*/
+
+body {
+    background: #914151;
+    background: #914151;
+}

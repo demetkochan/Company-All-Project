@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout%22%3E">
+<head>
+    <meta charset="UTF-8">
+    <title>Hakkımızda</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome-free-5.15.4-web/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/about.css}">
+
+</head>
+<body>
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
+
+!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white-50 fixed-top" >
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}"><i class="far fa-building"></i> CompanyAll</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}">Ana Sayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/about}">Hakkımızda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/images}">Galeri</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contact}">İletişim</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">Giriş Yap</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/register}">Kayıt Ol</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<p><br/></p>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4 text-white-50">Hakkımızda |
+        <small class="text-white-50"> Biz kimiz?</small>
+    </h1>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+        <div class="col-md-6">
+            <img class="img-fluid" src="http://localhost:8080/images/undraw_Team_re_0bfe (1).svg" height="350" width="450" alt="">
+        </div>
+
+        <div class="col-md-6">
+            <h3 class="my-3 text-white-50" ><i class="far fa-building"></i> CompanyAll</h3>
+            <p class="text-white-50">Anında güçlü bir bulut veritabanı eklemek için, "Company All". Bu sloganla yola çıkarak Company All dünyaya geldi. CompanyAll; vermiş olduğu hizmet ile mobil uygulamalarınızı kolaylıkla geliştirme imkanı sunacak. Oluşturduğunuz bulut veritabanı sadece bir tık uzağınızda olacak. Evde, işte, yolda nerede olursanız olun, Company All ile veritabanınızı yanınızda taşıyacaksınız. Kullanıcı dostu site tasarımı, basit ve hızlı admin paneliyle CompanyAll size en hızlı şekilde hizmet vermek için hazır bekliyor.</p>
+            <p class="text-white-50">CompanyAll; mobil uygulamalarınızı yazmanızda Json API ile size büyük bir kolaylık sağlayacaktır. Mobil uygulamalarınız için gereken tüm veri işlemlerini CompanyAll içinde bulacaksınız. Sipariş,müşteri,reklam ve duyuru yönetimi vb herşey CompanyAll'da.</p>
+        </div>
+
+    </div>
+</div>
+
+
+<footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+    <div class="container text-center">
+        <small>Copyright &copy; Company All</small>
+    </div>
+</footer>
+
+<script th:src="@{js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+<script th:src="@{js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

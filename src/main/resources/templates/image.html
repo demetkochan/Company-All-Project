@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout%22%3E">
+<head>
+    <meta charset="UTF-8">
+    <title>Galeri</title>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"
+    />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome-free-5.15.4-web/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/image.css}">
+
+</head>
+<body style="background: #914151">
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
+
+!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white-50 fixed-top" >
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}"><i class="far fa-building"></i> CompanyAll</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}">Ana Sayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/about}">Hakkımızda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  th:href="@{/images}">Galeri</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contact}">İletişim</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">Giriş Yap</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/register}">Kayıt Ol</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<p><br/></p>
+<h3 class="text-white-50" style="text-align: center">Galeri</h3>
+<section>
+    <div class="container">
+<div class="flex flex-wrap gap-5 justify-center max-w-5xl mx-auto px-6">
+    <a
+            data-caption="Vestibulum lobortis ultricies ipsum, a maximus ligula dignissim in. Sed consectetur tellus egestas, consequat dolor at, tempus augue. "
+            data-fancybox="gallery"
+            href="https://lipsum.app/id/1/800x450"
+    >
+        <img class="rounded" src="https://lipsum.app/id/1/200x150" />
+    </a>
+    <a
+            data-caption="Short caption"
+            data-fancybox="gallery"
+            href="https://lipsum.app/id/2/800x450"
+    >
+        <img class="rounded" src="https://lipsum.app/id/2/200x150" />
+    </a>
+    <a
+            data-caption=""
+            data-fancybox="gallery"
+            href="https://lipsum.app/id/3/800x450"
+    >
+        <img class="rounded" src="https://lipsum.app/id/3/200x150" />
+    </a>
+    <a
+            data-caption=""
+            data-fancybox="gallery"
+            href="https://lipsum.app/id/4/800x450"
+    >
+        <img src="https://lipsum.app/id/4/200x150" />
+    </a>
+    <a
+            data-caption=""
+            data-fancybox="gallery"
+            href="https://lipsum.app/id/5/800x450"
+    >
+        <img class="rounded" src="https://lipsum.app/id/5/200x150" />
+    </a>
+    <a
+            data-caption=""
+            data-fancybox="gallery"
+            href="https://lipsum.app/id/6/800x450"
+    >
+        <img class="rounded" src="https://lipsum.app/id/6/200x150" />
+    </a>
+    <a
+            data-caption=""
+            data-fancybox="gallery"
+            href="https://lipsum.app/id/7/800x450"
+    >
+        <img class="rounded" src="https://lipsum.app/id/7/200x150" />
+    </a>
+</div>
+    </div>
+</section>
+<footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+    <div class="container text-center">
+        <small>Copyright &copy; Company All</small>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+<script th:src="@{js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+<script th:src="@{js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{js/image.js}"></script>
+
+</body>
+</html>

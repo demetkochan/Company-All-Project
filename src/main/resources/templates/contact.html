@@ -3,11 +3,11 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout%22%3E">
 <head>
     <meta charset="UTF-8">
-    <title>Giriş Yap</title>
+    <title>İletişim</title>
 
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/fontawesome-free-5.15.4-web/css/all.min.css}">
-    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" th:href="@{/css/contact.css}">
 
 </head>
 <body>
@@ -45,7 +45,9 @@
     </div>
 </nav>
 <p><br/></p>
-<p><br/></p>
+
+
+<!-- Bootstrap 5 Contact Form Snippet -->
 
 <div class="container-fluid px-5 my-5">
     <div class="row justify-content-center">
@@ -56,40 +58,49 @@
                         <div class="col-sm-6 d-none d-sm-block bg-image"></div>
                         <div class="col-sm-6 p-4">
                             <div class="text-center">
-                                <div class="h3 fw-light" style="color: #398067">Hoşgeldin!</div>
-                                <p class="mb-4 text-muted" style="color: #398067">Hemen Giriş Yap</p>
+                                <div class="h3 fw-light" style="color: #E5B86C">İletşim Formu</div>
+                                <p style="font-size: small" class="mb-4 text-muted">
+                                    Adres :
+                                    Beşiktaş/İSTANBUL&nbsp;
+                                    Tel :
+                                    +90 212 212 XX XX
+                                    <br/>
+                                    E-mail :
+                                    companyAll@gmail.com</p>
                             </div>
 
-                            <form>
+
+                            <form id="contactForm" >
+
+                                <!-- Name Input -->
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                    <label for="floatingInput" style="color: #398067">E-mail </label>
+                                    <input class="form-control" id="name" type="text" placeholder="Name" data-sb-validations="required" />
+                                    <label for="name">İsim</label>
+                                    <div class="invalid-feedback" data-sb-feedback="name:required">İsim boş olamaz.</div>
                                 </div>
+
+                                <!-- Email Input -->
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                                    <label for="floatingPassword" style="color: #398067">Şifre</label>
+                                    <input class="form-control" id="emailAddress" type="email" placeholder="Email Address" data-sb-validations="required,email" />
+                                    <label for="emailAddress">E-mail</label>
+                                    <div class="invalid-feedback" data-sb-feedback="emailAddress:required">E-mail boş olamaz.</div>
+                                    <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Bu e-mail geçerli değil.</div>
                                 </div>
 
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
-                                    <label class="form-check-label" for="rememberPasswordCheck" style="color: #398067">
-                                       Beni Hatırla
-                                    </label>
+                                <!-- Message Input -->
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" id="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations="required"></textarea>
+                                    <label for="message">Mesaj</label>
+                                    <div class="invalid-feedback" data-sb-feedback="message:required">Mesaj boş olamaz</div>
                                 </div>
 
-                                <div class="d-grid">
-                                    <button class="btn btn-md btn-success btn-login text-uppercase fw-bold mb-2" type="submit">Giriş Yap</button>
-                                    <div class="text-center">
-                                        <a class="small" href="#" style="color: #398067">Şifreni mi unuttun?</a>
-
-                                    </div>
-                                    <div class="text-center">
-
-                                        <a class="small" th:href="@{/register}" style="color: #398067">Üye değil misin? Hemen Üye ol</a>
-                                    </div>
+                                <!-- Submit button -->
+                                <div class="d-grid mb-2">
+                                 <button class="btn btn-md btn-primary btn-login fw-bold text-uppercase"  style=" background-color: #E5B86C;border-color: #E5B86C;" type="submit">Gönder</button>
                                 </div>
-
                             </form>
+                            <!-- End of contact form -->
+
                         </div>
                     </div>
 
@@ -98,6 +109,7 @@
         </div>
     </div>
 </div>
+
 
 <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
     <div class="container text-center">
@@ -108,7 +120,5 @@
 <script th:src="@{js/jquery-3.6.0.min.js}"></script>
 <script th:src="@{js/bootstrap.min.js}"></script>
 <script th:src="@{js/bootstrap.bundle.min.js}"></script>
-<script th:src="@{https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js}"> </script>
-
 </body>
 </html>
