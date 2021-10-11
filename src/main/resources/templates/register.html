@@ -54,29 +54,29 @@
                         <div class="h3 fw-light" style="color: #E5B86C">Hoşgeldin!</div>
                         <p class="mb-4 text-muted" style="color: #E5B86C">Üye Ol</p>
                     </div>
-                    <form>
+                    <form th:action="@{'/register'}" method="post" >
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInputUsername" placeholder="myusername" required autofocus>
-                            <label for="floatingInputUsername">Şirket Adı</label>
+                            <input type="text" class="form-control" id="companyName" name="companyName" placeholder="Şirket Adı" required autofocus>
+                            <label for="companyName">Şirket Adı</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInputUsername" placeholder="myusername" required autofocus>
-                            <label for="floatingInputUsername">Şirket Adresi</label>
+                            <input type="text" class="form-control" id="companyAddress" name="companyAddress" placeholder="myusername" required autofocus>
+                            <label for="companyAddress">Şirket Adresi</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="sector" aria-label="Floating label select example" required autofocus>
+                            <select class="form-select" id="sector" name="sector" aria-label="Floating label select example" >
                                 <option value="0">Seçim yapınız</option>
                                 <option value="1">Adalet ve Güvenlik</option>
                                 <option value="2">Ağaç İşleri, Kağıt ve Kağıt Ürünleri</option>
                                 <option value="3">Bilişim</option>
-                                <option value="3">Cam, Çimento ve Toprak</option>
-                                <option value="3">Çevre</option>
-                                <option value="3">Elektrik Elektronik</option>
-                                <option value="3">Emlak</option>
-                                <option value="3">Enerji</option>
-                                <option value="3">Eğitim</option>
-                                <option value="3">Finans</option>
-                                <option value="3">Gıda</option>
+                                <option value="4">Cam, Çimento ve Toprak</option>
+                                <option value="5">Çevre</option>
+                                <option value="6">Elektrik Elektronik</option>
+                                <option value="7">Emlak</option>
+                                <option value="8">Enerji</option>
+                                <option value="9">Eğitim</option>
+                                <option value="10">Finans</option>
+                                <option value="11">Gıda</option>
                                 <option value="3">Kimya,Petrol,Lastik ve Plastik</option>
                                 <option value="3">Kültür Sanat</option>
                                 <option value="3">Maden</option>
@@ -98,35 +98,38 @@
                             <label  for="sector">Sektör</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="phone" placeholder="myusername" required autofocus>
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="myusername" required autofocus>
                             <label for="phone">Şirket Telefonu</label>
                         </div>
                         <hr>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInputUsername" placeholder="myusername" required autofocus>
-                            <label for="floatingInputUsername">Yetkili Adı</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="myusername" required autofocus>
+                            <label for="firstName">Yetkili Adı</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInputUsername" placeholder="myusername" required autofocus>
-                            <label for="floatingInputUsername">Yetkili Soyadı</label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com">
-                            <label for="floatingInputEmail">E-mail</label>
-                        </div>
-
-
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Şifre</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="myusername" required autofocus>
+                            <label for="lastName">Yetkili Soyadı</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingPasswordConfirm" placeholder="Confirm Password">
-                            <label for="floatingPasswordConfirm">Şifreyi Tekrar Giriniz</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                            <label for="email">E-mail</label>
                         </div>
 
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                            <label for="password">Şifre</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="roleIDSt" name="roleIDSt" aria-label="Floating label select example" >
+                                <option value="0">Seçim yapınız</option>
+                                <option value="2">MVC</option>
+                                <option value="3">Rest</option>
+                            </select>
+                            <label  for="sector">Role</label>
+                        </div>
                         <div class="d-grid mb-2">
                             <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Üye Ol</button>
                         </div>
