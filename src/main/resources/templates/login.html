@@ -60,14 +60,14 @@
                                 <p class="mb-4 text-muted" style="color: #398067">Hemen Giriş Yap</p>
                             </div>
 
-                            <form>
+                            <form th:action="@{/login}" method="post">
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                    <label for="floatingInput" style="color: #398067">E-mail </label>
+                                    <input type="email" class="form-control" id="username" name="username" placeholder="name@example.com">
+                                    <label for="username" style="color: #398067">E-mail </label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                                    <label for="floatingPassword" style="color: #398067">Şifre</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                    <label for="password" style="color: #398067">Şifre</label>
                                 </div>
 
                                 <div class="form-check mb-3">
