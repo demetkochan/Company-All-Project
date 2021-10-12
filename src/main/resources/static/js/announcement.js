@@ -193,8 +193,7 @@ function createRo(data){
             <td class="text-right" >
               <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                 <button onclick="fncNewsDelete(${itm.id})" type="button" class="btn btn-outline-success "><i class="far fa-trash-alt"></i></button>
-                <a href="http://localhost:8080/uploads/` + itm.news_image + `" class="btn btn-outline-primary" style="margin-right: 10px" target="_blank">Resim</a>
-
+                <a href="http://localhost:8080/uploads/` + itm.news_image + `" class="btn btn-outline-primary" style="margin-right: 10px" target="_blank"><i class="far fa-image"></i></a>
               </div>
               
             </td>
@@ -204,6 +203,9 @@ function createRo(data){
     $("#newsRow").html(html)
 
 }
+
+
+
 
 //------------------------------------------news Delete------------------------------------------//
 
