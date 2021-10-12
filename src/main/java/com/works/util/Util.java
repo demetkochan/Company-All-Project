@@ -1,4 +1,4 @@
-package com.works.Util;
+package com.works.util;
 
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;

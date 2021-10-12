@@ -62,7 +62,7 @@ public class UserService extends SimpleUrlLogoutSuccessHandler implements UserDe
     }
 
     public User register(User us) throws AuthenticationServiceException {
-        if(!com.works.Util.Util.isEmail(us.getEmail())){
+        if(!com.works.util.Util.isEmail(us.getEmail())){
             throw new AuthenticationServiceException("Bu mail formatı hatalıdır!");
         }
 

@@ -1,13 +1,12 @@
 package com.works.dto;
 
-import com.works.Util.Util;
+import com.works.util.Util;
 import com.works.entities.Content;
 import com.works.repositories.ContentRepository;
 import com.works.util.ERest;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;

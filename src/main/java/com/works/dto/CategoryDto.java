@@ -1,10 +1,9 @@
 package com.works.dto;
 
-import com.works.Util.Util;
+import com.works.util.Util;
 import com.works.entities.CategoryAnnouncement;
 import com.works.entities.CategoryGallery;
 import com.works.entities.CategoryProduct;
-import com.works.entities.Content;
 import com.works.repositories.CategoryAnnouncementRepository;
 import com.works.repositories.CategoryGalleryRepository;
 import com.works.repositories.CategoryProductRepository;
@@ -22,7 +21,7 @@ public class CategoryDto {
     final CategoryAnnouncementRepository caRepo;
     final CategoryProductRepository cpRepo;
     final CategoryGalleryRepository cgRepo;
-    final com.works.Util.Util util;
+    final com.works.util.Util util;
 
     public CategoryDto(CategoryAnnouncementRepository caRepo, CategoryProductRepository cpRepo, CategoryGalleryRepository cgRepo, Util util) {
         this.caRepo = caRepo;

@@ -1,6 +1,6 @@
 package com.works.dto;
 
-import com.works.Util.Util;
+import com.works.util.Util;
 import com.works.entities.Product;
 import com.works.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
