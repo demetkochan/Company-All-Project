@@ -9,5 +9,8 @@ import java.util.List;
 public interface CategoryAnnouncementRepository extends JpaRepository<CategoryAnnouncement,Integer> {
     List<CategoryAnnouncement> findByOrderByIdAsc(Pageable pageable);
 
+   // List<CategoryAnnouncement> findByNews_categoryNameAllIgnoreCase(String newscategoryName);
+
+
 
 }
