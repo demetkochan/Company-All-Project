@@ -71,6 +71,36 @@ $("#size").on("change",function (){
 
 })
 
+/*
+let nSearch;
+$("#nsearch").on("change",function () {
+    console.log("Tıklanıldı")
+    nSearch = (this.value)
+    const newSearch= nSearch
+})
+    function newsCategoryResult(newSearch) {
+        $.ajax({
+            url: './category_mvc/newsSearch' + newSearch,
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                createRow(data)
+            },
+            error: function (err) {
+                console.log(err)
+                alert("İşlem işlemi sırısında bir hata oluştu!");
+            }
+        })
+    }
+
+newsCategoryResult(newSearch)
+
+*/
+
+
+
+
 function allNewsCategoryResult(page,size){
     $.ajax({
         url: './category_mvc/newsList/'+page+'/'+size,
@@ -180,6 +210,27 @@ $('#addProductCategory').submit((event) => {
     })
 })
 //-----------------------------------------Product Category Add Finish--------------------------------------------------------//
+
+//----------------------------------------Product Category Search----------------------------------------------//
+/*
+let psearch=" ";
+function productCategoryResult(psearch){
+    $.ajax({
+        url: './category_mvc/productSearch'+psearch,
+        type: 'POST',
+        contentType : 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(data)
+            createRo(data)
+        },
+        error: function (err) {
+            console.log(err)
+            alert("İşlem işlemi sırısında bir hata oluştu!");
+        }
+    })
+}
+productCategoryResult()
+*/
 
 //--------------------------------------------Product Category list  --------------------------------------------//
 function allProductCategoryResult(){

@@ -155,6 +155,23 @@ public class CategoryController {
         return productUpdate;
 
     }
+    /*
+    @ResponseBody
+    @PostMapping("/productSearch/{StrPro}")
+    public List<CategoryProduct> search(String StrPro){
+        List<CategoryProduct> psearchList=cpRepo.findByProduct_categoryNameContainsAllIgnoreCase(StrPro);
+        return psearchList;
+
+    }
+    @ResponseBody
+    @PostMapping("/newsSearch/{StrNew}")
+    public List<CategoryAnnouncement> newsearch(String StrNew){
+        List<CategoryAnnouncement> nsearchList=caRepo.findByNews_categoryNameAllIgnoreCase(StrNew);
+        return nsearchList;
+
+    }
+*/
+
 
     @ResponseBody
     @GetMapping("/productList")
