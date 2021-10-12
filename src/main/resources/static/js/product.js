@@ -117,7 +117,8 @@ function createRow(data){
                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                     <button onclick="fncProductUpdate(`+i+`)" type="button" data-bs-toggle="modal" data-bs-target="#product" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button>
                     <button onclick="fncProductDelete(`+itm.id+`)" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
-
+                 <!--   <a  th:href="@{/uploadImage}" class="btn btn-outline-primary">Resim Ekle</a>
+-->
                </div>
           </td>
 
@@ -125,6 +126,10 @@ function createRow(data){
     }
     $("#productRow").html(html)
 }
+/*function fncAddImage(){
+    $(window).attr('location','https://localhost:8080/uploadImage_mvc')
+
+}*/
 
 
 //Product delete - start
