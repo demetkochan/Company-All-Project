@@ -24,9 +24,9 @@
   <div class="row mb-3 mt-3">
     <div class="col-sm-4 mb-3 mt-3">
       <h6>Sayfa başına <select class="form-select-sm">
-        <option value="1">5</option>
-        <option value="2">10</option>
-        <option value="3">15</option>
+        <option value="1">10</option>
+        <option value="2">20</option>
+        <option value="3">30</option>
       </select> kayıt göster. </h6>
     </div>
     <div class="col-sm-4"></div>
@@ -49,19 +49,20 @@
       <th scope="col">Soyadı</th>
       <th scope="col">Email</th>
       <th scope="col">Telefon</th>
-      <th scope="col">Şifre Değiştir</th>
+      <th scope="col">İşlemler</th>
       <th scope="col">Sil</th>
     </tr>
     </thead>
+
     <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>8798546</td>
-      <td>şifre değiştir</td>
-      <td>sil</td>
+    <tr th:each="item,iter : ${ls}">
+      <td th:text="${item.id}"></td>
+      <td th:text="${item.cname}"></td>
+      <td th:text="${item.csurname}"></td>
+      <td th:text="${item.cemail}"></td>
+      <td th:text="${item.cphone}"></td>
+      <!--<td><a onclick="return fncDelete();" th:href=" @{'/userDelete/' + ${item.id}} " class="btn btn-danger btn-sm">Delete</a> </td>
+      <td><a th:href=" @{'/userUpdate/' + ${item.uid}} " class="btn btn-info btn-sm">Update</a> </td> -->
     </tr>
     </tbody>
   </table>
@@ -82,23 +83,23 @@
           </div>
           <hr/>
 
-          <form id="addCustomer" name="labAdd"   method="post" enctype="multipart/form-data">
+          <form id="addCustomer" name="addCustomer"   method="post">
             <div class="row mb-3">
               <div class="col-md-6">
-                <label for="customer_name" class="form-label">Müşteri Adı</label>
-                <input class="form-control" type="text" name="customer_name" id="customer_name" placeholder="Adı">
+                <label for="cname" class="form-label">Müşteri Adı</label>
+                <input class="form-control" type="text" name="cname" id="cname" placeholder="Adı">
               </div>
               <div class="col-md-6">
-                <label for="customer_surname" class="form-label">Müşteri Soyadı</label>
-                <input class="form-control" type="text" id="customer_surname" name="customer_surname" placeholder="Soyadı">
+                <label for="csurname" class="form-label">Müşteri Soyadı</label>
+                <input class="form-control" type="text" id="csurname" name="csurname" placeholder="Soyadı">
               </div>
               <div class="col-md-6">
-                <label for="customer_email" class="form-label">Email</label>
-                <input class="form-control" type="text" id="customer_email" name="customer_email" placeholder="email">
+                <label for="cemail" class="form-label">Email</label>
+                <input class="form-control" type="text" id="cemail" name="cemail" placeholder="email">
               </div>
               <div class="col-md-6">
-                <label for="customer_phone" class="form-label">Telefon</label>
-                <input class="form-control" type="number" id="customer_phone" placeholder="Telefon">
+                <label for="cphone" class="form-label">Telefon</label>
+                <input class="form-control" type="number" id="cphone" name="cphone" placeholder="Telefon">
               </div>
 
 
