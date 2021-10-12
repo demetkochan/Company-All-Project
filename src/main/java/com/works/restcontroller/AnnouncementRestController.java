@@ -3,6 +3,7 @@ package com.works.restcontroller;
 import com.works.dto.AnnouncementDto;
 import com.works.entities.Announcement;
 import com.works.entities.Content;
+import com.works.entities.News;
 import com.works.entities.NewsInterLayer;
 import com.works.util.ERest;
 import org.springframework.validation.BindingResult;
@@ -38,6 +39,10 @@ public class AnnouncementRestController {
         return announcementDto.Announcementdelete(strIndex);
     }
 
+    @PutMapping("/update")
+    public Map<ERest, Object> update(@RequestBody @Valid Announcement announcement, BindingResult bindingResult) {
+        return announcementDto.announcementUpdate(announcement,bindingResult);
+    }
     //----------------------------------------Haber---------------------------------------//
 
     @PostMapping("/upload")
@@ -56,6 +61,9 @@ public class AnnouncementRestController {
         return announcementDto.newsdelete(strlid);
     }
 
-
+    @PutMapping("/updateNews")
+    public Map<ERest, Object> update(@RequestBody @Valid News news, BindingResult bindingResult) {
+        return announcementDto.newsUpdate(news,bindingResult);
+    }
 
 }

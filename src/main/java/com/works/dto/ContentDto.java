@@ -1,5 +1,6 @@
 package com.works.dto;
 
+import com.works.entities.Product;
 import com.works.util.Util;
 import com.works.entities.Content;
 import com.works.repositories.ContentRepository;
@@ -7,10 +8,7 @@ import com.works.util.ERest;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ContentDto {
@@ -83,6 +81,44 @@ public class ContentDto {
         hm.put(ERest.status,true);
         List<Content> ls = cRepo.process(cuid);
         hm.put(ERest.result,ls);
+        return hm;
+    }
+
+    //içerik güncelleme
+    public Map<ERest, Object> contentUpdate(Content content, BindingResult bindingResult) {
+        Map<ERest, Object> hm = new LinkedHashMap<>();
+        if (!bindingResult.hasErrors()){
+            if ( content.getId() != null ) {
+
+                Optional<Content> oContent = cRepo.findById(content.getId());
+                if ( oContent.isPresent() ) {
+                    try {
+                        cRepo.saveAndFlush(content);
+                        hm.put(ERest.status, true);
+                        hm.put(ERest.message, "Güncelleme başarılı");
+                        hm.put(ERest.result, content);
+                    }catch (Exception ex) {
+                        hm.put(ERest.status, false);
+
+                        hm.put(ERest.result, content);
+                    }
+
+                }else {
+                    hm.put(ERest.message, false);
+                    hm.put(ERest.status, "Update işlemi sırasında hata oluştu!");
+                    hm.put(ERest.result, content);
+                }
+
+            }else {
+                hm.put(ERest.status, false);
+                hm.put(ERest.message, "Update işlemi sırasında hata oluştu!");
+                hm.put(ERest.result, content);
+            }
+        }else {
+            hm.put(ERest.status,false);
+            hm.put(ERest.errors,util.errors(bindingResult));
+        }
+
         return hm;
     }
 

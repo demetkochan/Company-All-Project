@@ -4,6 +4,7 @@ import com.works.dto.CategoryDto;
 import com.works.entities.CategoryAnnouncement;
 import com.works.entities.CategoryGallery;
 import com.works.entities.CategoryProduct;
+import com.works.entities.Content;
 import com.works.util.ERest;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -56,5 +57,18 @@ final CategoryDto cDto;
     @DeleteMapping("/newsDelete/{strIndex}")
     public Map<ERest, Object> newsDelete(@PathVariable String strIndex){
         return cDto.announcementdelete(strIndex);
+    }
+
+    @PutMapping("/updateCategoryProduct")
+    public Map<ERest, Object> cpupdate(@RequestBody @Valid CategoryProduct categoryProduct, BindingResult bindingResult) {
+        return cDto.categoryProductUpdate(categoryProduct,bindingResult);
+    }
+    @PutMapping("/updateCategoryGallery")
+    public Map<ERest, Object> cgupdate(@RequestBody @Valid CategoryGallery categoryGallery, BindingResult bindingResult) {
+        return cDto.categoryGalleryUpdate(categoryGallery,bindingResult);
+    }
+    @PutMapping("/updateCategoryAnnouncement")
+    public Map<ERest, Object> caupdate(@RequestBody @Valid CategoryAnnouncement categoryAnnouncement, BindingResult bindingResult) {
+        return cDto.categoryAnnouncementUpdate(categoryAnnouncement,bindingResult);
     }
 }

@@ -1,9 +1,7 @@
 package com.works.dto;
 
+import com.works.entities.*;
 import com.works.util.Util;
-import com.works.entities.CategoryAnnouncement;
-import com.works.entities.CategoryGallery;
-import com.works.entities.CategoryProduct;
 import com.works.repositories.CategoryAnnouncementRepository;
 import com.works.repositories.CategoryGalleryRepository;
 import com.works.repositories.CategoryProductRepository;
@@ -11,10 +9,7 @@ import com.works.util.ERest;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class CategoryDto {
@@ -170,6 +165,122 @@ public class CategoryDto {
         }
         return hm;
     }
+
+
+    public Map<ERest, Object> categoryProductUpdate(CategoryProduct categoryProduct, BindingResult bindingResult) {
+        Map<ERest, Object> hm = new LinkedHashMap<>();
+        if (!bindingResult.hasErrors()){
+            if ( categoryProduct.getId() != null ) {
+
+                Optional<CategoryProduct> oCategoryProduct = cpRepo.findById(categoryProduct.getId());
+                if ( oCategoryProduct.isPresent() ) {
+                    try {
+                        cpRepo.saveAndFlush(categoryProduct);
+                        hm.put(ERest.status, true);
+                        hm.put(ERest.message, "Güncelleme başarılı");
+                        hm.put(ERest.result, categoryProduct);
+                    }catch (Exception ex) {
+                        hm.put(ERest.status, false);
+
+                        hm.put(ERest.result, categoryProduct);
+                    }
+
+                }else {
+                    hm.put(ERest.message, false);
+                    hm.put(ERest.status, "Update işlemi sırasında hata oluştu!");
+                    hm.put(ERest.result, categoryProduct);
+                }
+
+            }else {
+                hm.put(ERest.status, false);
+                hm.put(ERest.message, "Update işlemi sırasında hata oluştu!");
+                hm.put(ERest.result, categoryProduct);
+            }
+        }else {
+            hm.put(ERest.status,false);
+            hm.put(ERest.errors,util.errors(bindingResult));
+        }
+
+        return hm;
+    }
+
+
+    public Map<ERest, Object> categoryGalleryUpdate(CategoryGallery categoryGallery, BindingResult bindingResult) {
+        Map<ERest, Object> hm = new LinkedHashMap<>();
+        if (!bindingResult.hasErrors()){
+            if ( categoryGallery.getId() != null ) {
+
+                Optional<CategoryGallery> optionalCategoryGallery = cgRepo.findById(categoryGallery.getId());
+                if ( optionalCategoryGallery.isPresent() ) {
+                    try {
+                        cgRepo.saveAndFlush(categoryGallery);
+                        hm.put(ERest.status, true);
+                        hm.put(ERest.message, "Güncelleme başarılı");
+                        hm.put(ERest.result, categoryGallery);
+                    }catch (Exception ex) {
+                        hm.put(ERest.status, false);
+
+                        hm.put(ERest.result, categoryGallery);
+                    }
+
+                }else {
+                    hm.put(ERest.message, false);
+                    hm.put(ERest.status, "Update işlemi sırasında hata oluştu!");
+                    hm.put(ERest.result, categoryGallery);
+                }
+
+            }else {
+                hm.put(ERest.status, false);
+                hm.put(ERest.message, "Update işlemi sırasında hata oluştu!");
+                hm.put(ERest.result, categoryGallery);
+            }
+        }else {
+            hm.put(ERest.status,false);
+            hm.put(ERest.errors,util.errors(bindingResult));
+        }
+
+        return hm;
+    }
+
+
+    //haber güncelleme
+    public Map<ERest, Object> categoryAnnouncementUpdate(CategoryAnnouncement categoryAnnouncement, BindingResult bindingResult) {
+        Map<ERest, Object> hm = new LinkedHashMap<>();
+        if (!bindingResult.hasErrors()){
+            if ( categoryAnnouncement.getId() != null ) {
+
+                Optional<CategoryAnnouncement> ocategoryAnnouncement = caRepo.findById(categoryAnnouncement.getId());
+                if ( ocategoryAnnouncement.isPresent() ) {
+                    try {
+                        caRepo.saveAndFlush(categoryAnnouncement);
+                        hm.put(ERest.status, true);
+                        hm.put(ERest.message, "Güncelleme başarılı");
+                        hm.put(ERest.result, categoryAnnouncement);
+                    }catch (Exception ex) {
+                        hm.put(ERest.status, false);
+
+                        hm.put(ERest.result, categoryAnnouncement);
+                    }
+
+                }else {
+                    hm.put(ERest.message, false);
+                    hm.put(ERest.status, "Update işlemi sırasında hata oluştu!");
+                    hm.put(ERest.result, categoryAnnouncement);
+                }
+
+            }else {
+                hm.put(ERest.status, false);
+                hm.put(ERest.message, "Update işlemi sırasında hata oluştu!");
+                hm.put(ERest.result, categoryAnnouncement);
+            }
+        }else {
+            hm.put(ERest.status,false);
+            hm.put(ERest.errors,util.errors(bindingResult));
+        }
+
+        return hm;
+    }
+
 
 
 

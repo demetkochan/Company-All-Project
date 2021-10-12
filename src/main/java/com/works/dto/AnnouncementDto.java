@@ -170,6 +170,83 @@ public class AnnouncementDto {
         return hm;
     }
 
+    //duyuru güncelleme
+    public Map<ERest, Object> announcementUpdate(Announcement announcement, BindingResult bindingResult) {
+        Map<ERest, Object> hm = new LinkedHashMap<>();
+        if (!bindingResult.hasErrors()){
+            if ( announcement.getId() != null ) {
+
+                Optional<Announcement> oAnnouncement = aRepo.findById(announcement.getId());
+                if ( oAnnouncement.isPresent() ) {
+                    try {
+                        aRepo.saveAndFlush(announcement);
+                        hm.put(ERest.status, true);
+                        hm.put(ERest.message, "Güncelleme başarılı");
+                        hm.put(ERest.result, announcement);
+                    }catch (Exception ex) {
+                        hm.put(ERest.status, false);
+
+                        hm.put(ERest.result, announcement);
+                    }
+
+                }else {
+                    hm.put(ERest.message, false);
+                    hm.put(ERest.status, "Update işlemi sırasında hata oluştu!");
+                    hm.put(ERest.result, announcement);
+                }
+
+            }else {
+                hm.put(ERest.status, false);
+                hm.put(ERest.message, "Update işlemi sırasında hata oluştu!");
+                hm.put(ERest.result, announcement);
+            }
+        }else {
+            hm.put(ERest.status,false);
+            hm.put(ERest.errors,util.errors(bindingResult));
+        }
+
+        return hm;
+    }
+
+    //haber güncelleme
+    public Map<ERest, Object> newsUpdate(News news, BindingResult bindingResult) {
+        Map<ERest, Object> hm = new LinkedHashMap<>();
+        if (!bindingResult.hasErrors()){
+            if ( news.getId() != null ) {
+
+                Optional<News> oNews = nRepo.findById(news.getId());
+                if ( oNews.isPresent() ) {
+                    try {
+                        nRepo.saveAndFlush(news);
+                        hm.put(ERest.status, true);
+                        hm.put(ERest.message, "Güncelleme başarılı");
+                        hm.put(ERest.result, news);
+                    }catch (Exception ex) {
+                        hm.put(ERest.status, false);
+
+                        hm.put(ERest.result, news);
+                    }
+
+                }else {
+                    hm.put(ERest.message, false);
+                    hm.put(ERest.status, "Update işlemi sırasında hata oluştu!");
+                    hm.put(ERest.result, news);
+                }
+
+            }else {
+                hm.put(ERest.status, false);
+                hm.put(ERest.message, "Update işlemi sırasında hata oluştu!");
+                hm.put(ERest.result, news);
+            }
+        }else {
+            hm.put(ERest.status,false);
+            hm.put(ERest.errors,util.errors(bindingResult));
+        }
+
+        return hm;
+    }
+
+
 
 }
 

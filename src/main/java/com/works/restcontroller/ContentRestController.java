@@ -2,6 +2,7 @@ package com.works.restcontroller;
 
 import com.works.dto.ContentDto;
 import com.works.entities.Content;
+import com.works.entities.Product;
 import com.works.util.ERest;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,11 @@ public class ContentRestController {
     @GetMapping("/contentProcess/{process_id}")
     public Map<ERest,Object> payOutList(@PathVariable String process_id){
         return contentDto.ContentProcess(process_id);
+    }
+
+    @PutMapping("/update")
+    public Map<ERest, Object> update(@RequestBody @Valid Content content, BindingResult bindingResult) {
+        return contentDto.contentUpdate(content,bindingResult);
     }
 
 }
