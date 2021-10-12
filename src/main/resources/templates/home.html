@@ -16,8 +16,15 @@
             <div class="card text-dark bg-light" style="max-width: 18rem; max-height: 18rem;">
                 <h5 class="card-header" style="background-color: #E5B86C; color: white">Ürünler</h5>
                 <div class="card-body">
-                    <p class="card-title" style="color: #398067;">Toplam Ürün</p>
-                    <a href="#" class="btn btn-outline-primary">Git</a>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="card-title" style="color: #398067;">Toplam Ürün</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p style="color: #398067;"><strong th:text="${sumProduct}">  </strong></p>
+                        </div>
+                    </div>
+                    <a th:href="@{/product_mvc}" class="btn btn-outline-primary">Git</a>
                 </div>
             </div>
 
@@ -27,8 +34,15 @@
             <div class="card text-dark bg-light" style="max-width: 18rem; max-height: 18rem;">
                 <h5 class="card-header" style="background-color: #E5B86C; color: white">Beğeni Yönetimi</h5>
                 <div class="card-body">
-                    <p class="card-title" style="color: #398067;">Toplam Beğeni</p>
-                    <a href="#" class="btn btn-outline-primary">Git</a>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="card-title" style="color: #398067;">Toplam Beğeni</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p class="text" style="color: #398067;"></p>
+                        </div>
+                    </div>
+                    <a th:href="@{/like_mvc}" class="btn btn-outline-primary">Git</a>
                 </div>
             </div>
         </div>
@@ -36,8 +50,16 @@
             <div class="card text-dark bg-light" style="max-width: 18rem; max-height: 18rem;">
                 <h5 class="card-header" style="background-color: #E5B86C; color: white" >İçerik Yönetimi</h5>
                 <div class="card-body">
-                    <p class="card-title" style="color: #398067;">Toplam İçerik</p>
-                    <a href="#" class="btn btn-outline-primary">Git</a>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="card-title" style="color: #398067;">Toplam İçerik</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p style="color: #398067;"><strong th:text="${sumContent}">  </strong></p>
+
+                        </div>
+                    </div>
+                    <a th:href="@{/content_mvc}" class="btn btn-outline-primary">Git</a>
                 </div>
             </div>
         </div>
@@ -45,10 +67,34 @@
             <div class="card text-dark bg-light" style="max-width: 18rem; max-height: 18rem;">
                 <h5 class="card-header" style="background-color: #E5B86C; color: white">Haber Yönetimi</h5>
                 <div class="card-body">
-                    <p class="card-title" style="color: #398067;">Toplam Haber</p>
-                    <p class="card-title" style="color: #398067;">Aktif Haber</p>
-                    <p class="card-title" style="color: #398067;">Pasif Haber</p>
-                    <a href="#" class="btn btn-outline-primary">Git</a>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="card-title" style="color: #398067;">Toplam Haber</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p style="color: #398067;"><strong th:text="${sumNews}">  </strong></p>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="card-title" style="color: #398067;">Aktif Haber</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p style="color: #398067;"><strong th:text="${sumNewsActive}">  </strong></p>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="card-title" style="color: #398067;">Pasif Haber</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p style="color: #398067;"><strong th:text="${sumNewsPassive}">  </strong></p>
+
+                        </div>
+                    </div>
+                    <a th:href="@{/announcement_mvc}" class="btn btn-outline-primary">Git</a>
                 </div>
             </div>
         </div>
@@ -57,7 +103,7 @@
                 <h5 class="card-header"style="background-color: #E5B86C; color: white">Sipariş Yönetimi</h5>
                 <div class="card-body">
                     <p class="card-title" style="color: #398067;">Toplam Sipariş</p>
-                    <a href="#" class="btn btn-outline-primary">Git</a>
+                    <a th:href="@{/order_mvc}" class="btn btn-outline-primary">Git</a>
                 </div>
             </div>
         </div>
@@ -67,7 +113,7 @@
                 <div class="card-body">
                     <p class="card-title" style="color: #398067;">Toplam Müşteri</p>
 
-                    <a href="#" class="btn btn-outline-primary">Git</a>
+                    <a th:href="@{/customer_mvc}" class="btn btn-outline-primary">Git</a>
                 </div>
             </div>
         </div>
@@ -85,8 +131,18 @@
             <div class="card text-dark bg-light" style="max-width: 18rem;">
                 <h5 class="card-header" style="background-color: #E5B86C; color: white">Duyuru Yönetimi</h5>
                 <div class="card-body">
-                    <p class="card-title" style="color: #398067;">Toplam Duyuru</p>
-                    <a href="#" class="btn btn-outline-primary">Git</a>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="card-title" style="color: #398067;">Toplam Duyuru</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p style="color: #398067;"><strong th:text="${sumAnnouncement}">  </strong></p>
+
+                        </div>
+                    </div>
+
+
+                    <a th:href="@{/announcement_mvc}" class="btn btn-outline-primary">Git</a>
                 </div>
             </div>
         </div>
