@@ -16,7 +16,7 @@
     <h3 style="color: #398067"><i class="far fa-image"></i> Resim Ekle <hr/></h3>
     <div class="row">
         <div class="col-sm-3 mb-3">
-    <a th:href="@{/product}"  class="btn btn-outline-danger"><i class="fas fa-backspace"></i> Geri</a>
+    <a th:href="@{/product_mvc}"  class="btn btn-outline-danger"><i class="fas fa-backspace"></i> Geri</a>
         </div>
     </div>
     <div class="card">
@@ -25,8 +25,12 @@
 
             <form class="row">
                 <div class="col">
-                    <label for="product_name" class="form-label">Ürün Adı</label>
-                    <input type="text" class="form-control" id="product_name">
+                    <label for="product" class="form-label">Ürün Adı</label>
+                    <select class="form-select"id="product" aria-label="Default select example">
+                        <option selected>Seçim yapınız</option>
+                        <option th:each="item,iter : ${products}" th:value="${item.id}" th:text="${item.product_name}"/>
+
+                    </select>
                 </div>
 
                 <div class="col">
@@ -47,12 +51,23 @@
 
 
     <div class="row mb-3 mt-3">
+
         <div class="col-sm-4 mb-3 mt-3">
             <h6>Sayfa başına <select class="form-select-sm">
                 <option value="1">5</option>
                 <option value="2">10</option>
                 <option value="3">15</option>
             </select> kayıt göster. </h6>
+        </div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 mt-3">
+            <div class="input-group">
+                <select class="form-select" id="select_process" name="select_process" aria-label="Example select with button addon">
+                    <option value="">-- Ürünler</option>
+                    <option th:each="item,iter : ${products}" th:value="${item.id}" th:text="${item.product_name}"/>
+                </select>
+                <button class="btn btn-outline-primary" type="button">Seç</button>
+            </div>
         </div>
     </div>
 

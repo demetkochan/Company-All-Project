@@ -44,6 +44,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/uploadImage_mvc/**").permitAll()
                 .antMatchers("/dashboard_mvc/**").hasRole("MVC")
                 .antMatchers("/category_mvc/**").hasRole("MVC")
                 .antMatchers("/content_mvc/**").hasRole("MVC")

@@ -20,9 +20,12 @@
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#product">
                 <i class="fas fa-plus-square"></i> Ürün Ekle
             </button>
+            <a  th:href="@{/uploadImage_mvc}" class="btn btn-outline-primary"><i class="far fa-images"></i> Resim Ekle</a>
 
         </div>
-        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+
+        </div>
         <div class="col-sm-3"></div>
         <div class="col-sm-3"></div>
     </div>
@@ -174,6 +177,15 @@
                             </div>
                             <div class="col-md-8 mb-3">
                                 <textarea class="form-control" id="campaign_desc" name="campaign_detail"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="news_image" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Resim Ekle</label>
+                            </div>
+                            <div class="col-md-8 mt-3 mb-3">
+                                <input class="form-control" type="file" id="news_image" name="news_image">
                             </div>
                         </div>
                         <div class="row">
