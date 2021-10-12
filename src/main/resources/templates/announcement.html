@@ -166,7 +166,7 @@
               <div class="col-md-4 mb-3">
                 <label for="news_image" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Resim Ekle</label>
               </div>
-              <div class="col-md-8 ">
+              <div class="col-md-8 mt-3">
                 <input class="form-control" type="file" id="news_image" name="news_image">
               </div>
             </div>
@@ -190,7 +190,7 @@
               </div>
               <div class="col-md-8 mt-3">
                 <select class="form-select" id="news_category" name="news_category" aria-label="Example select with button addon">
-
+                  <option value="">Seçiniz</option>
                   <option th:each="item,iter : ${categoryNews}" th:value="${item.id}" th:text="${item.news_categoryName}"/>
 
                 </select>
