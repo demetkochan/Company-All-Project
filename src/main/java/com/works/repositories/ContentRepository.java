@@ -10,4 +10,7 @@ public interface ContentRepository extends JpaRepository<Content,Integer> {
 
     @Query(value = " select * from CONTENT where CONTENT_STATUS = ?1 ",nativeQuery = true)
     List<Content> process(int pr);
+
+    @Query(value = "select count(id) from CONTENT",nativeQuery = true)
+    int countContent();
 }
