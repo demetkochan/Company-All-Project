@@ -42,11 +42,11 @@ public class SpringFoxConfig {
     }
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "Emine Şahsanem Demirel - Veteriner Klinik Rest Api",
-                "Veteriner Klinik Projesi: Admin -> m@mail.com, Doktor -> p@mail.com",
+                "Company All RestApi",
+                "Company All Projesi: Rest -> v@mail.com, MVC -> serkan@mail.com",
                 "API 1.0",
                 "Terms of service",
-                new Contact("Emine Şahsanem", "www.example.com", "sahsanem.demirel@gmail.com"),
+                new Contact("Demet, Emine Şahsanem, İlayda", "www.example.com", "www.google.com"),
                 "License of API", "http://google.com.tr", Collections.emptyList());
     }
 
