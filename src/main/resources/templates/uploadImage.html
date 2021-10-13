@@ -23,19 +23,19 @@
         <h5 class="card-header" style="background:#E5B86C; color: white" ><i class="fas fa-arrow-circle-up"></i> Ürüne Resim Ekle</h5>
         <div class="card-body">
 
-            <form class="row">
+            <form id="addProductImage" name="addProductImage" action="/uploadImage_mvc/imageUpload" th:object="${productImage}" method="post" enctype="multipart/form-data" >
                 <div class="col">
-                    <label for="product" class="form-label">Ürün Adı</label>
-                    <select class="form-select"id="product" aria-label="Default select example">
-                        <option selected>Seçim yapınız</option>
+                    <label for="product_id" class="form-label">Ürün Adı</label>
+                    <select class="form-select"id="product_id" name="product_id" aria-label="Default select example">
+                        <option>Seçim yapınız</option>
                         <option th:each="item,iter : ${products}" th:value="${item.id}" th:text="${item.productname}"/>
 
                     </select>
                 </div>
 
                 <div class="col">
-                    <label for="formFileMultiple" class="form-label"> Eklemek istediğiniz ürün fotoğrafını seçiniz.</label>
-                    <input class="form-control" type="file" id="formFileMultiple" multiple>
+                    <label for="product_image" class="form-label"> Eklemek istediğiniz ürün fotoğrafını seçiniz.</label>
+                    <input class="form-control" type="file" id="product_image" name="product_image">
                 </div>
 
                 <div class="row">
