@@ -15,7 +15,7 @@ function allCustomerResult(){
     })
 }
 allCustomerResult()
-//-------------------------------------------- Product table  --------------------------------------------//
+
 
 function fncReset(){
     select_id = 0;
@@ -48,4 +48,29 @@ function createRow(data){
         </tr>`
     }
     $("#customerRow").html(html)
+}
+
+function fncProductDelete( id ) {
+    let answer = confirm("Silmek istediğinize emin misiniz?")
+    if(answer){
+
+        $.ajax({
+            url:"./customer_mvc/delete/"+id,
+            type:"delete",
+            dataType: 'text',
+            success: function (data){
+                console.log(typeof data)
+                if( data != "0" ){
+                    alert("Silme İşlemi Başarılı!")
+                    allCustomerResult()
+                    fncReset()
+                }else {
+                    alert("Silme sırasında bir hata oluştu.")
+                }
+            },
+            error: function (err){
+                console.log(err)
+            }
+        })
+    }
 }
