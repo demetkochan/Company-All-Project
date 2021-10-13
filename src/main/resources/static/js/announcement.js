@@ -227,6 +227,7 @@ function createRo(data){
                
              <th scope="row">`+type+`</th>
             <td>${itm.news_category}</td>
+            <td>${itm.news_title}</td>
             <td>${itm.news_desc}</td>
              <td>${itm.news_detail_desc}</td>
             <td>${dateToFormat(itm.createdDate)}</td>
