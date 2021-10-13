@@ -3,7 +3,7 @@ $('#contentAdd').submit((event) => {
     event.preventDefault();
 
 
-    const content_title = $("#content_title").val()
+    const contenttitle = $("#contenttitle").val()
     const content_desc = $("#content_desc").val()
     const content_detail_desc = CKEDITOR.instances['content_detail_desc'].document.getBody().getText();
     const content_date = $("#content_date").val()
@@ -11,7 +11,7 @@ $('#contentAdd').submit((event) => {
 
 
     const obj = {
-        content_title: content_title,
+        contenttitle: contenttitle,
         content_desc: content_desc,
         content_detail_desc: content_detail_desc,
         content_date: content_date,
@@ -31,7 +31,7 @@ $('#contentAdd').submit((event) => {
         success: function (data) {
             if (data) {
                 console.log(data)
-                $("#content_title").val(" ")
+                $("#contenttitle").val(" ")
                 $("#content_desc").val(" ")
                 $("#content_detail_desc").val(" ")
                 $("#content_date").val(" ")
@@ -97,7 +97,7 @@ function createRow(data){
 
         html += `<tr>
           <th scope="row">`+type+`</th>
-          <td>${itm.content_title}</td>
+          <td>${itm.contenttitle}</td>
           <td>${itm.content_desc}</td>
           <td>${itm.content_detail_desc}</td>
           <td>${dateToFormat(itm.content_date)}</td>
@@ -153,7 +153,7 @@ function fncContentUpdate(i){
 
     select_id = itm.id
     console.log(itm.content_detail_desc)
-    $("#content_title").val(itm.content_title)
+    $("#contenttitle").val(itm.contenttitle)
     $("#content_desc").val(itm.content_desc)
     CKEDITOR.instances['content_detail_desc'].setData(itm.content_detail_desc)
     $("#content_date").val(itm.content_date)
@@ -199,6 +199,31 @@ function allContentResult1(pr){
 
 
 //Content update - end
+
+//content search
+$("#csearch").keyup(function () {
+
+    const csearch = $("#csearch").val()
+    if( csearch != "") {
+        $.ajax({
+            url: './content_mvc/search/' + csearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                createRow(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allContentResult()
+    }
+})
+
+
 
 
 

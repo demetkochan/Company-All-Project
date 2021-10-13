@@ -2,10 +2,10 @@ $('#addNewsCategory').submit((event) => {
     console.log("Tıklandı.")
     event.preventDefault();
 
-    const news_categoryName = $("#news_categoryName").val()
+    const newscategoryname = $("#newscategoryname").val()
 
     const obj = {
-        news_categoryName: news_categoryName,
+        newscategoryname: newscategoryname,
     }
     if ( select_id != 0 ) {
         // update
@@ -21,7 +21,7 @@ $('#addNewsCategory').submit((event) => {
         success: function (data) {
             if (data) {
                 console.log(data)
-                $("#news_categoryName").val(" ")
+                $("#newscategoryname").val(" ")
                 allNewsCategoryResult()
             } else {
                 console.log("Veri dönmedi.")
@@ -127,7 +127,7 @@ function createRow(data){
         const itm = data[i]
         html += `<tr>
           <th scope="row">${itm.id}</th>
-          <td>${itm.news_categoryName}</td>
+          <td>${itm.newscategoryname}</td>
            <td class="text-right" >
                <div class="btn-group" role="group">
                     <button onclick="fncNewsCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryNewsAddModal">Güncelle</button>
@@ -169,7 +169,7 @@ function fncNewsCategoryUpdate( i ) {
     const item = globalArr[i];
     select_id = item.id
     console.log(select_id)
-    $("#news_categoryName").val(item.news_categoryName)
+    $("#newscategoryname").val(item.newscategoryname)
 }
 
 //-------------------------------------------------Product------------------------------------------------------//
@@ -178,10 +178,10 @@ $('#addProductCategory').submit((event) => {
     console.log("Tıklandı.")
     event.preventDefault();
 
-    const product_categoryName = $("#product_categoryName").val()
+    const productcategoryname = $("#productcategoryname").val()
 
     const obj = {
-        product_categoryName: product_categoryName,
+        productcategoryname: productcategoryname,
     }
     if ( select_pid != 0 ) {
         // update
@@ -197,7 +197,7 @@ $('#addProductCategory').submit((event) => {
         success: function (data) {
             if (data) {
                 console.log(data)
-                $("#product_categoryName").val(" ")
+                $("#productcategoryname").val(" ")
                 allProductCategoryResult()
             } else {
                 console.log("Veri dönmedi.")
@@ -259,7 +259,7 @@ function createRo(data){
         const itm = data[i]
         html += `<tr>
           <th scope="row">${itm.id}</th>
-          <td>${itm.product_categoryName}</td>
+          <td>${itm.productcategoryname}</td>
            <td class="text-right" >
                <div class="btn-group" role="group">
                     <button onclick="fncProductCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryProductAddModal">Güncelle</button>
@@ -302,17 +302,17 @@ function fncProductCategoryUpdate( i ) {
     const item = globalAr[i];
     select_pid = item.id
     console.log(select_pid)
-    $("#product_categoryName").val(item.product_categoryName)
+    $("#productcategoryname").val(item.productcategoryname)
 }
 //--------------------------Gallery-------------------------------------------------//
 $('#addGalleryCategory').submit((event) => {
     console.log("Tıklandı.")
     event.preventDefault();
 
-    const gallery_categoryName = $("#gallery_categoryName").val()
+    const gallerycategoryname = $("#gallerycategoryname").val()
 
     const obj = {
-        gallery_categoryName: gallery_categoryName,
+        gallerycategoryname: gallerycategoryname,
     }
     if ( select_gid != 0 ) {
         // update
@@ -328,7 +328,7 @@ $('#addGalleryCategory').submit((event) => {
         success: function (data) {
             if (data) {
                 console.log(data)
-                $("#gallery_categoryName").val(" ")
+                $("#gallerycategoryname").val(" ")
                 allGalleryCategoryResult()
             } else {
                 console.log("Veri dönmedi.")
@@ -369,7 +369,7 @@ function cRow(data){
         const itm = data[i]
         html += `<tr>
           <th scope="row">${itm.id}</th>
-          <td>${itm.gallery_categoryName}</td>
+          <td>${itm.gallerycategoryname}</td>
            <td class="text-right" >
                <div class="btn-group" role="group">
                     <button onclick="fncGalleryCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryGalleryAddModal">Güncelle</button>
@@ -411,5 +411,78 @@ function fncGalleryCategoryUpdate( i ) {
     const item = globalarr[i];
     select_gid = item.id
     console.log(select_gid)
-    $("#gallery_categoryName").val(item.gallery_categoryName)
+    $("#gallerycategoryname").val(item.gallerycategoryname)
+
 }
+
+
+//news search
+$("#nsearch").keyup(function () {
+
+    const nsearch = $("#nsearch").val()
+    if( nsearch != "") {
+        $.ajax({
+            url: './category_mvc/searchNews/' + nsearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                createRow(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allNewsCategoryResult()
+    }
+})
+
+
+//product category search
+$("#psearch").keyup(function () {
+
+    const psearch = $("#psearch").val()
+    if( psearch != "") {
+        $.ajax({
+            url: './category_mvc/searchProduct/' + psearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                createRo(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+       allProductCategoryResult()
+    }
+})
+
+
+//gallery category search
+$("#gsearch").keyup(function () {
+
+    const gsearch = $("#gsearch").val()
+    if( gsearch != "") {
+        $.ajax({
+            url: './category_mvc/searchGallery/' + gsearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                cRow(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allGalleryCategoryResult()
+    }
+})

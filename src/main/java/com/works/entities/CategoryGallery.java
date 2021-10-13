@@ -15,5 +15,5 @@ public class CategoryGallery {
     private Integer id;
     @NotNull(message = "Kategori adı Null Olamaz")
     @NotEmpty(message = "Kategori adı Boş olamaz")
-    private String gallery_categoryName;
+    private String gallerycategoryname;
 }

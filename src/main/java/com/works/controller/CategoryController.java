@@ -1,9 +1,6 @@
 package com.works.controller;
 
-import com.works.entities.CategoryAnnouncement;
-import com.works.entities.CategoryGallery;
-import com.works.entities.CategoryProduct;
-import com.works.entities.Content;
+import com.works.entities.*;
 import com.works.repositories.CategoryAnnouncementRepository;
 import com.works.repositories.CategoryGalleryRepository;
 import com.works.repositories.CategoryProductRepository;
@@ -194,6 +191,31 @@ public class CategoryController {
 
         return status;
 
+    }
+
+
+    @ResponseBody
+    @GetMapping("/searchGallery/{data}")
+    public List<CategoryGallery> cgsearch(@PathVariable String data) {
+        List<CategoryGallery> ls = cgRepo.findByGallerycategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data);
+        System.out.println(ls);
+        return ls;
+    }
+
+    @ResponseBody
+    @GetMapping("/searchNews/{data}")
+    public List<CategoryAnnouncement> nsearch(@PathVariable String data) {
+        List<CategoryAnnouncement> ls = caRepo.findByNewscategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data);
+        System.out.println(ls);
+        return ls;
+    }
+
+    @ResponseBody
+    @GetMapping("/searchProduct/{data}")
+    public List<CategoryProduct> psearch(@PathVariable String data) {
+        List<CategoryProduct> ls = cpRepo.findByProductcategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data);
+        System.out.println(ls);
+        return ls;
     }
 
 }

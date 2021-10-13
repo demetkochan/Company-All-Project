@@ -33,7 +33,7 @@
       <div class="input-group">
         <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
           <option value="0">-- Kategoriler</option>
-          <option th:each="item,iter : ${categoryNews}" th:value="${item.id}" th:text="${item.news_categoryName}"/>
+          <option th:each="item,iter : ${categoryNews}" th:value="${item.id}" th:text="${item.newscategoryname}"/>
         </select>
         <button class="btn btn-outline-primary" type="button">Seç</button>
       </div>
@@ -191,7 +191,7 @@
               <div class="col-md-8 mt-3">
                 <select class="form-select" id="news_category" name="news_category" aria-label="Example select with button addon">
                   <option value="">Seçiniz</option>
-                  <option th:each="item,iter : ${categoryNews}" th:value="${item.id}" th:text="${item.news_categoryName}"/>
+                  <option th:each="item,iter : ${categoryNews}" th:value="${item.id}" th:text="${item.newscategoryname}"/>
 
                 </select>
               </div>

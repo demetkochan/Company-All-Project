@@ -2,7 +2,7 @@ $('#addProductCategory').submit((event) => {
     console.log("Tıklandı.")
     event.preventDefault();
 
-    const product_categoryName = $("#product_categoryName").val()
+    const productcategoryname = $("#productcategoryname").val()
 
     const obj = {
         product_categoryName: product_categoryName,
@@ -17,7 +17,7 @@ $('#addProductCategory').submit((event) => {
         success: function (data) {
             if (data) {
                 console.log(data)
-                $("#product_categoryName").val(" ")
+                $("#productcategoryname").val(" ")
             } else {
                 console.log("Veri dönmedi.")
             }
@@ -57,7 +57,7 @@ function createRow(data){
         const itm = data[i]
         html += `<tr>
           <th scope="row">${itm.id}</th>
-          <td>${itm.product_categoryName}</td>
+          <td>${itm.productcategoryname}</td>
            <td class="text-right" >
                <div class="btn-group" role="group">
                     <button onclick="fncProductCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryNewsUpdateModal">Güncelle</button>
@@ -99,6 +99,6 @@ function fncProductCategoryUpdate( i ) {
     const item = globalArr[i];
     select_id = item.id
     console.log(select_id)
-    $("#product_categoryName").val(item.product_categoryName)
+    $("#productcategoryname").val(item.productcategoryname)
 }
 
