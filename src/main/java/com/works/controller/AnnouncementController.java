@@ -1,9 +1,6 @@
 package com.works.controller;
 
-import com.works.entities.Announcement;
-import com.works.entities.Content;
-import com.works.entities.News;
-import com.works.entities.NewsInterLayer;
+import com.works.entities.*;
 import com.works.repositories.AnnouncementRepository;
 import com.works.repositories.NewsRepository;
 import com.works.services.UtilServices;
@@ -126,7 +123,7 @@ public class AnnouncementController {
         News news1 = new News();
 
         news1.setNews_image(fileName);
-        news1.setNews_title(news.getNews_title());
+        news1.setNewstitle(news.getNews_title());
         news1.setNews_detail_desc(news.getNews_detail_desc());
         news1.setNews_desc(news.getNews_desc());
         news1.setNews_status(news.getNews_status());
@@ -184,7 +181,21 @@ public class AnnouncementController {
 
 
 
+    @ResponseBody
+    @GetMapping("/searchAnnouncement/{data}")
+    public List<Announcement> asearch(@PathVariable String data) {
+        List<Announcement> ls = aRepo.findByAnnouncementtitleContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data);
+        System.out.println(ls);
+        return ls;
+    }
 
+    @ResponseBody
+    @GetMapping("/searchNews/{data}")
+    public List<News> nsearch(@PathVariable String data) {
+        List<News> ls = nRepo.findByNewstitleContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data);
+        System.out.println(ls);
+        return ls;
+    }
 
 
 }

@@ -19,7 +19,7 @@ public class Announcement {
 
     @NotNull(message = "Duyuru Başlığı null olamaz")
     @NotEmpty(message = "Duyuru Başlığı boş olamaz")
-    private String announcement_title;
+    private String announcementtitle;
 
     @NotNull(message = "Duyuru detayı null olamaz")
     @NotEmpty(message = "Duyuru detayı boş olamaz")

@@ -13,7 +13,7 @@ public class News extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "n_id", nullable = false)
     private Integer id;
-    private String news_title;
+    private String newstitle;
     private String news_desc;
     private String news_detail_desc;
     private String news_image;

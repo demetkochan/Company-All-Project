@@ -3,6 +3,7 @@ package com.works.repositories;
 import com.works.entities.Announcement;
 import com.works.entities.Content;
 import com.works.entities.News;
+import com.works.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -25,6 +26,8 @@ public interface NewsRepository extends JpaRepository<News, Integer> {
 
     @Query(value = "select * from NEWS where news_status = ?1",nativeQuery = true)
     List<News> statusproces(int a);
+
+    List<News> findByNewstitleContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(String newstitle);
 
 
 

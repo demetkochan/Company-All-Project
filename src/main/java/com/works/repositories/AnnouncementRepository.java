@@ -15,5 +15,6 @@ public interface AnnouncementRepository extends JpaRepository<Announcement,Integ
 
     @Query(value = " select * from ANNOUNCEMENT where announcement_status = ?1 ",nativeQuery = true)
     List<Announcement> process(int a);
+    List<Announcement> findByAnnouncementtitleContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(String announcementtitle);
 
 }

@@ -2,14 +2,14 @@ $('#announcementAdd').submit((event) => {
     console.log("Duyuru ekle Tıklanıldı")
     event.preventDefault();
 
-    const announcement_title = $("#announcement_title").val()
+    const announcementtitle = $("#announcementtitle").val()
     const announcement_detail_desc = CKEDITOR.instances['announcement_detail_desc'].document.getBody().getText();
     const announcement_date = $("#announcement_date").val()
     const announcement_status = $("#announcement_status").val()
 
 
     const obj = {
-        announcement_title: announcement_title,
+        announcementtitle: announcementtitle,
         announcement_detail_desc: announcement_detail_desc,
         announcement_status: announcement_status,
         announcement_date:announcement_date
@@ -30,7 +30,7 @@ $('#announcementAdd').submit((event) => {
         success: function (data) {
             if (data) {
                 console.log(data)
-                $("#announcement_title").val(" ")
+                $("#announcementtitle").val(" ")
                 $("#announcement_detail_desc").val(" ")
                 $("#announcement_status").val(" ")
                 $("#announcement_date").val(" ")
@@ -91,7 +91,7 @@ function createRow(data){
 
         html += `<tr>
           <th scope="row">`+type+`</th>
-          <td>${itm.announcement_title}</td>
+          <td>${itm.announcementtitle}</td>
           <td>${itm.announcement_detail_desc}</td>
           <td>${dateToFormat(itm.announcement_date)}</td>
 
@@ -176,7 +176,7 @@ function fncAnnouncementUpdate(i){
     const itm = globalArr[i];
 
     select_id = itm.id
-    $("#announcement_title").val(itm.announcement_title)
+    $("#announcementtitle").val(itm.announcementtitle)
     CKEDITOR.instances['announcement_detail_desc'].setData(itm.announcement_detail_desc)
     $("#announcement_date").val(itm.announcement_date)
     $("#announcement_status").val(itm.announcement_status)
@@ -227,7 +227,7 @@ function createRo(data){
                
              <th scope="row">`+type+`</th>
             <td>${itm.news_category}</td>
-            <td>${itm.news_title}</td>
+            <td>${itm.newstitle}</td>
             <td>${itm.news_desc}</td>
              <td>${itm.news_detail_desc}</td>
             <td>${dateToFormat(itm.createdDate)}</td>
@@ -248,8 +248,8 @@ function createRo(data){
 function fncView( i ) {
     const itm = newsResultArr[i];
     console.log(itm.news_image)
-    console.log(itm.news_title)
-    $("#news_titl").text(itm.news_title)
+    console.log(itm.newstitle)
+    $("#news_titl").text(itm.newstitle)
     $("#imgID").attr('src','/uploads/'+itm.news_image)
 
 }
@@ -349,6 +349,51 @@ function allNewsResult2(n){
 
 
 
+//duyuru search
+$("#dsearch").keyup(function () {
+
+    const dsearch = $("#dsearch").val()
+    if( dsearch != "") {
+        $.ajax({
+            url: './announcement_mvc/searchAnnouncement/' + dsearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                createRow(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allAnnouncementResult()
+    }
+})
+
+//news search
+$("#nsearch").keyup(function () {
+
+    const nsearch = $("#nsearch").val()
+    if( nsearch != "") {
+        $.ajax({
+            url: './announcement_mvc/searchNews/' + nsearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                createRo(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allNewsResult()
+    }
+})
 
 
 //-------------------------------------------- Date Format   --------------------------------------------//
