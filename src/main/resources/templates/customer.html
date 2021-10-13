@@ -61,8 +61,8 @@
       <td th:text="${item.csurname}"></td>
       <td th:text="${item.cemail}"></td>
       <td th:text="${item.cphone}"></td>
-      <!--<td><a onclick="return fncDelete();" th:href=" @{'/userDelete/' + ${item.id}} " class="btn btn-danger btn-sm">Delete</a> </td>
-      <td><a th:href=" @{'/userUpdate/' + ${item.uid}} " class="btn btn-info btn-sm">Update</a> </td> -->
+      <td><a onclick="return fncDelete();" th:href=" @{'customer_mvc/Delete/' + ${item.id}} " class="btn btn-danger btn-sm">Delete</a> </td>
+      <td><a th:href=" @{'customer_mvc/Update/' + ${item.id}} " class="btn btn-info btn-sm">Update</a> </td>
     </tr>
     </tbody>
   </table>
@@ -118,5 +118,11 @@
   </div>
 
 </th:block>
+
+<script>
+  function fncDelete(){
+    return confirm("Emin misiniz?");
+  }
+</script>
 </body>
 </html>

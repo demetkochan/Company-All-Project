@@ -3,6 +3,7 @@ package com.works.controller;
 import com.works.entities.Customer;
 import com.works.entities.Product;
 import com.works.entities.Role;
+import com.works.entities.User;
 import com.works.repositories.CustomerRepository;
 import com.works.repositories.RoleRepository;
 import org.springframework.stereotype.Controller;
@@ -48,7 +49,32 @@ public class CustomerController {
         }
         return "customer";
     }
+    Customer customerUpdate=new Customer();
+
+    @GetMapping("/Delete/{stid}")
+    public String customerDelete(@PathVariable String stid){
+        try{
+            int id=Integer.parseInt(stid);
+            cRepo.deleteById(id);
+            customerUpdate=new Customer();
+        }catch (Exception e){
+            System.out.println("Silme sırasında hata oluştu.");
+        }
+
+        return "redirect:/";
+    }
 
 
+    @GetMapping("/Update/{stid}")
+    public String customerUpdate(@PathVariable String stid){
+        try{
+            int id=Integer.parseInt(stid);
+            customerUpdate=cRepo.findById(id).get();
+        }catch (Exception e){
+            System.out.println("Update sırasında hata oluştu.");
+        }
+
+        return "redirect:/";
+    }
 
 }
