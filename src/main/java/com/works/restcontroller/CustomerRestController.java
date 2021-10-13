@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/customer_rest")
 public class CustomerRestController {
  final CustomerDto cDto;
 

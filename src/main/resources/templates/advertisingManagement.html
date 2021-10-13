@@ -43,33 +43,18 @@
     <table class="table table-hover">
         <thead  style="background:#E5B86C; color: white">
         <tr>
+            <th scope="col" >Id</th>
             <th scope="col" >Adı</th>
             <th scope="col">Gösterim</th>
-            <th scope="col">Tıklanma</th>
-            <th scope="col">Başlangıç</th>
-            <th scope="col">Bitiş</th>
-            <th scope="col">Resim</th>
             <th scope="col">Genişlik</th>
             <th scope="col">Yükseklik</th>
+            <th scope="col">Başlangıç</th>
+            <th scope="col">Bitiş</th>
             <th scope="col">Link</th>
-            <th scope="col">Durum</th>
             <th scope="col">İşlemler</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-        </tr>
+        <tbody id="advRow">
         </tbody>
     </table>
     <!---Tablo Bitiş-->
@@ -113,39 +98,39 @@
                     </div>
                     <hr/>
 
-                    <form id="labAdd" name="labAdd"   method="post" enctype="multipart/form-data">
+                    <form id="advertisingAdd" name="advertisingAdd" action="/advertising_mvc/imageUpload" th:object="${advertising}"  method="post" enctype="multipart/form-data">
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="adv_name" class="form-label">Reklam Adı</label>
-                                <input class="form-control" type="text" id="adv_name" placeholder="Reklam Adı">
+                                <label for="advTitle" class="form-label">Reklam Adı</label>
+                                <input class="form-control" type="text" id="advTitle" name="advTitle" placeholder="Reklam Adı">
                             </div>
                             <div class="col-md-6">
-                                <label for="view" class="form-label">Gösterim Sayısı</label>
-                                <input class="form-control" type="text" id="view">
+                                <label for="screentime" class="form-label">Gösterim Sayısı</label>
+                                <input class="form-control" type="text" id="srceentime" name="srceentime">
                             </div>
                             <div class="col-md-6 mt-3">
-                                <label for="start_date" class="form-label">Başlangıç Tarihi</label>
-                                <input class="form-control" type="text" id="start_date" placeholder="Başlangıç Tarihi">
+                                <label for="starttime" class="form-label">Başlangıç Tarihi</label>
+                                <input class="form-control" type="date" id="starttime" name="starttime" placeholder="Başlangıç Tarihi">
                             </div>
                             <div class="col-md-6 mt-3">
-                                <label for="finish_date" class="form-label">Bitiş Tarihi</label>
-                                <input class="form-control" type="text" id="finish_date" placeholder="Bitiş Tarihi">
+                                <label for="endtime" class="form-label">Bitiş Tarihi</label>
+                                <input class="form-control" type="date" id="endtime" name="endtime" placeholder="Bitiş Tarihi">
                             </div>
                             <div class="col-md-6 mb-3 mt-3">
-                                <label for="adv_width" class="form-label">Genişlik</label>
-                                <input class="form-control" type="text" id="adv_width" placeholder="Genişlik">
+                                <label for="width" class="form-label">Genişlik</label>
+                                <input class="form-control" type="text" id="width" name="width"  placeholder="Genişlik">
                             </div>
                             <div class="col-md-6 mb-3 mt-3">
-                                <label for="adv_heigth" class="form-label">Yükseklik</label>
-                                <input class="form-control" type="text" id="adv_heigth" placeholder="Yükseklik">
+                                <label for="height" class="form-label">Yükseklik</label>
+                                <input class="form-control" type="text" id="height" name="height" placeholder="Yükseklik">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="imageName" class="form-label">Dosya Seçiniz</label>
                                 <input class="form-control" type="file" id="imageName" name="imageName">
                             </div>
                             <div class="col-md-6 mb-3 ">
-                                <label for="adv_link" class="form-label">Reklam Linki</label>
-                                <input class="form-control" type="text" id="adv_link" placeholder="Reklam Linki">
+                                <label for="link" class="form-label">Reklam Linki</label>
+                                <input class="form-control" type="text" id="link" name="link" placeholder="Reklam Linki">
                             </div>
                             <div class="col-sm-3"></div>
                             <div class="col-sm-3"></div>
@@ -162,6 +147,29 @@
         </div>
     </div>
     <!---Reklam Ekle Bitiş-->
+
+    <!----------Resim Detay---->
+
+    <div class="modal fade" id="ViewModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #E5B86C" >
+                    <h5 class="modal-title" id="adv_Title" style="color: white">Reklam Resmi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-sm-9" >
+
+                        <img id="imgID"  alt="" style="height: 300px;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </th:block>
 </body>
 </html>
+
+<script th:src="@{js/advertising.js}"></script>
