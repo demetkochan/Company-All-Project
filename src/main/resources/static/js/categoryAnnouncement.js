@@ -71,39 +71,14 @@ $("#size").on("change",function (){
 
 })
 
-/*
-let nSearch;
-$("#nsearch").on("change",function () {
-    console.log("Tıklanıldı")
-    nSearch = (this.value)
-    const newSearch= nSearch
-})
-    function newsCategoryResult(newSearch) {
-        $.ajax({
-            url: './category_mvc/newsSearch' + newSearch,
-            type: 'POST',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                console.log(data)
-                createRow(data)
-            },
-            error: function (err) {
-                console.log(err)
-                alert("İşlem işlemi sırısında bir hata oluştu!");
-            }
-        })
-    }
-
-newsCategoryResult(newSearch)
-
-*/
 
 
 
 
-function allNewsCategoryResult(page,size){
+
+function allNewsCategoryResult(){
     $.ajax({
-        url: './category_mvc/newsList/'+page+'/'+size,
+        url: './category_mvc/announcementList',
         type: 'GET',
         contentType : 'application/json; charset=utf-8',
         success: function (data) {
@@ -212,25 +187,7 @@ $('#addProductCategory').submit((event) => {
 //-----------------------------------------Product Category Add Finish--------------------------------------------------------//
 
 //----------------------------------------Product Category Search----------------------------------------------//
-/*
-let psearch=" ";
-function productCategoryResult(psearch){
-    $.ajax({
-        url: './category_mvc/productSearch'+psearch,
-        type: 'POST',
-        contentType : 'application/json; charset=utf-8',
-        success: function (data) {
-            console.log(data)
-            createRo(data)
-        },
-        error: function (err) {
-            console.log(err)
-            alert("İşlem işlemi sırısında bir hata oluştu!");
-        }
-    })
-}
-productCategoryResult()
-*/
+
 
 //--------------------------------------------Product Category list  --------------------------------------------//
 function allProductCategoryResult(){
@@ -361,11 +318,11 @@ function allGalleryCategoryResult(){
 allGalleryCategoryResult()
 
 //-------------------------------------------- Gallery Table  --------------------------------------------//
-let globalarr = []
+let globlarr = []
 function cRow(data){
     let html = ``
     for (let i = 0; i < data.length; i++) {
-        globalarr = data
+        globlarr = data
         const itm = data[i]
         html += `<tr>
           <th scope="row">${itm.id}</th>
@@ -408,7 +365,7 @@ function fncGalleryCategoryDelete(id){
 //-------------------------------------------- Gallery Update Function --------------------------------------------//
 let select_gid=0;
 function fncGalleryCategoryUpdate( i ) {
-    const item = globalarr[i];
+    const item = globlarr[i];
     select_gid = item.id
     console.log(select_gid)
     $("#gallerycategoryname").val(item.gallerycategoryname)

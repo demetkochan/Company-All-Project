@@ -52,7 +52,7 @@ public class CategoryController {
         return announcementUpdate;
 
     }
-    @ResponseBody
+/*    @ResponseBody
     @GetMapping("/newsList/{pageNumber}/{stSize}")
     public List<CategoryAnnouncement> list(@RequestParam(defaultValue = "0") String pageNumber, @RequestParam(defaultValue = "10") String stSize ) {
         if(pageNumber==null && stSize==null){
@@ -69,13 +69,13 @@ public class CategoryController {
             return pageList;
             }
 
-    }
+    }*/
 
-  /*  @ResponseBody
+    @ResponseBody
     @GetMapping("/announcementList")
     public List<CategoryAnnouncement> list(){
         return caRepo.findAll();
-    }*/
+    }
 
     @ResponseBody
     @DeleteMapping(value = "/newsDelete/{stId}")
