@@ -66,4 +66,19 @@ public class AnnouncementRestController {
         return announcementDto.newsUpdate(news,bindingResult);
     }
 
+    @GetMapping("/newsProcess/{process_id}")
+    public Map<ERest,Object> newsProcess(@PathVariable String process_id){
+        return announcementDto.NewsProcess(process_id);
+    }
+
+    @GetMapping("/newsCategory/{category_id}")
+    public Map<ERest,Object> newsCategory(@PathVariable String category_id){
+        return announcementDto.NewsCategory(category_id);
+    }
+
+    @GetMapping("/announcementStatus/{process_id}")
+    public Map<ERest,Object> announcementStatus(@PathVariable String process_id){
+        return announcementDto.AnnouncementStatus(process_id);
+    }
+
 }

@@ -246,6 +246,38 @@ public class AnnouncementDto {
         return hm;
     }
 
+    //Haber status e göre listeleme
+    public Map<ERest,Object> NewsProcess(String process_id){
+        Map<ERest,Object> hm = new LinkedHashMap<>();
+        int cuid = Integer.parseInt(process_id);
+        hm.put(ERest.status,true);
+        List<News> ls = nRepo.statusproces(cuid);
+        hm.put(ERest.result,ls);
+        return hm;
+    }
+
+    //Haber Kategoriye göre listeleme
+    public Map<ERest,Object> NewsCategory(String category_id){
+        Map<ERest,Object> hm = new LinkedHashMap<>();
+        int cuid = Integer.parseInt(category_id);
+        hm.put(ERest.status,true);
+        List<News> ls = nRepo.process(cuid);
+        hm.put(ERest.result,ls);
+        return hm;
+    }
+
+    //Duyuru Statuse göre listeleme
+    public Map<ERest,Object> AnnouncementStatus(String process_id){
+        Map<ERest,Object> hm = new LinkedHashMap<>();
+        int cuid = Integer.parseInt(process_id);
+        hm.put(ERest.status,true);
+        List<Announcement> ls = aRepo.process(cuid);
+        hm.put(ERest.result,ls);
+        return hm;
+    }
+
+
+
 
 
 }
