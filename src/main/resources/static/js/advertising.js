@@ -30,7 +30,7 @@ function createRow(data){
                
              <th scope="row">`+itm.id+`</th>
             <td>${itm.advTitle}</td>
-            <td>${itm.screentime}</td>
+            <td>${itm.srceentime}</td>
             <td>${itm.height}</td>
             <td>${itm.width}</td>
             <td>${itm.starttime}</td>
@@ -54,7 +54,7 @@ function fncView( i ) {
     const itm = advResultArr[i];
     console.log(itm.imageName)
     $("#adv_Title").text(itm.advTitle)
-    $("#imgID").attr('src','/uploads/'+itm.imageName)
+    $("#imgID").attr('src','/uploads/advertesing/'+itm.imageName)
 
 }
 
