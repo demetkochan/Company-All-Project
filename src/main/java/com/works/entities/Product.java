@@ -44,7 +44,6 @@ public class Product {
     @Min(0)
     private long longitude;
 
-    
     @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "category_product_id" ,referencedColumnName="id")
     private CategoryProduct categoryProduct;

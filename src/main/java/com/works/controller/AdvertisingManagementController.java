@@ -22,7 +22,7 @@ import java.util.UUID;
 @RequestMapping("/advertising_mvc")
 public class AdvertisingManagementController {
 
-    final private String UPLOAD_DIR="src/main/resources/static/uploads/";
+    final private String UPLOAD_DIR="src/main/resources/static/uploads/advertesing/";
     final AdvertisingRepository aRepo;
 
     public AdvertisingManagementController(AdvertisingRepository aRepo) {
