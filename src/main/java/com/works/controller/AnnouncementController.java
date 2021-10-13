@@ -1,6 +1,7 @@
 package com.works.controller;
 
 import com.works.entities.Announcement;
+import com.works.entities.Content;
 import com.works.entities.News;
 import com.works.entities.NewsInterLayer;
 import com.works.repositories.AnnouncementRepository;
@@ -92,6 +93,17 @@ public class AnnouncementController {
         return status;
 
     }
+
+    @ResponseBody
+    @GetMapping("/selectedStatus/{stPr}")
+    public List<Announcement> selectedStatus(Model model, @PathVariable String stPr){
+        int pr = Integer.parseInt(stPr);
+        List<Announcement> selectedStatus = aRepo.process(pr);
+        model.addAttribute("selectProcess",selectedStatus);
+        return selectedStatus;
+
+    }
+
     //---------------------------------------Haber----------------------------------//
 
     @PostMapping("/imageUpload")
@@ -148,6 +160,28 @@ public class AnnouncementController {
         return status;
 
     }
+
+    @ResponseBody
+    @GetMapping("/selectedCategory/{stPr}")
+    public List<News> selectedCategory(Model model, @PathVariable String stPr){
+        int pr = Integer.parseInt(stPr);
+        List<News> selectedCategory = nRepo.process(pr);
+        model.addAttribute("selectProcess",selectedCategory);
+        return selectedCategory;
+
+    }
+
+    @ResponseBody
+    @GetMapping("/selectedStatusNews/{stPr}")
+    public List<News> selectedStatusNews(Model model, @PathVariable String stPr){
+        int pr = Integer.parseInt(stPr);
+        List<News> selectedStatusNews = nRepo.statusproces(pr);
+        model.addAttribute("selectProcess",selectedStatusNews);
+        return selectedStatusNews;
+
+    }
+
+
 
 
 

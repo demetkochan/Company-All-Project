@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="col-md-3">
-      <select class="form-select" id="status" aria-label="Example select with button addon">
+      <select class="form-select" id="announcement_status_select" aria-label="Example select with button addon">
         <option value="">Hepsi </option>
         <option value="1">Aktif </option>
         <option value="2">Pasif </option>
@@ -31,11 +31,10 @@
 
     <div class="col-md-4">
       <div class="input-group">
-        <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-          <option value="0">-- Kategoriler</option>
+        <select class="form-select" id="selectedCategory" aria-label="Example select with button addon">
+          <option value="">-- Kategoriler</option>
           <option th:each="item,iter : ${categoryNews}" th:value="${item.id}" th:text="${item.news_categoryName}"/>
         </select>
-        <button class="btn btn-outline-primary" type="button">Seç</button>
       </div>
     </div>
   </div>
@@ -86,14 +85,20 @@
 
     <h5 style="color: #398067"><i class="far fa-newspaper"></i> Haberler<hr/></h5>
 
-    <div class="col-sm-4 mb-3 mt-3">
+    <div class="col-sm-5 mb-3 mt-3">
       <h6>Sayfa başına <select class="form-select-sm">
         <option value="1">5</option>
         <option value="2">10</option>
         <option value="3">15</option>
       </select> kayıt göster. </h6>
     </div>
-    <div class="col-sm-4"></div>
+    <div class="col-sm-3">
+      <select class="form-select" id="news_status_select" aria-label="Example select with button addon">
+        <option value="">Hepsi </option>
+        <option value="1">Aktif </option>
+        <option value="2">Pasif </option>
+      </select>
+    </div>
     <div class="col-sm-4">
       <form id="searchform">
         <div class="input-group flex-nowrap">
@@ -109,8 +114,10 @@
   <table class="table table-hover">
     <thead style="background:#E5B86C; color: white">
     <tr>
-      <th scope="col">Durum</th>
+      <th scope="col">Haber Durum</th>
       <th scope="col">Kategori</th>
+      <th scope="col">Açıklama</th>
+      <th scope="col">Detaylı Açıklama</th>
       <th scope="col">Eklenme Tarihi</th>
       <th scope="col">Sil/Resim Görüntüle</th>
     </tr>

@@ -134,6 +134,42 @@ function fncAnnouncementDelete( id ) {
         })
     }
 }
+
+let selectedStatus = 0;
+$("#announcement_status_select").on("change",function (){
+    console.log("Tıklanıldı")
+    selectedStatus = (this.value)
+    console.log(selectedStatus)
+    if(selectedStatus ==""){
+        allAnnouncementResult()
+    }else{
+        allAnnouncementResult1(selectedStatus)
+    }
+
+})
+
+function allAnnouncementResult1(a){
+    console.log("ajax " + a)
+    $.ajax({
+        url: './announcement_mvc/selectedStatus/'+a,
+        type: 'GET',
+        contentType : 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(data)
+            createRow(data)
+        },
+        error: function (err) {
+            console.log(err)
+            alert("İşlem işlemi sırısında bir hata oluştu!");
+        }
+    })
+}
+
+
+
+
+
+
 //-------------------------------------------- Update Announcement   --------------------------------------------//
 let select_id=0;
 function fncAnnouncementUpdate(i){
@@ -191,6 +227,8 @@ function createRo(data){
                
              <th scope="row">`+type+`</th>
             <td>${itm.news_category}</td>
+            <td>${itm.news_desc}</td>
+             <td>${itm.news_detail_desc}</td>
             <td>${dateToFormat(itm.createdDate)}</td>
             <td class="text-right" >
               <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -243,6 +281,71 @@ function fncNewsDelete(id){
         })
     }
 }
+//----------------------------------------------Kategoriye göre Haber Listeleme--------------------//
+
+let selectedCategory = 0;
+$("#selectedCategory").on("change",function (){
+    console.log("Tıklanıldı")
+    selectedCategory = (this.value)
+    console.log(selectedCategory)
+    if(selectedCategory ==""){
+        allNewsResult()
+    }else{
+        allNewsResult1(selectedCategory)
+    }
+
+})
+
+let selectedStatusNews = 0;
+$("#news_status_select").on("change",function (){
+    console.log("Tıklanıldı")
+    selectedStatusNews = (this.value)
+    console.log(selectedStatusNews)
+    if(selectedStatusNews ==""){
+        allNewsResult()
+    }else{
+        allNewsResult2(selectedStatusNews)
+    }
+
+})
+
+
+function allNewsResult1(pr){
+    console.log("ajax " + pr)
+    $.ajax({
+        url: './announcement_mvc/selectedCategory/'+pr,
+        type: 'GET',
+        contentType : 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(data)
+            createRo(data)
+        },
+        error: function (err) {
+            console.log(err)
+            alert("İşlem işlemi sırısında bir hata oluştu!");
+        }
+    })
+}
+
+
+function allNewsResult2(n){
+    console.log("ajax " + n)
+    $.ajax({
+        url: './announcement_mvc/selectedStatusNews/'+n,
+        type: 'GET',
+        contentType : 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(data)
+            createRo(data)
+        },
+        error: function (err) {
+            console.log(err)
+            alert("İşlem işlemi sırısında bir hata oluştu!");
+        }
+    })
+}
+
+
 
 
 
