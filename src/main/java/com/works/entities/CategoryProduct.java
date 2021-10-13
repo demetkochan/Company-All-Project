@@ -15,6 +15,6 @@ public class CategoryProduct {
     private Integer id;
     @NotNull(message = "Kategori adı Null Olamaz")
     @NotEmpty(message = "Kategori adı Boş olamaz")
-    private String product_categoryName;
+    private String productcategoryname;
 
 }

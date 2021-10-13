@@ -111,7 +111,7 @@ function createRow(data){
           <td>${itm.productname}</td>
           <td>${itm.product_desc}</td>
           <td>${itm.product_detail}</td>
-          <td>${itm.categoryProduct.product_categoryName}</td>
+          <td>${itm.categoryProduct.productcategoryname}</td>
 
            <td class="text-right" >
                <div class="btn-group" role="group" aria-label="Basic mixed styles example">

@@ -15,5 +15,5 @@ public class CategoryAnnouncement {
     private Integer id;
     @NotNull(message = "Kategori adı Null Olamaz")
     @NotEmpty(message = "Kategori adı Boş olamaz")
-    private String news_categoryName;
+    private String newscategoryname;
 }

@@ -1,6 +1,7 @@
 package com.works.controller;
 
 import com.works.entities.Content;
+import com.works.entities.Product;
 import com.works.repositories.ContentRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -81,6 +82,14 @@ public class ContentController {
         model.addAttribute("selectProcess",selectprocess);
         return selectprocess;
 
+    }
+
+    @ResponseBody
+    @GetMapping("/search/{data}")
+    public List<Content> search(@PathVariable String data) {
+        List<Content> ls = cRepo.findByContenttitleContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data);
+        System.out.println(ls);
+        return ls;
     }
 
 

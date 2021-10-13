@@ -19,7 +19,7 @@ public class Content {
 
     @NotNull(message = "İçerik Başlığı Null Olamaz")
     @NotEmpty(message = "İçerik Başlığı Boş olamaz")
-    private String content_title;
+    private String contenttitle;
 
     @NotNull(message = "İçerik açıklama Null Olamaz")
     @NotEmpty(message = "İçerik açıklama Boş olamaz")
