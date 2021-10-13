@@ -18,6 +18,7 @@ public class Customer {
     private String csurname;
     private String cemail;
     private String cphone;
+    private boolean status;
     private boolean enabled;
     private boolean tokenExpired;
 

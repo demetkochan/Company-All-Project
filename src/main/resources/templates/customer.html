@@ -49,7 +49,6 @@
       <th scope="col">Soyadı</th>
       <th scope="col">Email</th>
       <th scope="col">Telefon</th>
-      <th scope="col">İşlemler</th>
       <th scope="col">Sil</th>
     </tr>
     </thead>
@@ -61,8 +60,7 @@
       <td th:text="${item.csurname}"></td>
       <td th:text="${item.cemail}"></td>
       <td th:text="${item.cphone}"></td>
-      <td><a onclick="return fncDelete();" th:href=" @{'customer_mvc/Delete/' + ${item.id}} " class="btn btn-danger btn-sm">Delete</a> </td>
-      <td><a th:href=" @{'customer_mvc/Update/' + ${item.id}} " class="btn btn-info btn-sm">Update</a> </td>
+      <td><a onclick="return fncDelete();" th:href=" @{'customer_mvc/delete/' + ${item.id}} " class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></a> </td>
     </tr>
     </tbody>
   </table>

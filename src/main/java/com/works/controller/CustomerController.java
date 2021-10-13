@@ -31,17 +31,19 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.POST)
     @PostMapping("/add")
-    public String customerAdd(Customer cus, @RequestParam(defaultValue = "1") String roleIDSt){
+    public String customerAdd(Customer cus,Model model, @RequestParam(defaultValue = "1") String roleIDSt){
         try{
             int roleID = Integer.parseInt(roleIDSt);
             cus.setEnabled(true);
             cus.setTokenExpired(true);
+            cus.setStatus(true);
 
             Role role= rRepo.findById(roleID).get();
             List<Role> roles=new ArrayList<>();
             roles.add(role);
             cus.setRoles(roles);
             cRepo.save(cus);
+            model.addAttribute("ls",cRepo.findAll());
             return "customer";
 
         }catch (Exception e){
@@ -51,7 +53,7 @@ public class CustomerController {
     }
     Customer customerUpdate=new Customer();
 
-    @GetMapping("/Delete/{stid}")
+    @GetMapping("/delete/{stid}")
     public String customerDelete(@PathVariable String stid){
         try{
             int id=Integer.parseInt(stid);
@@ -61,20 +63,9 @@ public class CustomerController {
             System.out.println("Silme sırasında hata oluştu.");
         }
 
-        return "redirect:/";
+        return "redirect:/customer_mvc";
     }
 
 
-    @GetMapping("/Update/{stid}")
-    public String customerUpdate(@PathVariable String stid){
-        try{
-            int id=Integer.parseInt(stid);
-            customerUpdate=cRepo.findById(id).get();
-        }catch (Exception e){
-            System.out.println("Update sırasında hata oluştu.");
-        }
-
-        return "redirect:/";
-    }
 
 }
