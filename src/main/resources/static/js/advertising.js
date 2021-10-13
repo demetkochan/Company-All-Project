@@ -30,7 +30,7 @@ function createRow(data){
                
              <th scope="row">`+itm.id+`</th>
             <td>${itm.advTitle}</td>
-            <td>${itm.srceentime}</td>
+            <td>${itm.screentime}</td>
             <td>${itm.height}</td>
             <td>${itm.width}</td>
             <td>${itm.starttime}</td>
