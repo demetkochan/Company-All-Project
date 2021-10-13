@@ -154,6 +154,7 @@ function allNewsResult(){
         url: './announcement_mvc/newslist',
         type: 'GET',
         contentType : 'application/json; charset=utf-8',
+
         success: function (data) {
             console.log(data)
             createRo(data)
@@ -170,10 +171,11 @@ allNewsResult()
 
 let newsResultArr=[]
 function createRo(data){
+    newsResultArr=data
     let html=``
 
     for (let i = 0; i < data.length; i++) {
-        newsResultArr=data
+
         const itm=data[i]
 
 
@@ -193,7 +195,7 @@ function createRo(data){
             <td class="text-right" >
               <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                 <button onclick="fncNewsDelete(${itm.id})" type="button" class="btn btn-outline-success "><i class="far fa-trash-alt"></i></button>
-                <a href="http://localhost:8080/uploads/` + itm.news_image + `" class="btn btn-outline-primary" style="margin-right: 10px" target="_blank"><i class="far fa-image"></i></a>
+               <button onclick="fncView(`+i+`)"  data-bs-toggle="modal" data-bs-target="#ViewModel" type="submit" class="btn btn-outline-primary ">Görüntüle</button>
               </div>
               
             </td>
@@ -201,6 +203,15 @@ function createRo(data){
 
     }
     $("#newsRow").html(html)
+
+}
+
+function fncView( i ) {
+    const itm = newsResultArr[i];
+    console.log(itm.news_image)
+    console.log(itm.news_title)
+    $("#news_titl").text(itm.news_title)
+    $("#imgID").attr('src','/uploads/'+itm.news_image)
 
 }
 
@@ -232,6 +243,7 @@ function fncNewsDelete(id){
         })
     }
 }
+
 
 
 

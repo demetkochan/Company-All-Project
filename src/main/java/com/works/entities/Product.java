@@ -17,7 +17,7 @@ public class Product {
     private Integer id;
     @NotNull(message = "Ürün adı null olamaz")
     @NotEmpty(message = "Ürün adı boş olamaz")
-    private String product_name;
+    private String productname;
     @NotNull(message = "Ürün kısa açıklaması null olamaz")
     @NotEmpty(message = "Ürün kısa açıklaması boş olamaz")
     private String product_desc;

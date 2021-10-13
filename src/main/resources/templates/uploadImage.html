@@ -28,7 +28,7 @@
                     <label for="product" class="form-label">Ürün Adı</label>
                     <select class="form-select"id="product" aria-label="Default select example">
                         <option selected>Seçim yapınız</option>
-                        <option th:each="item,iter : ${products}" th:value="${item.id}" th:text="${item.product_name}"/>
+                        <option th:each="item,iter : ${products}" th:value="${item.id}" th:text="${item.productname}"/>
 
                     </select>
                 </div>
@@ -64,7 +64,7 @@
             <div class="input-group">
                 <select class="form-select" id="select_process" name="select_process" aria-label="Example select with button addon">
                     <option value="">-- Ürünler</option>
-                    <option th:each="item,iter : ${products}" th:value="${item.id}" th:text="${item.product_name}"/>
+                    <option th:each="item,iter : ${products}" th:value="${item.id}" th:text="${item.productname}"/>
                 </select>
                 <button class="btn btn-outline-primary" type="button">Seç</button>
             </div>

@@ -77,4 +77,12 @@ public class ProductController {
 
     }
 
+
+    @ResponseBody
+    @GetMapping("/search/{data}")
+    public List<Product> search(@PathVariable String data) {
+        List<Product> ls = pRepo.findByProductnameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data);
+        System.out.println(ls);
+        return ls;
+    }
 }

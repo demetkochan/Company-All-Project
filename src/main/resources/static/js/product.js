@@ -4,7 +4,7 @@ $('#productAdd').submit((event) => {
 
 
     const categoryProduct = $("#categoryProduct").val()
-    const product_name = $("#product_name").val()
+    const productname = $("#productname").val()
     const product_desc = $("#product_desc").val()
     const product_detail = $("#product_detail").val()
     const product_price = $("#product_price").val()
@@ -19,7 +19,7 @@ $('#productAdd').submit((event) => {
 
     const obj = {
         categoryProduct : {id :categoryProduct, product_categoryName:categoryProduct},
-        product_name : product_name,
+        productname : productname,
         product_desc : product_desc,
         product_detail : product_detail,
         product_price : product_price,
@@ -47,7 +47,7 @@ $('#productAdd').submit((event) => {
                 console.log(data)
 
                  $("#category_product_id").val(" ")
-                 $("#product_name").val(" ")
+                 $("#productname").val(" ")
                  $("#product_desc").val(" ")
                  $("#product_detail").val(" ")
                  $("#product_price").val(" ")
@@ -108,7 +108,7 @@ function createRow(data){
 
         html += `<tr>
           <th scope="row">${itm.id}</th>
-          <td>${itm.product_name}</td>
+          <td>${itm.productname}</td>
           <td>${itm.product_desc}</td>
           <td>${itm.product_detail}</td>
           <td>${itm.categoryProduct.product_categoryName}</td>
@@ -165,7 +165,7 @@ function fncProductUpdate(i){
 
     select_id = itm.id
     $("#categoryProduct").val(itm.categoryProduct.id)
-    $("#product_name").val(itm.product_name)
+    $("#productname").val(itm.productname)
     $("#product_desc").val(itm.product_desc)
     $("#product_detail").val(itm.product_detail)
     $("#product_price").val(itm.product_price)
@@ -179,7 +179,28 @@ function fncProductUpdate(i){
 }
 
 //Product update - end
+//product search
+$("#psearch").keyup(function () {
 
+    const psearch = $("#psearch").val()
+    if( psearch != "") {
+        $.ajax({
+            url: './product_mvc/search/' + psearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                createRow(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allProductResult()
+    }
+})
 
 
 

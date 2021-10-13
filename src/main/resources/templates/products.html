@@ -42,14 +42,14 @@
             <form id="search_form">
                 <div class="input-group flex-nowrap">
                     <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
-                    <input id="csearch" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
+                    <input id="psearch" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
                     <a class="btn btn-outline-danger">Ara</a>
                 </div>
             </form>
         </div>
     </div>
     <!---Tablo Başlangıç-->
-    <table class="table table-hover">
+    <table id="search" class="table table-hover">
         <thead style="background:#E5B86C; color: white">
         <tr>
             <th scope="col">Ürün Id</th>
@@ -85,8 +85,10 @@
                                 <label for="categoryProduct" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategoriler</label>
                             </div>
                             <div class="col-md-8 mb-3">
-                                <select class="form-select"id="categoryProduct" aria-label="Default select example">
-                                    <option selected>Seçim yapınız</option>
+
+
+                                <select class="form-select"  id="categoryProduct" aria-label="Default select example"  placeholder="Seçim yapınız" >
+                                    <option >Seçim yapınız</option>
                                     <option th:each="item,iter : ${categories}" th:value="${item.id}" th:text="${item.product_categoryName}"/>
 
                                 </select>
@@ -96,11 +98,11 @@
 
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <label for="product_name" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Ürün Adı</label>
+                                <label for="productname" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Ürün Adı</label>
                             </div>
 
                             <div class="col-md-8 ">
-                                <input type="text" name="content_title" id="product_name" class="form-control"  required  />
+                                <input type="text" name="content_title" id="productname" class="form-control"  required  />
 
                             </div>
 
@@ -228,10 +230,11 @@
             </div>
         </div>
     </div>
-    
+
 </th:block>
 
 
 </body>
 </html>
+
 <script th:src="@{js/product.js}"></script>

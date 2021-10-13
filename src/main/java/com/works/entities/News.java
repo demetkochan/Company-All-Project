@@ -19,8 +19,4 @@ public class News extends BaseEntity {
     private String news_image;
     private int news_status;
     private int news_category;
-
-
-
-
 }
