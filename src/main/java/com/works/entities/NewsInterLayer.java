@@ -14,7 +14,7 @@ public class NewsInterLayer {
 
     @NotEmpty(message = "Haber Başlığı boş olamaz")
     @NotNull(message = "Haber Başlığı null olamaz!")
-    private String news_title;
+    private String newstitle;
 
     @NotEmpty(message = "Haber Açıklama boş  olamaz")
     @NotNull(message = "Haber Açıklama null olamaz!")

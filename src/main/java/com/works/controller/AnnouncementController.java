@@ -123,7 +123,7 @@ public class AnnouncementController {
         News news1 = new News();
 
         news1.setNews_image(fileName);
-        news1.setNewstitle(news.getNews_title());
+        news1.setNewstitle(news.getNewstitle());
         news1.setNews_detail_desc(news.getNews_detail_desc());
         news1.setNews_desc(news.getNews_desc());
         news1.setNews_status(news.getNews_status());

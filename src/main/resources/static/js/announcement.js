@@ -249,7 +249,7 @@ function fncView( i ) {
     const itm = newsResultArr[i];
     console.log(itm.news_image)
     console.log(itm.newstitle)
-    $("#news_titl").text(itm.newstitle)
+    $("#newstitle").text(itm.newstitle)
     $("#desc").text(itm.news_desc)
     $("#imgID").attr('src','/uploads/'+itm.news_image)
 
