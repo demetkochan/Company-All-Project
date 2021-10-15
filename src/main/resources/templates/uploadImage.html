@@ -16,7 +16,7 @@
     <h3 style="color: #398067"><i class="far fa-image"></i> Resim Ekle <hr/></h3>
     <div class="row">
         <div class="col-sm-3 mb-3">
-    <a th:href="@{/product_mvc}"  class="btn btn-outline-danger"><i class="fas fa-backspace"></i> Geri</a>
+            <a th:href="@{/product_mvc}"  class="btn btn-outline-danger"><i class="fas fa-backspace"></i> Geri</a>
         </div>
     </div>
     <div class="card">
@@ -24,6 +24,7 @@
         <div class="card-body">
 
             <form id="addProductImage" name="addProductImage" action="/uploadImage_mvc/imageUpload" th:object="${productImage}" method="post" enctype="multipart/form-data" >
+               <div class="row">
                 <div class="col">
                     <label for="product_id" class="form-label">Ürün Adı</label>
                     <select class="form-select"id="product_id" name="product_id" aria-label="Default select example">
@@ -37,7 +38,7 @@
                     <label for="product_image" class="form-label"> Eklemek istediğiniz ürün fotoğrafını seçiniz.</label>
                     <input class="form-control" type="file" id="product_image" name="product_image">
                 </div>
-
+               </div>
                 <div class="row">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
                         <button type="submit" class="btn btn-outline-danger" ><i class="fas fa-save"></i> Ekle</button>
