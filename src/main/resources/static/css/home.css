@@ -115,8 +115,8 @@ background-color: #E5B86C;
     padding: 1rem;
     transition: transform var(--d) var(--e);
     z-index: 1;
-    color: #803952;
-}
+    color: #F9EBEA;
+   }
 .content > * + * {
     margin-top: 1rem;
 }
@@ -125,6 +125,7 @@ background-color: #E5B86C;
     font-size: 1.3rem;
     font-weight: bold;
     line-height: 1.2;
+
 }
 
 .copy {
