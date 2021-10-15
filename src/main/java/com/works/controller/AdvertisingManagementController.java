@@ -3,6 +3,7 @@ package com.works.controller;
 
 import com.works.entities.Advertising;
 import com.works.entities.AdvertisingInterLayer;
+import com.works.entities.Product;
 import com.works.repositories.AdvertisingRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,7 +57,7 @@ public class AdvertisingManagementController {
         Advertising ad=new Advertising();
 
         ad.setImageName(fileName);
-        ad.setAdvTitle(advertising.getAdvTitle());
+        ad.setAdvtitle(advertising.getAdvtitle());
         ad.setScreentime(advertising.getScreentime());
         ad.setHeight(advertising.getHeight());
         ad.setWidth(advertising.getWidth());
@@ -91,5 +92,14 @@ public class AdvertisingManagementController {
         return status;
 
     }
+
+    @ResponseBody
+    @GetMapping("/search/{data}")
+    public List<Advertising> search(@PathVariable String data) {
+        List<Advertising> ls = aRepo.findByAdvtitleContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data);
+        System.out.println(ls);
+        return ls;
+    }
+
 
 }

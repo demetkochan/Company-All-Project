@@ -49,7 +49,7 @@
     </div>
 
 
-
+<div class="container">
     <div class="row mb-3 mt-3">
 
         <div class="col-sm-4 mb-3 mt-3">
@@ -62,7 +62,7 @@
         <div class="col-sm-4"></div>
         <div class="col-sm-4 mt-3">
             <div class="input-group">
-                <select class="form-select" id="select_process" name="select_process" aria-label="Example select with button addon">
+                <select class="form-select" id="products" name="select_process" aria-label="Example select with button addon">
                     <option value="">-- Ürünler</option>
                     <option th:each="item,iter : ${products}" th:value="${item.id}" th:text="${item.productname}"/>
                 </select>
@@ -75,30 +75,43 @@
     <table class="table table-hover">
         <thead style="background:#E5B86C; color: white">
         <tr>
-            <th scope="col">Ürün Adı</th>
-            <th scope="col">Başlığı</th>
-            <th scope="col">Açıklama</th>
-            <th scope="col">Kategori</th>
-            <th scope="col">İşlem</th>
+            <th scope="col">Resim ID</th>
+            <th scope="col">Resim adı</th>
+            <th>Resim</th>
+            <th scope="col">İşlemler</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Başlık</td>
-            <td>Kısa Açıklama</td>
-            <td>Detay</td>
-            <td>Tarih</td>
+        <tbody id="imageRow">
 
-        </tr>
         </tbody>
     </table>
 
     <!---Tablo Bitiş-->
+</div>
 
+    <!--Modal Detail-->
+    <div class="modal fade" id="ViewModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #E5B86C" >
+                    <h5 class="modal-title" id="productname" style="color: white">Ürün Resmi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-sm-9" >
+
+                        <img id="imgID"  alt="" style="height: 300px;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </th:block>
 
 
 </body>
 </html>
+<script th:src="@{js/uploadImage.js}"></script>

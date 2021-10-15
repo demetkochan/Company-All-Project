@@ -3,6 +3,7 @@ package com.works.controller;
 import com.works.entities.NewsInterLayer;
 import com.works.entities.ProductImage;
 import com.works.entities.ProductImageInterLayer;
+import com.works.entities.ProductsImages;
 import com.works.repositories.ProductImageRepository;
 import com.works.repositories.ProductRepository;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -69,5 +71,36 @@ public class UploadImageController {
 
         return "redirect:/uploadImage_mvc";
     }
+
+    @ResponseBody
+    @GetMapping("/productImage/{stId}")
+    public List<ProductsImages> productsImagesList(Model model, @PathVariable String stId){
+
+        int id = Integer.parseInt(stId);
+        List<ProductsImages> productsImagesList = prRepo.productsImagesList(id);
+        model.addAttribute("images",productsImagesList);
+
+        return productsImagesList;
+
+    }
+
+    //resim silme
+    @ResponseBody
+    @DeleteMapping(value = "/delete/{stid}")
+    public String delete(@PathVariable String stid) {
+        String status = "0";
+        try{
+            int pid = Integer.parseInt(stid);
+            prRepo.deleteById(pid);
+            status= "1";
+
+        }catch (Exception e){
+            System.err.println("Silme sırasında hata oluştu");
+        }
+
+        return status;
+
+    }
+
 
 }

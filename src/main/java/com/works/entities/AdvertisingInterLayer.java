@@ -11,7 +11,7 @@ public class AdvertisingInterLayer {
 
     @NotNull(message = "Başlık null olamaz!")
     @NotEmpty(message = "Başlık boş olamaz!")
-    private String advTitle;
+    private String advtitle;
     @NotNull(message = "Gösterim sayısı null olamaz!")
     @NotEmpty(message = "Gösterim sayısı boş olamaz!")
     private String screentime;

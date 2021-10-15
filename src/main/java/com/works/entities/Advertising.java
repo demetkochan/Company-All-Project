@@ -13,7 +13,7 @@ public class Advertising {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    private String advTitle;
+    private String advtitle;
     private String screentime;
     private String height;
     private String width;

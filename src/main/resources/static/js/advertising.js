@@ -29,7 +29,7 @@ function createRow(data){
         html += ` <tr>
                
              <th scope="row">`+itm.id+`</th>
-            <td>${itm.advTitle}</td>
+            <td>${itm.advtitle}</td>
             <td>${itm.screentime}</td>
             <td>${itm.height}</td>
             <td>${itm.width}</td>
@@ -53,7 +53,7 @@ function createRow(data){
 function fncView( i ) {
     const itm = advResultArr[i];
     console.log(itm.imageName)
-    $("#adv_Title").text(itm.advTitle)
+    $("#adv_Title").text(itm.advtitle)
     $("#imgID").attr('src','/uploads/advertesing/'+itm.imageName)
 
 }
@@ -82,3 +82,26 @@ function fncAdvertisingDelete(id){
         })
     }
 }
+
+//advertising search
+$("#asearch").keyup(function () {
+
+    const asearch = $("#asearch").val()
+    if( asearch != "") {
+        $.ajax({
+            url: './advertising_mvc/search/' + asearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                createRow(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allAdvertisingResult()
+    }
+})

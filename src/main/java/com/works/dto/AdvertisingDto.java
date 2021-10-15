@@ -56,7 +56,7 @@ public class AdvertisingDto {
                     Advertising ad=new Advertising();
 
                     ad.setImageName(fileName);
-                    ad.setAdvTitle(advertising.getAdvTitle());
+                    ad.setAdvtitle(advertising.getAdvtitle());
                     ad.setScreentime(advertising.getScreentime());
                     ad.setHeight(advertising.getHeight());
                     ad.setWidth(advertising.getWidth());
