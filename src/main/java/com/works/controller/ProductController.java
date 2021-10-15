@@ -1,9 +1,9 @@
 package com.works.controller;
 
 import com.works.dto.ProductDto;
-import com.works.entities.Content;
 import com.works.entities.Product;
 import com.works.repositories.CategoryProductRepository;
+import com.works.repositories.ProductImageRepository;
 import com.works.repositories.ProductRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +17,13 @@ public class ProductController {
     final ProductDto productDto;
     final CategoryProductRepository cRepo;
     final ProductRepository pRepo;
+    final ProductImageRepository pıRepo;
 
-    public ProductController(ProductDto productDto, CategoryProductRepository cRepo, ProductRepository pRepo) {
+    public ProductController(ProductDto productDto, CategoryProductRepository cRepo, ProductRepository pRepo, ProductImageRepository pıRepo) {
         this.productDto = productDto;
         this.cRepo = cRepo;
         this.pRepo = pRepo;
+        this.pıRepo = pıRepo;
     }
     Product productUpdate = new Product();
 
