@@ -104,8 +104,13 @@ public class CategoryController {
 
     @ResponseBody
     @PostMapping("/galleryAdd")
-    public CategoryGallery add(@Valid @RequestBody @ModelAttribute("categoryG") CategoryGallery categoryGallery, BindingResult bindingResult){
-        if(!bindingResult.hasErrors()) {
+    public CategoryGallery add(@RequestBody CategoryGallery categoryGallery){
+       // if(bindingResult.hasErrors()) {
+        //    log.error("Galeri Kategorisi ekleme veya güncelleme hatası");
+       //     System.err.println("İşlem sırasında hata oluştur!");
+
+      //  }else{
+
             try {
                 if (galleryUpdate.getId() != null && galleryUpdate.getId() > 0) {
                     categoryGallery.setId(galleryUpdate.getId());
@@ -117,11 +122,7 @@ public class CategoryController {
                 log.error("Galeri Kategorisi ekleme veya güncelleme hatası");
                 System.err.println("İşlem sırasında hata oluştur!");
             }
-            log.error("Galeri Kategorisi ekleme veya güncelleme hatası");
-        }else{
-            log.error("Galeri Kategorisi ekleme veya güncelleme hatası");
-            System.err.println("İşlem sırasında hata oluştur!");
-        }
+      //  }
         return galleryUpdate;
 
 
