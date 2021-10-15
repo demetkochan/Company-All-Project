@@ -9,8 +9,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +35,7 @@ public class CategoryController {
 
     @GetMapping("")
     public String category(Model model){
+        model.addAttribute("categoryG",new CategoryGallery());
         return "category";
     }
     CategoryAnnouncement announcementUpdate=new CategoryAnnouncement();
@@ -101,21 +104,26 @@ public class CategoryController {
 
     @ResponseBody
     @PostMapping("/galleryAdd")
-    public CategoryGallery add(@RequestBody CategoryGallery categoryGallery){
+    public CategoryGallery add(@Valid @RequestBody @ModelAttribute("categoryG") CategoryGallery categoryGallery, BindingResult bindingResult){
+        if(!bindingResult.hasErrors()) {
+            try {
+                if (galleryUpdate.getId() != null && galleryUpdate.getId() > 0) {
+                    categoryGallery.setId(galleryUpdate.getId());
+                }
+                cgRepo.saveAndFlush(categoryGallery);
+                galleryUpdate = new CategoryGallery();
 
-        try{
-            if(galleryUpdate.getId() != null && galleryUpdate.getId() > 0){
-             categoryGallery.setId(galleryUpdate.getId());
+            } catch (Exception ex) {
+                log.error("Galeri Kategorisi ekleme veya güncelleme hatası");
+                System.err.println("İşlem sırasında hata oluştur!");
             }
-            cgRepo.saveAndFlush(categoryGallery);
-            galleryUpdate = new CategoryGallery();
-
-        }catch (Exception ex){
+            log.error("Galeri Kategorisi ekleme veya güncelleme hatası");
+        }else{
             log.error("Galeri Kategorisi ekleme veya güncelleme hatası");
             System.err.println("İşlem sırasında hata oluştur!");
         }
-
         return galleryUpdate;
+
 
     }
 

@@ -287,14 +287,15 @@
                         Kategori Bilgilerinizi Giriniz.
                     </div>
                     <hr/>
-                    <form id="addGalleryCategory" name="addGalleryCategory" >
+                    <form id="addGalleryCategory" name="addGalleryCategory" th:object="${categoryG}">
 
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <label for="gallerycategoryname" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategori Adı</label>
                             </div>
                             <div class="col-md-8 ">
-                                <input class="form-control" type="text" name="gallery_categoryName" id="gallerycategoryname" placeholder="Kategori Adı" required>
+                                <div style="color:red" th:if="${#fields.hasErrors('gallerycategoryname')}" th:errors ="*{gallerycategoryname}" >Hata</div>
+                                <input class="form-control"  type="text"  name="gallerycategoryname" id="gallerycategoryname" placeholder="Kategori Adı" required>
                             </div>
                         </div>
                         <div class="col-md-3 mt-2">
@@ -307,38 +308,7 @@
         </div>
     </div>
     <!---Galeri Kategori Ekle Bitiş-->
-<!--
-    <div class="modal fade bd-example-modal-lg" id="categoryNewsUpdateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header" style="background:#E5B86C; color: white">
-                    <h5 class="modal-title" id="staticBackdropLabel1">Duyuru/Haber Kategori Güncelle</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="text-center">
-                        Kategori Bilgilerinizi Giriniz.
-                    </div>
-                    <hr/>
-                    <form id="updateNewsCategory" name="updateNewsCategory">
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="n_categoryName" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategori Adı</label>
-                            </div>
-                            <div class="col-md-8 ">
-                                <input class="form-control" type="text" name="news_categoryName" id="n_categoryName" placeholder="Kategori Adı">
-                            </div>
-                        </div>
-                        <div class="col-md-3 mt-2">
-                            <button type="submit" class="btn btn-outline-primary">Ekle</button>
-                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">İptal</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
--->
+
 
 </th:block>
 

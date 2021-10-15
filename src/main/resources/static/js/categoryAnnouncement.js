@@ -443,3 +443,22 @@ $("#gsearch").keyup(function () {
         allGalleryCategoryResult()
     }
 })
+
+
+
+$(document).ready(function() {
+    $('#addGalleryCategory').formValidation({
+        framework: 'bootstrap',
+        excluded: ':disabled',
+        field: {
+            gallerycategoryname: {
+                validator: {
+                    notEmpty: {
+                        message: 'The username is required'
+                    }
+                }
+            }
+
+        }
+    });
+});
