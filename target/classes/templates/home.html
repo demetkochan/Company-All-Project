@@ -16,28 +16,28 @@
     <main class="page-content">
             <div class="card">
                 <div class="content">
-                    <h2 class="title"><i class="fas fa-boxes"></i> Ürün</h2>
+                    <h2 class="title"><i class="fas fa-boxes"></i> Ürün<hr></h2>
                     <p class="copy  text-white-50">Toplam Ürün: <strong th:text="${sumProduct}">  </strong> </p>
                     <a th:href="@{/product_mvc}" class="btn btn-outline-primary">Git</a>
                 </div>
             </div>
             <div class="card">
                 <div class="content">
-                    <h2 class="title"><i class="fab fa-gratipay"></i> Beğeni</h2>
+                    <h2 class="title"><i class="fab fa-gratipay"></i> Beğeni<hr></h2>
                     <p class="copy">Toplam Beğeni:</p>
                     <a th:href="@{/product_mvc}" class="btn btn-outline-primary">Git</a>
                 </div>
             </div>
             <div class="card">
                 <div class="content">
-                    <h2 class="title"><i class="fas fa-tasks"></i> İçerik</h2>
+                    <h2 class="title"><i class="fas fa-tasks"></i> İçerik<hr></h2>
                     <p class="copy">Toplam İçerik: <strong th:text="${sumContent}"></strong></p>
                     <a th:href="@{/content_mvc}" class="btn btn-outline-primary">Git</a>
                 </div>
             </div>
             <div class="card">
                 <div class="content">
-                    <h2 class="title"><i class="far fa-newspaper"></i> Haber</h2>
+                    <h2 class="title"><i class="far fa-newspaper"></i> Haber<hr></h2>
                     <p class="copy">Toplam Haber: <strong th:text="${sumNews}"></strong><br>Aktif Haber: <strong th:text="${sumNewsActive}"></strong><br>Pasif Haber: <strong th:text="${sumNewsPassive}"></strong></p>
 
                     <a th:href="@{/announcement_mvc}" class="btn btn-outline-primary">Git</a>
@@ -45,28 +45,28 @@
             </div>
             <div class="card">
                 <div class="content">
-                    <h2 class="title"><i class="fas fa-receipt"></i> Sipariş</h2>
+                    <h2 class="title"><i class="fas fa-receipt"></i> Sipariş<hr></h2>
                     <p class="copy">Toplam Sipariş:</p>
                     <a th:href="@{/order_mvc}" class="btn btn-outline-primary">Git</a>
                 </div>
             </div>
             <div class="card">
                 <div class="content">
-                    <h2 class="title"><i class="far fa-address-card"></i> Müşteri</h2>
+                    <h2 class="title"><i class="far fa-address-card"></i> Müşteri<hr></h2>
                     <p class="copy">Toplam Müşteri: <strong th:text="${sumCustomer}">  </strong></p>
                     <a th:href="@{/customer_mvc}" class="btn btn-outline-primary">Git</a>
                 </div>
             </div>
             <div class="card">
                 <div class="content">
-                    <h2 class="title"><i class="fas fa-poll-h"></i> Anket</h2>
+                    <h2 class="title"><i class="fas fa-poll-h"></i> Anket<hr></h2>
                     <p class="copy">Toplam Anket:</p>
                     <a th:href="@{/product_mvc}" class="btn btn-outline-primary">Git</a>
                 </div>
             </div>
             <div class="card">
                 <div class="content">
-                    <h2 class="title"><i class="far fa-newspaper"></i> Duyuru</h2>
+                    <h2 class="title"><i class="far fa-newspaper"></i> Duyuru<hr></h2>
                     <p class="copy">Toplam Duyuru: <strong th:text="${sumAnnouncement}">  </strong></p>
                     <a th:href="@{/announcement_mvc}" class="btn btn-outline-primary">Git</a>
                 </div>
@@ -80,4 +80,3 @@
 
 </body>
 </html>
-<script th:src="@{js/home.js}"></script>
