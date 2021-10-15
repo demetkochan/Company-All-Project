@@ -10,20 +10,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/dashboard_mvc")
 public class HomeController {
 
-    final UtilServices uservice;
+    final UtilServices utilServices;
 
-    public HomeController(UtilServices uservice) {
-        this.uservice = uservice;
+    public HomeController(UtilServices utilServices) {
+        this.utilServices = utilServices;
     }
 
     @GetMapping("")
     public String home(Model model){
-        model.addAttribute("sumContent",uservice.countContent());
-        model.addAttribute("sumNews",uservice.countNews());
-        model.addAttribute("sumNewsActive",uservice.countNewsActive());
-        model.addAttribute("sumNewsPassive",uservice.countNewsPassive());
-        model.addAttribute("sumAnnouncement",uservice.countAnnouncement());
-        model.addAttribute("sumProduct",uservice.countProduct());
+        model.addAttribute("sumContent", utilServices.countContent());
+        model.addAttribute("sumNews", utilServices.countNews());
+        model.addAttribute("sumNewsActive", utilServices.countNewsActive());
+        model.addAttribute("sumNewsPassive", utilServices.countNewsPassive());
+        model.addAttribute("sumAnnouncement", utilServices.countAnnouncement());
+        model.addAttribute("sumProduct", utilServices.countProduct());
+        model.addAttribute("sumCustomer", utilServices.countCustomer());
 
 
         return "home";

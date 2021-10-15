@@ -15,13 +15,15 @@ public class UtilServices {
     final NewsRepository nRepo;
     final AnnouncementRepository aRepo;
     final ProductRepository pRepo;
+    final CustomerRepository customerRepo;
 
-    public UtilServices(CategoryAnnouncementRepository caRepo, ContentRepository cRepo, NewsRepository nRepo, AnnouncementRepository aRepo, ProductRepository pRepo) {
+    public UtilServices(CategoryAnnouncementRepository caRepo, ContentRepository cRepo, NewsRepository nRepo, AnnouncementRepository aRepo, ProductRepository pRepo, CustomerRepository customerRepo) {
         this.caRepo = caRepo;
         this.cRepo = cRepo;
         this.nRepo = nRepo;
         this.aRepo = aRepo;
         this.pRepo = pRepo;
+        this.customerRepo = customerRepo;
     }
     //Duyuru/haber kategori listeleme
     public List<CategoryAnnouncement>  categoryAnnouncementsList(){
@@ -60,6 +62,12 @@ public class UtilServices {
     public int countProduct(){
         int countProduct = pRepo.countProduct();
         return countProduct;
+    }
+
+    //Toplam müşteri Sayısı
+    public int countCustomer(){
+        int countCustomer = customerRepo.countCustomer();
+        return countCustomer;
     }
 
 
