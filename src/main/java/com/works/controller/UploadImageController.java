@@ -6,6 +6,7 @@ import com.works.entities.ProductImageInterLayer;
 import com.works.entities.ProductsImages;
 import com.works.repositories.ProductImageRepository;
 import com.works.repositories.ProductRepository;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -24,6 +25,9 @@ import java.util.UUID;
 @Controller
 @RequestMapping("/uploadImage_mvc")
 public class UploadImageController {
+
+    private static final Logger log=Logger.getLogger(UploadImageController.class);
+
     final ProductRepository pRepo;
     final ProductImageRepository prRepo;
 
@@ -58,6 +62,7 @@ public class UploadImageController {
             Path path = Paths.get(UPLOAD_DIR + "products/" + productImage.getProduct_id()+ "/" + fileName);
             Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
+            log.error("Ürün resmi ekleme hatasıdır.");
             e.printStackTrace();
         }
 
@@ -95,6 +100,7 @@ public class UploadImageController {
             status= "1";
 
         }catch (Exception e){
+            log.error("Silme hatası oluştu.");
             System.err.println("Silme sırasında hata oluştu");
         }
 

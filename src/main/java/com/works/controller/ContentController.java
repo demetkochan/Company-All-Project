@@ -3,6 +3,7 @@ package com.works.controller;
 import com.works.entities.Content;
 import com.works.entities.Product;
 import com.works.repositories.ContentRepository;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequestMapping("/content_mvc")
 public class ContentController {
 
+    private static final Logger log=Logger.getLogger(ContentController.class);
     final ContentRepository cRepo;
 
     public ContentController(ContentRepository cRepo) {
@@ -40,6 +42,7 @@ public class ContentController {
             contentUpdate = new Content();
 
         }catch (Exception ex){
+            log.error("İçerik ekleme hatası");
             System.err.println("İşlem sırasında hata oluştur!");
         }
 
@@ -67,6 +70,7 @@ public class ContentController {
             status= "1";
 
         }catch (Exception e){
+            log.error("Silme hatası oluştu.");
             System.err.println("Silme sırasında hata oluştu");
         }
 

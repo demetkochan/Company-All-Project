@@ -49,5 +49,4 @@ public class Product {
     private CategoryProduct categoryProduct;
 
 
-
 }

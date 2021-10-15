@@ -4,6 +4,7 @@ import com.works.entities.*;
 import com.works.repositories.AnnouncementRepository;
 import com.works.repositories.NewsRepository;
 import com.works.services.UtilServices;
+import org.apache.log4j.Logger;
 import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,7 @@ import java.util.UUID;
 @Controller
 @RequestMapping("/announcement_mvc")
 public class AnnouncementController {
+    private static final Logger log=Logger.getLogger(AnnouncementController.class);
 
     final private String UPLOAD_DIR="src/main/resources/static/uploads/";
 
@@ -60,6 +62,7 @@ public class AnnouncementController {
             announcementUpdate = new Announcement();
 
         }catch (Exception ex){
+            log.error("Duyuru ekleme veya güncelleme hatası");
             System.err.println("İşlem sırasında hata oluştur!");
         }
 
@@ -84,6 +87,7 @@ public class AnnouncementController {
             status= "1";
 
         }catch (Exception e){
+            log.error("Silme hatası oluştu.");
             System.err.println("Silme sırasında hata oluştu");
         }
 
@@ -152,6 +156,7 @@ public class AnnouncementController {
 
             status = "1";
         }catch (Exception ex) {
+            log.error("Silme hatası oluştu.");
             System.err.println("Silme işlemi sırasında bir hata oluştu!");
         }
         return status;

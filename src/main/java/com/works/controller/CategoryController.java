@@ -4,6 +4,7 @@ import com.works.entities.*;
 import com.works.repositories.CategoryAnnouncementRepository;
 import com.works.repositories.CategoryGalleryRepository;
 import com.works.repositories.CategoryProductRepository;
+import org.apache.log4j.Logger;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("/category_mvc")
 public class CategoryController {
+
+    private static final Logger log=Logger.getLogger(CategoryController.class);
 
     final CategoryAnnouncementRepository caRepo;
     final CategoryProductRepository cpRepo;
@@ -46,6 +49,7 @@ public class CategoryController {
             announcementUpdate = new CategoryAnnouncement();
 
         }catch (Exception ex){
+            log.error("Eklem veya güncelleme hatası");
             System.err.println("İşlem sırasında hata oluştur!");
         }
 
@@ -87,6 +91,7 @@ public class CategoryController {
             status= "1";
 
         }catch (Exception e){
+            log.error("Silme hatası oluştu.");
             System.err.println("Silme sırasında hata oluştu");
         }
 
@@ -106,6 +111,7 @@ public class CategoryController {
             galleryUpdate = new CategoryGallery();
 
         }catch (Exception ex){
+            log.error("Galeri Kategorisi ekleme veya güncelleme hatası");
             System.err.println("İşlem sırasında hata oluştur!");
         }
 
@@ -129,6 +135,7 @@ public class CategoryController {
             status= "1";
 
         }catch (Exception e){
+            log.error("Silme hatası oluştu.");
             System.err.println("Silme sırasında hata oluştu");
         }
 
@@ -146,6 +153,7 @@ public class CategoryController {
             productUpdate = new CategoryProduct();
 
         }catch (Exception ex){
+            log.error("Ürün ekleme ve güncelleme hatası");
             System.err.println("İşlem sırasında hata oluştur!");
         }
 
@@ -186,6 +194,7 @@ public class CategoryController {
             status= "1";
 
         }catch (Exception e){
+            log.error("Silme hatası oluştu.");
             System.err.println("Silme sırasında hata oluştu");
         }
 

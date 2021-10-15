@@ -6,6 +6,7 @@ import com.works.entities.Role;
 import com.works.entities.User;
 import com.works.repositories.CustomerRepository;
 import com.works.repositories.RoleRepository;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/customer_mvc")
 public class CustomerController {
+    private static final Logger log=Logger.getLogger(CustomerController.class);
     final RoleRepository rRepo;
     final CustomerRepository cRepo;
     public CustomerController(RoleRepository rRepo, CustomerRepository cRepo) {
@@ -42,11 +44,14 @@ public class CustomerController {
             List<Role> roles=new ArrayList<>();
             roles.add(role);
             cus.setRoles(roles);
+
+
             cRepo.save(cus);
             model.addAttribute("ls",cRepo.findAll());
             return "customer";
 
         }catch (Exception e){
+            log.error("Müşteri ekleme hatası");
             System.out.println(e);
         }
         return "customer";
@@ -60,6 +65,7 @@ public class CustomerController {
             cRepo.deleteById(id);
             customerUpdate=new Customer();
         }catch (Exception e){
+            log.error("Silme hatası oluştu.");
             System.out.println("Silme sırasında hata oluştu.");
         }
 

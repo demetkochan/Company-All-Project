@@ -4,6 +4,7 @@ import com.works.dto.ProductDto;
 import com.works.entities.Product;
 import com.works.repositories.CategoryProductRepository;
 import com.works.repositories.ProductRepository;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/product_mvc")
 public class ProductController {
+
+    private static final Logger log=Logger.getLogger(ProductController.class);
+
     final ProductDto productDto;
     final CategoryProductRepository cRepo;
     final ProductRepository pRepo;
@@ -46,6 +50,7 @@ public class ProductController {
             productUpdate = new Product();
 
         }catch (Exception ex){
+            log.error("Ürün ekleme veya günceleme hatasıdır.");
             System.err.println("İşlem sırasında hata oluştur!");
         }
 
@@ -71,6 +76,7 @@ public class ProductController {
             status= "1";
 
         }catch (Exception e){
+            log.error("Silme hatası oluştu.");
             System.err.println("Silme sırasında hata oluştu");
         }
 

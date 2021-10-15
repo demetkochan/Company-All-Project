@@ -5,6 +5,7 @@ import com.works.entities.Advertising;
 import com.works.entities.AdvertisingInterLayer;
 import com.works.entities.Product;
 import com.works.repositories.AdvertisingRepository;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -22,6 +23,7 @@ import java.util.UUID;
 @Controller
 @RequestMapping("/advertising_mvc")
 public class AdvertisingManagementController {
+    private static final Logger log=Logger.getLogger(AdvertisingManagementController.class);
 
     final private String UPLOAD_DIR="src/main/resources/static/uploads/advertesing/";
     final AdvertisingRepository aRepo;
@@ -50,6 +52,7 @@ public class AdvertisingManagementController {
             System.out.println(path);
             Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
+            log.error("Reklam resmi ekleme hatasıdır.");
             e.printStackTrace();
         }
 
@@ -87,6 +90,7 @@ public class AdvertisingManagementController {
 
             status = "1";
         }catch (Exception ex) {
+            log.error("Silme hatası oluştu.");
             System.err.println("Silme işlemi sırasında bir hata oluştu!");
         }
         return status;
