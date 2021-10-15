@@ -117,9 +117,10 @@ function createRow(data){
                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                     <button onclick="fncProductUpdate(`+i+`)" type="button" data-bs-toggle="modal" data-bs-target="#product" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button>
                     <button onclick="fncProductDelete(`+itm.id+`)" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
-               
+                     <button class="btn btn-outline-secondary" id="like-btn"><i class="fas fa-heart"></i></button>
                </div>
           </td>
+
 
         </tr>`
     }
