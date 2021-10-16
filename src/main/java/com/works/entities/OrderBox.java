@@ -20,4 +20,5 @@ public class OrderBox {
     private String customer_address;
     private String order_email;
     private int order_status;
+    private int total;
 }
