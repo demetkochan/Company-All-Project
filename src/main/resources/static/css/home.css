@@ -16,14 +16,21 @@ p
     font-size:18px;
 }
 
-
+.center
+{
+    height:50vh;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* End Non-Essential  */
 
 .property-card
 {
-    height:9em;
-    width:7em;
+    height:18em;
+    width:14em;
     display:-webkit-box;
     display:-ms-flexbox;
     display:flex;
@@ -58,6 +65,106 @@ p
     background-size:cover;
     background-repeat:no-repeat;
 }
+.property-image1
+{
+    height:6em;
+    width:14em;
+    padding:1em 2em;
+    position:Absolute;
+    top:0px;
+    -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    background-image:url("../images/undraw_Like_dislike_re_dwcj.png");
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+.property-image2
+{
+    height:6em;
+    width:14em;
+    padding:1em 2em;
+    position:Absolute;
+    top:0px;
+    -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    background-image:url("../images/undraw_Content_re_33px.png");
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+.property-image3
+{
+    height:6em;
+    width:14em;
+    padding:1em 2em;
+    position:Absolute;
+    top:0px;
+    -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    background-image:url("../images/undraw_newspaper_k72w.png");
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+.property-image4
+{
+    height:6em;
+    width:14em;
+    padding:1em 2em;
+    position:Absolute;
+    top:0px;
+    -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    background-image:url("../images/undraw_Order_delivered_re_v4ab.png");
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+.property-image5
+{
+    height:6em;
+    width:14em;
+    padding:1em 2em;
+    position:Absolute;
+    top:0px;
+    -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    background-image:url("../images/undraw_Business_deal_re_up4u.png");
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+.property-image6
+{
+    height:6em;
+    width:14em;
+    padding:1em 2em;
+    position:Absolute;
+    top:0px;
+    -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    background-image:url("../images/undraw_Customer_survey_re_v9cj.png");
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+.property-image7
+{
+    height:6em;
+    width:14em;
+    padding:1em 2em;
+    position:Absolute;
+    top:0px;
+    -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    background-image:url("../images/undraw_ideas_flow_cy7b.png");
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+
+/* Bottom Card Section */
 
 .property-description
 {
@@ -84,5 +191,42 @@ p
 .property-card:hover .property-image
 {
     height:18em;
+}
+.property-card:hover .property-image1
+{
+    height:18em;
+}
+.property-card:hover .property-image2
+{
+    height:18em;
+}
+.property-card:hover .property-image3
+{
+    height:18em;
+}
+.property-card:hover .property-image4
+{
+    height:18em;
+}
+.property-card:hover .property-image5
+{
+    height:18em;
+}
+.property-card:hover .property-image6
+{
+    height:18em;
+}.property-card:hover .property-image7
+ {
+     height:18em;
+ }
+.property-card:hover .property-social-icons
+{
+    background-color:white;
+}
+
+.property-card:hover .property-social-icons:hover
+{
+    background-color:grey;
+    cursor:pointer;
 }
 
