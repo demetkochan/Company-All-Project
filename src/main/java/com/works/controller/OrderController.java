@@ -1,6 +1,7 @@
 package com.works.controller;
 
 import com.works.entities.OrderBox;
+import com.works.entities.Product;
 import com.works.repositories.OrderBoxRepository;
 import com.works.repositories.ProductJoinOrder;
 import com.works.services.UtilServices;
@@ -18,6 +19,8 @@ public class OrderController {
     final OrderBoxRepository obRepo;
     private static final Logger log=Logger.getLogger(OrderController.class);
 
+    OrderBox orderBoxUpdate = new OrderBox();
+
     public OrderController(UtilServices uService, OrderBoxRepository obRepo) {
         this.uService = uService;
         this.obRepo = obRepo;
@@ -33,10 +36,22 @@ public class OrderController {
     @ResponseBody
     @PostMapping("/add")
     public OrderBox add(@RequestBody OrderBox orderBox){
-        //jpa-----
-        OrderBox o = obRepo.save(orderBox);
-        return o;
+        try{
+            if(orderBoxUpdate.getId() != null && orderBoxUpdate.getId() > 0){
+                orderBox.setId(orderBoxUpdate.getId());
+            }
+            obRepo.saveAndFlush(orderBox);
+            orderBoxUpdate = new OrderBox();
+
+        }catch (Exception ex){
+            log.error("Ürün ekleme veya günceleme hatasıdır.");
+            System.err.println("İşlem sırasında hata oluştur!");
+        }
+
+        return orderBoxUpdate;
+
     }
+
 
     //Order Listeleme
     @ResponseBody
@@ -67,5 +82,16 @@ public class OrderController {
         return status;
 
     }
+
+
+
+    @PutMapping("/update/{stId}")
+    public void orderBox(@PathVariable String stId) {
+        //jpa-----
+        int oid = Integer.parseInt(stId);
+        obRepo.orderStatus(oid);
+    }
+
+
 
 }

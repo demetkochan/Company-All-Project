@@ -142,10 +142,28 @@ function fncOrderUpdate(i){
     const itm = globalArr[i];
 
     select_id = itm.oid
-    console.log(select_id)
-    $("#order_status").change()
-    
 
+    $.ajax({
+        url: './order_mvc/update/'+ select_id,
+        type: 'PUT',
+        contentType : 'application/json; charset=utf-8',
+        success: function (data) {
+            if (data) {
+                console.log(data)
+                allOrderResult()
+
+            } else {
+                console.log("Veri dönmedi.")
+            }
+        },
+        error: function (err) {
+            console.log(err)
+            alert("İşlem işlemi sırısında bir hata oluştu!");
+        }
+    })
+
+
+    console.log(select_id)
 
 }
 
