@@ -10,69 +10,164 @@
 </head>
 <body>
 <th:block layout:fragment="content">
-    <div class="row ">
+
         <h4 style="color: #398067" class="text-justify text-center"><i style="font-size: xx-large;" class="far fa-id-card"></i> Admin Paneline Hoş Geldiniz!<hr/></h4>
 
-    <main class="page-content">
-            <div class="card">
-                <div class="content">
-                    <h2 class="title"><i class="fas fa-boxes"></i> Ürün<hr></h2>
-                    <p class="copy  text-white-50">Toplam Ürün: <strong th:text="${sumProduct}">  </strong> </p>
-                    <a th:href="@{/product_mvc}" class="btn">Git</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="content">
-                    <h2 class="title"><i class="fab fa-gratipay"></i> Beğeni<hr></h2>
-                    <p class="copy">Toplam Beğeni:</p>
-                    <a th:href="@{/product_mvc}" class="btn">Git</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="content">
-                    <h2 class="title"><i class="fas fa-tasks"></i> İçerik<hr></h2>
-                    <p class="copy">Toplam İçerik: <strong th:text="${sumContent}"></strong></p>
-                    <a th:href="@{/content_mvc}" class="btn ">Git</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="content">
-                    <h2 class="title"><i class="far fa-newspaper"></i> Haber<hr></h2>
-                    <p class="copy">Toplam Haber: <strong th:text="${sumNews}"></strong><br>Aktif Haber: <strong th:text="${sumNewsActive}"></strong><br>Pasif Haber: <strong th:text="${sumNewsPassive}"></strong></p>
 
-                    <a th:href="@{/announcement_mvc}" class="btn ">Git</a>
-                </div>
+    <div class="center">
+        <div class="property-card">
+            <a th:href="@{/product_mvc}">
+                <div class="property-image">
+                    <div class="property-image-title">
+                        <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
+                    </div>
+                </div></a>
+            <div class="property-description">
+                <h5><i class="fas fa-boxes"></i> Ürün<hr></h5>
+                <p>Toplam Ürün: <strong th:text="${sumProduct}">  </strong></p>
             </div>
-            <div class="card">
-                <div class="content">
-                    <h2 class="title"><i class="fas fa-receipt"></i> Sipariş<hr></h2>
-                    <p class="copy">Toplam Sipariş:</p>
-                    <a th:href="@{/order_mvc}" class="btn">Git</a>
+            <a href="#">
+                <div class="property-social-icons">
+                    <!-- I would usually put multipe divs inside here set to flex. Some people might use Ul li. Multiple Solutions -->
                 </div>
+            </a>
+        </div>
+
+        <div class="property-card">
+            <a href="#">
+                <div class="property-image1">
+                    <div class="property-image-title">
+                        <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
+                    </div>
+                </div></a>
+            <div class="property-description">
+                <h5><i class="fab fa-gratipay"></i> Beğeni<hr></h5>
+                <p>Toplam Beğeni:</p>
             </div>
-            <div class="card">
-                <div class="content">
-                    <h2 class="title"><i class="far fa-address-card"></i> Müşteri<hr></h2>
-                    <p class="copy">Toplam Müşteri: <strong th:text="${sumCustomer}">  </strong></p>
-                    <a th:href="@{/customer_mvc}" class="btn">Git</a>
+            <a href="#">
+                <div class="property-social-icons">
+                    <!-- I would usually put multipe divs inside here set to flex. Some people might use Ul li. Multiple Solutions -->
                 </div>
+            </a>
+        </div>
+
+        <div class="property-card">
+            <a th:href="@{/content_mvc}">
+                <div class="property-image2">
+                    <div class="property-image-title">
+                        <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
+                    </div>
+                </div></a>
+            <div class="property-description">
+                <h5><i class="fas fa-tasks"></i> İçerik<hr></h5>
+                <p>Toplam İçerik: <strong th:text="${sumContent}"></strong></p>
             </div>
-            <div class="card">
-                <div class="content">
-                    <h2 class="title"><i class="fas fa-poll-h"></i> Anket<hr></h2>
-                    <p class="copy">Toplam Anket:</p>
-                    <a th:href="@{/product_mvc}" class="btn">Git</a>
+            <a href="#">
+                <div class="property-social-icons">
+                    <!-- I would usually put multipe divs inside here set to flex. Some people might use Ul li. Multiple Solutions -->
                 </div>
+            </a>
+        </div>
+
+        <div class="property-card">
+            <a th:href="@{/announcement_mvc}">
+                <div class="property-image3">
+                    <div class="property-image-title">
+                        <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
+                    </div>
+                </div></a>
+            <div class="property-description">
+                <h5><i class="far fa-newspaper"></i> Haber<hr></h5>
+                <p>Toplam Haber: <strong th:text="${sumNews}"></strong><br>Aktif Haber: <strong th:text="${sumNewsActive}"></strong><br>Pasif Haber: <strong th:text="${sumNewsPassive}"></strong></p>
+
             </div>
-            <div class="card">
-                <div class="content">
-                    <h2 class="title"><i class="far fa-newspaper"></i> Duyuru<hr></h2>
-                    <p class="copy">Toplam Duyuru: <strong th:text="${sumAnnouncement}">  </strong></p>
-                    <a th:href="@{/announcement_mvc}" class="btn">Git</a>
+            <a href="#">
+                <div class="property-social-icons">
+                    <!-- I would usually put multipe divs inside here set to flex. Some people might use Ul li. Multiple Solutions -->
                 </div>
-            </div>
-        </main>
+            </a>
+        </div>
     </div>
+    <div class="center">
+        <div class="property-card">
+            <a th:href="@{/order_mvc}">
+                <div class="property-image4">
+                    <div class="property-image-title">
+                        <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
+                    </div>
+                </div></a>
+            <div class="property-description">
+                <h5><i class="fas fa-receipt"></i> Sipariş<hr></h5>
+                <p>Toplam Sipariş:</p>
+
+            </div>
+            <a href="#">
+                <div class="property-social-icons">
+                    <!-- I would usually put multipe divs inside here set to flex. Some people might use Ul li. Multiple Solutions -->
+                </div>
+            </a>
+        </div>
+
+        <div class="property-card">
+            <a th:href="@{/customer_mvc}" >
+                <div class="property-image5">
+                    <div class="property-image-title">
+                        <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
+                    </div>
+                </div></a>
+            <div class="property-description">
+                <h5><i class="far fa-address-card"></i> Müşteri<hr></h5>
+                <p>Toplam Müşteri: <strong th:text="${sumCustomer}">  </strong></p>
+
+            </div>
+            <a href="#">
+                <div class="property-social-icons">
+                    <!-- I would usually put multipe divs inside here set to flex. Some people might use Ul li. Multiple Solutions -->
+                </div>
+            </a>
+        </div>
+
+        <div class="property-card">
+            <a href="#">
+                <div class="property-image6">
+                    <div class="property-image-title">
+                        <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
+                    </div>
+                </div></a>
+            <div class="property-description">
+                <h5><i class="fas fa-poll-h"></i> Anket<hr></h5>
+                <p>Toplam Anket: </p>
+            </div>
+            <a href="#">
+                <div class="property-social-icons">
+                    <!-- I would usually put multipe divs inside here set to flex. Some people might use Ul li. Multiple Solutions -->
+                </div>
+            </a>
+        </div>
+
+
+        <div class="property-card">
+            <a th:href="@{/announcement_mvc}">
+                <div class="property-image7">
+                    <div class="property-image-title">
+                        <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
+                    </div>
+                </div></a>
+            <div class="property-description">
+                <h5><i class="far fa-newspaper"></i> Duyuru<hr></h5>
+                <p>Toplam Duyuru: <strong th:text="${sumAnnouncement}">  </strong></p>
+            </div>
+            <a href="#">
+                <div class="property-social-icons">
+                    <!-- I would usually put multipe divs inside here set to flex. Some people might use Ul li. Multiple Solutions -->
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+
+
 </th:block>
 
 

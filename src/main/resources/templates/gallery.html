@@ -6,52 +6,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Galeri Yönetim Sayfası</title>
+
+    <link rel="stylesheet" th:href="@{/css/gallery.css}">
 </head>
 <body>
 <th:block layout:fragment="content">
     <h3 style="color: #398067"><i class="far fa-images"></i> Galeri Yönetimi <hr/></h3>
     <div class="row">
-  <div class="col-sm-6"></div>
+  <div class="col-sm-6" id="addCard"></div>
    <div class="col-sm-6">
     <div class="card mb-3">
         <h5 class="card-header" style="background:#E5B86C; color: white">Galeri Oluştur</h5>
-        <div class="card-body">
-            <div class="mb-3">
-                <select id="cus_no" class="form-select" data-width="100%" data-show-subtext="true" data-live-search="true">
-                    <option data-subtext="">Galeri Kategori</option>
+        <form id="galleryAdd">
+            <div class="card-body">
+             <div class="mb-3">
+                <select id="categoryGallery" class="form-select" data-width="100%" data-show-subtext="true" data-live-search="true">
+                    <option>Galeri Kategori</option>
+                    <option th:each="item,iter : ${galeries}" th:value="${item.id}" th:text="${item.gallerycategoryname}"/>
+
                 </select>
             </div>
             <div class="mb-3">
-                <label for="gallery_name" class="form-label">Galeri Adi</label>
-                <input class="form-control" type="text" id="gallery_name">
+                <label for="galleryname" class="form-label">Galeri Adı</label>
+                <input class="form-control" type="text" id="galleryname">
             </div>
             <div class="mb-3">
                 <label for="gallery_detail" class="form-label">Galeri Açıklama</label>
                 <input class="form-control" type="text" id="gallery_detail">
             </div>
             <div class="mb-3">
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="drone" id="active" value="1" >
-                <label class="form-check-label" for="active">
-                    Aktif
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="drone" id="inactive" value="2">
-                <label class="form-check-label" for="inactive">
-                    Pasif
-                </label>
-            </div>
+                <label for="gallery_status" class="form-label">Galeri Durumu</label>
+                <select id="gallery_status" class="form-select" data-width="100%" data-show-subtext="true" data-live-search="true">
+
+                    <option>Seçiniz</option>
+                    <option value="1">Aktif</option>
+                    <option value="0">Pasif</option>
+
+                </select>
             </div>
             <div class="mb-3">
-                <a href="" class="btn btn-outline-danger">Galeri Oluştur</a>
+                <button type="submit"  class="btn btn-outline-danger">Galeri Oluştur</button>
                 <a th:href="@{/galleryDetail_mvc}" class="btn btn-outline-danger">Galeri Detay</a>
             </div>
-        </div>
+            </div>
+        </form>
     </div>
     </div>
-        </div>
-
+    </div>
 </th:block>
 </body>
 </html>
+<script th:src="@{js/gallery.js}"></script>

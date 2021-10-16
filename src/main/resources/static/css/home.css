@@ -1,197 +1,88 @@
-@import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
-:root {
-    --d: 700ms;
-    --e: cubic-bezier(0.19, 1, 0.22, 1);
-
-}
-
-* {
+*
+{
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-html,
-body {
-    height: 100%;
+h5
+{
+    margin:0px;
+    font-size:1.4em;
+    font-weight:700;
 }
 
-body {
-    display: grid;
-    place-items: center;
+p
+{
+    font-size:18px;
 }
 
-.page-content {
-    display: grid;
-    grid-gap: 1rem;
-    padding: 1rem;
-    max-width: 1024px;
-    margin: 0 auto;
 
-}
-@media (min-width: 600px) {
-    .page-content {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media (min-width: 800px) {
-    .page-content {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
 
-.card {
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-    padding: 1rem;
-    width: 100%;
-    text-align: center;
-    color: white;
-    background-color: whitesmoke;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
+/* End Non-Essential  */
+
+.property-card
+{
+    height:9em;
+    width:7em;
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient:vertical;
+    -webkit-box-direction:normal;
+    -ms-flex-direction:column;
+    flex-direction:column;
+    position:relative;
+    -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border-radius:16px;
+    overflow:hidden;
+    -webkit-box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px rgba(0, 0, 0, 0.21);
+    box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px rgba(0, 0, 0, 0.21);
 }
-@media (min-width: 600px) {
-    .card {
-        height: 350px;
-    }
-}
-.card:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 110%;
-    background-size: cover;
-    background-position: 0 0;
-    transition: transform calc(var(--d) * 1.5) var(--e);
-    pointer-events: none;
-}
-.card:after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 200%;
-    pointer-events: none;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.009) 11.7%, rgba(0, 0, 0, 0.034) 22.1%, rgba(0, 0, 0, 0.072) 31.2%, rgba(0, 0, 0, 0.123) 39.4%, rgba(0, 0, 0, 0.182) 46.6%, rgba(0, 0, 0, 0.249) 53.1%, rgba(0, 0, 0, 0.32) 58.9%, rgba(0, 0, 0, 0.394) 64.3%, rgba(0, 0, 0, 0.468) 69.3%, rgba(0, 0, 0, 0.54) 74.1%, rgba(0, 0, 0, 0.607) 78.8%, rgba(0, 0, 0, 0.668) 83.6%, rgba(0, 0, 0, 0.721) 88.7%, rgba(0, 0, 0, 0.762) 94.1%, rgba(0, 0, 0, 0.79) 100%);
-    transform: translateY(-50%);
-    transition: transform calc(var(--d) * 2) var(--e);
-}
-.card:nth-child(1):before {
-background-color: #E5B86C;
-}
-.card:nth-child(2):before {
-    background-color: #398067;
-}
-.card:nth-child(3):before {
-    background-color: #E5B86C;
-}
-.card:nth-child(4):before {
-    background-color: #398067;
-}
-.card:nth-child(5):before {
-    background-color:#398067;
-}
-.card:nth-child(6):before {
-    background-color: #E5B86C;
-}
-.card:nth-child(7):before {
-    background-color: #398067;
-}
-.card:nth-child(8):before {
-    background-color: #E5B86C;
+/* ^-- The margin bottom is necessary for the drop shadow otherwise it gets clipped in certain cases. */
+
+/* Top Half of card, image. */
+
+.property-image
+{
+    height:6em;
+    width:14em;
+    padding:1em 2em;
+    position:Absolute;
+    top:0px;
+    -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    background-image:url("../images/undraw_product_tour_re_8bai.png");
+    background-size:cover;
+    background-repeat:no-repeat;
 }
 
-.content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 1rem;
-    transition: transform var(--d) var(--e);
-    z-index: 1;
-    color: #F9EBEA;
-   }
-.content > * + * {
-    margin-top: 1rem;
+.property-description
+{
+    background-color: #FAFAFC;
+    height:12em;
+    width:14em;
+    position:absolute;
+    bottom:0em;
+    -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    padding: 0.5em 1em;
+    text-align:center;
 }
 
-.title {
 
-    font-size: 1.3rem;
-    font-weight: bold;
-    line-height: 1.2;
+/* Property Cards Hover States */
 
+.property-card:hover .property-description
+{
+    height:0em;
+    padding:0px 1em;
+}
+.property-card:hover .property-image
+{
+    height:18em;
 }
 
-.copy {
-
-    font-size: 1.125rem;
-    font-style: italic;
-    line-height: 1.35;
-}
-
-.btn {
-    cursor: pointer;
-    margin-top: 1.5rem;
-    padding: 0.75rem 1.5rem;
-    letter-spacing: 0.025rem;
-    color: white;
-    background-color: #803952;
-    border: none;
-}
-.btn:hover {
-    background-color:  #914151;
-}
-.btn:focus {
-    outline: 1px dashed;
-    outline-offset: 3px;
-}
-
-@media (hover: hover) and (min-width: 600px) {
-    .card:after {
-        transform: translateY(0);
-    }
-
-    .content {
-        transform: translateY(calc(100% - 4.5rem));
-    }
-    .content > *:not(.title) {
-        opacity: 0;
-        transform: translateY(1rem);
-        transition: transform var(--d) var(--e), opacity var(--d) var(--e);
-    }
-
-    .card:hover,
-    .card:focus-within {
-        align-items: center;
-    }
-    .card:hover:before,
-    .card:focus-within:before {
-        transform: translateY(-4%);
-    }
-    .card:hover:after,
-    .card:focus-within:after {
-        transform: translateY(-50%);
-    }
-    .card:hover .content,
-    .card:focus-within .content {
-        transform: translateY(0);
-    }
-    .card:hover .content > *:not(.title),
-    .card:focus-within .content > *:not(.title) {
-        opacity: 1;
-        transform: translateY(0);
-        transition-delay: calc(var(--d) / 8);
-    }
-
-    .card:focus-within:before, .card:focus-within:after,
-    .card:focus-within .content,
-    .card:focus-within .content > *:not(.title) {
-        transition-duration: 0s;
-    }
-}
