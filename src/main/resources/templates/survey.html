@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Anket Yönetimi</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <h3 style="color: #398067"><i class="fas fa-poll"></i> Anket Yönetimi<hr/></h3>
+
+    <div class="row">
+        <div class="col-md-10">
+            <div class="d-grid gap-2 d-md-block">
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#surveyAddModal"><i class="fas fa-poll"></i> Anket Ekle</button>
+        </div>
+    </div>
+    </div>
+        <div class="row mb-3 mt-3">
+            <h5 style="color: #398067"><i class="far fa-list-alt"></i> Anketler<hr/></h5>
+
+            <div class="col-sm-4 mb-3 mt-3">
+                <h6>Sayfa başına <select class="form-select-sm">
+                    <option value="1">10</option>
+                    <option value="2">20</option>
+                    <option value="3">30</option>
+                </select> kayıt göster. </h6>
+            </div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <form id="search_announcement">
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" ><i class="fas fa-search"></i></span>
+                        <input id="nsearch" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
+                        <a onclick="newsCategoryResult(nsearch)" class="btn btn-outline-danger">Ara</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!---News Tablo Başlangıç-->
+        <table class="table table-hover">
+            <thead  style="background:#E5B86C; color: white">
+            <tr>
+                <th scope="col" >Id</th>
+                <th scope="col">Anket Adı</th>
+                <th scope="col">İşlemler</th>
+
+            </tr>
+            </thead>
+            <tbody id="tableRow">
+            </tbody>
+        </table>
+        <!---Tablo Bitiş-->
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+
+    <!---Anket Modal-->
+    <div class="modal fade bd-example-modal-lg" id="surveyAddModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background:#E5B86C; color: white">
+                    <h5 class="modal-title" id="staticBackdropLabel">Anket Ekle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        Anket Bilgilerinizi Giriniz.
+                    </div>
+                    <hr/>
+                    <form id="addSurvey" name="addSurvey">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="surveytitle" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Anket Başlığı</label>
+                            </div>
+                            <div class="col-md-8 ">
+                                <input class="form-control" type="text" name="surveytitle" id="surveytitle" placeholder="Anket Başlığı" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mt-2">
+                            <button type="submit" class="btn btn-outline-primary" data-bs-dismiss="modal">Ekle</button>
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">İptal</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</th:block>
+</body>
+</html>

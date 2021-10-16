@@ -2,7 +2,7 @@ $('#addNewsCategory').submit((event) => {
     console.log("Tıklandı.")
     event.preventDefault();
 
-    const newscategoryname = $("#newscategoryname").val()
+    const surveytitle = $("#newscategoryname").val()
 
     const obj = {
         newscategoryname: newscategoryname,
