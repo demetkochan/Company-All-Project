@@ -144,7 +144,7 @@ function fncOrderUpdate(i){
     select_id = itm.oid
     console.log(select_id)
     $("#order_status").change()
-
+    
 
 
 }
