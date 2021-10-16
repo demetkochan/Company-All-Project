@@ -85,8 +85,7 @@ function createRow(data){
     for (let i = 0; i < data.length; i++) {
         globalArr = data
         const itm = data[i]
-
-        html += `<div class="mt-3 mb-3"> <div  class="card" style="width: 18rem;float:left;">
+        html += `<div  class="card" style="width: 18rem;float:left; margin-left: 0.5rem; margin-bottom: 0.5rem; ">
                 <img src=" " class="card-img-top" alt="...">
                 
                 <div class="card-body">
@@ -97,8 +96,7 @@ function createRow(data){
                     <button onclick="fncGalleryDelete(`+itm.id+`)" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
                     
                  </div>
-            </div>
-</div>`
+            </div>`
     }
     $("#addCard").html(html)
 }
