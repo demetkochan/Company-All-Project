@@ -87,8 +87,8 @@
               <div class="col-md-8 ">
                 <select class="form-select" id="order_customer" aria-label="Example select with button addon">
                   <option value="0">-- Müşteri Seçiniz</option>
-                  <option value="1">Ali</option>
-                  <option value="2">Veli</option>
+                  <option th:each="item,iter : ${customer}" th:value="${item.id}" th:text="${item.cname}"/>
+
                 </select>
               </div>
             </div>
@@ -100,8 +100,8 @@
               <div class="col-md-8 ">
                 <select class="form-select" id="order_product" aria-label="Example select with button addon">
                   <option value="0">-- Ürün Seçiniz Seçiniz</option>
-                  <option value="1">Telefon</option>
-                  <option value="2">Gömlek</option>
+                  <option th:each="item,iter : ${product}" th:value="${item.id}" th:text="${item.productname}"/>
+
                 </select>
               </div>
             </div>
@@ -115,14 +115,13 @@
                 <input type="text" name="order_detail" id="order_detail" class="form-control"  required  />
               </div>
             </div>
-
             <div class="row">
               <div class="col-md-4 mt-3">
                 <label for="order_date" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Tarih</label>
               </div>
 
               <div class="col-md-8 mt-3">
-                <input type="date" class="form-control" id="order_date" name="order_date">
+                <input type="date" class="form-control" id="order_date" name="order_date" required>
               </div>
             </div>
 

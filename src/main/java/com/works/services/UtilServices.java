@@ -1,6 +1,8 @@
 package com.works.services;
 
 import com.works.entities.CategoryAnnouncement;
+import com.works.entities.Customer;
+import com.works.entities.Product;
 import com.works.repositories.*;
 import org.springframework.stereotype.Service;
 
@@ -70,6 +72,17 @@ public class UtilServices {
         return countCustomer;
     }
 
+    //Müşteri Listesi
+    public List<Customer>  customerList(){
+        List<Customer> ls = customerRepo.findAll();
+        return ls;
+    }
+
+    //Ürün Listesi
+    public List<Product>  productList(){
+        List<Product> ls = pRepo.findAll();
+        return ls;
+    }
 
 
 
