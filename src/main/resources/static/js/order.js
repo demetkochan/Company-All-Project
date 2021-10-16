@@ -58,7 +58,7 @@ $('#orderAdd').submit((event) => {
 
 function allOrderResult(){
     $.ajax({
-        url: './order_mvc/list',
+        url: './order_mvc/deliveredlist',
         type: 'GET',
         contentType : 'application/json; charset=utf-8',
         success: function (data) {
@@ -142,28 +142,37 @@ function fncOrderUpdate(i){
     const itm = globalArr[i];
 
     select_id = itm.oid
-
-    $.ajax({
-        url: './order_mvc/update/'+ select_id,
-        type: 'PUT',
-        contentType : 'application/json; charset=utf-8',
-        success: function (data) {
-            if (data) {
-                console.log(data)
-                allOrderResult()
-
-            } else {
-                console.log("Veri dönmedi.")
-            }
-        },
-        error: function (err) {
-            console.log(err)
-            alert("İşlem işlemi sırısında bir hata oluştu!");
-        }
-    })
-
-
+    fncUpdate(select_id)
     console.log(select_id)
+
+}
+
+function fncUpdate(select_id){
+
+    let answer = confirm("Ürün teslim edildi durumuna geçiyor, istediğinize emin misiniz?")
+    if(answer) {
+        $.ajax({
+            url: './order_mvc/update/' + select_id,
+            type: 'PUT',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                allOrderResult()
+                if (data) {
+                    console.log(data)
+
+
+                } else {
+                    console.log("Veri dönmedi.")
+                }
+            },
+            error: function (err) {
+                console.log(err)
+                alert("İşlem işlemi sırısında bir hata oluştu!");
+            }
+        })
+    }
+
+
 
 }
 

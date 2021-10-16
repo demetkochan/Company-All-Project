@@ -84,12 +84,22 @@ public class OrderController {
     }
 
 
-
+    @ResponseBody
     @PutMapping("/update/{stId}")
     public void orderBox(@PathVariable String stId) {
         //jpa-----
         int oid = Integer.parseInt(stId);
         obRepo.orderStatus(oid);
+    }
+
+
+    @ResponseBody
+    @GetMapping("/deliveredlist")
+    public List<ProductJoinOrder> orderDeliveredList(Model model){
+        List<ProductJoinOrder> order = obRepo.statusDelivered();
+        model.addAttribute("total",order);
+        return order;
+
     }
 
 
