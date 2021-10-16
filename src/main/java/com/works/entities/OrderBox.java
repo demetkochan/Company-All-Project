@@ -10,7 +10,7 @@ import java.util.Date;
 public class OrderBox {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "oid", nullable = false)
     private Integer id;
 
     private int order_product;
