@@ -29,7 +29,7 @@ $('#addSurvey').submit((event) => {
         },
         error: function (err) {
             console.log(err)
-            alert("İşlem işlemi sırısında bir hata oluştu!");
+            alert("İşlem işlemi sırasında bir hata oluştu!");
         }
     })
 })
@@ -66,9 +66,6 @@ $("#size").on("change",function (){
         allNewsCategoryResult(page,size)
     })
 
-
-
-
 })
 */
 function allSurveyResult(){
@@ -82,7 +79,7 @@ function allSurveyResult(){
         },
         error: function (err) {
             console.log(err)
-            alert("İşlem işlemi sırısında bir hata oluştu!");
+            alert("İşlem işlemi sırasında bir hata oluştu!");
         }
     })
 }
@@ -100,8 +97,9 @@ function createRow(data){
           <td>${itm.surveytitle}</td>
            <td class="text-right" >
                <div class="btn-group" role="group">
-                    <button onclick="fncSurveyUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryNewsAddModal">Güncelle</button>
+                    <button onclick="fncSurveyUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#surveyAddModal">Güncelle</button>
                     <button onclick="fncSurveyDelete(${itm.id})" type="button" class="btn btn-outline-danger ">Sil</button>
+                     <button onclick="fncOptionAdd(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#surveyOptionAddModal">Seçenek Ekle</button>
                </div>
           </td>
 
@@ -141,3 +139,82 @@ function fncSurveyUpdate( i ) {
     console.log(select_id)
     $("#surveytitle").val(item.surveytitle)
 }
+//----------------------------------------Survey Option Add-----------------------------------------------------//
+let select=0;
+function fncOptionAdd(i){
+    const item = globalAr[i];
+    select = item.id
+    console.log(select)
+  //  allSurveyOptionResult(select)
+//    fncsurveyOption(select)
+
+
+
+}
+
+
+
+function fncsurveyOption() {
+$.ajax({
+    url: './survey_mvc/optAdd',
+    type: 'POST',
+    data: JSON.stringify(obj),
+    dataType: 'json',
+    contentType : 'application/json; charset=utf-8',
+    success: function (data) {
+        if (data) {
+            console.log(data)
+            $("#optiontitle").val(" ")
+            allSurveyOptionResult(select)
+        } else {
+            console.log("Veri dönmedi.")
+        }
+    },
+    error: function (err) {
+        console.log(err)
+        alert("İşlem işlemi sırasında bir hata oluştu!");
+    }
+})
+}
+/*
+function allSurveyOptionResult( select ){
+    $.ajax({
+        url: './survey_mvc/optionList/'+select,
+        type: 'GET',
+        contentType : 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(data)
+            createRow(data)
+        },
+        error: function (err) {
+            console.log(err)
+            alert("İşlem işlemi sırasında bir hata oluştu!");
+        }
+    })
+}
+allSurveyOptionResult(select)
+
+//-------------------------------------------- survey Table  --------------------------------------------//
+let globalAr = []
+function createRow(data){
+    let html = ``
+    for (let i = 0; i < data.length; i++) {
+        globalAr = data
+        const itm = data[i]
+        html += `
+            <h6>${itm.surveytitle}</h6>
+            <hr/>
+            <tr>
+          <th scope="row">${itm.id}</th>
+          <td>${itm.optiontitle}</td>
+           <td class="text-right" >
+               <div class="btn-group" role="group">
+                    <button onclick="fncSurveyOptionDelete(${itm.id})" type="button" class="btn btn-outline-danger ">Sil</button>
+                    
+               </div>
+          </td>
+
+        </tr>`
+    }
+    $("#tableOptionRow").html(html)
+}*/

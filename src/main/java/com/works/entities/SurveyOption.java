@@ -1,20 +1,21 @@
 package com.works.entities;
 
-import jdk.internal.dynalink.linker.LinkerServices;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
-public class Survey {
+public class SurveyOption {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    private String surveytitle;
+    private String optiontitle;
+    private int vote;
+
 
 
 }

@@ -1,8 +1,8 @@
 package com.works.controller;
 
-import com.works.entities.CategoryAnnouncement;
-import com.works.entities.CategoryProduct;
 import com.works.entities.Survey;
+import com.works.entities.SurveyOption;
+import com.works.repositories.SurveyOptionRepository;
 import com.works.repositories.SurveyRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +13,10 @@ import java.util.List;
 @RequestMapping("/survey_mvc")
 public class SurveyController {
     final SurveyRepository sRepo;
-
-    public SurveyController(SurveyRepository sRepo) {
+    final SurveyOptionRepository soRepo;
+    public SurveyController(SurveyRepository sRepo, SurveyOptionRepository soRepo) {
         this.sRepo = sRepo;
+        this.soRepo = soRepo;
     }
 
     @GetMapping("")
@@ -64,5 +65,17 @@ public class SurveyController {
 
         return status;
 
+    }
+
+    @ResponseBody
+    @GetMapping("/optionList/{stid}")
+    public List<SurveyOption> optlist(@PathVariable String stid){
+        int id=Integer.parseInt(stid);
+        return soRepo.optList(id);
+    }
+
+    @PostMapping("/optionAdd")
+    public SurveyOption optadd(SurveyOption surveyOption){
+       return soRepo.save(surveyOption);
     }
 }

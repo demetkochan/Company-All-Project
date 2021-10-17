@@ -18,14 +18,18 @@ public class UtilServices {
     final AnnouncementRepository aRepo;
     final ProductRepository pRepo;
     final CustomerRepository customerRepo;
+    final SurveyRepository sRepo;
+    final OrderBoxRepository oRepo;
 
-    public UtilServices(CategoryAnnouncementRepository caRepo, ContentRepository cRepo, NewsRepository nRepo, AnnouncementRepository aRepo, ProductRepository pRepo, CustomerRepository customerRepo) {
+    public UtilServices(CategoryAnnouncementRepository caRepo, ContentRepository cRepo, NewsRepository nRepo, AnnouncementRepository aRepo, ProductRepository pRepo, CustomerRepository customerRepo, SurveyRepository sRepo, OrderBoxRepository oRepo) {
         this.caRepo = caRepo;
         this.cRepo = cRepo;
         this.nRepo = nRepo;
         this.aRepo = aRepo;
         this.pRepo = pRepo;
         this.customerRepo = customerRepo;
+        this.sRepo = sRepo;
+        this.oRepo = oRepo;
     }
     //Duyuru/haber kategori listeleme
     public List<CategoryAnnouncement>  categoryAnnouncementsList(){
@@ -82,6 +86,18 @@ public class UtilServices {
     public List<Product>  productList(){
         List<Product> ls = pRepo.findAll();
         return ls;
+    }
+
+    //Toplam Anket Sayısı
+    public int countSurvey(){
+        int countSurvey = sRepo.countSurvey();
+        return countSurvey;
+    }
+
+    //Toplam Sipariş Sayısı
+    public int countOrder(){
+        int countOrder= oRepo.countOrder();
+        return countOrder;
     }
 
 

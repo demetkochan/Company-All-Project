@@ -98,7 +98,7 @@
                 </div></a>
             <div class="property-description">
                 <h5><i class="fas fa-receipt"></i> Sipariş<hr></h5>
-                <p>Toplam Sipariş:</p>
+                <p>Toplam Sipariş: <strong th:text="${countOrder}"></strong> </p>
 
             </div>
             <a href="#">
@@ -128,7 +128,7 @@
         </div>
 
         <div class="property-card">
-            <a href="#">
+            <a th:href="@{/survey_mvc}">
                 <div class="property-image6">
                     <div class="property-image-title">
                         <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
@@ -136,7 +136,7 @@
                 </div></a>
             <div class="property-description">
                 <h5><i class="fas fa-poll-h"></i> Anket<hr></h5>
-                <p>Toplam Anket: </p>
+                <p>Toplam Anket: <strong th:text="${countSurvey}"></strong> </p>
             </div>
             <a href="#">
                 <div class="property-social-icons">

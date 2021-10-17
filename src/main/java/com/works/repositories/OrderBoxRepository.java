@@ -32,5 +32,7 @@ public interface OrderBoxRepository extends JpaRepository<OrderBox,Integer> {
     @Query(value = " update order_box as o set o.order_status = 1 where o.oid=?1 ",nativeQuery = true)
     void deliveredStatus(int id);
 
+    @Query(value = "select COUNT(oid)  as totalOrder from order_box",nativeQuery = true)
+    int countOrder();
 
 }
