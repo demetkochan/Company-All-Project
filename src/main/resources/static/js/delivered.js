@@ -35,7 +35,7 @@ function createRow(data){
             <td class="text-right" >
                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                
-                    <button onclick="fncDeliveredUpdate(`+i+`)" type="button"  class="btn btn-outline-primary "><i class="fas fa-truck"></i>
+                    <button onclick="fncDeliveredUpdate(`+i+`)" type="button"  class="btn btn-outline-primary "><i class="fas fa-shopping-bag"></i>
 </button>
                     <button onclick="fncDeliveredDelete(`+itm.oid+`)" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
                </div>
