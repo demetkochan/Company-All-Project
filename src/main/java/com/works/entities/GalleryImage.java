@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Data
 public class GalleryImage {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "gid", nullable = false)
     private Integer id;
 

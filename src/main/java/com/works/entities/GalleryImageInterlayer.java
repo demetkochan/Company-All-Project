@@ -10,6 +10,5 @@ import javax.validation.constraints.NotNull;
 public class GalleryImageInterlayer {
 
     private int g_id;
-
     private String image_desc;
 }
