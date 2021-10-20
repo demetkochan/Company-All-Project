@@ -85,18 +85,19 @@ function createRow(data){
     for (let i = 0; i < data.length; i++) {
         globalArr = data
         const itm = data[i]
-        html += `<div  class="card" style="width: 14rem;float:left; margin-left: 0.5rem; margin-bottom: 0.5rem; ">
-          
-                
-                <div class="card-body">
-                     <h6 lass="card-title">${itm.galleryname}</h6>
-                    <p class="card-text">${itm.gallery_detail}<hr></p>
-                    <a href="galleryDetail_mvc" class="btn btn-outline-secondary"><i class="fas fa-eye"></i></a>
-                    <button onclick="fncGalleryUpdate(`+i+`)" type="button" data-bs-toggle="modal" data-bs-target="#product" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button>
-                    <button onclick="fncGalleryDelete(`+itm.id+`)" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
+        html += `<div class="card" style="width: 18rem;float:left; margin-left: 0.5rem; margin-bottom: 0.5rem; ">
+  <ul class="list-group list-group-flush">
+  <li class="list-group-item" style="background:#E5B86C; color: white">${itm.galleryname}</li>
+    <li class="list-group-item">${itm.gallery_detail}</li>
+    
+  </ul>
+  <div class="card-footer"  >
+  <a href="galleryDetail_mvc" class="btn btn-outline-secondary"><i class="fas fa-eye"></i></a>
+    <button onclick="fncGalleryUpdate(\`+i+\`)" type="button" data-bs-toggle="modal" data-bs-target="#product" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button>
+    <button onclick="fncGalleryDelete(\`+itm.id+\`)" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
                     
-                 </div>
-            </div>`
+  </div>
+</div>`
     }
     $("#addCard").html(html)
 }

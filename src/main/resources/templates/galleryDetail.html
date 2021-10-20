@@ -5,7 +5,7 @@
       layout:decorator="inc/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Galeri Detay</title>
 </head>
 <body>
 <th:block layout:fragment="content">
@@ -22,7 +22,7 @@
                 <option>Resimleri görüntülemek için galeri seçiniz</option>
                 <option th:each="item,iter : ${galeries}" th:value="${item.id}" th:text="${item.galleryname}"/>
             </select>
-            <label style="color: #0F9DEF" for="galleries">Galeriler</label>
+            <label style="color: #398067" for="galleries">Galeriler</label>
 
         </div>
         <div class="grid-container mt-3"  id="imageAdd"></div>
