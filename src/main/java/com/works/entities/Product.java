@@ -43,6 +43,7 @@ public class Product {
     private long latitude;
     @Min(0)
     private long longitude;
+    @Min(0)
     private int productLİke;
 
     @OneToOne(cascade = CascadeType.DETACH)

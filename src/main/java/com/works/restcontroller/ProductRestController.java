@@ -29,6 +29,7 @@ public class ProductRestController {
         return productDto.productlist();
     }
 
+
     @DeleteMapping("/delete/{strIndex}")
     public Map<ERest, Object> delete(@PathVariable String strIndex){
         return productDto.productdelete(strIndex);
@@ -38,6 +39,11 @@ public class ProductRestController {
     public Map<ERest,Object> categoryList(){
         return productDto.categorylist();
     }
+
+
+
+
+
 
 
 
