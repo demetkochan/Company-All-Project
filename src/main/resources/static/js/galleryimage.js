@@ -23,10 +23,10 @@ function galleryImage(id) {
                 const itm = obj[i]
                 globalArr = obj
                 html +=`<div class="card" style="width: 14rem;float:left; margin-left: 0.5rem; margin-bottom: 0.5rem; ">
-                <button onclick="fncView(`+i+`)"  data-bs-toggle="modal" data-bs-target="#ViewModel" type="submit" class="btn btn-outline-primary ">
+                <button onclick="fncView(`+i+`)"  data-bs-toggle="modal" data-bs-target="#ViewModel" type="submit" class="btn btn-outline-warning">
                 <img src="../uploads/gallery/${itm.g_Id}/${itm.gallery_Image}" class="card-img-top"  alt="...">
                 </button>
-                <div class="card-body">
+                <div class="card-body" style="text-align: center">
                       <button onclick="fncImageDelete(`+itm.gid+`)" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
                     
                  </div>

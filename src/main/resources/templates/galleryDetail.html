@@ -16,16 +16,16 @@
         </div>
     </div>
 
-    <div class="col-sm-6">
-        <div class="form-floating col-md-8 mt-3 mx-3 ">
+    <div class=" col-sm-6">
+        <div class="form-floating col-sm-8 mt-3">
             <select class="form-select" id="galleries" aria-label="Floating label select example">
                 <option>Resimleri görüntülemek için galeri seçiniz</option>
                 <option th:each="item,iter : ${galeries}" th:value="${item.id}" th:text="${item.galleryname}"/>
             </select>
             <label style="color: #0F9DEF" for="galleries">Galeriler</label>
-            <div class="col-sm-3 mt-3"  id="imageAdd"></div>
-        </div>
 
+        </div>
+        <div class="grid-container mt-3"  id="imageAdd"></div>
     </div>
 
 
