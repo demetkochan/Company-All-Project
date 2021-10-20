@@ -35,6 +35,7 @@ public class AnnouncementDocRestController {
         return aDto.delete(strIndex);
     }
 
+    @ApiOperation("Duyuru Arama (Elasticsearch)")
     @GetMapping("/search/{data}")
     public Map<ERest, Object> search(@PathVariable String data){
 
