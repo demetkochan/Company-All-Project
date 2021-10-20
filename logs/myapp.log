@@ -1,0 +1,4 @@
+2021-10-15 21:57:00 ERROR CategoryController:114 - Galeri Kategorisi ekleme veya güncelleme hatası
+2021-10-16 05:05:08 ERROR ProductController:74 - Silme hatası oluştu.
+2021-10-16 15:06:38 ERROR OrderController:63 - Silme hatası oluştu.
+2021-10-16 15:09:08 ERROR OrderController:63 - Silme hatası oluştu.
