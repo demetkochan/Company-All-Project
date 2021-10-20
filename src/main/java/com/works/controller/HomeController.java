@@ -27,6 +27,7 @@ public class HomeController {
         model.addAttribute("sumCustomer", utilServices.countCustomer());
         model.addAttribute("countSurvey", utilServices.countSurvey());
         model.addAttribute("countOrder", utilServices.countOrder());
+        model.addAttribute("countLikeProduct", utilServices.countLikeProduct());
         return "home";
     }
 

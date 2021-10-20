@@ -11,7 +11,7 @@
 <th:block layout:fragment="content">
     <h3 style="color: #398067"><i class="fab fa-gratipay"></i> Beğeni Yönetimi <hr/></h3>
     <br/>
-    <h5 style="color: #398067"><i class="fas fa-heart"></i> Bütün Beğeniler <hr/></h5>
+    <h5 style="color: #398067"><i class="fas fa-heart"></i> Beğenilen Ürünler <hr/></h5>
     <div class="card">
 
         <div class="card-body">
@@ -38,19 +38,15 @@
             <table class="table table-hover">
                 <thead style="background: #E5B86C; color: white">
                 <tr>
-                    <th scope="col" >Müşteri</th>
+                    <th scope="col">Id</th>
                     <th scope="col">Ürün</th>
-                    <th scope="col">Puan</th>
-                    <th scope="col">Tarih</th>
+                    <th scope="col">Ürün Başlığı</th>
+                    <th scope="col">Ürün Fiyatı</th>
+
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">Ali Bilmem</th>
-                    <td>Araba</td>
-                    <td>5</td>
-                    <td>5.10.2021</td>
-                </tr>
+                <tbody id="productLikeRow">
+
                 </tbody>
             </table>
             <!---Tablo Bitiş-->
@@ -84,7 +80,7 @@
     </div>
     <br/>
 <div class="mb-3 mt-3">
-    <h5 style="color: #398067"><i class="far fa-thumbs-up"></i> Ürünlerin Toplam Beğenileri <hr/></h5>
+    <h5 style="color: #398067"><i class="fas fa-heart-broken"></i> Beğenilmeyen Ürünler <hr/></h5>
 </div>
     <div class="card">
         <div class="card-body">
@@ -111,15 +107,15 @@
             <table class="table table-hover">
                 <thead style="background: #E5B86C; color: white">
                 <tr>
+
+                    <th scope="col">Id</th>
                     <th scope="col">Ürün</th>
-                    <th scope="col">Puan</th>
+                    <th scope="col">Ürün Başlığı</th>
+                    <th scope="col">Ürün Fiyatı</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>Araba</td>
-                    <td>5</td>
-                </tr>
+                <tbody id="dislikeRow">
+
                 </tbody>
             </table>
             <!---Tablo Bitiş-->
@@ -154,3 +150,5 @@
 </th:block>
 </body>
 </html>
+
+<script th:src="@{js/like.js}"></script>

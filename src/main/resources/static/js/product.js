@@ -15,6 +15,7 @@ $('#productAdd').submit((event) => {
     const address= $("#address").val()
     const latitude = $("#latitude").val()
     const longitude = $("#longitude").val()
+    const productlike = "0"
 
 
     const obj = {
@@ -29,7 +30,8 @@ $('#productAdd').submit((event) => {
         campaign_desc : campaign_desc,
         address : address,
         latitude : latitude,
-        longitude: longitude
+        longitude: longitude,
+        productlike:productlike
     }
    if ( select_id != 0 ) {
         // update
@@ -117,7 +119,9 @@ function createRow(data){
                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                     <button onclick="fncProductUpdate(`+i+`)" type="button" data-bs-toggle="modal" data-bs-target="#product" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button>
                     <button onclick="fncProductDelete(`+itm.id+`)" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
-                     <button class="btn btn-outline-secondary" id="like-btn"><i class="fas fa-heart"></i></button>
+                     <button onclick="fncProductLike(`+i+`)"class="btn btn-outline-secondary" id="like-btn"><i class="fas fa-heart"></i></button>
+                     <button onclick="fncProductDislike(`+i+`)"class="btn btn-outline-warning" id="dislike-btn"><i class="fas fa-heart-broken"></i></button>
+
                </div>
           </td>
 
@@ -181,6 +185,92 @@ function fncProductUpdate(i){
 
 //Product update - end
 //product search
+
+let selected_id=0;
+function fncProductLike(i){
+    const itm = globalArr[i];
+
+    selected_id = itm.id
+    fncLike(selected_id)
+    console.log(selected_id)
+
+}
+
+let disselected_id = 0;
+function fncProductDislike(i){
+    const itm = globalArr[i];
+
+    disselected_id = itm.id
+    fncDislike(disselected_id)
+    console.log(disselected_id)
+
+}
+
+
+function fncDislike(disselected_id){
+
+    let answer = confirm("Ürünü beğenmediniz mi?  ")
+    if(answer) {
+        $.ajax({
+            url: './product_mvc/dislike/' + disselected_id,
+            type: 'PUT',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                allProductResult()
+                if (data) {
+                    console.log(data)
+
+
+                } else {
+                    console.log("Veri dönmedi.")
+                }
+            },
+            error: function (err) {
+                console.log(err)
+                alert("İşlem işlemi sırısında bir hata oluştu!");
+            }
+        })
+    }
+
+
+
+}
+
+
+
+function fncLike(selected_id){
+
+    let answer = confirm("Ürünü beğenmek  istediğinize emin misiniz?")
+    if(answer) {
+        $.ajax({
+            url: './product_mvc/like/' + selected_id,
+            type: 'PUT',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                allProductResult()
+                if (data) {
+                    console.log(data)
+
+
+                } else {
+                    console.log("Veri dönmedi.")
+                }
+            },
+            error: function (err) {
+                console.log(err)
+                alert("İşlem işlemi sırısında bir hata oluştu!");
+            }
+        })
+    }
+
+
+
+}
+
+
+
+
+
 $("#psearch").keyup(function () {
 
     const psearch = $("#psearch").val()

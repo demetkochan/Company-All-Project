@@ -43,6 +43,7 @@ public class Product {
     private long latitude;
     @Min(0)
     private long longitude;
+    private int productLİke;
 
     @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "category_product_id" ,referencedColumnName="id")
