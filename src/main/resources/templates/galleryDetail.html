@@ -10,9 +10,21 @@
 <body>
 <th:block layout:fragment="content">
 <div class="row">
-    <div class="col-sm-6"> Galeri Resimler Listesi Gelecek
-    <a th:href="@{/galleryimage}" class="btn btn-outline-danger">Resim Detayı</a>
+
+    <div class="col-sm-6">
+        <div class="form-floating col-md-8 mt-3 mx-3 ">
+            <select class="form-select" id="galleries" aria-label="Floating label select example">
+                <option>Resimleri görüntülemek için galeri seçiniz</option>
+                <option th:each="item,iter : ${galeries}" th:value="${item.id}" th:text="${item.galleryname}"/>
+            </select>
+            <label style="color: #0F9DEF" for="galleries">Galeriler</label>
+            <div class="col-sm-3 mt-3"  id="imageAdd"></div>
+        </div>
+
     </div>
+
+
+
     <div class="col-sm-6">
     <!--Resim Ekle Başlangıç-->
     <div class="card mb-3">
@@ -53,12 +65,32 @@
                     </form>
                 </div>
             </div>
+    </div>
+</div>
 
     <!--Resim Ekle Bitiş-->
 
+        <!--- Modal --->
+        <div class="modal fade" id="ViewModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #E5B86C" >
+                        <h5 class="modal-title" id="gallery-image" style="color: white">Resim</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
 
-    </div>
-</div>
+                        <div class="col-sm-9" >
+
+                            <img id="imgID"  alt="" style="height: 300px;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 </th:block>
 </body>
 </html>
+<script th:src="@{js/galleryimage.js}"></script>

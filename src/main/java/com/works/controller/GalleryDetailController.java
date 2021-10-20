@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -74,6 +75,38 @@ public class GalleryDetailController {
         giRepo.save(galleryImage1);
 
         return "redirect:/galleryDetail_mvc";
+    }
+
+
+    @ResponseBody
+    @GetMapping("/galleryImage/{stId}")
+    public List<GalleriesImages> galleriesImagesList(Model model, @PathVariable String stId){
+
+        int id = Integer.parseInt(stId);
+        List<GalleriesImages> galleriesImagesList = giRepo.galleriesImagesList(id);
+        model.addAttribute("images",galleriesImagesList);
+
+        return galleriesImagesList;
+
+    }
+
+    //resim silme
+    @ResponseBody
+    @DeleteMapping(value = "/delete/{stid}")
+    public String delete(@PathVariable String stid) {
+        String status = "0";
+        try{
+            int pid = Integer.parseInt(stid);
+            giRepo.deleteById(pid);
+            status= "1";
+
+        }catch (Exception e){
+            log.error("Silme hatası oluştu.");
+            System.err.println("Silme sırasında hata oluştu");
+        }
+
+        return status;
+
     }
 
 }
