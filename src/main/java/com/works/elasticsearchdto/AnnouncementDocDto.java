@@ -65,7 +65,7 @@ public class AnnouncementDocDto {
 
     public Map<ERest, Object> search(String data) {
         Map<ERest, Object> hm = new LinkedHashMap<>();
-        Page<AnnouncementDoc> searchPage = aRepo.findByTitle(data, PageRequest.of(0, 10));
+        Page<AnnouncementDoc> searchPage = aRepo.findByAnnouncementtitle(data, PageRequest.of(0, 10));
         List<AnnouncementDoc> announcementList = searchPage.getContent();
         hm.put(ERest.status, true);
         hm.put(ERest.result,announcementList);

@@ -37,6 +37,7 @@ public class AnnouncementDocRestController {
 
     @GetMapping("/search/{data}")
     public Map<ERest, Object> search(@PathVariable String data){
+
         return aDto.search(data);
     }
 }
