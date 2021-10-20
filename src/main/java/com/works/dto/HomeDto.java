@@ -81,6 +81,16 @@ public class HomeDto {
         return hm;
     }
 
+    //Toplam Beğeni
+    public Map<ERest,Object> totalProductLike(){
+        Map<ERest,Object> hm = new LinkedHashMap<>();
+        hm.put(ERest.status,true);
+        int sumProduct = pRepo.countLikeProduct();
+        hm.put(ERest.result,sumProduct);
+        return hm;
+    }
+
+
 
 
 

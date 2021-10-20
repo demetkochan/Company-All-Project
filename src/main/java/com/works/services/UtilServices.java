@@ -100,6 +100,12 @@ public class UtilServices {
         return countOrder;
     }
 
+    //Toplam Beğeni Sayısı
+    public int countLikeProduct(){
+        int countLikeProduct= pRepo.countLikeProduct();
+        return countLikeProduct;
+    }
+
 
 
 

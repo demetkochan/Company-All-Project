@@ -53,4 +53,11 @@ public class HomeRestController {
         return homeDto.totalProduct();
     }
 
+    //Toplam Beğeni
+    @GetMapping("/productlikeCount")
+    public Map<ERest,Object> productlikeCount(){
+        return homeDto.totalProductLike();
+    }
+
+
 }

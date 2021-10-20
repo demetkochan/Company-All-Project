@@ -58,6 +58,25 @@ public class ProductController {
 
     }
 
+    //like
+    @ResponseBody
+    @PutMapping("/like/{stId}")
+    public void productLike(@PathVariable String stId) {
+        //jpa-----
+        int cid = Integer.parseInt(stId);
+        pRepo.likeStatus(cid);
+    }
+
+    //dislike
+    @ResponseBody
+    @PutMapping("/dislike/{stId}")
+    public void productDislike(@PathVariable String stId) {
+        //jpa-----
+        int cid = Integer.parseInt(stId);
+        pRepo.dislikeStatus(cid);
+    }
+
+
     //ürün Listeleme
     @ResponseBody
     @GetMapping("/list")
@@ -83,6 +102,8 @@ public class ProductController {
         return status;
 
     }
+
+
 
 
     @ResponseBody
