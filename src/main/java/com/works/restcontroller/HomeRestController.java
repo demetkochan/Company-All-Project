@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/home_rest")
+@RequestMapping("/api/home_rest")
 public class HomeRestController {
 
     final HomeDto homeDto;

@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/announcement_rest")
+@RequestMapping("/api/announcement_rest")
 public class AnnouncementRestController {
 
     final AnnouncementDto announcementDto;

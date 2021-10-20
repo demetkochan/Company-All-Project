@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/api/announcementdoc_rest")
 public class AnnouncementDocRestController {
     final AnnouncementDocDto aDto;
 

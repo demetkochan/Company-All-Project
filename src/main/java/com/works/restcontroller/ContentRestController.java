@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/content_rest")
+@RequestMapping("/api/content_rest")
 public class ContentRestController {
 
     final ContentDto contentDto;

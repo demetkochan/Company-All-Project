@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/category_rest")
+@RequestMapping("/api/category_rest")
 public class CategoryRestController {
 final CategoryDto cDto;
 

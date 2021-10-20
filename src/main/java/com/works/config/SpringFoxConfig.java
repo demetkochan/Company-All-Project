@@ -36,7 +36,7 @@ public class SpringFoxConfig {
                 .securitySchemes(auth)
                 .securityContexts(securityContexts)
                 .select()
-                .paths(PathSelectors.any())
+                .paths(PathSelectors.regex("/api/.*"))
                 .build()
                 .apiInfo(apiInfo());
     }

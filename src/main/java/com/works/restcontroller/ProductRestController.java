@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/product_rest")
+@RequestMapping("/api/product_rest")
 public class ProductRestController {
     final ProductDto productDto;
 

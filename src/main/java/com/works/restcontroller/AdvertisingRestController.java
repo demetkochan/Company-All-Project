@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/advertising_rest")
+@RequestMapping("/api/advertising_rest")
 public class AdvertisingRestController {
 
     final AdvertisingDto aDto;

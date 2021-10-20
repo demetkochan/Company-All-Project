@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("survey_rest")
+@RequestMapping("/api/survey_rest")
 public class SurveyRestController {
     final SurveyDto sDto;
 
