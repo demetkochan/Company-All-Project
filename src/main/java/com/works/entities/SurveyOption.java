@@ -13,8 +13,9 @@ public class SurveyOption {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    private int survey_id;
     private String optiontitle;
-    private int vote;
+
 
 
 

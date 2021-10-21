@@ -67,12 +67,15 @@ public class SurveyController {
 
     }
 
+    /*
     @ResponseBody
     @GetMapping("/optionList/{stid}")
     public List<SurveyOption> optlist(@PathVariable String stid){
         int id=Integer.parseInt(stid);
         return soRepo.optList(id);
     }
+
+     */
 
     @PostMapping("/optionAdd")
     public SurveyOption optadd(SurveyOption surveyOption){
