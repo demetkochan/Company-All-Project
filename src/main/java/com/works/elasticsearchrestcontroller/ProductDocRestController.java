@@ -39,7 +39,7 @@ public class ProductDocRestController {
     @ApiOperation("Ürün Arama (Elasticsearch)")
     @GetMapping("/search/{data}")
     public Map<ERest, Object> search(@PathVariable String data){
-        return aDto.search(data);
+        return pDto.search(data);
     }
 
 }
