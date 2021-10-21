@@ -69,7 +69,7 @@ function surveyOption(id) {
          
             <td class="text-right" >
                <div class="btn-group" role="group">
-                  <button onclick="fncOptionCount(${itm.id})"  type="button" class="btn btn-outline-primary "><i class="fas fa-eye"></i></button>
+                  <button onclick="fncOptionCount(${itm.id})"  type="button" class="btn btn-outline-primary "><i class="fas fa-vote-yea"></i></button>
                    <button onclick="fncOptionDelete(${itm.id})" type="button" class="btn btn-outline-success "><i class="far fa-trash-alt"></i></button>
               </div>
             </td>
