@@ -1,7 +1,8 @@
 package com.works.elasticsearchdto;
 
-import com.works.models.CategoryAnnouncementDoc;
-import com.works.repositories.CategoryAnnouncementDocRepository;
+import com.works.models.AdvertisingDoc;
+import com.works.models.ProductDoc;
+import com.works.repositories.ProductDocRepository;
 import com.works.util.ERest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,19 +11,18 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class CategoryAnnouncementDocDto {
-    final CategoryAnnouncementDocRepository caRepo;
+public class ProductDocDto {
+    final ProductDocRepository pRepo;
 
-    public CategoryAnnouncementDocDto(CategoryAnnouncementDocRepository caRepo) {
-        this.caRepo = caRepo;
+    public ProductDocDto(ProductDocRepository pRepo) {
+        this.pRepo = pRepo;
     }
-
-    public Map<ERest, Object> add(CategoryAnnouncementDoc adoc){
+    public Map<ERest, Object> add(ProductDoc pdoc){
         Map<ERest,Object> hm=new LinkedHashMap<>();
-        CategoryAnnouncementDoc catannouncementDoc = caRepo.save(adoc);
+        ProductDoc productDoc = pRepo.save(pdoc);
         hm.put(ERest.status, true);
         hm.put(ERest.message, "Ekleme Başarılı");
-        hm.put(ERest.result, catannouncementDoc);
+        hm.put(ERest.result, productDoc);
         return hm;
     }
 
@@ -30,10 +30,10 @@ public class CategoryAnnouncementDocDto {
     public Map<ERest, Object> list(){
         Map<ERest, Object> hm = new LinkedHashMap<>();
         hm.put(ERest.status, true);
-        Iterable<CategoryAnnouncementDoc> iterableLs = caRepo.findAll();
-        List<CategoryAnnouncementDoc> catannouncementList = new ArrayList<>();
-        iterableLs.forEach(catannouncementList::add);
-        hm.put(ERest.result,catannouncementList);
+        Iterable<ProductDoc> iterableLs = pRepo.findAll();
+        List<ProductDoc> productDocsList = new ArrayList<>();
+        iterableLs.forEach(productDocsList::add);
+        hm.put(ERest.result,productDocsList);
         return hm;
     }
 
@@ -41,8 +41,8 @@ public class CategoryAnnouncementDocDto {
     public Map<ERest, Object> delete(String strIndex){
         Map<ERest, Object> hm = new HashMap<>();
         try{
-            if(caRepo.existsById(strIndex)){
-                caRepo.deleteById(strIndex);
+            if(pRepo.existsById(strIndex)){
+                pRepo.deleteById(strIndex);
                 hm.put(ERest.status, true);
                 hm.put(ERest.message, "Silme başarılı");
                 hm.put(ERest.result, strIndex);
@@ -62,10 +62,10 @@ public class CategoryAnnouncementDocDto {
 
     public Map<ERest, Object> search(String data) {
         Map<ERest, Object> hm = new LinkedHashMap<>();
-        Page<CategoryAnnouncementDoc> searchPage = caRepo.findByTitle(data, PageRequest.of(0, 10));
-        List<CategoryAnnouncementDoc> announcementList = searchPage.getContent();
+        Page<ProductDoc> searchPage = pRepo.findByTitle(data, PageRequest.of(0, 10));
+        List<ProductDoc> productList = searchPage.getContent();
         hm.put(ERest.status, true);
-        hm.put(ERest.result,announcementList);
+        hm.put(ERest.result,productList);
         return hm;
     }
 }

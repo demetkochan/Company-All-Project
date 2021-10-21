@@ -35,6 +35,4 @@ public class AdvertisingDoc {
     @Field(type=FieldType.Text)
     private String link;
 
-    @Field(type=FieldType.Text)
-    private String imageName;
 }

@@ -1,6 +1,5 @@
 package com.works.elasticsearchdto;
 
-import com.works.models.AnnouncementDoc;
 import com.works.models.CustomerDoc;
 import com.works.repositories.CustomerDocRepository;
 import com.works.util.ERest;
