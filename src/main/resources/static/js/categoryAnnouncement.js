@@ -1,3 +1,7 @@
+//-------------------------------------------- News Category list  --------------------------------------------//
+let pageNumber = 0
+let globalArr = []
+let lastPageNumber = 0;
 $('#addNewsCategory').submit((event) => {
     console.log("Tıklandı.")
     event.preventDefault();
@@ -35,78 +39,57 @@ $('#addNewsCategory').submit((event) => {
 })
 //-----------------------------------------News Category Add Finish--------------------------------------------------------//
 
-//-------------------------------------------- News Category list  --------------------------------------------//
-let selectedSize = 0;
-$("#size").on("change",function (){
-    console.log("Tıklanıldı")
-    selectedSize = (this.value)
-    console.log(selectedSize)
-    if(selectedSize==1){
-        selectedSize=5
-    }else if(selectedSize==2){
-        selectedSize=10
-    }else if(selectedSize==3){
-        selectedSize=15
+function changeVariables(dataNumber){
+    if (dataNumber == -5) {
+        dataNumber = lastPageNumber-1;
+
     }
-    const size= selectedSize
+    pageNumber = dataNumber;
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        fncSearch();
+    }
+    else{
+       allNewsCategoryResult()
+    }
 
-    let selectedPage=0;
-    $("#page").on("change",function (){
-        console.log("Tıklanıldı")
-        selectedPage = (this.value)
-        if(selectedPage ==1){
-            selectedPage =0
-        }else if(selectedPage ==2){
-            selectedPage =1
-        }else if(selectedPage ==3){
-            selectedPage =2
-        }
-        const page= selectedPage
+}
 
-        allNewsCategoryResult(page,size)
-    })
+allNewsCategoryResult()
 
-
-
-
-})
-
-
-
-
-
-
+// Content List - Start
 function allNewsCategoryResult(){
+    const pageSize = $("#cPage").val()
+    const status = $("#cStatus").val()
+    pageCount(1);
     $.ajax({
-        url: './category_mvc/announcementList',
+        url: './category_mvc/newsList/'+pageNumber+'/'+pageSize,
         type: 'GET',
-        contentType : 'application/json; charset=utf-8',
+        contentType: 'application/json; charset=utf-8',
         success: function (data) {
             console.log(data)
             createRow(data)
         },
-        error: function (err) {
+        error: function (err){
             console.log(err)
-            alert("İşlem işlemi sırısında bir hata oluştu!");
         }
     })
 }
-allNewsCategoryResult()
+//------------------------------------------- News Table  --------------------------------------------//
 
-//-------------------------------------------- News Table  --------------------------------------------//
-let globalArr = []
 function createRow(data){
+    globalArr = data
     let html = ``
     for (let i = 0; i < data.length; i++) {
-        globalArr = data
+
         const itm = data[i]
         html += `<tr>
           <th scope="row">${itm.id}</th>
           <td>${itm.newscategoryname}</td>
            <td class="text-right" >
-               <div class="btn-group" role="group">
-                    <button onclick="fncNewsCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryNewsAddModal">Güncelle</button>
-                    <button onclick="fncNewsCategoryDelete(${itm.id})" type="button" class="btn btn-outline-danger ">Sil</button>
+               <div class="btn-group" aria-label="Basic outlined example" role="group">
+                    <button onclick="fncNewsCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryNewsAddModal"><i class="fas fa-pencil-alt"></i></button>
+                    <button onclick="fncNewsCategoryDelete(${itm.id})" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
                </div>
           </td>
 
@@ -114,6 +97,30 @@ function createRow(data){
     }
     $("#tableRow").html(html)
 }
+
+function fncSearch() {
+    const pageSize = $("#cPage").val()
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        $.ajax({
+            url: '/category_mvc/search/'+pageNumber+'/'+pageSize +'/'+casearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                pageCount(2)
+                createRow(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allNewsCategoryResult()
+    }
+}
+
 //-------------------------------------------- News Delete Function --------------------------------------------//
 function fncNewsCategoryDelete(id){
     let answer = confirm("Silmek istediğinize emin misiniz?")
@@ -138,6 +145,64 @@ function fncNewsCategoryDelete(id){
         })
     }
 }
+function pagePlus(){
+    const pageSize = $("#cPage").val()
+    let plusNumber = globalArr.length
+    let pageNumberx = pageNumber
+    if( plusNumber < pageSize ){
+        pageNumber = pageNumberx
+    }
+    else{
+        pageNumber++
+    }
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        fncSearch();
+    }
+    else{
+        allNewsCategoryResult()
+    }
+
+
+}
+function pageMinus(){
+    console.log('GlobalArr Length : '+globalArr.length)
+    if(pageNumber <= 0){
+        pageNumber=0
+    }else {
+        pageNumber--
+    }
+    /*    lastPage()*/
+    console.log(pageNumber)
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        fncSearch();
+    }
+    else{
+        allNewsCategoryResult()
+    }
+
+
+}
+
+pageCount(1)
+function pageCount(countStatus){
+    const pageSize = $("#cPage").val()
+    $.ajax({
+        url: './category_mvc/List/pageCount/'+pageSize+'/'+countStatus,
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(data)
+            $("#totalPageNumber").text(pageNumber+1 + '/' + data)
+            lastPageNumber = data;
+        },
+        error: function (err){
+            console.log(err)
+        }
+    })
+}
+
 //-------------------------------------------- News Update Function --------------------------------------------//
 let select_id=0;
 function fncNewsCategoryUpdate( i ) {
@@ -373,7 +438,7 @@ function fncGalleryCategoryUpdate( i ) {
 }
 
 
-//news search
+/*//news search
 $("#nsearch").keyup(function () {
 
     const nsearch = $("#nsearch").val()
@@ -394,7 +459,7 @@ $("#nsearch").keyup(function () {
     else {
         allNewsCategoryResult()
     }
-})
+})*/
 
 
 //product category search
@@ -446,19 +511,3 @@ $("#gsearch").keyup(function () {
 
 
 
-$(document).ready(function() {
-    $('#addGalleryCategory').formValidation({
-        framework: 'bootstrap',
-        excluded: ':disabled',
-        field: {
-            gallerycategoryname: {
-                validator: {
-                    notEmpty: {
-                        message: 'The username is required'
-                    }
-                }
-            }
-
-        }
-    });
-});

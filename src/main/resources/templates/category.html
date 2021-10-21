@@ -26,22 +26,25 @@
     <div class="row mb-3 mt-3">
         <h5 style="color: #398067"><i class="far fa-list-alt"></i> Duyuru/Haber Kategorileri<hr/></h5>
 
-        <div class="col-sm-4 mb-3 mt-3">
-            <h6>Sayfa başına <select class="form-select-sm">
-                <option value="1">10</option>
-                <option value="2">20</option>
-                <option value="3">30</option>
-            </select> kayıt göster. </h6>
+           <div class="col-sm-4 mb-3 mt-3">
+
+               <h6>Sayfa başına <select onchange="allNewsCategoryResult()" class="form-select-sm" name="cPage" id="cPage">
+                <option value="5" >5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="-1">Hepsi</option>
+            </select> kayıt göster.</h6>
+
         </div>
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <form id="search_announcement">
+
                 <div class="input-group flex-nowrap">
-                    <span class="input-group-text" ><i class="fas fa-search"></i></span>
-                    <input id="nsearch" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
-                    <a onclick="newsCategoryResult(nsearch)" class="btn btn-outline-danger">Ara</a>
+                    <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
+                    <input onkeyup="fncSearch()" id="search" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
+                    <button id="contentSearch" class="btn btn-outline-secondary">Ara</button>
                 </div>
-            </form>
+
         </div>
     </div>
     <!---News Tablo Başlangıç-->
@@ -58,32 +61,30 @@
         </tbody>
     </table>
     <!---Tablo Bitiş-->
-    <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+    <div class="row" >
+        <div class="col-sm-5" >
+
+            <div class="d-inline p-2 bg-secondary text-white" id="totalPageNumber"></div>
+        </div>
+
+        <div class="col-sm-7">
+
+            <div class="btn-group" role="group" aria-label="Basic outlined example" style="float: right">
+                <button type="button" onclick="changeVariables(0)" class="btn btn-outline-secondary"> İlk </button>
+                <button onclick="pageMinus()" type="button" class="btn btn-outline-secondary"> <i class="fas fa-angle-double-left"></i> </button>
+                <button id="btnPlus" onclick="pagePlus()" type="button" class="btn btn-outline-secondary"><i class="fas fa-angle-double-right"></i> </button>
+                <button type="button"  onclick="changeVariables(-5)"  class="btn btn-outline-secondary"> Son </button>
+            </div>
+
+
         </div>
     </div>
+
+
+
+
+
+
 
     <!---Product Arama Başlangıç-->
     <div class="row mb-3 mt-3">

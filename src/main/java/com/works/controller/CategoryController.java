@@ -5,24 +5,24 @@ import com.works.repositories.CategoryAnnouncementRepository;
 import com.works.repositories.CategoryGalleryRepository;
 import com.works.repositories.CategoryProductRepository;
 import org.apache.log4j.Logger;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/category_mvc")
 public class CategoryController {
 
     private static final Logger log=Logger.getLogger(CategoryController.class);
-
+    Integer searchSize;
     final CategoryAnnouncementRepository caRepo;
     final CategoryProductRepository cpRepo;
     final CategoryGalleryRepository cgRepo;
@@ -59,24 +59,63 @@ public class CategoryController {
         return announcementUpdate;
 
     }
-/*    @ResponseBody
-    @GetMapping("/newsList/{pageNumber}/{stSize}")
-    public List<CategoryAnnouncement> list(@RequestParam(defaultValue = "0") String pageNumber, @RequestParam(defaultValue = "10") String stSize ) {
-        if(pageNumber==null && stSize==null){
-                Pageable pageable = PageRequest.of(0, 10);
-            List<CategoryAnnouncement> pageList = caRepo.findByOrderByIdAsc(pageable);
-            long totalcount = caRepo.count();
-            return pageList;
-            }else {
-            int ipageNumber = Integer.parseInt(pageNumber);
-            int size = Integer.parseInt(stSize);
-                Pageable pageable = PageRequest.of(ipageNumber, size);
-                List<CategoryAnnouncement> pageList = caRepo.findByOrderByIdAsc(pageable);
-                long totalcount = caRepo.count();
-            return pageList;
-            }
 
-    }*/
+    @ResponseBody
+    @GetMapping("/newsList/{pageNo}/{stpageSize}")
+    public List<CategoryAnnouncement> newsList(@PathVariable String pageNo, @PathVariable String stpageSize){
+
+        int ipageNumber = Integer.parseInt(pageNo);
+        int pageSize = Integer.parseInt(stpageSize);
+
+        if( pageSize == -1) {
+            List<CategoryAnnouncement> lsx = new ArrayList<>();
+            Iterable<CategoryAnnouncement> page = caRepo.findAll();
+           for (CategoryAnnouncement item : page){
+                lsx.add(item);
+            }
+            Collections.reverse(lsx);
+            return lsx;
+        } else {
+            Pageable pageable = PageRequest.of(ipageNumber, pageSize);
+            Slice<CategoryAnnouncement> pageList = caRepo.findByOrderByIdDesc(pageable);
+            List<CategoryAnnouncement> ls = pageList.getContent();
+            return ls;
+        }
+
+
+    }
+    @ResponseBody
+    @GetMapping("/search/{pageNo}/{stpageSize}/{data}")
+    public List<CategoryAnnouncement> contentSearch(@PathVariable String data, @PathVariable int pageNo, @PathVariable int stpageSize ){
+
+        Page<CategoryAnnouncement> pages = caRepo.findByNewscategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdDesc(data, PageRequest.of(pageNo,stpageSize));
+        List<CategoryAnnouncement> list = pages.getContent();
+        List<CategoryAnnouncement> listc = caRepo.findByNewscategorynameContainsIgnoreCaseAllIgnoreCase(data);
+        searchSize = listc.size();
+        return  list;
+
+    }
+
+    // pageCount - start
+    @ResponseBody
+    @GetMapping("/List/pageCount/{stpageSize}/{stPageStatus}")
+    public Integer pageCount(@PathVariable String stpageSize,@PathVariable String stPageStatus) {
+        Integer pageStatus = Integer.parseInt(stPageStatus);
+        long dataCount;
+        if (pageStatus == 1) {
+            dataCount = caRepo.count();
+        }
+        else{
+            dataCount = searchSize;
+
+        }
+        double totalPageCount = Math.ceil((double)dataCount/Double.parseDouble(stpageSize));
+        int pageCount = (int) totalPageCount;
+        System.out.println("PageCount : " + pageCount);
+        return pageCount;
+    }
+    // pageCount - end
+
 
     @ResponseBody
     @GetMapping("/announcementList")
