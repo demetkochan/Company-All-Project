@@ -21,6 +21,7 @@ $('#addSurveyOptions').submit((event) => {
                 console.log(data)
                 $("#survey_id").val(" ")
                 $("#optiontitle").val(" ")
+                surveyOption(selectedSurvey);
 
             } else {
                 console.log("Veri dönmedi.")
@@ -63,12 +64,13 @@ function surveyOption(id) {
                 html +=` <tr>
             <td>${itm.id}</td>
             <td>${itm.optiontitle}</td>
+            <td>${itm.optioncount}</td>
             
          
             <td class="text-right" >
                <div class="btn-group" role="group">
-                  <button onclick="fncView(`+i+`)"  data-bs-toggle="modal" data-bs-target="#ViewModel" type="submit" class="btn btn-outline-primary "><i class="fas fa-eye"></i></button>
-                   <button onclick="fncImageDelete(${itm.p_Id})" type="button" class="btn btn-outline-success "><i class="far fa-trash-alt"></i></button>
+                  <button onclick="fncOptionCount(${itm.id})"  type="button" class="btn btn-outline-primary "><i class="fas fa-eye"></i></button>
+                   <button onclick="fncOptionDelete(${itm.id})" type="button" class="btn btn-outline-success "><i class="far fa-trash-alt"></i></button>
               </div>
             </td>
           </tr>`
@@ -82,4 +84,57 @@ function surveyOption(id) {
 
 }
 surveyOption(selectedSurvey);
+
+//----------------------------------Option Delete------------------------------------------//
+
+function fncOptionDelete(id){
+    let answer = confirm("Silmek istediğinize emin misiniz?")
+    if(answer){
+
+        $.ajax({
+            url:"./surveydetail_mvc/delete/"+id,
+            type:"delete",
+            dataType: 'text',
+            success: function (data){
+                console.log(typeof data)
+                if( data != "0" ){
+                    alert("Silme İşlemi Başarılı!")
+                    surveyOption(selectedSurvey)
+                }else {
+                    alert("Silme sırasında bir hata oluştu.")
+                }
+            },
+            error: function (err){
+                console.log(err)
+            }
+        })
+    }
+}
+
+
+function fncOptionCount(id){
+    let answer = confirm("Silmek istediğinize emin misiniz?")
+    if(answer){
+
+        $.ajax({
+            url: './surveydetail_mvc/count/' + id,
+            type: 'PUT',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                surveyOption(selectedSurvey)
+                if (data) {
+                    console.log(data)
+
+
+                } else {
+                    console.log("Veri dönmedi.")
+                }
+            },
+            error: function (err) {
+                console.log(err)
+                alert("İşlem işlemi sırısında bir hata oluştu!");
+            }
+        })
+    }
+}
 

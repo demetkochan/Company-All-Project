@@ -49,5 +49,33 @@ public class SurveyDetailController {
     }
 
 
+    //Seçenek Silme
+    @ResponseBody
+    @DeleteMapping(value = "/delete/{stid}")
+    public String delete(@PathVariable String stid) {
+        String status = "0";
+        try{
+            int pid = Integer.parseInt(stid);
+            soRepo.deleteById(pid);
+            status= "1";
+
+        }catch (Exception e){
+            System.err.println("Silme sırasında hata oluştu");
+        }
+
+        return status;
+
+    }
+
+    //option Count
+    @ResponseBody
+    @PutMapping("/count/{stId}")
+    public void optionCount(@PathVariable String stId) {
+        //jpa-----
+        int cid = Integer.parseInt(stId);
+        soRepo.optionCount(cid);
+    }
+
+
 
 }

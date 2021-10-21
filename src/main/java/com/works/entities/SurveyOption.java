@@ -15,6 +15,7 @@ public class SurveyOption {
 
     private int survey_id;
     private String optiontitle;
+    private int optioncount;
 
 
 
