@@ -1,7 +1,6 @@
 package com.works.elasticsearchrestcontroller;
 
 import com.works.elasticsearchdto.CategoryAnnouncementDocDto;
-import com.works.models.AnnouncementDoc;
 import com.works.models.CategoryAnnouncementDoc;
 import com.works.util.ERest;
 import io.swagger.annotations.ApiOperation;
