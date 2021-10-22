@@ -213,6 +213,9 @@ function fncNewsCategoryUpdate( i ) {
 }
 
 //-------------------------------------------------Product------------------------------------------------------//
+let PageNumber = 0
+let globalAr = []
+let LastPageNumber = 0;
 
 $('#addProductCategory').submit((event) => {
     console.log("Tıklandı.")
@@ -249,31 +252,46 @@ $('#addProductCategory').submit((event) => {
         }
     })
 })
-//-----------------------------------------Product Category Add Finish--------------------------------------------------------//
-
-//----------------------------------------Product Category Search----------------------------------------------//
 
 
-//--------------------------------------------Product Category list  --------------------------------------------//
+function ChangeVariables(dataNumber){
+    if (dataNumber == -5) {
+        dataNumber = LastPageNumber-1;
+
+    }
+    PageNumber = dataNumber;
+    const cpsearch = $("#psearch").val()
+    if( cpsearch != "") {
+        fncProductSearch();
+    }
+    else{
+        allProductCategoryResult()
+    }
+
+}
+
+allProductCategoryResult()
+
+
 function allProductCategoryResult(){
+    const pageSize = $("#pPage").val()
+    const status = $("#pStatus").val()
+    PageCount(1);
     $.ajax({
-        url: './category_mvc/productList',
+        url: './category_mvc/productList/'+PageNumber+'/'+pageSize,
         type: 'GET',
-        contentType : 'application/json; charset=utf-8',
+        contentType: 'application/json; charset=utf-8',
         success: function (data) {
             console.log(data)
             createRo(data)
         },
-        error: function (err) {
+        error: function (err){
             console.log(err)
-            alert("İşlem işlemi sırısında bir hata oluştu!");
         }
     })
 }
-allProductCategoryResult()
-
 //-------------------------------------------- Product Table  --------------------------------------------//
-let globalAr = []
+
 function createRo(data){
     let html = ``
     for (let i = 0; i < data.length; i++) {
@@ -283,9 +301,9 @@ function createRo(data){
           <th scope="row">${itm.id}</th>
           <td>${itm.productcategoryname}</td>
            <td class="text-right" >
-               <div class="btn-group" role="group">
-                    <button onclick="fncProductCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryProductAddModal">Güncelle</button>
-                    <button onclick="fncProductCategoryDelete(${itm.id})" type="button" class="btn btn-outline-danger ">Sil</button>
+               <div class="btn-group" aria-label="Basic outlined example" role="group">
+                    <button onclick="fncProductCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryProductAddModal"><i class="fas fa-pencil-alt"></i></button>
+                    <button onclick="fncProductCategoryDelete(${itm.id})" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
                </div>
           </td>
 
@@ -294,6 +312,30 @@ function createRo(data){
     $("#tableProductRow").html(html)
 }
 //-------------------------------------------- Product Delete Function --------------------------------------------//
+function fncProductSearch() {
+    const pageSize = $("#pPage").val()
+    const cpsearch = $("#psearch").val()
+    if( cpsearch != "") {
+        $.ajax({
+            url: '/category_mvc/productSearch/'+PageNumber+'/'+pageSize +'/'+cpsearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                PageCount(2)
+                createRo(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allProductCategoryResult()
+    }
+}
+
+
 function fncProductCategoryDelete(id){
     let answer = confirm("Silmek istediğinize emin misiniz?")
     if(answer){
@@ -326,7 +368,76 @@ function fncProductCategoryUpdate( i ) {
     console.log(select_pid)
     $("#productcategoryname").val(item.productcategoryname)
 }
+
+function PagePlus(){
+    const pageSize = $("#pPage").val()
+    let plusNumber = globalAr.length
+    let pageNumberx = PageNumber
+    if( plusNumber < pageSize ){
+        PageNumber = pageNumberx
+    }
+    else{
+        PageNumber++
+    }
+    const cpsearch = $("#psearch").val()
+    if( cpsearch != "") {
+        fncProductSearch();
+    }
+    else{
+        allProductCategoryResult()
+    }
+
+
+}
+function PageMinus(){
+    console.log('GlobalAr Length : '+globalAr.length)
+    if(PageNumber <= 0){
+        PageNumber=0
+    }else {
+        PageNumber--
+    }
+    /*    lastPage()*/
+    console.log(PageNumber)
+    const cpsearch = $("#psearch").val()
+    if( cpsearch != "") {
+        fncProductSearch();
+    }
+    else{
+        allProductCategoryResult()
+    }
+
+
+}
+
+PageCount(1)
+function PageCount(countStatus){
+    const PageSize = $("#pPage").val()
+    $.ajax({
+        url: './category_mvc/productList/pageCount/'+PageSize+'/'+countStatus,
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(data)
+            $("#ptotalPageNumber").text(PageNumber+1 + '/' + data)
+            LastPageNumber = data;
+        },
+        error: function (err){
+            console.log(err)
+        }
+    })
+}
+
+
+
+
+
+
+
 //--------------------------Gallery-------------------------------------------------//
+let globlarr = []
+let PageNumbe = 0
+let LastPageNumbe = 0;
+
 $('#addGalleryCategory').submit((event) => {
     console.log("Tıklandı.")
     event.preventDefault();
@@ -364,26 +475,46 @@ $('#addGalleryCategory').submit((event) => {
 })
 //-----------------------------------------Gallery Category Add Finish--------------------------------------------------------//
 
-//-------------------------------------------- Gallery Category list  --------------------------------------------//
-function allGalleryCategoryResult(){
+
+function ChangeVariable(dataNumber){
+    if (dataNumber == -5) {
+        dataNumber = LastPageNumbe-1;
+
+    }
+    PageNumbe = dataNumber;
+    const cgsearch = $("#gsearch").val()
+    if( cgsearch != "") {
+        fncGallerySearch();
+    }
+    else{
+        allGalleryCategoryResult()
+    }
+
+}
+allGalleryCategoryResult()
+
+
+function  allGalleryCategoryResult(){
+    const pageSize = $("#gPage").val()
+    const status = $("#gStatus").val()
+    PageCoun(1);
     $.ajax({
-        url: './category_mvc/galleryList',
+        url: './category_mvc/galleryList/'+PageNumbe+'/'+pageSize,
         type: 'GET',
-        contentType : 'application/json; charset=utf-8',
+        contentType: 'application/json; charset=utf-8',
         success: function (data) {
             console.log(data)
             cRow(data)
         },
-        error: function (err) {
+        error: function (err){
             console.log(err)
-            alert("İşlem işlemi sırısında bir hata oluştu!");
         }
     })
 }
-allGalleryCategoryResult()
 
-//-------------------------------------------- Gallery Table  --------------------------------------------//
-let globlarr = []
+
+
+
 function cRow(data){
     let html = ``
     for (let i = 0; i < data.length; i++) {
@@ -394,8 +525,8 @@ function cRow(data){
           <td>${itm.gallerycategoryname}</td>
            <td class="text-right" >
                <div class="btn-group" role="group">
-                    <button onclick="fncGalleryCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryGalleryAddModal">Güncelle</button>
-                    <button onclick="fncGalleryCategoryDelete(${itm.id})" type="button" class="btn btn-outline-danger ">Sil</button>
+                    <button onclick="fncGalleryCategoryUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#categoryGalleryAddModal"><i class="fas fa-pencil-alt"></i></button>
+                    <button onclick="fncGalleryCategoryDelete(${itm.id})" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
                </div>
           </td>
 
@@ -403,6 +534,32 @@ function cRow(data){
     }
     $("#tableGalleryRow").html(html)
 }
+
+function fncGallerySearch() {
+    const pageSize = $("#gPage").val()
+    const cgsearch = $("#gsearch").val()
+    if( cgsearch != "") {
+        $.ajax({
+            url: '/category_mvc/gallerySearch/'+PageNumbe+'/'+pageSize +'/'+cgsearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                PageCoun(2)
+                cRow(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allGalleryCategoryResult()
+    }
+}
+
+
+
 //-------------------------------------------- Gallery Delete Function --------------------------------------------//
 function fncGalleryCategoryDelete(id){
     let answer = confirm("Silmek istediğinize emin misiniz?")
@@ -438,76 +595,65 @@ function fncGalleryCategoryUpdate( i ) {
 }
 
 
-/*//news search
-$("#nsearch").keyup(function () {
-
-    const nsearch = $("#nsearch").val()
-    if( nsearch != "") {
-        $.ajax({
-            url: './category_mvc/searchNews/' + nsearch,
-            type: 'GET',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                console.log(data)
-                createRow(data)
-            },
-            error: function (err) {
-                console.log(err)
-            }
-        })
+function PagePlu(){
+    const pageSize = $("#gPage").val()
+    let plusNumber = globlarr.length
+    let pageNumberx = PageNumbe
+    if( plusNumber < pageSize ){
+        PageNumbe = pageNumberx
     }
-    else {
-        allNewsCategoryResult()
+    else{
+        PageNumbe++
     }
-})*/
-
-
-//product category search
-$("#psearch").keyup(function () {
-
-    const psearch = $("#psearch").val()
-    if( psearch != "") {
-        $.ajax({
-            url: './category_mvc/searchProduct/' + psearch,
-            type: 'GET',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                console.log(data)
-                createRo(data)
-            },
-            error: function (err) {
-                console.log(err)
-            }
-        })
+    const cgsearch = $("#gsearch").val()
+    if( cgsearch != "") {
+        fncGallerySearch();
     }
-    else {
-       allProductCategoryResult()
-    }
-})
-
-
-//gallery category search
-$("#gsearch").keyup(function () {
-
-    const gsearch = $("#gsearch").val()
-    if( gsearch != "") {
-        $.ajax({
-            url: './category_mvc/searchGallery/' + gsearch,
-            type: 'GET',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                console.log(data)
-                cRow(data)
-            },
-            error: function (err) {
-                console.log(err)
-            }
-        })
-    }
-    else {
+    else{
         allGalleryCategoryResult()
     }
-})
+
+
+}
+function PageMinu(){
+    console.log('globlarr Length : '+globlarr.length)
+    if(PageNumbe <= 0){
+        PageNumbe=0
+    }else {
+        PageNumbe--
+    }
+    /*    lastPage()*/
+    console.log(PageNumbe)
+    const cgsearch = $("#gsearch").val()
+    if( cgsearch != "") {
+        fncGallerySearch();
+    }
+    else{
+        allGalleryCategoryResult()
+    }
+
+
+}
+
+PageCoun(1)
+function PageCoun(countStatus){
+    const PageSize = $("#gPage").val()
+    $.ajax({
+        url: './category_mvc/galleryList/pageCount/'+PageSize+'/'+countStatus,
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(data)
+            $("#gtotalPageNumber").text(PageNumbe+1 + '/' + data)
+            LastPageNumbe = data;
+        },
+        error: function (err){
+            console.log(err)
+        }
+    })
+}
+
+
 
 
 

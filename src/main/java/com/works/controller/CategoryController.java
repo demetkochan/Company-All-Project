@@ -11,10 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.*;
 
 @Controller
@@ -38,9 +36,11 @@ public class CategoryController {
         model.addAttribute("categoryG",new CategoryGallery());
         return "category";
     }
+
     CategoryAnnouncement announcementUpdate=new CategoryAnnouncement();
     CategoryGallery galleryUpdate=new CategoryGallery();
     CategoryProduct productUpdate=new CategoryProduct();
+    //category announcement start
     @ResponseBody
     @PostMapping("/announcementAdd")
     public CategoryAnnouncement add(@RequestBody CategoryAnnouncement announcement){
@@ -96,7 +96,7 @@ public class CategoryController {
 
     }
 
-    // pageCount - start
+
     @ResponseBody
     @GetMapping("/List/pageCount/{stpageSize}/{stPageStatus}")
     public Integer pageCount(@PathVariable String stpageSize,@PathVariable String stPageStatus) {
@@ -114,14 +114,8 @@ public class CategoryController {
         System.out.println("PageCount : " + pageCount);
         return pageCount;
     }
-    // pageCount - end
 
 
-    @ResponseBody
-    @GetMapping("/announcementList")
-    public List<CategoryAnnouncement> list(){
-        return caRepo.findAll();
-    }
 
     @ResponseBody
     @DeleteMapping(value = "/newsDelete/{stId}")
@@ -140,7 +134,10 @@ public class CategoryController {
         return status;
 
     }
+    //category announcement end
 
+
+   //gallery category start
     @ResponseBody
     @PostMapping("/galleryAdd")
     public CategoryGallery add(@RequestBody CategoryGallery categoryGallery){
@@ -167,11 +164,6 @@ public class CategoryController {
 
     }
 
-    @ResponseBody
-    @GetMapping("/galleryList")
-    public List<CategoryGallery> List(){
-        return cgRepo.findAll();
-    }
 
     @ResponseBody
     @DeleteMapping(value = "/galleryDelete/{stId}")
@@ -190,6 +182,65 @@ public class CategoryController {
         return status;
 
     }
+
+
+    @ResponseBody
+    @GetMapping("/galleryList/{pageNumber}/{stPageSize}")
+    public List<CategoryGallery> galleryList(@PathVariable String pageNumber, @PathVariable String stPageSize){
+
+        int ipageNumber = Integer.parseInt(pageNumber);
+        int pageSize = Integer.parseInt(stPageSize);
+
+        if( pageSize == -1) {
+            List<CategoryGallery> lst = new ArrayList<>();
+            Iterable<CategoryGallery> page = cgRepo.findAll();
+            for (CategoryGallery item : page){
+                lst.add(item);
+            }
+            Collections.reverse(lst);
+            return lst;
+        } else {
+            Pageable pageable = PageRequest.of(ipageNumber, pageSize);
+            Slice<CategoryGallery> pageList = cgRepo.findByOrderByIdDesc(pageable);
+            List<CategoryGallery> list = pageList.getContent();
+            return list;
+        }
+
+
+    }
+    @ResponseBody
+    @GetMapping("/gallerySearch/{pageNumber}/{stPageSize}/{data}")
+    public List<CategoryGallery> gallerySearch(@PathVariable String data, @PathVariable int pageNumber, @PathVariable int stPageSize){
+
+        Page<CategoryGallery> pages = cgRepo.findByGallerycategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdDesc(data, PageRequest.of(pageNumber, stPageSize));
+        List<CategoryGallery> list = pages.getContent();
+        List<CategoryGallery> listg = cgRepo.findByGallerycategorynameContainsIgnoreCaseAllIgnoreCase(data);
+        searchSize = listg.size();
+        return  list;
+
+    }
+
+
+    @ResponseBody
+    @GetMapping("/galleryList/pageCount/{stPageSize}/{stPageStatus}")
+    public Integer gallerypageCount(@PathVariable String stPageSize, @PathVariable String stPageStatus) {
+        Integer pageStatus = Integer.parseInt(stPageStatus);
+        long dataCount;
+        if (pageStatus == 1) {
+            dataCount = cgRepo.count();
+        }
+        else{
+            dataCount = searchSize;
+
+        }
+        double totalPageCount = Math.ceil((double)dataCount/Double.parseDouble(stPageSize));
+        int pageCount = (int) totalPageCount;
+        System.out.println("PageCount : " + pageCount);
+        return pageCount;
+    }
+   //gallery category end
+
+    //product category start
     @ResponseBody
     @PostMapping("/productAdd")
     public CategoryProduct add(@RequestBody CategoryProduct categoryProduct){
@@ -208,29 +259,7 @@ public class CategoryController {
         return productUpdate;
 
     }
-    /*
-    @ResponseBody
-    @PostMapping("/productSearch/{StrPro}")
-    public List<CategoryProduct> search(String StrPro){
-        List<CategoryProduct> psearchList=cpRepo.findByProduct_categoryNameContainsAllIgnoreCase(StrPro);
-        return psearchList;
 
-    }
-    @ResponseBody
-    @PostMapping("/newsSearch/{StrNew}")
-    public List<CategoryAnnouncement> newsearch(String StrNew){
-        List<CategoryAnnouncement> nsearchList=caRepo.findByNews_categoryNameAllIgnoreCase(StrNew);
-        return nsearchList;
-
-    }
-*/
-
-
-    @ResponseBody
-    @GetMapping("/productList")
-    public List<CategoryProduct> productList(){
-        return cpRepo.findAll();
-    }
 
     @ResponseBody
     @DeleteMapping(value = "/productDelete/{stId}")
@@ -250,29 +279,62 @@ public class CategoryController {
 
     }
 
-
     @ResponseBody
-    @GetMapping("/searchGallery/{data}")
-    public List<CategoryGallery> cgsearch(@PathVariable String data) {
-        List<CategoryGallery> ls = cgRepo.findByGallerycategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data);
-        System.out.println(ls);
-        return ls;
+    @GetMapping("/productList/{pageNumber}/{stPageSize}")
+    public List<CategoryProduct> productList(@PathVariable String pageNumber, @PathVariable String stPageSize){
+
+        int ipageNumber = Integer.parseInt(pageNumber);
+        int pageSize = Integer.parseInt(stPageSize);
+
+        if( pageSize == -1) {
+            List<CategoryProduct> lst = new ArrayList<>();
+            Iterable<CategoryProduct> page = cpRepo.findAll();
+            for (CategoryProduct item : page){
+                lst.add(item);
+            }
+            Collections.reverse(lst);
+            return lst;
+        } else {
+            Pageable pageable = PageRequest.of(ipageNumber, pageSize);
+            Slice<CategoryProduct> pageList = cpRepo.findByOrderByIdDesc(pageable);
+            List<CategoryProduct> list = pageList.getContent();
+            return list;
+        }
+
+
+    }
+    @ResponseBody
+    @GetMapping("/productSearch/{pageNumber}/{stPageSize}/{data}")
+    public List<CategoryProduct> productSearch(@PathVariable String data, @PathVariable int pageNumber, @PathVariable int stPageSize){
+
+        Page<CategoryProduct> pages = cpRepo.findByProductcategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdDesc(data, PageRequest.of(pageNumber, stPageSize));
+        List<CategoryProduct> list = pages.getContent();
+        List<CategoryProduct> listg = cpRepo.findByProductcategorynameContainsIgnoreCaseAllIgnoreCase(data);
+        searchSize = listg.size();
+        return  list;
+
     }
 
-    @ResponseBody
-    @GetMapping("/searchNews/{data}")
-    public List<CategoryAnnouncement> nsearch(@PathVariable String data) {
-        List<CategoryAnnouncement> ls = caRepo.findByNewscategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data);
-        System.out.println(ls);
-        return ls;
-    }
 
     @ResponseBody
-    @GetMapping("/searchProduct/{data}")
-    public List<CategoryProduct> psearch(@PathVariable String data) {
-        List<CategoryProduct> ls = cpRepo.findByProductcategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data);
-        System.out.println(ls);
-        return ls;
+    @GetMapping("/productList/pageCount/{stPageSize}/{stPageStatus}")
+    public Integer productpageCount(@PathVariable String stPageSize, @PathVariable String stPageStatus) {
+        Integer pageStatus = Integer.parseInt(stPageStatus);
+        long dataCount;
+        if (pageStatus == 1) {
+            dataCount = cpRepo.count();
+        }
+        else{
+            dataCount = searchSize;
+
+        }
+        double totalPageCount = Math.ceil((double)dataCount/Double.parseDouble(stPageSize));
+        int pageCount = (int) totalPageCount;
+        System.out.println("PageCount : " + pageCount);
+        return pageCount;
     }
+    //product category end
+
+
 
 }

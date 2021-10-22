@@ -11,9 +11,7 @@ import java.util.List;
 public interface CategoryAnnouncementRepository extends JpaRepository<CategoryAnnouncement,Integer> {
     Page<CategoryAnnouncement> findByOrderByIdDesc(Pageable pageable);
 
-   // List<CategoryAnnouncement> findByNews_categoryNameAllIgnoreCase(String newscategoryName);
 
-    List<CategoryAnnouncement> findByNewscategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(String newscategoryname);
 
     Page<CategoryAnnouncement> findByNewscategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdDesc(String newscategoryname, Pageable pageable);
 

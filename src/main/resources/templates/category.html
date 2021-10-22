@@ -40,7 +40,7 @@
         <div class="col-sm-4">
 
                 <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
+                    <span class="input-group-text" ><i class="fas fa-search"></i></span>
                     <input onkeyup="fncSearch()" id="search" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
                     <button id="contentSearch" class="btn btn-outline-secondary">Ara</button>
                 </div>
@@ -90,21 +90,21 @@
     <div class="row mb-3 mt-3">
         <h5 style="color: #398067"><i class="far fa-list-alt"></i> Ürün Kategorileri<hr/></h5>
         <div class="col-sm-4 mb-3 mt-3">
-            <h6>Sayfa başına <select class="form-select-sm">
-                <option value="1">10</option>
-                <option value="2">20</option>
-                <option value="3">30</option>
-            </select> kayıt göster. </h6>
+            <h6>Sayfa başına <select onchange="allProductCategoryResult()" class="form-select-sm" name="pPage" id="pPage">
+                <option value="5" >5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="-1">Hepsi</option>
+            </select> kayıt göster.</h6>
+
         </div>
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <form id="search_form">
-                <div class="input-group flex-nowrap">
-                    <span class="input-group-text" ><i class="fas fa-search"></i></span>
-                    <input id="psearch" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
-                    <a onclick="productCategoryResult(psearch)" class="btn btn-outline-danger">Ara</a>
-                </div>
-            </form>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" ><i class="fas fa-search"></i></span>
+                <input onkeyup="fncProductSearch()" id="psearch" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
+                <button id="productSearch" class="btn btn-outline-secondary">Ara</button>
+            </div>
         </div>
     </div>
     <!---Product Tablo Başlangıç-->
@@ -122,29 +122,21 @@
     </table>
     <!---Tablo Bitiş-->
     <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+        <div class="col-sm-5" >
+
+            <div class="d-inline p-2 bg-secondary text-white" id="ptotalPageNumber"></div>
+        </div>
+
+        <div class="col-sm-7">
+
+            <div class="btn-group" role="group" aria-label="Basic outlined example" style="float: right">
+                <button type="button" onclick="ChangeVariables(0)" class="btn btn-outline-secondary"> İlk </button>
+                <button onclick="PageMinus()" type="button" class="btn btn-outline-secondary"> <i class="fas fa-angle-double-left"></i> </button>
+                <button id="btPlus" onclick="PagePlus()" type="button" class="btn btn-outline-secondary"><i class="fas fa-angle-double-right"></i> </button>
+                <button type="button"  onclick="ChangeVariables(-5)"  class="btn btn-outline-secondary"> Son </button>
+            </div>
+
+
         </div>
     </div>
 
@@ -152,21 +144,20 @@
     <div class="row mb-3 mt-3">
         <h5 style="color: #398067"><i class="far fa-list-alt"></i> Galeri Kategorileri<hr/></h5>
         <div class="col-sm-4 mb-3 mt-3">
-            <h6>Sayfa başına <select class="form-select-sm" id="size">
-                <option value="1">10</option>
-                <option value="2">20</option>
-                <option value="3">30</option>
-            </select> kayıt göster. </h6>
+            <h6>Sayfa başına <select onchange="allGalleryCategoryResult()" class="form-select-sm" name="gPage" id="gPage">
+                <option value="5" >5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="-1">Hepsi</option>
+            </select> kayıt göster.</h6>
         </div>
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <form id="search_gallery">
-                <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
-                    <input id="gsearch" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
-                    <a onclick="customerSearch()" class="btn btn-outline-danger">Ara</a>
-                </div>
-            </form>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
+                <input onkeyup="fncGallerySearch()" id="gsearch" type="text" class="form-control" placeholder="Arama.." aria-describedby="addon-wrapping">
+                <button id="gallerySearch" class="btn btn-outline-secondary">Ara</button>
+            </div>
         </div>
     </div>
     <!--- Galeri Tablo Başlangıç-->
@@ -184,29 +175,21 @@
     </table>
     <!---Tablo Bitiş-->
     <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination" id="page">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#" th:value="1">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#" th:value="2">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#" th:value="3">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+        <div class="col-sm-5" >
+
+            <div class="d-inline p-2 bg-secondary text-white" id="gtotalPageNumber"></div>
+        </div>
+
+        <div class="col-sm-7">
+
+            <div class="btn-group" role="group" aria-label="Basic outlined example" style="float: right">
+                <button type="button" onclick="ChangeVariable(0)" class="btn btn-outline-secondary"> İlk </button>
+                <button onclick="PageMinu()" type="button" class="btn btn-outline-secondary"> <i class="fas fa-angle-double-left"></i> </button>
+                <button id="bPlus" onclick="PagePlu()" type="button" class="btn btn-outline-secondary"><i class="fas fa-angle-double-right"></i> </button>
+                <button type="button"  onclick="ChangeVariable(-5)"  class="btn btn-outline-secondary"> Son </button>
+            </div>
+
+
         </div>
     </div>
 
@@ -266,7 +249,7 @@
                             </div>
                         </div>
                         <div class="col-md-3 mt-2">
-                            <button type="submit" class="btn btn-outline-primary">Ekle</button>
+                            <button type="submit" class="btn btn-outline-primary" data-bs-dismiss="modal">Ekle</button>
                             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">İptal</button>
                         </div>
                     </form>
