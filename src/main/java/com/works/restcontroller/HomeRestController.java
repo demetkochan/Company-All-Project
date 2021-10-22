@@ -59,5 +59,25 @@ public class HomeRestController {
         return homeDto.totalProductLike();
     }
 
+    //Toplam Müşteri
+    @GetMapping("/customerCount")
+    public Map<ERest,Object> customerCount(){
+        return homeDto.totalCustomer();
+    }
+
+    //Toplam Sipariş
+    @GetMapping("/orderCount")
+    public Map<ERest,Object> orderCount(){
+        return homeDto.totalOrder();
+    }
+
+    //Toplam Anket
+    @GetMapping("/surveyCount")
+    public Map<ERest,Object> surveyCount(){
+        return homeDto.totalSurvey();
+    }
+
+
+
 
 }
