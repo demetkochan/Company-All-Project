@@ -19,20 +19,24 @@
   <div class="card">
     <h5 class="card-header" style="background:#E5B86C; color: white" ><i class="fas fa-pen"></i> Kullanıcı Bilgilerini Güncelle</h5>
     <div class="card-body">
+
+     <form id="updateuser" name="updateuser">
       <div class="mb-3">
-        <label for="userName" class="form-label">Adı</label>
-        <input class="form-control" type="text" id="userName" required>
+        <label for="firstName" class="form-label">Adı</label>
+        <input class="form-control" type="text" id="firstName" name="firstName" required>
       </div>
       <div class="mb-3">
-        <label for="userSurname" class="form-label">Soyadı</label>
-        <input class="form-control" type="text" id="userSurname" required>
+        <label for="lastName" class="form-label">Soyadı</label>
+        <input class="form-control" type="text" id="lastName" name="lastName" required>
       </div>
       <div class="mb-3">
-        <label for="userMail" class="form-label">Mail</label>
-        <input class="form-control" type="text" id="userMail" required>
+        <label for="email" class="form-label">Mail</label>
+        <input class="form-control" type="text" id="email" name="email" required>
       </div>
 
-      <a href="#" class="btn btn-outline-primary">Kaydet</a>
+      <button type="submit" class="btn btn-outline-primary">Kaydet</button>
+     </form>
+
       <a href="#" class="btn btn-outline-primary">İptal</a>
       <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#passwordChangeModal">
         Şifre Değiştir
@@ -75,3 +79,5 @@
 </th:block>
 </body>
 </html>
+
+<script th:src="@{js/userUpdate.js}"></script>
