@@ -9,11 +9,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CategoryAnnouncementRepository extends JpaRepository<CategoryAnnouncement,Integer> {
-    Page<CategoryAnnouncement> findByOrderByIdDesc(Pageable pageable);
+    Page<CategoryAnnouncement> findByOrderByIdAsc(Pageable pageable);
 
 
 
-    Page<CategoryAnnouncement> findByNewscategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdDesc(String newscategoryname, Pageable pageable);
+    Page<CategoryAnnouncement> findByNewscategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(String newscategoryname, Pageable pageable);
 
 
    List<CategoryAnnouncement> findByNewscategorynameContainsIgnoreCaseAllIgnoreCase(String newscategoryname);

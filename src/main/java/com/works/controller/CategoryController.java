@@ -77,7 +77,7 @@ public class CategoryController {
             return lsx;
         } else {
             Pageable pageable = PageRequest.of(ipageNumber, pageSize);
-            Slice<CategoryAnnouncement> pageList = caRepo.findByOrderByIdDesc(pageable);
+            Slice<CategoryAnnouncement> pageList = caRepo.findByOrderByIdAsc(pageable);
             List<CategoryAnnouncement> ls = pageList.getContent();
             return ls;
         }
@@ -88,7 +88,7 @@ public class CategoryController {
     @GetMapping("/search/{pageNo}/{stpageSize}/{data}")
     public List<CategoryAnnouncement> contentSearch(@PathVariable String data, @PathVariable int pageNo, @PathVariable int stpageSize ){
 
-        Page<CategoryAnnouncement> pages = caRepo.findByNewscategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdDesc(data, PageRequest.of(pageNo,stpageSize));
+        Page<CategoryAnnouncement> pages = caRepo.findByNewscategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data, PageRequest.of(pageNo,stpageSize));
         List<CategoryAnnouncement> list = pages.getContent();
         List<CategoryAnnouncement> listc = caRepo.findByNewscategorynameContainsIgnoreCaseAllIgnoreCase(data);
         searchSize = listc.size();
@@ -201,7 +201,7 @@ public class CategoryController {
             return lst;
         } else {
             Pageable pageable = PageRequest.of(ipageNumber, pageSize);
-            Slice<CategoryGallery> pageList = cgRepo.findByOrderByIdDesc(pageable);
+            Slice<CategoryGallery> pageList = cgRepo.findByOrderByIdAsc(pageable);
             List<CategoryGallery> list = pageList.getContent();
             return list;
         }
@@ -212,7 +212,7 @@ public class CategoryController {
     @GetMapping("/gallerySearch/{pageNumber}/{stPageSize}/{data}")
     public List<CategoryGallery> gallerySearch(@PathVariable String data, @PathVariable int pageNumber, @PathVariable int stPageSize){
 
-        Page<CategoryGallery> pages = cgRepo.findByGallerycategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdDesc(data, PageRequest.of(pageNumber, stPageSize));
+        Page<CategoryGallery> pages = cgRepo.findByGallerycategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data, PageRequest.of(pageNumber, stPageSize));
         List<CategoryGallery> list = pages.getContent();
         List<CategoryGallery> listg = cgRepo.findByGallerycategorynameContainsIgnoreCaseAllIgnoreCase(data);
         searchSize = listg.size();
@@ -296,7 +296,7 @@ public class CategoryController {
             return lst;
         } else {
             Pageable pageable = PageRequest.of(ipageNumber, pageSize);
-            Slice<CategoryProduct> pageList = cpRepo.findByOrderByIdDesc(pageable);
+            Slice<CategoryProduct> pageList = cpRepo.findByOrderByIdAsc(pageable);
             List<CategoryProduct> list = pageList.getContent();
             return list;
         }
@@ -307,7 +307,7 @@ public class CategoryController {
     @GetMapping("/productSearch/{pageNumber}/{stPageSize}/{data}")
     public List<CategoryProduct> productSearch(@PathVariable String data, @PathVariable int pageNumber, @PathVariable int stPageSize){
 
-        Page<CategoryProduct> pages = cpRepo.findByProductcategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdDesc(data, PageRequest.of(pageNumber, stPageSize));
+        Page<CategoryProduct> pages = cpRepo.findByProductcategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data, PageRequest.of(pageNumber, stPageSize));
         List<CategoryProduct> list = pages.getContent();
         List<CategoryProduct> listg = cpRepo.findByProductcategorynameContainsIgnoreCaseAllIgnoreCase(data);
         searchSize = listg.size();

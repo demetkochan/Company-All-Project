@@ -38,9 +38,9 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     List<Product> dislikeResult();
 
 
-    Page<Product> findByOrderByIdDesc(Pageable pageable);
+    Page<Product> findByOrderByIdAsc(Pageable pageable);
 
-    Page<Product> findByProductnameContainsIgnoreCaseAllIgnoreCaseOrderByIdDesc(String productname, Pageable pageable);
+    Page<Product> findByProductnameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(String productname, Pageable pageable);
 
     List<Product> findByProductnameContainsIgnoreCaseAllIgnoreCase(String productname);
 

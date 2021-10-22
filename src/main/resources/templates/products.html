@@ -57,7 +57,7 @@
             <th scope="col">Ürün Adı</th>
             <th scope="col">Başlığı</th>
             <th scope="col">Açıklama</th>
-            <th scope="col">Kategori</th>
+            <th scope="col">Fiyat</th>
             <th scope="col">İşlem</th>
         </tr>
         </thead>
@@ -101,14 +101,13 @@
 
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <label for="categoryProduct" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategoriler</label>
+                                <label for="categoryProducts" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Kategoriler</label>
                             </div>
                             <div class="col-md-8 mb-3">
-                                    <select class="form-select"  id="categoryProduct" aria-label="Default select example"  placeholder="Seçim yapınız" >
-                                    <option >Seçim yapınız</option>
+                                <select class="form-select" id="categoryProducts" multiple aria-label="multiple select example" required>
                                     <option th:each="item,iter : ${categories}" th:value="${item.id}" th:text="${item.productcategoryname}"/>
-
                                 </select>
+
                             </div>
 
                         </div>
@@ -140,7 +139,7 @@
                                 <label for="product_detail" class="form-label" style="color: #5c636a;font-family: Bahnschrift;font-size: large; ">Detaylı Açıklama</label>
                             </div>
                             <div class="col-md-8 mb-3 ">
-                                <textarea class="form-control" id="product_detail" name="product_detail_desc"></textarea>
+                                <textarea class="form-control" id="product_detail" name="product_detail_desc" required></textarea>
                             </div>
                         </div>
 
@@ -159,7 +158,7 @@
                             </div>
 
                             <div class="col-md-8 mb-3">
-                                <select class="form-select" id="product_type" aria-label="Example select with button addon">
+                                <select class="form-select" id="product_type" aria-label="Example select with button addon" required>
                                     <option value="0">Seçim yapınız </option>
                                     <option value="1">Satılık </option>
                                     <option value="2">Kiralık </option>
@@ -172,7 +171,7 @@
                             </div>
 
                             <div class="col-md-8 mb-3">
-                                <select class="form-select" id="campaign" aria-label="Example select with button addon">
+                                <select class="form-select" id="campaign" aria-label="Example select with button addon" required>
                                     <option value="0">Seçim yapınız </option>
                                     <option value="1">Evet </option>
                                     <option value="2">Hayır </option>

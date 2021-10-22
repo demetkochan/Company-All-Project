@@ -10,9 +10,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CategoryProductRepository extends JpaRepository<CategoryProduct,Integer> {
-    Page<CategoryProduct> findByProductcategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdDesc(String productcategoryname, Pageable pageable);
+    Page<CategoryProduct> findByProductcategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(String productcategoryname, Pageable pageable);
 
     List<CategoryProduct> findByProductcategorynameContainsIgnoreCaseAllIgnoreCase(String productcategoryname);
 
-    Page<CategoryProduct> findByOrderByIdDesc(Pageable pageable);
+    Page<CategoryProduct> findByOrderByIdAsc(Pageable pageable);
 }

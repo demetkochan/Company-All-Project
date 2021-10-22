@@ -46,9 +46,11 @@ public class Product {
     @Min(0)
     private int productLİke;
 
-    @OneToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "category_product_id" ,referencedColumnName="id")
-    private CategoryProduct categoryProduct;
+
+    @ManyToMany(cascade = CascadeType.DETACH)
+    @JoinTable(name = "products_categories",joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "products_categories_id"))
+    private List<CategoryProduct> categoryProducts;
+
 
 
 }

@@ -10,11 +10,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CategoryGalleryRepository extends JpaRepository<CategoryGallery,Integer> {
-    List<CategoryGallery> findByGallerycategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(String gallerycategoryname);
 
-    Page<CategoryGallery> findByOrderByIdDesc(Pageable pageable);
 
-    Page<CategoryGallery> findByGallerycategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdDesc(String gallerycategoryname, Pageable pageable);
+    Page<CategoryGallery> findByOrderByIdAsc(Pageable pageable);
+
+    Page<CategoryGallery> findByGallerycategorynameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(String gallerycategoryname, Pageable pageable);
 
     List<CategoryGallery> findByGallerycategorynameContainsIgnoreCaseAllIgnoreCase(String gallerycategoryname);
 }

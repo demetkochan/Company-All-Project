@@ -6,7 +6,7 @@ $('#productAdd').submit((event) => {
     event.preventDefault();
 
 
-    const categoryProduct = $("#categoryProduct").val()
+    const categoryProducts = $("#categoryProducts").val()
     const productname = $("#productname").val()
     const product_desc = $("#product_desc").val()
     const product_detail = $("#product_detail").val()
@@ -20,9 +20,16 @@ $('#productAdd').submit((event) => {
     const longitude = $("#longitude").val()
     const productlike = "0"
 
+    let categories = []
 
+    for(let i= 0 ; i<categoryProducts.length; i++){
+        const categoryObj = {
+            id: categoryProducts[i]
+        }
+        categories.push(categoryObj)
+    }
     const obj = {
-        categoryProduct : {id :categoryProduct, product_categoryName:categoryProduct},
+        categoryProducts : categories,
         productname : productname,
         product_desc : product_desc,
         product_detail : product_detail,
@@ -51,7 +58,7 @@ $('#productAdd').submit((event) => {
             if (data) {
                 console.log(data)
 
-                 $("#category_product_id").val(" ")
+                 $("#categoryProducts").val(" ")
                  $("#productname").val(" ")
                  $("#product_desc").val(" ")
                  $("#product_detail").val(" ")
@@ -132,7 +139,7 @@ function createRow(data){
           <td>${itm.productname}</td>
           <td>${itm.product_desc}</td>
           <td>${itm.product_detail}</td>
-          <td>${itm.categoryProduct.productcategoryname}</td>
+          <td>${itm.product_price}</td>
 
            <td class="text-right" >
                <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -207,10 +214,11 @@ function fncProductDelete( id ) {
 let select_id=0;
 function fncProductUpdate(i){
     const itm = globalArr[i];
-    console.log(itm.categoryProduct)
+
 
     select_id = itm.id
-    $("#categoryProduct").val(itm.categoryProduct.id)
+
+    $('#categoryProducts').val(itm.categoryProducts[i].id)
     $("#productname").val(itm.productname)
     $("#product_desc").val(itm.product_desc)
     $("#product_detail").val(itm.product_detail)

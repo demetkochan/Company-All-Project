@@ -1,5 +1,6 @@
 package com.works.controller;
 
+import com.works.entities.CategoryProduct;
 import com.works.entities.Product;
 import com.works.repositories.CategoryProductRepository;
 import com.works.repositories.ProductRepository;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/product_mvc")
@@ -46,11 +48,23 @@ public class ProductController {
     @ResponseBody
     @PostMapping("/add")
     public Product productAdd(@RequestBody Product product){
-
+        List<CategoryProduct> categoryProductList = new ArrayList<>();
+        List<Integer> CategoryIdList = new ArrayList<>();
+        product.getCategoryProducts().forEach(item -> {
+            Optional<CategoryProduct> optionalCategory = cRepo.findById(item.getId());
+            if(optionalCategory.isPresent()){
+                CategoryProduct categoryProduct = optionalCategory.get();
+                categoryProductList.add(categoryProduct);
+            }
+        });
         try{
             if(productUpdate.getId() != null && productUpdate.getId() > 0){
                 product.setId(productUpdate.getId());
             }
+            categoryProductList.forEach(item->{
+                CategoryIdList.add(item.getId());
+            });
+
             pRepo.saveAndFlush(product);
             productUpdate = new Product();
 
@@ -62,6 +76,7 @@ public class ProductController {
         return productUpdate;
 
     }
+
 
     //like
     @ResponseBody
@@ -121,7 +136,7 @@ public class ProductController {
             return lst;
         } else {
             Pageable pageable = PageRequest.of(ipageNumber, pageSize);
-            Slice<Product> pageList = pRepo.findByOrderByIdDesc(pageable);
+            Slice<Product> pageList = pRepo.findByOrderByIdAsc(pageable);
             List<Product> list = pageList.getContent();
             return list;
         }
@@ -132,7 +147,7 @@ public class ProductController {
     @GetMapping("/search/{pageNumber}/{stPageSize}/{data}")
     public List<Product> productSearch(@PathVariable String data, @PathVariable int pageNumber, @PathVariable int stPageSize){
 
-        Page<Product> pages = pRepo.findByProductnameContainsIgnoreCaseAllIgnoreCaseOrderByIdDesc(data, PageRequest.of(pageNumber, stPageSize));
+        Page<Product> pages = pRepo.findByProductnameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data, PageRequest.of(pageNumber, stPageSize));
         List<Product> list = pages.getContent();
         List<Product> listp = pRepo.findByProductnameContainsIgnoreCaseAllIgnoreCase(data);
         searchSize = listp.size();
