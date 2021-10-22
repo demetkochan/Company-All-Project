@@ -43,26 +43,54 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .httpBasic()
+                .and()
                 .authorizeRequests()
                 .antMatchers("/gallery_mvc/**").hasRole("MVC")
                 .antMatchers("/uploadImage_mvc/**").permitAll()
                 .antMatchers("/dashboard_mvc/**").hasRole("MVC")
                 .antMatchers("/category_mvc/**").hasRole("MVC")
+                .antMatchers("/advertising_mvc/**").hasRole("MVC")
+                .antMatchers("/customer_mvc/**").hasRole("MVC")
+                .antMatchers("/delivered_mvc/**").hasRole("MVC")
+                .antMatchers("/galleryDetail_mvc/**").hasRole("MVC")
+                .antMatchers("/home_mvc/**").hasRole("MVC")
+                .antMatchers("/like_mvc/**").hasRole("MVC")
+                .antMatchers("/order_mvc/**").hasRole("MVC")
+                .antMatchers("/product_mvc/**").hasRole("MVC")
+                .antMatchers("/settings_mvc/**").hasRole("MVC")
+                .antMatchers("/survey_mvc/**").hasRole("MVC")
+                .antMatchers("/surveydetail_mvc/**").hasRole("MVC")
                 .antMatchers("/content_mvc/**").hasRole("MVC")
                 .antMatchers("/address_mvc/**").hasRole("MVC")
                 .antMatchers("/announcement_mvc/**").hasRole("MVC")
+                .antMatchers("/api/category_rest/**").hasRole("REST")
+                .antMatchers("/api/advertising_rest/**").hasRole("REST")
+                .antMatchers("/api/content_rest/**").hasRole("REST")
+                .antMatchers("/api/announcement_rest/**").hasRole("REST")
+                .antMatchers("/api/customer_rest/**").hasRole("REST")
+                .antMatchers("/api/home_rest/**").hasRole("REST")
+                .antMatchers("/api/like_rest/**").hasRole("REST")
+                .antMatchers("/api/product_rest/**").hasRole("REST")
+                .antMatchers("/api/survey_rest/**").hasRole("REST")
                 .antMatchers("/images/**").permitAll()
                 .antMatchers("/about/**").permitAll()
                 .antMatchers("/contact/**").permitAll()
                 .antMatchers("/register/**").permitAll()
                 .antMatchers("/login/**").permitAll()
                 .antMatchers("/").permitAll()
-                .anyRequest().authenticated()
                 .and()
                 .csrf().disable()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/dashboard_mvc", true).permitAll()
-                .permitAll();
+                .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .invalidateHttpSession(true)
+                .logoutSuccessHandler(userService)
+                .permitAll()
+                .and()
+              .exceptionHandling().accessDeniedPage("/403");
     }
+
     @Override
     public void configure(WebSecurity web) throws Exception {
         web
@@ -79,65 +107,4 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 }
 
-/*
 
-@Configuration
-@EnableWebSecurity
-public class SpringSecurityConfig
-{
-    @Bean
-    public PasswordEncoder passwordEncoder()
-    {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Configuration
-    @Order(1)
-    public static class RestApiSecurityConfig extends WebSecurityConfigurerAdapter
-    {
-        @Autowired
-        private JwtAuthenticationTokenFilter jwtauthFilter;
-
-        @Override
-        protected void configure(HttpSecurity http) throws Exception
-        {
-            http
-                    .csrf().disable()
-                    .antMatcher("/api/**")
-                    .authorizeRequests()
-                    .antMatchers("/api/authenticate").permitAll()
-                    .antMatchers("/api/**").hasAnyRole("REST")
-                    .and()
-                    .addFilterBefore(jwtauthFilter, UsernamePasswordAuthenticationFilter.class);
-
-            http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        }
-    }
-
-    @Configuration
-    @Order(2)
-    public static class LoginFormSecurityConfig extends WebSecurityConfigurerAdapter
-    {
-        @Autowired
-        private PasswordEncoder passwordEncoder;
-
-        @Autowired
-        public void configureInMemoryAuthentication(AuthenticationManagerBuilder auth) throws Exception
-        {
-            auth.inMemoryAuthentication().withUser("mvc").password(passwordEncoder.encode("12345")).roles("MVC");
-        }
-
-        @Override
-        protected void configure(HttpSecurity http) throws Exception
-        {
-            http
-                    .csrf().disable()
-                    .antMatcher("/**").authorizeRequests()
-                    .antMatchers("/dashboard_mvc/**").permitAll()
-                    .antMatchers("/**").hasRole("MVC")
-                    .and().formLogin();
-
-            http.sessionManagement().maximumSessions(1).expiredUrl("/login?expired=true");
-        }
-    }
-}*/
