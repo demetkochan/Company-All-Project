@@ -1,6 +1,9 @@
 package com.works.repositories;
 
+import com.works.entities.CategoryProduct;
 import com.works.entities.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -35,7 +38,11 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     List<Product> dislikeResult();
 
 
-    List<Product> findByProductnameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(String productname);
+    Page<Product> findByOrderByIdDesc(Pageable pageable);
+
+    Page<Product> findByProductnameContainsIgnoreCaseAllIgnoreCaseOrderByIdDesc(String productname, Pageable pageable);
+
+    List<Product> findByProductnameContainsIgnoreCaseAllIgnoreCase(String productname);
 
 
 }

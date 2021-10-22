@@ -1,3 +1,6 @@
+let pageNumber = 0
+let globalArr = []
+let lastPageNumber = 0;
 $('#productAdd').submit((event) => {
     console.log("Tıklanıldı")
     event.preventDefault();
@@ -75,33 +78,49 @@ $('#productAdd').submit((event) => {
 
 })
 
-//-------------------------------------------- Product Add - Finish --------------------------------------------//
-//-------------------------------------------- Product list  --------------------------------------------//
+function changeVariables(dataNumber){
+    if (dataNumber == -5) {
+        dataNumber = lastPageNumber-1;
+
+    }
+    pageNumber = dataNumber;
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        fncSearch();
+    }
+    else{
+        allProductResult()
+    }
+
+}
+
+allProductResult()
+
+
 function allProductResult(){
+    const pageSize = $("#cPage").val()
+    const status = $("#cStatus").val()
+    pageCount(1);
     $.ajax({
-        url: './product_mvc/list',
+        url: './product_mvc/productList/'+pageNumber+'/'+pageSize,
         type: 'GET',
-        contentType : 'application/json; charset=utf-8',
+        contentType: 'application/json; charset=utf-8',
         success: function (data) {
             console.log(data)
             createRow(data)
-
         },
-        error: function (err) {
+        error: function (err){
             console.log(err)
-            alert("İşlem işlemi sırısında bir hata oluştu!");
         }
     })
 }
-allProductResult()
-//-------------------------------------------- Product table  --------------------------------------------//
 
 function fncReset(){
     select_id = 0;
 
 }
 
-let globalArr = []
+
 function createRow(data){
     let html = ``
     for (let i = 0; i < data.length; i++) {
@@ -116,10 +135,10 @@ function createRow(data){
           <td>${itm.categoryProduct.productcategoryname}</td>
 
            <td class="text-right" >
-               <div class="btn-group" aria-label="Basic outlined example" role="group">
-                    <button onclick="fncProductUpdate(`+i+`)" type="button" data-bs-toggle="modal" data-bs-target="#product" class="btn btn-outline-primary"><i class="fas fa-pencil-alt"></i></button>
+               <div class="btn-group" role="group" aria-label="Basic outlined example">
+                    <button onclick="fncProductUpdate(`+i+`)" type="button" data-bs-toggle="modal" data-bs-target="#product" class="btn btn-outline-success"><i class="fas fa-pencil-alt"></i></button>
                     <button onclick="fncProductDelete(`+itm.id+`)" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
-                     <button onclick="fncProductLike(`+i+`)"class="btn btn-outline-success" id="like-btn"><i class="fas fa-heart"></i></button>
+                     <button onclick="fncProductLike(`+i+`)"class="btn btn-outline-primary" id="like-btn"><i class="fas fa-heart"></i></button>
                      <button onclick="fncProductDislike(`+i+`)"class="btn btn-outline-secondary" id="dislike-btn"><i class="fas fa-heart-broken"></i></button>
 
                </div>
@@ -129,6 +148,28 @@ function createRow(data){
         </tr>`
     }
     $("#productRow").html(html)
+}
+function fncSearch() {
+    const pageSize = $("#cPage").val()
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        $.ajax({
+            url: '/product_mvc/search/'+pageNumber+'/'+pageSize +'/'+casearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                pageCount(2)
+                createRow(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allProductResult()
+    }
 }
 
 
@@ -268,30 +309,63 @@ function fncLike(selected_id){
 }
 
 
-
-
-
-$("#psearch").keyup(function () {
-
-    const psearch = $("#psearch").val()
-    if( psearch != "") {
-        $.ajax({
-            url: './product_mvc/search/' + psearch,
-            type: 'GET',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                console.log(data)
-                createRow(data)
-            },
-            error: function (err) {
-                console.log(err)
-            }
-        })
+function pagePlus(){
+    const pageSize = $("#cPage").val()
+    let plusNumber = globalArr.length
+    let pageNumberx = pageNumber
+    if( plusNumber < pageSize ){
+        pageNumber = pageNumberx
     }
-    else {
+    else{
+        pageNumber++
+    }
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        fncSearch();
+    }
+    else{
         allProductResult()
     }
-})
+
+
+}
+function pageMinus(){
+    console.log('GlobalArr Length : '+globalArr.length)
+    if(pageNumber <= 0){
+        pageNumber=0
+    }else {
+        pageNumber--
+    }
+    /*    lastPage()*/
+    console.log(pageNumber)
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        fncSearch();
+    }
+    else{
+        allProductResult()
+    }
+
+
+}
+
+pageCount(1)
+function pageCount(countStatus){
+    const pageSize = $("#cPage").val()
+    $.ajax({
+        url: './product_mvc/List/pageCount/'+pageSize+'/'+countStatus,
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(data)
+            $("#totalPageNumber").text(pageNumber+1 + '/' + data)
+            lastPageNumber = data;
+        },
+        error: function (err){
+            console.log(err)
+        }
+    })
+}
 
 
 

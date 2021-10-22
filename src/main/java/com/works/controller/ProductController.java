@@ -1,14 +1,19 @@
 package com.works.controller;
 
-import com.works.dto.ProductDto;
 import com.works.entities.Product;
 import com.works.repositories.CategoryProductRepository;
 import com.works.repositories.ProductRepository;
 import org.apache.log4j.Logger;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -16,14 +21,14 @@ import java.util.List;
 public class ProductController {
 
     private static final Logger log=Logger.getLogger(ProductController.class);
+    Integer searchSize;
 
-    final ProductDto productDto;
     final CategoryProductRepository cRepo;
     final ProductRepository pRepo;
 
 
-    public ProductController(ProductDto productDto, CategoryProductRepository cRepo, ProductRepository pRepo) {
-        this.productDto = productDto;
+    public ProductController( CategoryProductRepository cRepo, ProductRepository pRepo) {
+
         this.cRepo = cRepo;
         this.pRepo = pRepo;
 
@@ -77,12 +82,6 @@ public class ProductController {
     }
 
 
-    //ürün Listeleme
-    @ResponseBody
-    @GetMapping("/list")
-    public List<Product> list(){
-        return pRepo.findAll();
-    }
 
     //ürün silme
     @ResponseBody
@@ -105,14 +104,62 @@ public class ProductController {
 
 
 
+    @ResponseBody
+    @GetMapping("/productList/{pageNumber}/{stPageSize}")
+    public List<Product> productList(@PathVariable String pageNumber, @PathVariable String stPageSize){
+
+        int ipageNumber = Integer.parseInt(pageNumber);
+        int pageSize = Integer.parseInt(stPageSize);
+
+        if( pageSize == -1) {
+            List<Product> lst = new ArrayList<>();
+            Iterable<Product> page = pRepo.findAll();
+            for (Product item : page){
+                lst.add(item);
+            }
+            Collections.reverse(lst);
+            return lst;
+        } else {
+            Pageable pageable = PageRequest.of(ipageNumber, pageSize);
+            Slice<Product> pageList = pRepo.findByOrderByIdDesc(pageable);
+            List<Product> list = pageList.getContent();
+            return list;
+        }
+
+
+    }
+    @ResponseBody
+    @GetMapping("/search/{pageNumber}/{stPageSize}/{data}")
+    public List<Product> productSearch(@PathVariable String data, @PathVariable int pageNumber, @PathVariable int stPageSize){
+
+        Page<Product> pages = pRepo.findByProductnameContainsIgnoreCaseAllIgnoreCaseOrderByIdDesc(data, PageRequest.of(pageNumber, stPageSize));
+        List<Product> list = pages.getContent();
+        List<Product> listp = pRepo.findByProductnameContainsIgnoreCaseAllIgnoreCase(data);
+        searchSize = listp.size();
+        return list;
+
+    }
+
 
     @ResponseBody
-    @GetMapping("/search/{data}")
-    public List<Product> search(@PathVariable String data) {
-        List<Product> ls = pRepo.findByProductnameContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data);
-        System.out.println(ls);
-        return ls;
+    @GetMapping("/List/pageCount/{stPageSize}/{stPageStatus}")
+    public Integer productpageCount(@PathVariable String stPageSize, @PathVariable String stPageStatus) {
+        Integer pageStatus = Integer.parseInt(stPageStatus);
+        long dataCount;
+        if (pageStatus == 1) {
+            dataCount = pRepo.count();
+        }
+        else{
+            dataCount = searchSize;
+
+        }
+        double totalPageCount = Math.ceil((double)dataCount/Double.parseDouble(stPageSize));
+        int pageCount = (int) totalPageCount;
+        System.out.println("PageCount : " + pageCount);
+        return pageCount;
     }
+
+
 
 
 }
