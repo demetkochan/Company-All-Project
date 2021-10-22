@@ -1,9 +1,6 @@
 package com.works.dto;
 
-import com.works.repositories.AnnouncementRepository;
-import com.works.repositories.ContentRepository;
-import com.works.repositories.NewsRepository;
-import com.works.repositories.ProductRepository;
+import com.works.repositories.*;
 import com.works.util.ERest;
 import com.works.util.Util;
 import org.springframework.stereotype.Service;
@@ -18,13 +15,19 @@ public class HomeDto {
     final NewsRepository nRepo;
     final AnnouncementRepository aRepo;
     final ProductRepository pRepo;
+    final CustomerRepository cuRepo;
+    final OrderBoxRepository oRepo;
+    final SurveyRepository sRepo;
     final Util util;
 
-    public HomeDto(ContentRepository cRepo, NewsRepository nRepo, AnnouncementRepository aRepo, ProductRepository pRepo, Util util) {
+    public HomeDto(ContentRepository cRepo, NewsRepository nRepo, AnnouncementRepository aRepo, ProductRepository pRepo, CustomerRepository cuRepo, OrderBoxRepository oRepo, SurveyRepository sRepo, Util util) {
         this.cRepo = cRepo;
         this.nRepo = nRepo;
         this.aRepo = aRepo;
         this.pRepo = pRepo;
+        this.cuRepo = cuRepo;
+        this.oRepo = oRepo;
+        this.sRepo = sRepo;
         this.util = util;
     }
 
@@ -89,6 +92,36 @@ public class HomeDto {
         hm.put(ERest.result,sumProduct);
         return hm;
     }
+
+    //Toplam Müşteri
+    public Map<ERest,Object> totalCustomer(){
+        Map<ERest,Object> hm = new LinkedHashMap<>();
+        hm.put(ERest.status,true);
+        int sumCustomer = cuRepo.countCustomer();
+        hm.put(ERest.result,sumCustomer);
+        return hm;
+    }
+
+    //Toplam Sipariş
+    public Map<ERest,Object> totalOrder(){
+        Map<ERest,Object> hm = new LinkedHashMap<>();
+        hm.put(ERest.status,true);
+        int sumOrder = oRepo.countOrder();
+        hm.put(ERest.result,sumOrder);
+        return hm;
+    }
+
+    //Toplam Anket
+    public Map<ERest,Object> totalSurvey(){
+        Map<ERest,Object> hm = new LinkedHashMap<>();
+        hm.put(ERest.status,true);
+        int sumSurvey = sRepo.countSurvey();
+        hm.put(ERest.result,sumSurvey);
+        return hm;
+    }
+
+
+
 
 
 
