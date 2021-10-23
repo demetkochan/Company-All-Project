@@ -149,29 +149,6 @@ function createRow(data){
     }
     $("#customerRow").html(html)
 }
-function fncSearch() {
-    const pageSize = $("#cPage").val()
-    const asearch = $("#search").val()
-    if( asearch != "") {
-        $.ajax({
-            url: '/customer_mvc/search/'+pageNumber+'/'+pageSize +'/'+asearch,
-            type: 'GET',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                console.log(data)
-                pageCount(2)
-                createRow(data)
-            },
-            error: function (err) {
-                console.log(err)
-            }
-        })
-    }
-    else {
-        allCustomerResult()
-    }
-}
-
 function fncCustomerDelete( id ) {
     let answer = confirm("Silmek istediğinize emin misiniz?")
     if(answer){
@@ -196,3 +173,26 @@ function fncCustomerDelete( id ) {
         })
     }
 }
+function fncSearch() {
+    const pageSize = $("#cPage").val()
+    const asearch = $("#search").val()
+    if( asearch != "") {
+        $.ajax({
+            url: '/customer_mvc/search/'+pageNumber+'/'+pageSize +'/'+asearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                pageCount(2)
+                createRow(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allCustomer()
+    }
+}
+

@@ -48,27 +48,8 @@ public class CustomerController {
             cus.setStatus(true);
 
 
-
             cRepo.save(cus);
             model.addAttribute("ls",cRepo.findAll());
-
-            List<Customer> cl=cRepo.findAll();
-            CustomerDoc cd=new CustomerDoc();
-
-
-            cdRepo.deleteAll();
-
-            cl.forEach(item->{
-                cd.setEnabled(true);
-                cd.setTokenExpired(true);
-                cd.setStatus(true);
-                cd.setCemail(item.getCemail());
-                cd.setCname(item.getCname());
-                cd.setCsurname(item.getCsurname());
-                cd.setId(item.getId().toString());
-                cd.setCphone(item.getCphone());
-                cdRepo.save(cd);
-            });
 
             return "customer";
 
@@ -79,20 +60,24 @@ public class CustomerController {
         return "customer";
     }
 
-
-    @GetMapping("/delete/{stid}")
-    public String customerDelete(@PathVariable String stid){
+    @ResponseBody
+    @DeleteMapping(value = "/delete/{stid}")
+    public String delete(@PathVariable String stid) {
+        String status = "0";
         try{
-            int id=Integer.parseInt(stid);
-            cRepo.deleteById(id);
+            int pid = Integer.parseInt(stid);
+            cRepo.deleteById(pid);
+            status= "1";
 
         }catch (Exception e){
             log.error("Silme hatası oluştu.");
-            System.out.println("Silme sırasında hata oluştu.");
+            System.err.println("Silme sırasında hata oluştu");
         }
 
-        return "redirect:/customer_mvc";
+        return status;
+
     }
+
 
     @ResponseBody
     @GetMapping("/customerList/{pageNo}/{stpageSize}")
@@ -120,6 +105,7 @@ public class CustomerController {
                 cdRepo.save(customerDoc);
 
             });
+            Collections.reverse(lsx);
             return lsx;
 
         }else {
