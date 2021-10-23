@@ -19,7 +19,6 @@ function changeVariables(dataNumber){
 
 allCustomer()
 
-// Content List - Start
 function allCustomer(){
     const pageSize = $("#cPage").val()
     const status = $("#cStatus").val()
@@ -124,9 +123,6 @@ function pageCount(countStatus){
 }
 
 
-
-
-
 function createRow(data){
     let html = ``
     for (let i = 0; i < data.length; i++) {
@@ -176,3 +172,27 @@ function fncSearch() {
     }
 }
 
+function fncCustomerDelete( id ) {
+    let answer = confirm("Silmek istediğinize emin misiniz?")
+    if(answer){
+
+        $.ajax({
+            url:"./customer_mvc/delete/"+id,
+            type:"delete",
+            dataType: 'text',
+            success: function (data){
+                console.log(typeof data)
+                if( data != "0" ){
+                    alert("Silme İşlemi Başarılı!")
+                    allCustomer()
+
+                }else {
+                    alert("Silme sırasında bir hata oluştu.")
+                }
+            },
+            error: function (err){
+                console.log(err)
+            }
+        })
+    }
+}
