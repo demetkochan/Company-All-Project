@@ -23,15 +23,15 @@
      <form id="updateuser" name="updateuser">
       <div class="mb-3">
         <label for="firstName" class="form-label">Adı</label>
-        <input class="form-control" type="text" id="firstName" name="firstName" required>
+        <input th:value="${user.firstName}" class="form-control" type="text" id="firstName" name="firstName" required>
       </div>
       <div class="mb-3">
         <label for="lastName" class="form-label">Soyadı</label>
-        <input class="form-control" type="text" id="lastName" name="lastName" required>
+        <input th:value="${user.lastName}" class="form-control" type="text" id="lastName" name="lastName" required>
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Mail</label>
-        <input class="form-control" type="text" id="email" name="email" required>
+        <input  th:value="${user.email}" class="form-control" type="text" id="email" name="email" required>
       </div>
 
       <button type="submit" class="btn btn-outline-primary">Kaydet</button>
