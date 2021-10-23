@@ -53,15 +53,15 @@
     </tr>
     </thead>
 
-    <tbody>
-    <tr th:each="item,iter : ${ls}">
+    <tbody id="customerRow">
+   <!--- <tr th:each="item,iter : ${ls}">
       <td th:text="${item.id}"></td>
       <td th:text="${item.cname}"></td>
       <td th:text="${item.csurname}"></td>
       <td th:text="${item.cemail}"></td>
       <td th:text="${item.cphone}"></td>
       <td><a onclick="return fncDelete();" th:href=" @{'customer_mvc/delete/' + ${item.id}} " class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></a> </td>
-    </tr>
+    </tr>-->
     </tbody>
   </table>
 
@@ -124,3 +124,4 @@
 </script>
 </body>
 </html>
+<script th:src="@{js/customer.js}"></script>

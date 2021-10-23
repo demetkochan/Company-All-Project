@@ -1,6 +1,7 @@
 package com.works.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Customer {
     private boolean status;
     private boolean enabled;
     private boolean tokenExpired;
+
 
     @ManyToMany
     @JoinTable(
