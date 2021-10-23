@@ -91,6 +91,7 @@
   </div>
   <!---Firma Düzenleme Bitiş--->
   <!---Şifre Değiştir ----->
+
   <div class="modal fade" id="updatePassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -99,6 +100,12 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+
+          <div th:if="${error != null}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Hata!</strong><th:block th:text="${error}"></th:block>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
           <form id="PasswordUpdate" name="PasswordUpdate"  >
 
             <div class="mb-3">

@@ -19,6 +19,7 @@ public class SettingsController {
 
     final UserRepository uRepo;
     final UserService userService;
+    String error= "";
 
     public SettingsController(UserRepository uRepo, UserService userService) {
         this.uRepo = uRepo;
@@ -30,14 +31,20 @@ public class SettingsController {
     public String settings(Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String email = auth.getName();
+
+
         Optional<User> userOptional = uRepo.findByEmailEqualsAllIgnoreCase(email);
         if (userOptional.isPresent()){
             User user = userOptional.get();
             model.addAttribute("user",user);
+            if(!error.equals("")){
+                model.addAttribute("error",error);
+                error="";
+            }
+
 
         }else {
             String error = "User is not found!";
-
             System.err.println(error);
         }
 
@@ -72,8 +79,7 @@ public class SettingsController {
                 return us;
 
             }else{
-                String error = "User yok";
-                System.err.println(error);
+                error="Kullanıcı Yok";
             }
 
         }catch (Exception ex){
@@ -88,7 +94,7 @@ public class SettingsController {
     User us2 = new User();
     @ResponseBody
     @PostMapping("/changePassword")
-    public User updatePassword(@RequestBody ChangePassword changePassword  ){
+    public User updatePassword(@RequestBody ChangePassword changePassword ){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
         Optional<User> ou = uRepo.findByEmailEqualsAllIgnoreCase(currentPrincipalName);
@@ -100,7 +106,8 @@ public class SettingsController {
 
                 if(changePassword.getNewPassword().equals("")||changePassword.getRenewPassword().equals("")){
                     System.err.println("Boşlukları doldurun");
-                    JOptionPane.showConfirmDialog(null,"Tüm Boşlukları Doldurun");
+                    error = "Boşlukları Doldurun";
+
 
                 }
                 else {
@@ -115,17 +122,17 @@ public class SettingsController {
                         return us2;
                     }else{
 
-                        System.err.println("Şifreniz aynı değil");
-                        JOptionPane.showConfirmDialog(null,"Şifreniz aynı değil");
+                        error = "Şifreniz aynı değil";
+                        System.out.println(error);
+
                     }
 
                 }
 
 
             }else{
-                String error = "User yok";
-                JOptionPane.showConfirmDialog(null,"Böyle bir kullanıcı yok");
-                System.err.println(error);
+                error="Kullanıcı Yok";
+
             }
 
         }catch (Exception ex){
