@@ -38,7 +38,7 @@ function createRow(data){
 
            <td class="text-right" >
                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                    <button onclick="fncCustomerUpdate(`+i+`)" type="button" data-bs-toggle="modal" data-bs-target="#product" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button>
+              
                     <button onclick="fncCustomerDelete(`+itm.id+`)" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
                
 -->
@@ -49,6 +49,29 @@ function createRow(data){
     }
     $("#customerRow").html(html)
 }
+function fncSearch() {
+    const pageSize = $("#cPage").val()
+    const asearch = $("#search").val()
+    if( asearch != "") {
+        $.ajax({
+            url: '/customer/search/'+pageNumber+'/'+pageSize +'/'+asearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                pageCount(2)
+                createRow(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allCustomerResult()
+    }
+}
+
 
 function fncProductDelete( id ) {
     let answer = confirm("Silmek istediğinize emin misiniz?")

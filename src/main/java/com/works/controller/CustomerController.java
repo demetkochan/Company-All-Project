@@ -31,8 +31,8 @@ public class CustomerController {
 
     @GetMapping(" ")
     public String customer(Model model){
-        model.addAttribute("ls",cRepo.findAll());
-
+       // model.addAttribute("ls",cRepo.findAll());
+     //  model.addAttribute("cs",cdRepo.findAll());
         return "customer";
     }
 
@@ -100,6 +100,7 @@ public class CustomerController {
     public List<CustomerDoc> search(@PathVariable  String data) {
         Page<CustomerDoc> searchPage = cdRepo.findByName(data, PageRequest.of(0, 10));
         List<CustomerDoc> customerList = searchPage.getContent();
+
         return customerList;
     }
 
