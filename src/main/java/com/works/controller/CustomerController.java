@@ -1,12 +1,14 @@
 package com.works.controller;
 
 import com.works.entities.Customer;
-import com.works.entities.Product;
 import com.works.entities.Role;
-import com.works.entities.User;
+import com.works.models.CustomerDoc;
+import com.works.repositories.CustomerDocRepository;
 import com.works.repositories.CustomerRepository;
 import com.works.repositories.RoleRepository;
 import org.apache.log4j.Logger;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,14 +22,17 @@ public class CustomerController {
     private static final Logger log=Logger.getLogger(CustomerController.class);
     final RoleRepository rRepo;
     final CustomerRepository cRepo;
-    public CustomerController(RoleRepository rRepo, CustomerRepository cRepo) {
+    final CustomerDocRepository cdRepo;
+    public CustomerController(RoleRepository rRepo, CustomerRepository cRepo, CustomerDocRepository cdRepo) {
         this.rRepo = rRepo;
         this.cRepo = cRepo;
+        this.cdRepo = cdRepo;
     }
 
     @GetMapping(" ")
     public String customer(Model model){
         model.addAttribute("ls",cRepo.findAll());
+
         return "customer";
     }
 
@@ -48,6 +53,25 @@ public class CustomerController {
 
             cRepo.save(cus);
             model.addAttribute("ls",cRepo.findAll());
+
+            List<Customer> cl=cRepo.findAll();
+            CustomerDoc cd=new CustomerDoc();
+
+
+            cdRepo.deleteAll();
+
+            cl.forEach(item->{
+                cd.setEnabled(true);
+                cd.setTokenExpired(true);
+                cd.setStatus(true);
+                cd.setCemail(item.getCemail());
+                cd.setCname(item.getCname());
+                cd.setCsurname(item.getCsurname());
+                cd.setId(item.getId().toString());
+                cd.setCphone(item.getCphone());
+                cdRepo.save(cd);
+            });
+
             return "customer";
 
         }catch (Exception e){
@@ -72,6 +96,12 @@ public class CustomerController {
         return "redirect:/customer_mvc";
     }
 
+    @GetMapping("/search/{data}")
+    public List<CustomerDoc> search(@PathVariable  String data) {
+        Page<CustomerDoc> searchPage = cdRepo.findByName(data, PageRequest.of(0, 10));
+        List<CustomerDoc> customerList = searchPage.getContent();
+        return customerList;
+    }
 
 
 }
