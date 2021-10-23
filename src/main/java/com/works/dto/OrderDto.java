@@ -5,6 +5,7 @@ import com.works.entities.OrderBox;
 import com.works.entities.Product;
 import com.works.repositories.CustomerRepository;
 import com.works.repositories.OrderBoxRepository;
+import com.works.repositories.ProductJoinOrder;
 import com.works.repositories.ProductRepository;
 import com.works.util.ERest;
 import com.works.util.Util;
@@ -47,15 +48,6 @@ public class OrderDto {
         return hm;
     }
 
-    //Sipariş için ödenecek tutar hesabı
-    public Map<ERest,Object> total(){
-        Map<ERest, Object> hm = new LinkedHashMap<>();
-
-        return hm;
-    }
-
-
-
     //Sipariş Ekleme
     public Map<ERest, Object> orderAdd(OrderBox orderBox, BindingResult bResult) {
         Map<ERest, Object> hm = new LinkedHashMap<>();
@@ -80,7 +72,7 @@ public class OrderDto {
     public Map<ERest,Object> orderList(){
         Map<ERest,Object> hm = new LinkedHashMap<>();
         hm.put(ERest.status,true);
-        List<OrderBox> ls = oRepo.findAll();
+        List<ProductJoinOrder> ls = oRepo.order();
         hm.put(ERest.result,ls);
         return hm;
     }
@@ -107,4 +99,7 @@ public class OrderDto {
         }
         return hm;
     }
+
+
+
 }
