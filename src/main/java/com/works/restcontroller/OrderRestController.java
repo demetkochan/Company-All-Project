@@ -53,7 +53,7 @@ public class OrderRestController {
     }
 
     //Sipariş Hazırlanıyor edilme durumu
-    @PutMapping("/delivered/{stId}")
+    @PutMapping("/loading/{stId}")
     public void productloading(@PathVariable String stId) {
         //jpa-----
         int cid = Integer.parseInt(stId);
