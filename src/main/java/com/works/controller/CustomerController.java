@@ -78,14 +78,14 @@ public class CustomerController {
         }
         return "customer";
     }
-    Customer customerUpdate=new Customer();
+
 
     @GetMapping("/delete/{stid}")
     public String customerDelete(@PathVariable String stid){
         try{
             int id=Integer.parseInt(stid);
             cRepo.deleteById(id);
-            customerUpdate=new Customer();
+
         }catch (Exception e){
             log.error("Silme hatası oluştu.");
             System.out.println("Silme sırasında hata oluştu.");
