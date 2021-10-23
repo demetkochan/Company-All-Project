@@ -32,7 +32,7 @@ public class CustomerController {
     @GetMapping(" ")
     public String customer(Model model){
        // model.addAttribute("ls",cRepo.findAll());
-     //  model.addAttribute("cs",cdRepo.findAll());
+       model.addAttribute("cs",cdRepo.findAll());
         return "customer";
     }
 
