@@ -65,8 +65,14 @@
                         </div>
                         <div class="form-floating mb-3">
                             <select class="form-select" id="sector" name="sector" aria-label="Floating label select example" >
-                                <option value="0">Seçim yapınız</option>
-                                <option value="1">Adalet ve Güvenlik</option>
+                                <option value=" ">Seçim Yapınız</option>
+                                <option th:each="item,iter : ${ls}" th:value="${item.id}" th:text="${item.sector}"></option>
+
+
+
+
+
+                              <!--  <option value="1">Adalet ve Güvenlik</option>
                                 <option value="2">Ağaç İşleri, Kağıt ve Kağıt Ürünleri</option>
                                 <option value="3">Bilişim</option>
                                 <option value="4">Cam, Çimento ve Toprak</option>
@@ -93,7 +99,7 @@
                                 <option value="3">Ulaştırma,Haberleşme</option>
                                 <option value="3">Tekstil</option>
                                 <option value="3">İnşaat</option>
-                                <option value="3">İş ve Yönetim</option>
+                                <option value="3">İş ve Yönetim</option>-->
                             </select>
                             <label  for="sector">Sektör</label>
                         </div>
