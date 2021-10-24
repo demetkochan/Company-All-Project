@@ -1,13 +1,22 @@
 package com.works.controller;
 
 import com.works.entities.Content;
-import com.works.entities.Product;
+import com.works.entities.Customer;
+import com.works.models.ContentDoc;
+import com.works.models.CustomerDoc;
+import com.works.repositories.ContentDocRepository;
 import com.works.repositories.ContentRepository;
 import org.apache.log4j.Logger;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -16,11 +25,13 @@ public class ContentController {
 
     private static final Logger log=Logger.getLogger(ContentController.class);
     final ContentRepository cRepo;
+    final ContentDocRepository cdRepo;
 
-    public ContentController(ContentRepository cRepo) {
+    public ContentController(ContentRepository cRepo, ContentDocRepository cdRepo) {
         this.cRepo = cRepo;
+        this.cdRepo = cdRepo;
     }
-
+    Integer searchSize;
 
     @GetMapping("")
     public String content(Model model){
@@ -51,12 +62,7 @@ public class ContentController {
     }
 
 
-    //İçerik Listeleme
-    @ResponseBody
-    @GetMapping("/list")
-    public List<Content> list(){
-        return cRepo.findAll();
-    }
+    
 
 
 
@@ -89,12 +95,88 @@ public class ContentController {
     }
 
     @ResponseBody
-    @GetMapping("/search/{data}")
-    public List<Content> search(@PathVariable String data) {
-        List<Content> ls = cRepo.findByContenttitleContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data);
-        System.out.println(ls);
-        return ls;
+    @GetMapping("/contentList/{pageNo}/{stpageSize}")
+    public List<Content> customerList(@PathVariable String pageNo, @PathVariable String stpageSize ){
+        int ipageNumber = Integer.parseInt(pageNo);
+        int pageSize = Integer.parseInt(stpageSize);
+
+        if (pageSize == -1){
+            List<Content> lsx = new ArrayList<>();
+            Iterable<Content> page = cRepo.findAll();
+            List<Content> cList = cRepo.findAll();
+            cdRepo.deleteAll();
+            for(Content item : page){
+                lsx.add(item);
+            }
+            cList.forEach(item ->{
+                ContentDoc contentDoc = new ContentDoc();
+                contentDoc.setId(item.getId().toString());
+                contentDoc.setContenttitle(item.getContenttitle());
+                contentDoc.setContent_desc(item.getContent_desc());
+                contentDoc.setContent_detail_desc(item.getContent_detail_desc());
+                contentDoc.setContent_date(item.getContent_date());
+                contentDoc.setContent_status(item.getContent_status());
+
+
+                cdRepo.save(contentDoc);
+
+            });
+            Collections.reverse(lsx);
+            return lsx;
+
+        }else {
+            Pageable pageable = PageRequest.of(ipageNumber,pageSize);
+            Slice<Content> pageList = cRepo.findByOrderByIdAsc(pageable);
+            List<Content> ls = pageList.getContent();
+            List<Content> contentList = cRepo.findAll();
+            cdRepo.deleteAll();
+            for(Content item : contentList ) {
+                ContentDoc contentDoc = new ContentDoc();
+                contentDoc.setId(item.getId().toString());
+                contentDoc.setContenttitle(item.getContenttitle());
+                contentDoc.setContent_desc(item.getContent_desc());
+                contentDoc.setContent_detail_desc(item.getContent_detail_desc());
+                contentDoc.setContent_date(item.getContent_date());
+                contentDoc.setContent_status(item.getContent_status());
+
+
+                cdRepo.save(contentDoc);
+            }
+            return  ls;
+        }
+
+
     }
+    @ResponseBody
+    @GetMapping("/search/{pageNo}/{stpageSize}/{data}")
+    public List<ContentDoc> contentSearch(@PathVariable String data, @PathVariable int pageNo, @PathVariable int stpageSize ){
+
+        Page<ContentDoc> pages = cdRepo.findByTitle(data, PageRequest.of(pageNo,stpageSize));
+        List<ContentDoc> list = pages.getContent();
+        List<ContentDoc> listc =  cdRepo.find(data);
+        searchSize = listc.size();
+        return  list;
+
+    }
+
+    @ResponseBody
+    @GetMapping("/contentList/pageCount/{stpageSize}/{stPageStatus}")
+    public Integer pageCount(@PathVariable String stpageSize,@PathVariable String stPageStatus){
+        Integer pageStatus = Integer.parseInt(stPageStatus);
+        long dataCount;
+        if(pageStatus == 1) {
+            dataCount = cRepo.count();
+        }
+        else {
+            dataCount = searchSize;
+        }
+        double totalPageCount = Math.ceil((double)dataCount/Double.parseDouble(stpageSize));
+        int pageCount = (int) totalPageCount;
+        System.out.println("PageCount : " + pageCount);
+        return pageCount;
+
+    }
+
 
 
 }

@@ -1,3 +1,5 @@
+let pageNumber = 0
+let lastPageNumber = 0;
 $('#addSurvey').submit((event) => {
     console.log("Tıklandı.")
     event.preventDefault();
@@ -36,50 +38,38 @@ $('#addSurvey').submit((event) => {
 //-----------------------------------------Survey Add Finish--------------------------------------------------------//
 
 //-------------------------------------------- Survey list  --------------------------------------------//
-/*let selectedSize = 0;
-$("#size").on("change",function (){
-    console.log("Tıklanıldı")
-    selectedSize = (this.value)
-    console.log(selectedSize)
-    if(selectedSize==1){
-        selectedSize=5
-    }else if(selectedSize==2){
-        selectedSize=10
-    }else if(selectedSize==3){
-        selectedSize=15
+function changeVariables(dataNumber){
+    if (dataNumber == -5) {
+        dataNumber = lastPageNumber-1;
+
     }
-    const size= selectedSize
+    pageNumber = dataNumber;
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        fncSearch();
+    }
+    else{
+        allSurveyResult()
+    }
 
-    let selectedPage=0;
-    $("#page").on("change",function (){
-        console.log("Tıklanıldı")
-        selectedPage = (this.value)
-        if(selectedPage ==1){
-            selectedPage =0
-        }else if(selectedPage ==2){
-            selectedPage =1
-        }else if(selectedPage ==3){
-            selectedPage =2
-        }
-        const page= selectedPage
+}
 
-        allNewsCategoryResult(page,size)
-    })
+allSurveyResult()
 
-})
-*/
 function allSurveyResult(){
+    const pageSize = $("#cPage").val()
+    const status = $("#cStatus").val()
+    pageCount(1);
     $.ajax({
-        url: './survey_mvc/surveyList',
+        url: './survey_mvc/surveyList/'+pageNumber+'/'+pageSize,
         type: 'GET',
-        contentType : 'application/json; charset=utf-8',
+        contentType: 'application/json; charset=utf-8',
         success: function (data) {
             console.log(data)
             createRow(data)
         },
-        error: function (err) {
+        error: function (err){
             console.log(err)
-            alert("İşlem işlemi sırasında bir hata oluştu!");
         }
     })
 }
@@ -97,9 +87,9 @@ function createRow(data){
           <td>${itm.surveytitle}</td>
            <td class="text-right" >
                <div class="btn-group" role="group">
-                    <button onclick="fncSurveyUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#surveyAddModal">Güncelle</button>
-                    <button onclick="fncSurveyDelete(${itm.id})" type="button" class="btn btn-outline-danger ">Sil</button>
-                     <button onclick="fncOptionAdd(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#surveyOptionAddModal">Seçenek Ekle</button>
+                    <button onclick="fncSurveyUpdate(`+i+`)" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#surveyAddModal"><i class="fas fa-pencil-alt"></i></button>
+                    <button onclick="fncSurveyDelete(${itm.id})" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
+                     <a href="surveydetail_mvc" type="button" class="btn btn-outline-danger" ><i class="fas fa-plus-circle"></i></a>
                </div>
           </td>
 
@@ -140,81 +130,87 @@ function fncSurveyUpdate( i ) {
     $("#surveytitle").val(item.surveytitle)
 }
 //----------------------------------------Survey Option Add-----------------------------------------------------//
-let select=0;
-function fncOptionAdd(i){
-    const item = globalAr[i];
-    select = item.id
-    console.log(select)
-  //  allSurveyOptionResult(select)
-//    fncsurveyOption(select)
-
-
-
-}
-
-
-
-function fncsurveyOption() {
-$.ajax({
-    url: './survey_mvc/optAdd',
-    type: 'POST',
-    data: JSON.stringify(obj),
-    dataType: 'json',
-    contentType : 'application/json; charset=utf-8',
-    success: function (data) {
-        if (data) {
-            console.log(data)
-            $("#optiontitle").val(" ")
-            allSurveyOptionResult(select)
-        } else {
-            console.log("Veri dönmedi.")
-        }
-    },
-    error: function (err) {
-        console.log(err)
-        alert("İşlem işlemi sırasında bir hata oluştu!");
+function fncSearch() {
+    const pageSize = $("#cPage").val()
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        $.ajax({
+            url: '/survey_mvc/search/'+pageNumber+'/'+pageSize +'/'+casearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                pageCount(2)
+                createRow(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
     }
-})
+    else {
+        allSurveyResult()
+    }
 }
-/*
-function allSurveyOptionResult( select ){
+
+function pagePlus(){
+    const pageSize = $("#cPage").val()
+    let plusNumber = globalArr.length
+    let pageNumberx = pageNumber
+    if( plusNumber < pageSize ){
+        pageNumber = pageNumberx
+    }
+    else{
+        pageNumber++
+    }
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        fncSearch();
+    }
+    else{
+        allSurveyResult()
+    }
+
+
+}
+function pageMinus(){
+    console.log('GlobalArr Length : '+globalArr.length)
+    if(pageNumber <= 0){
+        pageNumber=0
+    }else {
+        pageNumber--
+    }
+    /*    lastPage()*/
+    console.log(pageNumber)
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        fncSearch();
+    }
+    else{
+        allSurveyResult()
+    }
+
+
+}
+
+pageCount(1)
+function pageCount(countStatus){
+    const pageSize = $("#cPage").val()
     $.ajax({
-        url: './survey_mvc/optionList/'+select,
+        url: './survey_mvc/List/pageCount/'+pageSize+'/'+countStatus,
         type: 'GET',
-        contentType : 'application/json; charset=utf-8',
+        contentType: 'application/json; charset=utf-8',
         success: function (data) {
             console.log(data)
-            createRow(data)
+            $("#totalPageNumber").text(pageNumber+1 + '/' + data)
+            lastPageNumber = data;
         },
-        error: function (err) {
+        error: function (err){
             console.log(err)
-            alert("İşlem işlemi sırasında bir hata oluştu!");
         }
     })
 }
-allSurveyOptionResult(select)
 
-//-------------------------------------------- survey Table  --------------------------------------------//
-let globalAr = []
-function createRow(data){
-    let html = ``
-    for (let i = 0; i < data.length; i++) {
-        globalAr = data
-        const itm = data[i]
-        html += `
-            <h6>${itm.surveytitle}</h6>
-            <hr/>
-            <tr>
-          <th scope="row">${itm.id}</th>
-          <td>${itm.optiontitle}</td>
-           <td class="text-right" >
-               <div class="btn-group" role="group">
-                    <button onclick="fncSurveyOptionDelete(${itm.id})" type="button" class="btn btn-outline-danger ">Sil</button>
-                    
-               </div>
-          </td>
 
-        </tr>`
-    }
-    $("#tableOptionRow").html(html)
-}*/
+
+

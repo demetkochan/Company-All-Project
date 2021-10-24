@@ -1,3 +1,6 @@
+let pageNumber = 0
+
+let lastPageNumber = 0;
 $('#contentAdd').submit((event) => {
     console.log("Tıklanıldı")
     event.preventDefault();
@@ -36,7 +39,7 @@ $('#contentAdd').submit((event) => {
                 $("#content_detail_desc").val(" ")
                 $("#content_date").val(" ")
                 $("#content_status").val(" ")
-                allContentResult()
+                allContent()
                 fncReset()
 
             } else {
@@ -52,27 +55,122 @@ $('#contentAdd').submit((event) => {
 })
 
 //-------------------------------------------- Content Add - Finish --------------------------------------------//
+function changeVariables(dataNumber){
+    if (dataNumber == -5) {
+        dataNumber = lastPageNumber-1;
+
+    }
+    pageNumber = dataNumber;
+    const asearch = $("#search").val()
+    if( asearch != "") {
+        fncSearch();
+    }
+    else{
+        allContent()
+    }
+}
+
+allContent()
+
+function allContent(){
+    const pageSize = $("#cPage").val()
+    const status = $("#cStatus").val()
+    pageCount(1);
+    $.ajax({
+        url: './content_mvc/contentList/'+pageNumber+'/'+pageSize,
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(data)
+            createRow(data)
+        },
+        error: function (err){
+            console.log(err)
+        }
+    })
+}
+function fncSearch() {
+    const pageSize = $("#cPage").val()
+    const asearch = $("#search").val()
+    if( asearch != "") {
+        $.ajax({
+            url: '/content_mvc/search/'+pageNumber+'/'+pageSize +'/'+asearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                pageCount(2)
+                createRow(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allContent()
+    }
+}
+function pagePlus(){
+    const pageSize = $("#cPage").val()
+    let plusNumber = globalArr.length
+    let pageNumberx = pageNumber
+    if( plusNumber < pageSize ){
+        pageNumber = pageNumberx
+    }
+    else{
+        pageNumber++
+    }
+
+    const asearch = $("#search").val()
+    if( asearch != "") {
+        fncSearch();
+    }
+    else{
+        allContent()
+    }
+}
+function pageMinus(){
+    console.log('GlobalArr Length : '+globalArr.length)
+    if(pageNumber <= 0){
+        pageNumber=0
+    }else {
+        pageNumber--
+    }
+    /*    lastPage()*/
+    console.log(pageNumber)
+    const asearch = $("#search").val()
+    if( asearch != "") {
+        fncSearch();
+    }
+    else{
+        allContent()
+    }
+
+}
+
+pageCount(1)
+function pageCount(countStatus){
+    const pageSize = $("#cPage").val()
+    $.ajax({
+        url: './customer_mvc/customerList/pageCount/'+pageSize+'/'+countStatus,
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(data)
+            $("#totalPageNumber").text(pageNumber+1 + '/' + data)
+            lastPageNumber = data;
+        },
+        error: function (err){
+            console.log(err)
+        }
+    })
+}
 
 
 
 //-------------------------------------------- Content list  --------------------------------------------//
-function allContentResult(){
-    $.ajax({
-        url: './content_mvc/list',
-        type: 'GET',
-        contentType : 'application/json; charset=utf-8',
-        success: function (data) {
-            console.log(data)
-            createRow(data)
 
-        },
-        error: function (err) {
-            console.log(err)
-            alert("İşlem işlemi sırısında bir hata oluştu!");
-        }
-    })
-}
-allContentResult()
 //-------------------------------------------- Content table  --------------------------------------------//
 
 function fncReset(){
@@ -130,7 +228,7 @@ function fncContentDelete( id ) {
                 console.log(typeof data)
                 if( data != "0" ){
                     alert("Silme İşlemi Başarılı!")
-                    allContentResult()
+                    allContent()
                     fncReset()
                 }else {
                     alert("Silme sırasında bir hata oluştu.")
@@ -165,7 +263,7 @@ $("#select_process").on("change",function (){
     selectedProcess = (this.value)
     console.log(selectedProcess)
     if(selectedProcess ==""){
-        allContentResult()
+        allContent()
     }else{
         allContentResult1(selectedProcess)
     }
@@ -199,29 +297,6 @@ function allContentResult1(pr){
 
 
 //Content update - end
-
-//content search
-$("#csearch").keyup(function () {
-
-    const csearch = $("#csearch").val()
-    if( csearch != "") {
-        $.ajax({
-            url: './content_mvc/search/' + csearch,
-            type: 'GET',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                console.log(data)
-                createRow(data)
-            },
-            error: function (err) {
-                console.log(err)
-            }
-        })
-    }
-    else {
-        allContentResult()
-    }
-})
 
 
 

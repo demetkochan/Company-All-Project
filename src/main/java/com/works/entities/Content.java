@@ -28,7 +28,7 @@ public class Content {
     @Column(length = 1000)
     private String content_detail_desc;
     private Date content_date;
-    private int content_status;
+    private String content_status;
 
 
 

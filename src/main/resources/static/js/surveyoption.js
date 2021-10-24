@@ -113,7 +113,7 @@ function fncOptionDelete(id){
 
 
 function fncOptionCount(id){
-    let answer = confirm("Silmek istediğinize emin misiniz?")
+    let answer = confirm("Oy vermek istediğinize emin misiniz?")
     if(answer){
 
         $.ajax({
