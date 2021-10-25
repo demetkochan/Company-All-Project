@@ -30,3 +30,7 @@ a[data-fancybox] img {
     height:60px;   /* Height of the footer */
 
 }
+.rounded{
+    width: 200px;
+    height: 150px;
+}
