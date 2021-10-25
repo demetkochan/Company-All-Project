@@ -5,6 +5,10 @@ import com.works.repositories.AnnouncementRepository;
 import com.works.repositories.NewsRepository;
 import com.works.services.UtilServices;
 import org.apache.log4j.Logger;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,10 +23,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 @RequestMapping("/announcement_mvc")
@@ -34,7 +35,7 @@ public class AnnouncementController {
     final AnnouncementRepository aRepo;
     final NewsRepository nRepo;
     final UtilServices uservice;
-
+    Integer searchSize;
     public AnnouncementController(AnnouncementRepository aRepo, NewsRepository nRepo, UtilServices uservice) {
         this.aRepo = aRepo;
         this.nRepo = nRepo;
@@ -71,10 +72,61 @@ public class AnnouncementController {
 
     //Duyuru Listeleme
     @ResponseBody
-    @GetMapping("/list")
-    public List<Announcement> list(){
-        return aRepo.findAll();
+    @GetMapping("/aList/{pageNumber}/{stPageSize}")
+    public List<Announcement> announcementList(@PathVariable String pageNumber, @PathVariable String stPageSize){
+
+        int ipageNumber = Integer.parseInt(pageNumber);
+        int pageSize = Integer.parseInt(stPageSize);
+
+        if( pageSize == -1) {
+            List<Announcement> lst = new ArrayList<>();
+            Iterable<Announcement> page = aRepo.findAll();
+            for (Announcement item : page){
+                lst.add(item);
+            }
+            Collections.reverse(lst);
+            return lst;
+        } else {
+            Pageable pageable = PageRequest.of(ipageNumber, pageSize);
+            Slice<Announcement> pageList = aRepo.findByOrderByIdAsc(pageable);
+            List<Announcement> list = pageList.getContent();
+            return list;
+        }
+
+
     }
+    @ResponseBody
+    @GetMapping("/asearch/{pageNumber}/{stPageSize}/{data}")
+    public List<Announcement> aSearch(@PathVariable String data, @PathVariable int pageNumber, @PathVariable int stPageSize){
+
+        Page<Announcement> pages = aRepo.findByAnnouncementtitleContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data, PageRequest.of(pageNumber, stPageSize));
+        List<Announcement> list = pages.getContent();
+        List<Announcement> listp = aRepo.findByAnnouncementtitleContainsIgnoreCaseAllIgnoreCase(data);
+        searchSize = listp.size();
+        return list;
+
+    }
+
+
+    @ResponseBody
+    @GetMapping("/aList/pageCount/{stPageSize}/{stPageStatus}")
+    public Integer apageCount(@PathVariable String stPageSize, @PathVariable String stPageStatus) {
+        Integer pageStatus = Integer.parseInt(stPageStatus);
+        long dataCount;
+        if (pageStatus == 1) {
+            dataCount = aRepo.count();
+        }
+        else{
+            dataCount = searchSize;
+
+        }
+        double totalPageCount = Math.ceil((double)dataCount/Double.parseDouble(stPageSize));
+        int pageCount = (int) totalPageCount;
+        System.out.println("PageCount : " + pageCount);
+        return pageCount;
+    }
+
+
 
     //Duyuru Silme
     @ResponseBody
@@ -183,24 +235,65 @@ public class AnnouncementController {
 
     }
 
+    @ResponseBody
+    @GetMapping("/nList/{pageNumber}/{stPageSize}")
+    public List<News>nList(@PathVariable String pageNumber, @PathVariable String stPageSize){
 
+        int ipageNumber = Integer.parseInt(pageNumber);
+        int pageSize = Integer.parseInt(stPageSize);
+
+        if( pageSize == -1) {
+            List<News> lst = new ArrayList<>();
+            Iterable<News> page = nRepo.findAll();
+            for (News item : page){
+                lst.add(item);
+            }
+            Collections.reverse(lst);
+            return lst;
+        } else {
+            Pageable pageable = PageRequest.of(ipageNumber, pageSize);
+            Slice<News> pageList = nRepo.findByOrderByIdAsc(pageable);
+            List<News> list = pageList.getContent();
+            return list;
+        }
+
+
+    }
+    @ResponseBody
+    @GetMapping("/nsearch/{pageNumber}/{stPageSize}/{data}")
+    public List<News> nSearch(@PathVariable String data, @PathVariable int pageNumber, @PathVariable int stPageSize){
+
+        Page<News> pages = nRepo.findByNewstitleContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data, PageRequest.of(pageNumber, stPageSize));
+        List<News> list = pages.getContent();
+        List<News> listp = nRepo.findByNewstitleContainsIgnoreCaseAllIgnoreCase(data);
+        searchSize = listp.size();
+        return list;
+
+    }
 
 
     @ResponseBody
-    @GetMapping("/searchAnnouncement/{data}")
-    public List<Announcement> asearch(@PathVariable String data) {
-        List<Announcement> ls = aRepo.findByAnnouncementtitleContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data);
-        System.out.println(ls);
-        return ls;
+    @GetMapping("/nList/pageCount/{stPageSize}/{stPageStatus}")
+    public Integer npageCount(@PathVariable String stPageSize, @PathVariable String stPageStatus) {
+        Integer pageStatus = Integer.parseInt(stPageStatus);
+        long dataCount;
+        if (pageStatus == 1) {
+            dataCount = nRepo.count();
+        }
+        else{
+            dataCount = searchSize;
+
+        }
+        double totalPageCount = Math.ceil((double)dataCount/Double.parseDouble(stPageSize));
+        int pageCount = (int) totalPageCount;
+        System.out.println("PageCount : " + pageCount);
+        return pageCount;
     }
 
-    @ResponseBody
-    @GetMapping("/searchNews/{data}")
-    public List<News> nsearch(@PathVariable String data) {
-        List<News> ls = nRepo.findByNewstitleContainsIgnoreCaseAllIgnoreCaseOrderByIdAsc(data);
-        System.out.println(ls);
-        return ls;
-    }
+
+
+
+
 
 
 }

@@ -46,21 +46,21 @@
     <h5 style="color: #398067"><i class="far fa-newspaper"></i> Duyurular<hr/></h5>
 
     <div class="col-sm-4 mb-3 mt-3">
-      <h6>Sayfa başına <select class="form-select-sm">
-        <option value="1">5</option>
-        <option value="2">10</option>
-        <option value="3">15</option>
-      </select> kayıt göster. </h6>
+      <h6>Sayfa başına <select onchange="allAnnouncementResult()" class="form-select-sm" name="cPage" id="cPage">
+        <option value="5" >5</option>
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="-1">Hepsi</option>
+      </select> kayıt göster.</h6>
     </div>
     <div class="col-sm-4"></div>
     <div class="col-sm-4">
-      <form id="search_form">
-        <div class="input-group flex-nowrap">
-          <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
-          <input id="dsearch" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
-          <a class="btn btn-outline-danger">Ara</a>
-        </div>
-      </form>
+      <div class="input-group flex-nowrap">
+        <span class="input-group-text" ><i class="fas fa-search"></i></span>
+        <input onkeyup="fncSearch()" id="search" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
+        <button id="contentSearch" class="btn btn-outline-secondary">Ara</button>
+      </div>
+
     </div>
   </div>
 
@@ -80,6 +80,24 @@
     </tbody>
   </table>
   <!---Tablo Bitiş-->
+  <div class="row" >
+    <div class="col-sm-5" >
+
+      <div class="d-inline p-2 bg-secondary text-white" id="totalPageNumber"></div>
+    </div>
+
+    <div class="col-sm-7">
+
+      <div class="btn-group" role="group" aria-label="Basic outlined example" style="float: right">
+        <button type="button" onclick="changeVariables(0)" class="btn btn-outline-secondary"> İlk </button>
+        <button onclick="pageMinus()" type="button" class="btn btn-outline-secondary"> <i class="fas fa-angle-double-left"></i> </button>
+        <button id="btnPlus" onclick="pagePlus()" type="button" class="btn btn-outline-secondary"><i class="fas fa-angle-double-right"></i> </button>
+        <button type="button"  onclick="changeVariables(-5)"  class="btn btn-outline-secondary"> Son </button>
+      </div>
+
+
+    </div>
+  </div>
   <hr/>
 
 
@@ -88,11 +106,12 @@
     <h5 style="color: #398067"><i class="far fa-newspaper"></i> Haberler<hr/></h5>
 
     <div class="col-sm-5 mb-3 mt-3">
-      <h6>Sayfa başına <select class="form-select-sm">
-        <option value="1">5</option>
-        <option value="2">10</option>
-        <option value="3">15</option>
-      </select> kayıt göster. </h6>
+      <h6>Sayfa başına <select onchange="allNewsResult()" class="form-select-sm" name="pPage" id="pPage">
+        <option value="5" >5</option>
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="-1">Hepsi</option>
+      </select> kayıt göster.</h6>
     </div>
     <div class="col-sm-3">
       <select class="form-select" id="news_status_select" aria-label="Example select with button addon">
@@ -102,13 +121,11 @@
       </select>
     </div>
     <div class="col-sm-4">
-      <form id="searchform">
-        <div class="input-group flex-nowrap">
-          <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
-          <input id="nsearch" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
-          <a class="btn btn-outline-danger">Ara</a>
-        </div>
-      </form>
+      <div class="input-group flex-nowrap">
+        <span class="input-group-text" ><i class="fas fa-search"></i></span>
+        <input onkeyup="fncNewsSearch()" id="psearch" type="text" class="form-control" placeholder="Arama.." aria-label="contentSearch" aria-describedby="addon-wrapping">
+        <button id="productSearch" class="btn btn-outline-secondary">Ara</button>
+      </div>
     </div>
   </div>
 
@@ -129,7 +146,24 @@
 
     </tbody>
   </table>
+  <div class="row">
+    <div class="col-sm-5" >
 
+      <div class="d-inline p-2 bg-secondary text-white" id="ptotalPageNumber"></div>
+    </div>
+
+    <div class="col-sm-7">
+
+      <div class="btn-group" role="group" aria-label="Basic outlined example" style="float: right">
+        <button type="button" onclick="ChangeVariables(0)" class="btn btn-outline-secondary"> İlk </button>
+        <button onclick="PageMinus()" type="button" class="btn btn-outline-secondary"> <i class="fas fa-angle-double-left"></i> </button>
+        <button id="btPlus" onclick="PagePlus()" type="button" class="btn btn-outline-secondary"><i class="fas fa-angle-double-right"></i> </button>
+        <button type="button"  onclick="ChangeVariables(-5)"  class="btn btn-outline-secondary"> Son </button>
+      </div>
+
+
+    </div>
+  </div>
 
   <!---Haber Ekle Başlangıç-->
   <div class="modal" id="newsAddModal" tabindex="-1">

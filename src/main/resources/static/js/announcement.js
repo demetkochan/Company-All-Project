@@ -1,3 +1,6 @@
+let pageNumber = 0
+
+let lastPageNumber = 0;
 $('#announcementAdd').submit((event) => {
     console.log("Duyuru ekle Tıklanıldı")
     event.preventDefault();
@@ -53,24 +56,42 @@ $('#announcementAdd').submit((event) => {
 
 //-------------------------------------------- Announcement list  --------------------------------------------//
 
+function changeVariables(dataNumber){
+    if (dataNumber == -5) {
+        dataNumber = lastPageNumber-1;
+
+    }
+    pageNumber = dataNumber;
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        fncSearch();
+    }
+    else{
+        allAnnouncementResult()
+    }
+
+}
+
+allAnnouncementResult()
+
 
 function allAnnouncementResult(){
+    const pageSize = $("#cPage").val()
+    const status = $("#cStatus").val()
+    pageCount(1);
     $.ajax({
-        url: './announcement_mvc/list',
+        url: './announcement_mvc/aList/'+pageNumber+'/'+pageSize,
         type: 'GET',
-        contentType : 'application/json; charset=utf-8',
+        contentType: 'application/json; charset=utf-8',
         success: function (data) {
             console.log(data)
             createRow(data)
-
         },
-        error: function (err) {
+        error: function (err){
             console.log(err)
-            alert("İşlem işlemi sırısında bir hata oluştu!");
         }
     })
 }
-allAnnouncementResult()
 
 //-------------------------------------------- Announcement table  --------------------------------------------//
 
@@ -106,6 +127,28 @@ function createRow(data){
         </tr>`
     }
     $("#announcementRow").html(html)
+}
+function fncSearch() {
+    const pageSize = $("#cPage").val()
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        $.ajax({
+            url: '/announcement_mvc/asearch/'+pageNumber+'/'+pageSize +'/'+casearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                pageCount(2)
+                createRow(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allAnnouncementResult()
+    }
 }
 
 //-------------------------------------------- Delete Announcement   --------------------------------------------//
@@ -181,31 +224,114 @@ function fncAnnouncementUpdate(i){
     $("#announcement_date").val(itm.announcement_date)
     $("#announcement_status").val(itm.announcement_status)
 }
+function pagePlus(){
+    const pageSize = $("#cPage").val()
+    let plusNumber = globalArr.length
+    let pageNumberx = pageNumber
+    if( plusNumber < pageSize ){
+        pageNumber = pageNumberx
+    }
+    else{
+        pageNumber++
+    }
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        fncSearch();
+    }
+    else{
+        allAnnouncementResult()
+    }
+
+
+}
+function pageMinus(){
+    console.log('GlobalArr Length : '+globalArr.length)
+    if(pageNumber <= 0){
+        pageNumber=0
+    }else {
+        pageNumber--
+    }
+    /*    lastPage()*/
+    console.log(pageNumber)
+    const casearch = $("#search").val()
+    if( casearch != "") {
+        fncSearch();
+    }
+    else{
+        allAnnouncementResult()
+    }
+
+
+}
+
+pageCount(1)
+function pageCount(countStatus){
+    const pageSize = $("#cPage").val()
+    $.ajax({
+        url: './announcement_mvc/aList/pageCount/'+pageSize+'/'+countStatus,
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(data)
+            $("#totalPageNumber").text(pageNumber+1 + '/' + data)
+            lastPageNumber = data;
+        },
+        error: function (err){
+            console.log(err)
+        }
+    })
+}
+
+
+
+
+
+
 
 //---------------------------------------News list-------------------------------//
+let PageNumber = 0
+let newsResultArr=[]
+let LastPageNumber = 0;
+
+function ChangeVariables(dataNumber){
+    if (dataNumber == -5) {
+        dataNumber = LastPageNumber-1;
+
+    }
+    PageNumber = dataNumber;
+    const cpsearch = $("#psearch").val()
+    if( cpsearch != "") {
+        fncNewsSearch();
+    }
+    else{
+        allNewsResult()
+    }
+
+}
+
+allNewsResult()
 
 
 function allNewsResult(){
+    const pageSize = $("#pPage").val()
+    const status = $("#pStatus").val()
+    PageCount(1);
     $.ajax({
-        url: './announcement_mvc/newslist',
+        url: './announcement_mvc/nList/'+PageNumber+'/'+pageSize,
         type: 'GET',
-        contentType : 'application/json; charset=utf-8',
-
+        contentType: 'application/json; charset=utf-8',
         success: function (data) {
             console.log(data)
             createRo(data)
         },
         error: function (err){
             console.log(err)
-            alert("Hata oluştu");
         }
     })
 }
-allNewsResult()
-
 //---------------------------------------News Table-------------------------------//
 
-let newsResultArr=[]
+
 function createRo(data){
     newsResultArr=data
     let html=``
@@ -234,7 +360,7 @@ function createRo(data){
             <td class="text-right" >
               <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                 <button onclick="fncNewsDelete(${itm.id})" type="button" class="btn btn-outline-success "><i class="far fa-trash-alt"></i></button>
-               <button onclick="fncView(`+i+`)"  data-bs-toggle="modal" data-bs-target="#ViewModel" type="submit" class="btn btn-outline-primary ">Görüntüle</button>
+               <button onclick="fncView(`+i+`)"  data-bs-toggle="modal" data-bs-target="#ViewModel" type="submit" class="btn btn-outline-primary "><i class="fas fa-eye"></i></button>
               </div>
               
             </td>
@@ -243,6 +369,28 @@ function createRo(data){
     }
     $("#newsRow").html(html)
 
+}
+function fncNewsSearch() {
+    const pageSize = $("#pPage").val()
+    const cpsearch = $("#psearch").val()
+    if( cpsearch != "") {
+        $.ajax({
+            url: '/announcement_mvc/nsearch/'+PageNumber+'/'+pageSize +'/'+cpsearch,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data)
+                PageCount(2)
+                createRo(data)
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+    else {
+        allNewsResult()
+    }
 }
 
 function fncView( i ) {
@@ -347,54 +495,71 @@ function allNewsResult2(n){
     })
 }
 
-
-
-
-//duyuru search
-$("#dsearch").keyup(function () {
-
-    const dsearch = $("#dsearch").val()
-    if( dsearch != "") {
-        $.ajax({
-            url: './announcement_mvc/searchAnnouncement/' + dsearch,
-            type: 'GET',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                console.log(data)
-                createRow(data)
-            },
-            error: function (err) {
-                console.log(err)
-            }
-        })
+function PagePlus(){
+    const pageSize = $("#pPage").val()
+    let plusNumber = newsResultArr.length
+    let pageNumberx = PageNumber
+    if( plusNumber < pageSize ){
+        PageNumber = pageNumberx
     }
-    else {
-        allAnnouncementResult()
+    else{
+        PageNumber++
     }
-})
-
-//news search
-$("#nsearch").keyup(function () {
-
-    const nsearch = $("#nsearch").val()
-    if( nsearch != "") {
-        $.ajax({
-            url: './announcement_mvc/searchNews/' + nsearch,
-            type: 'GET',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                console.log(data)
-                createRo(data)
-            },
-            error: function (err) {
-                console.log(err)
-            }
-        })
+    const cpsearch = $("#psearch").val()
+    if( cpsearch != "") {
+        fncNewsSearch();
     }
-    else {
+    else{
         allNewsResult()
     }
-})
+
+
+}
+function PageMinus(){
+    console.log('newsResultArrLength : '+newsResultArr.length)
+    if(PageNumber <= 0){
+        PageNumber=0
+    }else {
+        PageNumber--
+    }
+    /*    lastPage()*/
+    console.log(PageNumber)
+    const cpsearch = $("#psearch").val()
+    if( cpsearch != "") {
+        fncNewsSearch()
+    }
+    else{
+        allNewsResult()
+    }
+
+
+}
+
+PageCount(1)
+function PageCount(countStatus){
+    const PageSize = $("#pPage").val()
+    $.ajax({
+        url: './announcement_mvc/nList/pageCount/'+PageSize+'/'+countStatus,
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(data)
+            $("#ptotalPageNumber").text(PageNumber+1 + '/' + data)
+            LastPageNumber = data;
+        },
+        error: function (err){
+            console.log(err)
+        }
+    })
+}
+
+
+
+
+
+
+
+
 
 
 //-------------------------------------------- Date Format   --------------------------------------------//
