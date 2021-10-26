@@ -24,7 +24,7 @@ CompanyAll bir bulut Api projesidir.
 | Elasticsearch | :arrow_right: | 80 |
 | Redis | :arrow_right: | 80 |
 
-## Application images
+## Uygulama Fotoğrafları
 
 <p>
 <a href="https://github.com/ilaydaguler/Java-Spring-MVC-MySql-Application-Vet-Clinic/blob/main/images/1.jpg" target="_blank">
