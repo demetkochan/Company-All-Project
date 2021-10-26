@@ -36,10 +36,35 @@ CompanyAll bir bulut Api projesidir. CompanyAll ile ürünleri, haberleri, duyur
 <img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0003.jpg" width="200" style="max-width:100%;"></a>
   
 <a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0004.jpg" target="_blank">
-<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0004.jpg" style="max-width:100%;"></a>                         
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0004.jpg" width="200" style="max-width:100%;"></a>                         
   
 <a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0005.jpg" target="_blank">
 <img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0005.jpg" width="200" style="max-width:100%;"></a>
+  
+<a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0006.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0006.jpg" width="200" style="max-width:100%;"></a>
+  
+  <a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0007.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0007.jpg" width="200" style="max-width:100%;"></a>
+  
+  <a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0008.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0008.jpg" width="200" style="max-width:100%;"></a>
+  
+  <a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0009.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0009.jpg" width="200" style="max-width:100%;"></a>
+  
+  <a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0010.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0010.jpg" width="200" style="max-width:100%;"></a>
+  
+    <a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0011.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0011.jpg" width="200" style="max-width:100%;"></a>
+  
+    <a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0012.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0012.jpg" width="200" style="max-width:100%;"></a>
+  
+  
+
+
 
 
 </p>
