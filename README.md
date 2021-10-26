@@ -29,17 +29,17 @@ CompanyAll bir bulut Api projesidir. CompanyAll ile ürünleri, haberleri, duyur
 ## Uygulama Fotoğrafları
 
 <p>
-<a href="" target="_blank">
-<img src="" width="200" style="max-width:100%;"></a>
+<a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0002.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0002.jpg" width="200" style="max-width:100%;"></a>
   
-<a href="" target="_blank">
-<img src="" width="200" style="max-width:100%;"></a>
+<a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0003.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0003.jpg" width="200" style="max-width:100%;"></a>
   
-<a href="" target="_blank">
-<img src="" style="max-width:100%;"></a>                         
+<a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0004.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0004.jpg" style="max-width:100%;"></a>                         
   
-<a href="" target="_blank">
-<img src="" width="200" style="max-width:100%;"></a>
+<a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0005.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0005.jpg" width="200" style="max-width:100%;"></a>
 
 
 </p>
