@@ -13,4 +13,5 @@ public interface ProductJoinOrder {
     String getCphone();
     String getCsurname();
     Integer getOid();
+    String getAddress();
 }

@@ -86,6 +86,7 @@ function createRow(data){
             <th scope="row">${itm.cname} ${itm.csurname} </th>  
              <td>${itm.cphone}</td>
              <td>${itm.cemail}</td>
+             <td>${itm.address}</td>
             <td>${itm.productname}</td>
             <td>${itm.order_count}</td>
             <td>${dateToFormat(itm.order_date)}</td>

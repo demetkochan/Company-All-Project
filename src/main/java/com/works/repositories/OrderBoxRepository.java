@@ -21,11 +21,11 @@ public interface OrderBoxRepository extends JpaRepository<OrderBox,Integer> {
     void orderStatus(int id);
 
 
-    @Query(value = "select p.productname,o.oid, c.cname, c.cemail, c.csurname, c.cphone, p.id, o.order_count, (p.product_price * o.order_count) as total, o.order_date from PRODUCT as p INNER JOIN order_box AS O ON p.id = o.order_product INNER JOIN Customer as c on c.id = o.order_customer where o.order_status=1",nativeQuery = true)
+    @Query(value = "select p.productname,o.oid, c.cname, c.cemail, c.csurname, c.cphone,  p.address,  p.id, o.order_count, (p.product_price * o.order_count) as total, o.order_date from PRODUCT as p INNER JOIN order_box AS O ON p.id = o.order_product INNER JOIN Customer as c on c.id = o.order_customer where o.order_status=1",nativeQuery = true)
     List<ProductJoinOrder> statusDelivered();
 
 
-    @Query(value = "select p.productname,o.oid, c.cname, c.cemail, c.csurname, c.cphone, p.id, o.order_count, (p.product_price * o.order_count) as total, o.order_date from PRODUCT as p INNER JOIN order_box AS O ON p.id = o.order_product INNER JOIN Customer as c on c.id = o.order_customer where o.order_status=2",nativeQuery = true)
+    @Query(value = "select p.productname,o.oid, c.cname, c.cemail, c.csurname, c.cphone,  p.address,  p.id, o.order_count, (p.product_price * o.order_count) as total, o.order_date from PRODUCT as p INNER JOIN order_box AS O ON p.id = o.order_product INNER JOIN Customer as c on c.id = o.order_customer where o.order_status=2",nativeQuery = true)
     List<ProductJoinOrder> status();
 
     @Modifying
