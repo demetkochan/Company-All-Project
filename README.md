@@ -19,12 +19,12 @@ CompanyAll bir bulut Api projesidir. CompanyAll ile ürünleri, haberleri, duyur
 | Spring MVC | :arrow_right: | 80 |
 | Spring Boot | :arrow_right: | 80 |
 | Spring REST | :arrow_right: | 80 |
-| Spring Security | :arrow_right: | 80 |
+| Spring Security | :arrow_right: | 60 |
 | HTML-CSS | :arrow_right: | 70 |
 | JavaScript | :arrow_right: | 90 |
 | MySQL| :arrow_right: | 70 |
-| Elasticsearch | :arrow_right: | 80 |
-| Redis | :arrow_right: | 80 |
+| Elasticsearch | :arrow_right: | 50 |
+| Redis | :arrow_right: | 40 |
 
 ## Uygulama Fotoğrafları
 
@@ -107,9 +107,32 @@ CompanyAll bir bulut Api projesidir. CompanyAll ile ürünleri, haberleri, duyur
 <a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0027.jpg" target="_blank">
 <img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0027.jpg" width="200" style="max-width:100%;"></a>
   
+<a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0028.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0028.jpg" width="200" style="max-width:100%;"></a>
   
-
-
-
+<a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0029.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0029.jpg" width="200" style="max-width:100%;"></a>
+  
+<a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0030.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0030.jpg" width="200" style="max-width:100%;"></a>
+  
+<a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0031.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0031.jpg" width="200" style="max-width:100%;"></a>
+  
+<a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0032.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0032.jpg" width="200" style="max-width:100%;"></a>
+  
+<a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0033.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0033.jpg" width="200" style="max-width:100%;"></a>
+  
+<a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0034.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0034.jpg" width="200" style="max-width:100%;"></a>
+  
+<a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0035.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0035.jpg" width="200" style="max-width:100%;"></a>
+  
+<a href="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0036.jpg" target="_blank">
+<img src="https://github.com/demetkochan/Company-All-Project/blob/main/Resimler/0036.jpg" width="200" style="max-width:100%;"></a>
+  
 
 </p>
