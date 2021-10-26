@@ -1,24 +1,28 @@
-# Company All Project 
+# Company All Projesi
 CompanyAll bir bulut Api projesidir. 
 ## Collaborators
 <a href="https://github.com/demetkochan" target="_blank">Demet Koçhan</a>, <a href="https://github.com/ilaydaguler" target="_blank">İlayda Güler</a>, <a href="https://github.com/Sahsanem" target="_blank">Emine Şahsanem Demirel</a>
-## Demo Account Information
+## Demo Hesap Bilgileri
 
-| Mail | :arrow_right: | Password | Role |
+| E-mail | :arrow_right: | Şifre | Rol |
 | ------------- |:-------------:|:-------------:|:-------------:|
-| ```veli@mail.com```| :arrow_right: | ```12345``` | Customer |
-| ```zehra@mail.com```| :arrow_right: | ```12345``` | Admin (can reach the agenda page)|
-| ```serkan@mail.com```| :arrow_right: | ```12345``` | Doctor (can reach the lab page)|
+| ```serkan@mail.com```| :arrow_right: | ```12345``` | MVC |
+| ``` ```| :arrow_right: | ```12345``` | REST(can reach the agenda page)|
 
-## Used Languages & Abilities
+## Kullanılan Diller ve Teknolojiler
 
-| Languages / Abilities | :arrow_right: | % |
+| Diller / Teknolojiler | :arrow_right: | % |
 | ------------- |:-------------:|:-------------:|
 | Java | :arrow_right: | 90 |
 | Spring MVC | :arrow_right: | 80 |
+| Spring Boot | :arrow_right: | 80 |
+| Spring REST | :arrow_right: | 80 |
+| Spring Security | :arrow_right: | 80 |
 | HTML-CSS | :arrow_right: | 70 |
 | JavaScript | :arrow_right: | 90 |
 | MySQL| :arrow_right: | 70 |
+| Elasticsearch | :arrow_right: | 80 |
+| Redis | :arrow_right: | 80 |
 
 ## Application images
 
