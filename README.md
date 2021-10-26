@@ -1,5 +1,5 @@
 # Company All Projesi
-CompanyAll bir bulut Api projesidir. 
+CompanyAll bir bulut Api projesidir. CompanyAll ile ürünleri, haberleri, duyuruları, kategorileri, galerileri, beğenileri, anketleri, müşterileri, içerikleri, reklamları ve siparişleri projenin MVC kısmında yönetebilir, listeleyebilir, arayabilir, ekleyebilir, düzenleyebilir ve görüntüleyebilrsiniz. Ayrıca REST kısmında, MVC kısmındaki bütün sayfaların REST servislerine ulaşıp mobil uygulamalarınızda güvenle kullanabilirsiniz. Eğer üye değilseniz üye olup giriş yapabilirsiniz. Üye olurken hangi bölüme ulaşmak isterseniz önce rol seçmelisiniz. Kayıt ekranında rol olarak MVC seçildiyse sadece Spring MVC kısmına erişebilirsiniz, rol olarak REST seçildiyse sadece Spring REST kısmına erişebilirsiniz. 
 
 ## Contributors
 <a href="https://github.com/demetkochan" target="_blank">Demet Koçhan</a>, <a href="https://github.com/ilaydaguler" target="_blank">İlayda Güler</a>, <a href="https://github.com/Sahsanem" target="_blank">Emine Şahsanem Demirel</a>
