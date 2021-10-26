@@ -93,8 +93,8 @@ function createRow(data){
   </ul>
   <div class="card-footer"  >
   <a href="galleryDetail_mvc" class="btn btn-outline-secondary"><i class="fas fa-eye"></i></a>
-    <button onclick="fncGalleryUpdate(\`+i+\`)" type="button" data-bs-toggle="modal" data-bs-target="#product" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button>
-    <button onclick="fncGalleryDelete(\`+itm.id+\`)" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
+    <button onclick="fncGalleryUpdate(`+i+`)" type="button" data-bs-toggle="modal" data-bs-target="#product" class="btn btn-outline-primary "><i class="fas fa-pencil-alt"></i></button>
+    <button onclick="fncGalleryDelete(`+itm.id+`)" type="button" class="btn btn-outline-danger "><i class="far fa-trash-alt"></i></button>
                     
   </div>
 </div>`

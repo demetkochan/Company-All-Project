@@ -20,10 +20,9 @@ public class Content {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-
+    @ApiModelProperty(value = "İçerik Başlığı ")
     @NotNull(message = "İçerik Başlığı Null Olamaz")
     @NotEmpty(message = "İçerik Başlığı Boş olamaz")
-    @ApiModelProperty(value = "İçerik Başlığı ")
     private String contenttitle;
 
     @NotNull(message = "İçerik açıklama Null Olamaz")
